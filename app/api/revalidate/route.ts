@@ -1,29 +1,61 @@
+// app/api/revalidate/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+/**
+ * Timing-safe HMAC-SHA256 signature verification
+ */
+function verifySignature(payload: string, signature: string, secret: string): boolean {
+  try {
+    const expected = createHmac("sha256", secret).update(payload).digest("hex");
+    const sigBuf = Buffer.from(signature, "hex");
+    const expBuf = Buffer.from(expected, "hex");
+    return sigBuf.length === expBuf.length && timingSafeEqual(sigBuf, expBuf);
+  } catch {
+    return false;
+  }
+}
 
 export async function POST(req: NextRequest) {
-  const secret = req.headers.get("x-revalidation-secret");
-
-  // Verify secret token matches Vercel environment variable
-  if (secret !== process.env.CMS_REVALIDATION_SECRET) {
-    return NextResponse.json({ message: "Invalid revalidation secret" }, { status: 401 });
-  }
-
   try {
-    const body = await req.json();
-    const { slug } = body;
+    const signature = req.headers.get("x-cms-signature-256");
+    const secret = process.env.CMS_REVALIDATION_SECRET;
 
-    // Instantly revalidate the blog archive and the specific article
-    revalidatePath("/blog");
-    if (slug) {
-      revalidatePath(`/blog/${slug}`);
+    if (!secret) {
+      return NextResponse.json(
+        { error: "CMS_REVALIDATION_SECRET not configured on server" },
+        { status: 500 }
+      );
     }
 
-    return NextResponse.json({ revalidated: true, now: Date.now() });
+    const bodyText = await req.text();
+
+    if (!signature || !verifySignature(bodyText, signature, secret)) {
+      return NextResponse.json({ error: "Invalid webhook signature" }, { status: 401 });
+    }
+
+    const payload = JSON.parse(bodyText);
+    const { affectedRoutes = [] } = payload;
+
+    // Purge affected paths (e.g. /blog and /blog/my-post)
+    const revalidatedRoutes: string[] = [];
+    for (const route of affectedRoutes) {
+      try {
+        revalidatePath(route);
+        revalidatedRoutes.push(route);
+      } catch (pathErr) {
+        console.warn(`Failed to revalidate path: ${route}`, pathErr);
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      revalidated: revalidatedRoutes,
+      timestamp: new Date().toISOString(),
+    });
   } catch (err: any) {
-    return NextResponse.json(
-      { message: "Error revalidating", error: err?.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: err.message || "Revalidation failed" }, { status: 500 });
   }
 }

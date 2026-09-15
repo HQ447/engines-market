@@ -1,99 +1,90 @@
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import { Metadata } from "next";
-import { getPostBySlug, getPosts } from "@/lib/cms";
+// app/blog/[slug]/page.tsx
 
-interface PageProps {
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getBlogPostBySlug } from "@/lib/cms";
+
+interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// 1. Static pre-rendering for sub-50ms TTFB
-export async function generateStaticParams() {
-  const posts = await getPosts();
-  return posts.map((post) => ({ slug: post.slug }));
-}
-
-// 2. Dynamic SEO Metadata & OpenGraph Social Cards
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  if (!post) return {};
+  const post = await getBlogPostBySlug(slug);
+
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
 
   return {
-    title: post.seo?.title || post.title,
-    description: post.seo?.description || post.excerpt,
+    title: post.seoMetadata?.metaTitle || `${post.title} | Engines Market`,
+    description: post.seoMetadata?.metaDescription || post.excerpt,
     alternates: {
-      canonical: post.seo?.canonicalUrl || `https://enginesmarket.co.uk/blog/${post.slug}`,
+      canonical: post.seoMetadata?.canonicalUrl || `https://enginesmarket.co.uk/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: post.publishedAt,
-      images: post.featuredImage?.url ? [post.featuredImage.url] : [],
+      modifiedTime: post.updatedAt || post.publishedAt,
+      images: post.seoMetadata?.ogImage ? [{ url: post.seoMetadata.ogImage }] : [],
     },
   };
 }
 
-// 3. Article View Page
-export default async function BlogPostPage({ params }: PageProps) {
+export const revalidate = 3600;
+
+export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
-  if (!post) {
-    notFound();
-  }
-
-  // Google JSON-LD Structured Data Schema
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.publishedAt,
-    author: {
-      "@type": "Person",
-      name: post.author?.name || "Editorial Team",
-    },
-    image: post.featuredImage?.url,
-  };
+  if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-4xl px-4 py-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+      {/* Schema.org Article & Breadcrumb Structured Data */}
+      {post.jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(post.jsonLd) }}
+        />
+      )}
 
-      <header className="mb-8 space-y-4 text-center">
-        <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white">
+      {/* Breadcrumb Navigation */}
+      <nav className="mb-6 flex items-center gap-2 text-xs text-gray-500">
+        <Link href="/" className="hover:underline">Home</Link>
+        <span>/</span>
+        <Link href="/blog" className="hover:underline">Blog</Link>
+        <span>/</span>
+        <span className="text-gray-900 font-medium dark:text-gray-200 truncate max-w-xs">{post.title}</span>
+      </nav>
+
+      {/* Article Header */}
+      <header className="mb-8 space-y-3">
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           {post.title}
         </h1>
-        <div className="flex items-center justify-center gap-4 text-sm text-slate-500">
-          <span>By {post.author?.name || "Editorial Team"}</span>
+        <div className="flex items-center gap-3 text-xs text-gray-500">
+          <span>By {post.author?.name || "Engines Market Editorial"}</span>
           <span>•</span>
-          <span>{post.readingTimeMinutes} min read</span>
+          <span>
+            {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </span>
           <span>•</span>
-          <time>{new Date(post.publishedAt).toLocaleDateString("en-GB")}</time>
+          <span>{post.readingTimeMinutes || 1} min read</span>
         </div>
       </header>
 
-      {post.featuredImage?.url && (
-        <div className="relative mb-10 aspect-video w-full overflow-hidden rounded-2xl">
-          <Image
-            src={post.featuredImage.url}
-            alt={post.featuredImage.altText || post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      )}
-
-      {/* Semantic Tiptap HTML Content */}
+      {/* Pre-rendered Semantic HTML Body */}
       <div
-        className="prose prose-lg dark:prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+        className="cms-content prose prose-lg max-w-none dark:prose-invert leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: post.html || "" }}
       />
     </article>
   );

@@ -1,0 +1,80 @@
+/* CMS Content Components Styling */
+.cms-content h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cms-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cms-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+
+.cms-callout {
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid #8b5cf6;
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.cms-callout-tip {
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.cms-callout-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #8b5cf6;
+}
+
+.cms-callout-tip .cms-callout-title {
+  color: #10b981;
+}
+
+.cms-table-overflow {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.cms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.cms-table th,
+.cms-table td {
+  border: 1px solid rgba(150, 150, 150, 0.2);
+  padding: 0.75rem 1rem;
+}
+
+.cms-cta-block {
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.cms-cta-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: #4f46e5;
+  font-weight: 700;
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  text-decoration: none;
+}
