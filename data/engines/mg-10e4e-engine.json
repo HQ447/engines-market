@@ -26,9 +26,9 @@
         "10E4E",
         "Petrol",
         "1.0L Turbo GDI",
-        "2016-present"
+        "2016–present"
       ],
-      "title": "MG 10E4E Engine - Replacement Cost, Problems & Compatibility",
+      "title": "MG 10E4E Engine — Replacement Cost, Problems & Compatibility",
       "description": "The 1.0-litre turbocharged GDI petrol engine fitted to MG3 hatchbacks and MG ZS SUVs, with reconditioned units from approximately £1,500-£2,800 and a growing UK replacement demand base.",
       "trustBadges": [
         "Supply & Fit Available",
@@ -36,7 +36,23 @@
         "Nationwide Delivery",
         "100+ Suppliers"
       ],
-      "prices": [],
+      "prices": [
+        {
+          "label": "Used from",
+          "price": "£600",
+          "tone": "used"
+        },
+        {
+          "label": "Reconditioned from",
+          "price": "£1,500",
+          "tone": "reconditioned"
+        },
+        {
+          "label": "Rebuilt from",
+          "price": "£2,500",
+          "tone": "rebuilt"
+        }
+      ],
       "quoteCard": {
         "heading": "Get Your Engine Quote",
         "subtitle": "Enter your registration to confirm fitment and get exact prices",
@@ -52,7 +68,7 @@
     },
     "specs": {
       "tag": "Key Specs",
-      "title": "MG 10E4E - Specifications at a Glance",
+      "title": "MG 10E4E — Specifications at a Glance",
       "specs": [
         {
           "label": "Engine Code",
@@ -72,7 +88,7 @@
         },
         {
           "label": "Years Produced",
-          "value": "2016-present"
+          "value": "2016–present"
         },
         {
           "label": "UK Models Fitted",
@@ -102,14 +118,14 @@
     },
     "compatibility": {
       "tag": "Fitted To",
-      "title": "Which MG Models Use the 10E4E-",
+      "title": "Which MG Models Use the 10E4E?",
       "intro": "The 10E4E is MG’s modern 1.0-litre three-cylinder turbo petrol, part of SAIC’s SGE (Small Gasoline Engine) family. It was introduced around 2016 as a higher-efficiency alternative to the 1.5-litre naturally aspirated 15S4C, powering later MG3 models and the MG ZS.",
       "rows": [
         {
           "model": "MG3",
           "generation": "ZG / ZS11",
           "badges": "1.0T GDI",
-          "years": "2016-2024",
+          "years": "2016–2024",
           "links": [
             {
               "label": "MG3",
@@ -121,7 +137,7 @@
           "model": "MG ZS",
           "generation": "AZS1",
           "badges": "1.0T GDI",
-          "years": "2017-present",
+          "years": "2017–present",
           "links": [
             {
               "label": "MG ZS",
@@ -164,7 +180,7 @@
     },
     "failures": {
       "tag": "Known Problems",
-      "title": "MG 10E4E Engine Problems - What Actually Fails",
+      "title": "MG 10E4E Engine Problems — What Actually Fails",
       "items": [
         {
           "title": "Carbon buildup on intake valves - 40k-80k miles",
@@ -210,7 +226,7 @@
     },
     "buyingGuide": {
       "tag": "Buying Guide",
-      "title": "Buying a Replacement 10E4E - What to Choose",
+      "title": "Buying a Replacement 10E4E — What to Choose",
       "options": [
         {
           "label": "Used",
@@ -264,7 +280,7 @@
     },
     "faq": {
       "tag": "FAQ",
-      "title": "MG 10E4E - Frequently Asked Questions",
+      "title": "MG 10E4E — Frequently Asked Questions",
       "items": [
         {
           "question": "How much does an MG 10E4E engine replacement cost-",
