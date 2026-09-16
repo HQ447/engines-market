@@ -163,6 +163,7 @@
     "costGuide": {
       "tag": "Prices",
       "title": "MG 10E4E Engine Replacement Cost (UK)",
+      "image": "/prices/img/hero3.png",
       "rows": [
         {
           "condition": "Used",
@@ -196,18 +197,21 @@
       "items": [
         {
           "title": "Carbon buildup on intake valves - 40k-80k miles",
+          "image": "/case-studies/assets/borescope-valves-pistons.png",
           "onset": "40,000-80,000 miles [PATTERN DATA - typical for GDI engines]",
           "whatHappens": "Like many direct-injection petrol engines, the 10E4E does not have fuel washing over the intake valves, so oil vapour and crankcase gases gradually bake onto the valve stems and backs. This leads to reduced airflow, rough idle, hesitation on acceleration, and, in some cases, misfire codes. Carbon buildup is the single most common 10E4E complaint.",
           "repairVsReplace": "Walnut-blast cleaning of the intake valves typically costs £300-£600 and is effective at restoring performance. If ignored, severe carbon can cause drivability issues and possibly burn a valve, but outright engine failure is rare. This is usually a repair, not a replacement trigger."
         },
         {
           "title": "Fuel injector failure - 50k-100k miles",
+          "image": "/case-studies/assets/injector-carbon.png",
           "onset": "50,000-100,000 miles [PATTERN DATA - common for high-pressure GDI injectors]",
           "whatHappens": "The 10E4E uses high-pressure direct injectors that can develop leaks or internal electrical faults, leading to uneven running, poor fuel economy, and in some cases, unburnt fuel contamination of the oil. Injector failure is more common on cars that have been run on poor-quality fuel.",
           "repairVsReplace": "Injector replacement costs £600-£1,200 for a set of three. This is a repair that can be done without removing the engine; it is rarely a reason to replace the whole unit."
         },
         {
           "title": "Turbocharger wastegate actuator wear - 70k+ miles",
+          "image": "/case-studies/assets/twin-turbo-debris.png",
           "onset": "70,000+ miles [PATTERN DATA - common on small turbo engines]",
           "whatHappens": "The wastegate actuator on the 10E4E’s small turbo can develop play or seize over time, causing over-boost or under-boost conditions. This may trigger engine management lights and reduced power mode.",
           "repairVsReplace": "Wastegate actuator replacement (or turbo cartridge rebuild) costs £400-£800. If the turbo itself has shaft play, full turbo replacement may be needed at £600-£1,500."
@@ -220,6 +224,20 @@
       "tag": "Engine Variants",
       "title": "How to Confirm You Have the 10E4E",
       "intro": "The 10E4E is part of SAIC’s SGE family of 1.0-litre turbo engines. Later revisions - 10E4F (2020+) - exist, and they have different emissions and tuning calibrations. Where to find the code: The engine code is stamped on the engine block, typically on the front face near the timing cover or on the driver’s side. It also appears on the V5C registration document under “Engine number”. A VIN decoder will confirm the exact factory build code. Which codes get confused with it: The 10E4E is commonly confused with the later 10E4F (2020+) and the naturally aspirated 1.0-litre engine (10S4G) used in some Chinese-market SAIC vehicles. While the 10E4E and 10E4F share the same block, the fuel system and ECU calibration differ. Why fitting the wrong revision matters: A later 10E4F may physically fit but can cause injector timing mismatches or emissions test failures due to different catalyst calibration. Always match the exact suffix when buying a replacement 10E4E.",
+      "cards": [
+        {
+          "title": "Where to find the code",
+          "body": "The engine code is stamped on the engine block, typically on the front face near the timing cover or on the driver’s side. It also appears on the V5C registration document under Engine number. A VIN decoder will confirm the exact factory build code."
+        },
+        {
+          "title": "Which codes get confused with it",
+          "body": "The 10E4E is commonly confused with the later 10E4F (2020+) and the naturally aspirated 1.0-litre 10S4G used in some Chinese-market SAIC vehicles."
+        },
+        {
+          "title": "Why fitting the wrong revision matters",
+          "body": "A later 10E4F may physically fit but can cause injector timing mismatches or emissions test failures due to different catalyst calibration. Always match the exact suffix when buying a replacement 10E4E."
+        }
+      ],
       "relatives": [
         {
           "code": "10E4F",

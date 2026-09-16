@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiActivity, FiArrowRight, FiUsers } from "react-icons/fi";
 import type { EngineCompatibilitySectionData } from "@/types/engine-page";
-import styles from "../../Mg10e4eHero.module.css";
+import styles from "./NewDocEngine.module.css";
 
 type Props = {
   data: EngineCompatibilitySectionData;
@@ -34,3 +34,4 @@ export default function EngineCompatibility({ data, engineCode, brandName }: Pro
     </section>
   );
 }
+

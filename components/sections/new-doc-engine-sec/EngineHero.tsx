@@ -12,7 +12,7 @@ import {
   FiUsers,
 } from "react-icons/fi";
 import type { EnginePageHeroData } from "@/types/engine-page";
-import styles from "../../Mg10e4eHero.module.css";
+import styles from "./NewDocEngine.module.css";
 
 type Props = {
   data: EnginePageHeroData;
@@ -43,6 +43,7 @@ export default function EngineHero({ data, engineCode }: Props) {
   const engineCutout = data.engineCutout?.src ?? "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
   const backgroundImage = data.backgroundImage?.src ?? data.engineImage.src;
   const tagline = data.visualTagline ?? "Same engineering.\nMore journeys.";
+  const summaryPills = data.pills.slice(1);
   const titleId = `${engineCode.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-title`;
 
   return (
@@ -64,7 +65,7 @@ export default function EngineHero({ data, engineCode }: Props) {
             </nav>
 
             <div className={styles.pills} aria-label="Engine summary">
-              {data.pills.map((pill) => <span key={pill}>{pill}</span>)}
+              {summaryPills.map((pill) => <span key={pill}>{pill}</span>)}
             </div>
 
             <h1 id={titleId}>{data.title}</h1>
@@ -95,7 +96,6 @@ export default function EngineHero({ data, engineCode }: Props) {
 
           <div className={styles.visual}>
             <div className={styles.visualGlow} />
-            <div className={styles.mgMark} aria-hidden="true">{data.brandMark ?? engineCode}</div>
             <Image className={styles.engine} src={engineCutout} alt={data.engineImage.alt} fill priority sizes="(max-width: 820px) 92vw, 48vw" />
             <p className={styles.visualTagline}>{tagline.split("\n").map((line, index) => <span key={`${line}-${index}`}>{index > 0 ? <br /> : null}{line}</span>)}</p>
           </div>
