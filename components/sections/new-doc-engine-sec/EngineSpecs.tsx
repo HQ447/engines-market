@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FaGears, FaGaugeHigh, FaMoneyBillTrendUp } from "react-icons/fa6";
 import { FiActivity, FiAward, FiCalendar, FiDroplet, FiSettings, FiTool, FiUsers } from "react-icons/fi";
 import type { EngineCompatibilitySectionData, EnginePageHeroData, EngineSpecsSectionData } from "@/types/engine-page";
-import styles from "../../Mg10e4eHero.module.css";
+import styles from "./NewDocEngine.module.css";
 
 type Props = {
   data: EngineSpecsSectionData;
@@ -44,3 +44,4 @@ export default function EngineSpecs({ data, engineCode, brandName, engineImage, 
     </section>
   );
 }
+
