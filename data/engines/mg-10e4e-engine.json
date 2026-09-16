@@ -64,6 +64,17 @@
       "engineImage": {
         "src": "/images/shared/hero-engines/temporary-petrol-engine.jpeg",
         "alt": "MG 10E4E engine replacement UK - reconditioned and rebuilt prices"
+      },
+      "backgroundImage": {
+        "src": "/images/brands/mg/brand/mg-hero-bg.png",
+        "alt": ""
+      },
+      "engineCutout": {
+        "src": "/images/shared/hero-engines/temporary-petrol-engine-cutout.png",
+        "alt": "MG 10E4E engine"
+      },
+      "brandMark": "MG",
+      "visualTagline": "Same engineering.\nMore journeys."
       }
     },
     "specs": {
@@ -123,6 +134,7 @@
       "rows": [
         {
           "model": "MG3",
+          "image": "/images/brands/mg/models/mg-3-model-card.png",
           "generation": "ZG / ZS11",
           "badges": "1.0T GDI",
           "years": "2016–2024",
@@ -135,6 +147,7 @@
         },
         {
           "model": "MG ZS",
+          "image": "/images/brands/mg/models/mg-zs-model-card.png",
           "generation": "AZS1",
           "badges": "1.0T GDI",
           "years": "2017–present",
