@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Mg10e4eHero from "@/components/pages/Mg10e4eHero";
+import NewDocEnginePage from "@/components/pages/NewDocEnginePage";
 import { getEnginePageData } from "@/lib/enginePageData";
 
 export const metadata: Metadata = {
@@ -19,12 +19,5 @@ export default async function Mg10e4eEnginePage() {
     notFound();
   }
 
-  return (
-    <Mg10e4eHero
-      data={page.sections.hero}
-      engineCode={page.engine.code}
-      specs={page.sections.specs}
-      compatibility={page.sections.compatibility}
-    />
-  );
+  return <NewDocEnginePage data={page} />;
 }
