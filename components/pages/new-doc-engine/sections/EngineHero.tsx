@@ -40,13 +40,15 @@ function UkFlag() {
 }
 
 export default function EngineHero({ data, engineCode }: Props) {
-  const engineCutout = "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
+  const engineCutout = data.engineCutout?.src ?? "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
+  const backgroundImage = data.backgroundImage?.src ?? data.engineImage.src;
+  const tagline = data.visualTagline ?? "Same engineering.\nMore journeys.";
   const titleId = `${engineCode.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-title`;
 
   return (
     <section className={styles.hero} aria-labelledby={titleId}>
       <div className={styles.background} aria-hidden="true">
-        <Image src="/images/brands/mg/brand/mg-hero-bg.webp" alt="" fill priority sizes="100vw" />
+        <Image src={backgroundImage} alt={data.backgroundImage?.alt ?? ""} fill priority sizes="100vw" />
       </div>
       <div className={styles.container}>
         <div className={styles.topGrid}>
@@ -93,9 +95,9 @@ export default function EngineHero({ data, engineCode }: Props) {
 
           <div className={styles.visual}>
             <div className={styles.visualGlow} />
-            <div className={styles.mgMark} aria-hidden="true">MG</div>
+            <div className={styles.mgMark} aria-hidden="true">{data.brandMark ?? engineCode}</div>
             <Image className={styles.engine} src={engineCutout} alt={data.engineImage.alt} fill priority sizes="(max-width: 820px) 92vw, 48vw" />
-            <p className={styles.visualTagline}>Same engineering.<br />More journeys.</p>
+            <p className={styles.visualTagline}>{tagline.split("\n").map((line, index) => <span key={`${line}-${index}`}>{index > 0 ? <br /> : null}{line}</span>)}</p>
           </div>
         </div>
 

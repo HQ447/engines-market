@@ -25,6 +25,16 @@ export type EnginePageHeroData = {
     src: string;
     alt: string;
   };
+  backgroundImage?: {
+    src: string;
+    alt?: string;
+  };
+  engineCutout?: {
+    src: string;
+    alt?: string;
+  };
+  brandMark?: string;
+  visualTagline?: string;
 };
 
 export type EngineSpecsSectionData = {
@@ -42,6 +52,7 @@ export type EngineCompatibilitySectionData = {
   intro: string;
   rows: Array<{
     model: string;
+    image?: string;
     generation: string;
     badges: string;
     years: string;

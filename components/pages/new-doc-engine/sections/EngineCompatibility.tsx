@@ -21,7 +21,7 @@ export default function EngineCompatibility({ data, engineCode, brandName }: Pro
           <div className={styles.modelTable}>
             <div className={styles.modelHeader}><span>Model</span><span>Generation / Chassis</span><span>Badge(s)</span><span>Years</span><span>View model</span></div>
             {data.rows.map((model, index) => {
-              const image = index === 0 ? "/images/brands/mg/models/mg-3-model-card.png" : "/images/brands/mg/models/mg-zs-model-card.png";
+              const image = model.image ?? (index === 0 ? "/images/brands/mg/models/mg-3-model-card.png" : "/images/brands/mg/models/mg-zs-model-card.png");
               return <div className={styles.modelRow} key={model.model}><div className={styles.modelName}><Image src={image} alt={model.model} width={88} height={48} sizes="88px" /><strong>{model.model}</strong></div><span>{model.generation}</span><span>{model.badges}</span><span>{model.years}</span><div>{model.links[0] ? <Link href={model.links[0].href}>{model.links[0].label} <FiArrowRight aria-hidden="true" /></Link> : "—"}</div></div>;
             })}
           </div>
