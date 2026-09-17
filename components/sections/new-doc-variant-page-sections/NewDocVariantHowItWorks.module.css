@@ -1,0 +1,64 @@
+.section {
+  padding: 34px 0 32px;
+  background: linear-gradient(180deg, #fcfeff, #eef8ff);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.flipCard {
+  min-height: 245px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1100px;
+  text-align: center;
+}
+
+.cardInner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 245px;
+  transition: transform 0.6s cubic-bezier(0.2, 0.72, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flipped .cardInner { transform: rotateY(180deg); }
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #dbeaf6;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 13px 25px rgba(17, 58, 98, 0.08);
+  backface-visibility: hidden;
+}
+
+.front { justify-content: flex-start; }
+.back { justify-content: center; background: linear-gradient(135deg, #062544, #0a416b); color: #fff; transform: rotateY(180deg); }
+.number { position: absolute; top: 16px; right: 18px; color: #b3c6d9; font-size: 1.55rem; font-weight: 800; line-height: 1; }
+.icon { display: grid; width: 55px; height: 55px; place-items: center; margin-bottom: 15px; border: 1px solid #9edbff; border-radius: 12px; background: linear-gradient(145deg, #edf9ff, #d6f1ff); font-size: 1.85rem; line-height: 1; }
+.cardTitle { display: block; }
+.cardDescription { display: block; margin-top: 10px; }
+.back .cardTitle { color: #fff; }
+.back .cardDescription { color: #d7efff; }
+.backLabel { margin-bottom: 10px; color: #52d893; font-size: 0.83rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
+.action { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; color: #007e54; font-size: 0.9rem; font-weight: 750; }
+.action svg { width: 16px; height: 16px; }
+.back .action { color: #52d893; }
+
+@media (max-width: 850px) { .grid { grid-template-columns: 1fr; } .flipCard, .cardInner { min-height: 218px; } }
+@media (max-width: 620px) { .section { padding: 28px 0; } .face { padding: 18px; } .flipCard, .cardInner { min-height: 235px; } }
