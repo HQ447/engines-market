@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import type { EnginePageHeroData } from "@/types/engine-page";
 import styles from "./NewDocEngine.module.css";
+import SectionHeading from "./SectionHeading";
 
 type Props = {
   data: EnginePageHeroData;
@@ -40,7 +41,9 @@ function UkFlag() {
 }
 
 export default function EngineHero({ data, engineCode }: Props) {
-  const engineCutout = data.engineCutout?.src ?? "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
+  const engineCutout =
+    data.engineCutout?.src ??
+    "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
   const backgroundImage = data.backgroundImage?.src ?? data.engineImage.src;
   const tagline = data.visualTagline ?? "Same engineering.\nMore journeys.";
   const summaryPills = data.pills.slice(1);
@@ -49,7 +52,13 @@ export default function EngineHero({ data, engineCode }: Props) {
   return (
     <section className={styles.hero} aria-labelledby={titleId}>
       <div className={styles.background} aria-hidden="true">
-        <Image src={backgroundImage} alt={data.backgroundImage?.alt ?? ""} fill priority sizes="100vw" />
+        <Image
+          src={backgroundImage}
+          alt={data.backgroundImage?.alt ?? ""}
+          fill
+          priority
+          sizes="100vw"
+        />
       </div>
       <div className={styles.container}>
         <div className={styles.topGrid}>
@@ -57,7 +66,11 @@ export default function EngineHero({ data, engineCode }: Props) {
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               {data.breadcrumbs.map((item) => (
                 <span key={item.label} className={styles.breadcrumbItem}>
-                  {item.href ? <Link href={item.href}>{item.label}</Link> : item.label}
+                  {item.href ? (
+                    <Link href={item.href}>{item.label}</Link>
+                  ) : (
+                    item.label
+                  )}
                   <FiChevronRight aria-hidden="true" />
                 </span>
               ))}
@@ -65,10 +78,17 @@ export default function EngineHero({ data, engineCode }: Props) {
             </nav>
 
             <div className={styles.pills} aria-label="Engine summary">
-              {summaryPills.map((pill) => <span key={pill}>{pill}</span>)}
+              {summaryPills.map((pill) => (
+                <span key={pill}>{pill}</span>
+              ))}
             </div>
 
-            <h1 id={titleId}>{data.title}</h1>
+            <h1 id={titleId}>
+              <SectionHeading
+                title={data.title}
+                accentFrom="Problems & Compatibility"
+              />
+            </h1>
             <p className={styles.description}>{data.description}</p>
 
             <div className={styles.benefits}>
@@ -78,13 +98,20 @@ export default function EngineHero({ data, engineCode }: Props) {
                 return (
                   <div className={styles.benefit} key={benefit}>
                     <Icon aria-hidden="true" />
-                    <span>{lines.map((line) => <span key={line}>{line}</span>)}</span>
+                    <span>
+                      {lines.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    </span>
                   </div>
                 );
               })}
             </div>
 
-            <div className={styles.pricePanel} aria-label="Starting engine prices">
+            <div
+              className={styles.pricePanel}
+              aria-label="Starting engine prices"
+            >
               {data.prices.map((price) => (
                 <div className={styles.price} key={price.label}>
                   <span>{price.label}</span>
@@ -96,26 +123,77 @@ export default function EngineHero({ data, engineCode }: Props) {
 
           <div className={styles.visual}>
             <div className={styles.visualGlow} />
-            <Image className={styles.engine} src={engineCutout} alt={data.engineImage.alt} fill priority sizes="(max-width: 820px) 92vw, 48vw" />
-            <p className={styles.visualTagline}>{tagline.split("\n").map((line, index) => <span key={`${line}-${index}`}>{index > 0 ? <br /> : null}{line}</span>)}</p>
+            <Image
+              className={styles.engine}
+              src={engineCutout}
+              alt={data.engineImage.alt}
+              fill
+              priority
+              sizes="(max-width: 820px) 92vw, 48vw"
+            />
+            <p className={styles.visualTagline}>
+              {tagline.split("\n").map((line, index) => (
+                <span key={`${line}-${index}`}>
+                  {index > 0 ? <br /> : null}
+                  {line}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
 
         <div className={styles.quotePanel} id="quote-form">
           <div className={styles.registration}>
-            <div className={styles.country}><UkFlag /><span>{data.quoteCard.countryCode}</span><FiChevronDown aria-hidden="true" /></div>
-            <label className="sr-only" htmlFor="engine-registration">Vehicle registration</label>
-            <input id="engine-registration" name="registration" placeholder={data.quoteCard.placeholder} />
+            <div className={styles.country}>
+              <UkFlag />
+              <span>{data.quoteCard.countryCode}</span>
+              <FiChevronDown aria-hidden="true" />
+            </div>
+            <label className="sr-only" htmlFor="engine-registration">
+              Vehicle registration
+            </label>
+            <input
+              id="engine-registration"
+              name="registration"
+              placeholder={data.quoteCard.placeholder}
+            />
           </div>
-          <a className={styles.quoteButton} href="#quote-form">{data.quoteCard.buttonText}<FiArrowRight aria-hidden="true" /></a>
-          <p className={styles.quoteNote}><FiLock aria-hidden="true" /><span>{data.quoteCard.note}</span></p>
+          <a className={styles.quoteButton} href="#quote-form">
+            {data.quoteCard.buttonText}
+            <FiArrowRight aria-hidden="true" />
+          </a>
+          <p className={styles.quoteNote}>
+            <FiLock aria-hidden="true" />
+            <span>{data.quoteCard.note}</span>
+          </p>
         </div>
 
         <div className={styles.proofRow}>
-          <div><FiSettings aria-hidden="true" /><span><strong>Genuine &amp; quality checked</strong><small>Engines</small></span></div>
-          <div><FiShield aria-hidden="true" /><span><strong>Competitive</strong><small>UK pricing</small></span></div>
-          <div><FiUsers aria-hidden="true" /><span><strong>Expert support</strong><small>We help you find the right engine</small></span></div>
-          <div className={styles.trustpilot}><span aria-hidden="true">★</span><strong>Trusted by UK drivers</strong></div>
+          <div>
+            <FiSettings aria-hidden="true" />
+            <span>
+              <strong>Genuine &amp; quality checked</strong>
+              <small>Engines</small>
+            </span>
+          </div>
+          <div>
+            <FiShield aria-hidden="true" />
+            <span>
+              <strong>Competitive</strong>
+              <small>UK pricing</small>
+            </span>
+          </div>
+          <div>
+            <FiUsers aria-hidden="true" />
+            <span>
+              <strong>Expert support</strong>
+              <small>We help you find the right engine</small>
+            </span>
+          </div>
+          <div className={styles.trustpilot}>
+            <span aria-hidden="true">★</span>
+            <strong>Trusted by UK drivers</strong>
+          </div>
         </div>
       </div>
     </section>

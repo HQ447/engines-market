@@ -1,0 +1,293 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 690px;
+  background: #05172b;
+  color: #fff;
+}
+
+.background {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(90deg, rgba(3, 19, 37, 0.97) 0%, rgba(3, 19, 37, 0.87) 38%, rgba(3, 19, 37, 0.32) 68%, rgba(3, 19, 37, 0.64) 100%);
+}
+
+.content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(430px, 0.92fr);
+  gap: 16px;
+  min-height: 642px;
+  padding-top: 30px;
+  padding-bottom: 74px;
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  max-width: 605px;
+}
+
+.specialistBadge {
+  display: inline-flex;
+  margin: 0 0 13px;
+  padding: 6px 12px;
+  border: 1px solid rgba(120, 210, 255, 0.23);
+  border-radius: 999px;
+  background: rgba(6, 39, 67, 0.75);
+  color: #d8efff;
+  font-size: 0.83rem;
+  font-weight: 750;
+  letter-spacing: 0.065em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 620px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.45rem, 4vw, 4.05rem);
+  font-weight: 800;
+  letter-spacing: -0.058em;
+  line-height: 0.98;
+}
+
+.titleAccent {
+  color: #25d27a;
+}
+
+.description {
+  max-width: 585px;
+  margin: 14px 0 0;
+  color: #e5f0fa;
+  font-size: clamp(1rem, 1.16vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.47;
+}
+
+.trustGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 19px;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #eaf7ff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.14;
+}
+
+.trustItem svg {
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  color: #39d88a;
+}
+
+.trustItem strong {
+  color: #fff;
+  font-weight: 750;
+}
+
+.priceAnchor {
+  display: grid;
+  grid-template-columns: minmax(0, 0.93fr) minmax(0, 1.07fr);
+  gap: 17px;
+  align-items: center;
+  max-width: 570px;
+  margin-top: 18px;
+  padding: 15px 16px;
+  border: 1px solid rgba(118, 195, 248, 0.22);
+  border-radius: 10px;
+  background: rgba(4, 28, 53, 0.66);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+}
+
+.priceAnchor > div {
+  display: grid;
+  gap: 3px;
+  padding-right: 14px;
+  border-right: 1px solid rgba(118, 195, 248, 0.24);
+}
+
+.priceAnchor strong { font-size: 1.04rem; }
+.priceAnchor span { color: #e8f4ff; font-size: 1rem; }
+.priceAnchor b { color: #2ed986; font-size: clamp(1.38rem, 2.05vw, 1.9rem); }
+.priceAnchor ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; color: #eff8ff; font-size: 0.91rem; }
+
+.optionCardsWrap {
+  position: relative;
+  max-width: 592px;
+  margin-top: 12px;
+}
+
+.optionCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  max-width: 570px;
+}
+
+.optionCard {
+  display: grid;
+  grid-template-rows: 66px auto auto;
+  place-items: center;
+  min-height: 139px;
+  padding: 9px 8px 11px;
+  border: 1px solid rgba(220, 241, 253, 0.83);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(253, 254, 255, 0.82), rgba(215, 238, 251, 0.69));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.17), inset 0 1px rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(15px);
+  color: #0d3158;
+  text-align: center;
+  text-decoration: none;
+}
+
+.optionImageArea {
+  display: grid;
+  width: 100%;
+  height: 62px;
+  place-items: center;
+}
+
+.optionImageArea img {
+  width: 68px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.optionCard strong { color: #082d55; font-size: 0.9rem; font-weight: 800; line-height: 1.13; text-align: center; }
+.optionCard small { display: block; margin-top: 4px; color: #234d74; font-size: 0.8rem; font-weight: 650; line-height: 1.16; text-align: center; }
+
+
+.visuals {
+  position: relative;
+  z-index: 1;
+  min-height: 540px;
+}
+
+.vehicle {
+  position: absolute;
+  left: -5%;
+  z-index: 2;
+  bottom: 58px;
+  width: min(88%, 555px);
+  height: auto;
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.4));
+}
+
+.engine {
+  position: absolute;
+  z-index: 1;
+  right: -4%;
+  top: 18px;
+  width: min(80%, 500px);
+  height: auto;
+  filter: contrast(1.08) brightness(1.1) drop-shadow(0 24px 29px rgba(0, 0, 0, 0.42));
+}
+
+.quoteCard {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 72px;
+  width: min(100%, 430px);
+  padding: 17px;
+  border: 1px solid rgba(233, 248, 255, 0.62);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(244, 252, 255, 0.81), rgba(174, 218, 242, 0.66));
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(17px);
+}
+
+.quoteCard h2 { margin: 0 0 12px; color: #0d3158; font-size: 1.08rem; font-weight: 800; line-height: 1.2; }
+.regInput { display: grid; grid-template-columns: auto minmax(0, 1fr); overflow: hidden; border: 1px solid rgba(173, 215, 239, .9); border-radius: 8px; background: rgba(255, 255, 255, .56); backdrop-filter: blur(9px); }
+.regInput span { display: flex; align-items: center; padding: 0 11px; border-right: 1px solid #e0ebf4; color: #234a70; font-size: 0.84rem; font-weight: 700; }
+.regInput input { width: 100%; min-width: 0; height: 45px; padding: 0 12px; border: 0; outline: 0; background: transparent; color: #17395c; font-size: 0.94rem; }
+.quoteCard button { display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px; min-height: 46px; margin-top: 10px; padding: 10px; border: 0; border-radius: 8px; background: linear-gradient(110deg, #008d4e, #08b863); color: #fff; font-size: 0.93rem; font-weight: 750; cursor: pointer; }
+.quoteCard p { display: flex; gap: 7px; margin: 10px 0 0; color: #315a80; font-size: 0.79rem; font-weight: 500; line-height: 1.32; }
+.quoteCard p svg { flex: 0 0 auto; margin-top: 1px; color: #079653; }
+
+.ticker {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  overflow: hidden;
+  border-top: 1px solid rgba(104, 196, 246, 0.2);
+  background: rgba(2, 21, 41, 0.91);
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  animation: ticker 36s linear infinite;
+  will-change: transform;
+}
+
+.tickerTrack:hover { animation-play-state: paused; }
+.tickerTrack span { display: inline-flex; align-items: center; gap: 9px; padding: 13px 26px; border-right: 1px solid rgba(112, 199, 244, 0.18); color: #f4fbff; font-size: 0.89rem; font-weight: 600; white-space: nowrap; }
+.tickerTrack svg { color: #2bd585; }
+
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) { .tickerTrack { animation-play-state: paused; } }
+
+@media (max-width: 1000px) {
+  .content { grid-template-columns: minmax(0, 1fr) minmax(340px, 0.75fr); }
+  .trustGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 400px; }
+  .quoteCard { right: 0; width: min(100%, 370px); }
+  .vehicle { z-index: 2; right: auto; left: -10%; bottom: 50px; width: 96%; }
+  .engine { z-index: 1; right: -2%; top: 40px; bottom: auto; width: 78%; }
+}
+
+@media (min-width: 1001px) {
+  .vehicle { z-index: 2; right: auto; left: -6%; bottom: 56px; width: min(88%, 555px); }
+  .engine { z-index: 1; right: -1%; top: 30px; bottom: auto; width: min(80%, 500px); }
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: auto; }
+  .background { top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important; height: auto !important; object-fit: cover; object-position: 66% 50%; filter: brightness(1.12) contrast(1.04); }
+  .overlay { background: linear-gradient(180deg, rgba(3, 19, 37, 0.82), rgba(3, 19, 37, 0.66) 62%, rgba(3, 19, 37, 0.85)); }
+  .content { display: block; min-height: auto; padding-top: 25px; padding-bottom: 72px; }
+  .copy { max-width: none; }
+  .title { font-size: clamp(2.22rem, 10.1vw, 3.15rem); }
+  .description { font-size: 0.97rem; }
+  .trustGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: 12px 7px; }
+  .trustItem { font-size: 0.89rem; }
+  .trustItem svg { width: 23px; height: 23px; }
+  .priceAnchor { max-width: none; }
+  .optionCards { max-width: none; }
+  .visuals { min-height: 255px; margin-top: -12px; }
+  .engine { z-index: 1; right: -4%; top: 18px; bottom: auto; width: 63%; }
+  .vehicle { z-index: 2; right: auto; left: -7%; bottom: 0; width: 92%; }
+  .quoteCard { position: relative; right: auto; bottom: auto; width: 100%; margin-top: -4px; }
+  .tickerTrack span { padding: 12px 18px; font-size: 0.84rem; }
+}
+
+@media (max-width: 430px) {
+  .priceAnchor { grid-template-columns: 1fr; gap: 9px; }
+  .priceAnchor > div { padding: 0 0 9px; border-right: 0; border-bottom: 1px solid rgba(118, 195, 248, 0.24); }
+  .optionCard { min-height: 132px; }
+  .optionImageArea img { width: 58px; height: 47px; }
+  .optionCard strong { font-size: 0.78rem; }
+  .optionCard small { font-size: 0.72rem; }
+}
