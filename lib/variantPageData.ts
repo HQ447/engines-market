@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { sanitizeMojibake } from "@/lib/sanitizeBrandData";
+import { withNormalizedSeoCanonical } from "@/lib/site";
 import type { VariantPageData } from "@/types/variant";
 
 const VARIANTS_DIR = path.join(process.cwd(), "data", "variants");
@@ -117,7 +118,7 @@ function parseVariantPageData(raw: string) {
     JSON.parse(raw.replace(UTF8_BOM, "")) as VariantPageData,
   );
 
-  return isVariantPageData(parsed) ? parsed : null;
+  return isVariantPageData(parsed) ? withNormalizedSeoCanonical(parsed) : null;
 }
 
 async function readVariantPageFile(fileBaseName: string) {

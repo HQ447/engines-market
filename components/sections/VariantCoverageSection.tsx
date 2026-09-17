@@ -574,7 +574,7 @@ export default function VariantCoverageSection({
                               src={vehicleImage.src}
                               alt={shortName}
                               fill
-                              className="scale-[1.12] object-cover object-top"
+                              className="object-contain object-center p-[6px]"
                               sizes="(max-width: 767px) 50vw, 25vw"
                             />
                         </div>
@@ -645,31 +645,23 @@ export default function VariantCoverageSection({
     {/* CLICKABLE WALL-TO-WALL IMAGE */}
     {variantHref ? (
       <Link href={variantHref} className="block w-full">
-        <div className="relative h-[105px] w-full overflow-hidden">
+        <div className="relative h-[118px] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#eef3f9_100%)]">
           <Image
             src={vehicleImage.src}
             alt={shortName}
             fill
-            className={
-              vehicleImage.zoomed
-                ? "scale-[1.12] object-cover object-center"
-                : "scale-[1.15] object-contain"
-            }
+            className="object-contain object-center p-[6px]"
             sizes="20vw"
           />
         </div>
       </Link>
     ) : (
-      <div className="relative h-[105px] w-full overflow-hidden">
+      <div className="relative h-[118px] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#eef3f9_100%)]">
         <Image
           src={vehicleImage.src}
           alt={shortName}
           fill
-          className={
-            vehicleImage.zoomed
-              ? "scale-[1.12] object-cover object-center"
-              : "scale-[1.15] object-contain"
-          }
+          className="object-contain object-center p-[6px]"
           sizes="20vw"
         />
       </div>

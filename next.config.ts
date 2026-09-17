@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/",
+        source: "/:path*",
         headers: [
           {
             key: "X-Robots-Tag",
@@ -20,6 +20,14 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        {
+          source: "/static-nav.css-v=:version",
+          destination: "/static-nav.css",
+        },
+        {
+          source: "/static-nav.js-v=:version",
+          destination: "/static-nav.js",
+        },
         {
           source: "/about",
           destination: "/about/about-us.html",

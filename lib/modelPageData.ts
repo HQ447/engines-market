@@ -3,6 +3,7 @@ import path from "node:path";
 import { getModelRouteSlug } from "@/lib/modelRoutes";
 import type { ModelsSectionData } from "@/types/brand";
 import { sanitizeMojibake } from "@/lib/sanitizeBrandData";
+import { withNormalizedSeoCanonical } from "@/lib/site";
 import type { ModelPageData } from "@/types/model";
 
 const MODELS_DIR = path.join(process.cwd(), "data", "models");
@@ -93,7 +94,7 @@ function parseModelPageData(raw: string) {
     JSON.parse(raw.replace(UTF8_BOM, "")) as ModelPageData,
   );
 
-  return isModelPageData(parsed) ? parsed : null;
+  return isModelPageData(parsed) ? withNormalizedSeoCanonical(parsed) : null;
 }
 
 async function readModelPageDataFile(fileBaseName: string) {

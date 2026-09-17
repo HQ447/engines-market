@@ -2,6 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import type { EnginePageData } from "@/types/engine-page";
 import { getEngineCodeLookupKeys, type EngineLinkMap } from "@/lib/engineLinks";
+import { withNormalizedSeoCanonical } from "@/lib/site";
 
 const ENGINES_DIR = path.join(process.cwd(), "data", "engines");
 const UTF8_BOM = /^\uFEFF/;
@@ -32,7 +33,7 @@ function isEnginePageData(value: unknown): value is EnginePageData {
 
 function parseEnginePageData(raw: string) {
   const parsed = JSON.parse(raw.replace(UTF8_BOM, "")) as EnginePageData;
-  return isEnginePageData(parsed) ? parsed : null;
+  return isEnginePageData(parsed) ? withNormalizedSeoCanonical(parsed) : null;
 }
 
 async function readEnginePageDataFile(fileBaseName: string) {
