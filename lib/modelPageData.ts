@@ -8,7 +8,6 @@ import type { ModelPageData } from "@/types/model";
 
 const MODELS_DIR = path.join(process.cwd(), "data", "models");
 const UTF8_BOM = /^\uFEFF/;
-const SHOULD_CACHE_MODEL_PAGES = process.env.NODE_ENV === "production";
 let allModelPagesPromise: Promise<ModelPageData[]> | null = null;
 
 function normalizeSlugPart(value: string) {
@@ -108,11 +107,11 @@ async function readModelPageDataFile(fileBaseName: string) {
 }
 
 export async function getAllModelPageData() {
-  if (SHOULD_CACHE_MODEL_PAGES && allModelPagesPromise) {
+  if (allModelPagesPromise) {
     return allModelPagesPromise;
   }
 
-  const loadPagesPromise = (async () => {
+  allModelPagesPromise = (async () => {
     try {
       const entries = await readdir(MODELS_DIR, { withFileTypes: true });
       const pages = await Promise.all(
@@ -177,11 +176,7 @@ export async function getAllModelPageData() {
     }
   })();
 
-  if (SHOULD_CACHE_MODEL_PAGES) {
-    allModelPagesPromise = loadPagesPromise;
-  }
-
-  return loadPagesPromise;
+  return allModelPagesPromise;
 }
 
 function extractPriceValues(value: string) {

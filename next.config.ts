@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Large brand/model/engine SSG set — default 60s page timeout kills late pages (e.g. /seat/*).
+  staticPageGenerationTimeout: 180,
+  experimental: {
+    // Fewer concurrent pages per worker reduces thrashing on large JSON-heavy routes.
+    staticGenerationMaxConcurrency: 2,
+    staticGenerationRetryCount: 3,
+  },
   images: {
     unoptimized: true,
   },
