@@ -34,6 +34,10 @@ export async function generateMetadata({
     return {
       title: enginePageData.seo.title,
       description: enginePageData.seo.description,
+      robots: {
+        index: true,
+        follow: true,
+      },
       alternates: {
         canonical: enginePageData.seo.canonical,
       },
@@ -50,6 +54,10 @@ export async function generateMetadata({
   return {
     title: pageData.seo.title,
     description: pageData.seo.description,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: pageData.seo.canonical,
     },
