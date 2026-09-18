@@ -426,10 +426,10 @@ export default function VariantCoverageSection({
 
     return (
       <div
-        className={`${isAbsolutePanel ? "" : "relative"} overflow-hidden border-[0.5px] border-[#2969af] bg-[#0d1b2e] px-4 pb-4 pt-4 text-white shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(125deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0)_42%,rgba(45,107,255,0.16)_50%,rgba(255,255,255,0)_64%)] after:pointer-events-none after:absolute after:inset-x-0 after:top-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/70 after:to-transparent ${extraClassName}`}
+        className={`${isAbsolutePanel ? "" : "relative"} overflow-hidden border-[0.5px] border-[#2969af] bg-[#0d1b2e] px-3 pb-3 pt-3 text-white shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(125deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0)_42%,rgba(45,107,255,0.16)_50%,rgba(255,255,255,0)_64%)] after:pointer-events-none after:absolute after:inset-x-0 after:top-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/70 after:to-transparent ${extraClassName}`}
       >
-        <div className="relative z-10 space-y-[10px]">
-          <div className="flex items-center justify-between gap-3 rounded-[8px] border border-blue-500 bg-white/[0.03] px-3 py-3 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-4">
+        <div className="relative z-10 space-y-2">
+          <div className="flex items-center justify-between gap-2 rounded-[8px] border border-blue-500 bg-white/[0.03] px-2.5 py-2.5 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-3">
             <span className="flex-none text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60">
               {ui.specsLabel ?? "Specs"}
             </span>
@@ -438,7 +438,7 @@ export default function VariantCoverageSection({
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-3 rounded-[8px] border border-blue-500 bg-white/[0.03] px-3 py-3 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-4">
+          <div className="flex items-center justify-between gap-2 rounded-[8px] border border-blue-500 bg-white/[0.03] px-2.5 py-2.5 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-3">
             <span className="flex-none text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60">
               {ui.yearsLabel ?? "Years"}
             </span>
@@ -447,7 +447,7 @@ export default function VariantCoverageSection({
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-3 rounded-[8px] border border-blue-500 bg-white/[0.03] px-3 py-3 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-4">
+          <div className="flex items-center justify-between gap-2 rounded-[8px] border border-blue-500 bg-white/[0.03] px-2.5 py-2.5 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-3">
             <span className="flex-none text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60">
               {ui.rebuiltLabel ?? "Rebuilt"}
             </span>
@@ -460,7 +460,7 @@ export default function VariantCoverageSection({
         {variantHref ? (
           <Link
             href={variantHref}
-            className="mt-4 inline-flex min-h-12 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-3 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
+            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
             aria-label={`Open ${card.h3} variant page`}
           >
             <span className="min-w-0 flex-1 text-left text-[10px] font-semibold uppercase tracking-[0.08em] leading-[1.35] text-white/85 break-words">
@@ -475,7 +475,7 @@ export default function VariantCoverageSection({
             href="#quote-form"
             data-quote-context={card.h3}
             data-quote-source="variant-coverage"
-            className="mt-4 inline-flex min-h-12 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-3 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
+            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
           >
             <span className="min-w-0 flex-1 text-left text-[10px] font-semibold uppercase tracking-[0.08em] leading-[1.35] text-white/85 break-words">
               {card.cta}
@@ -730,7 +730,7 @@ export default function VariantCoverageSection({
                 ? "bottom-full rounded-t-[12px] border-b-0"
                 : "top-full rounded-b-[12px] border-t-0"
             }`
-        } min-h-[248px] sm:min-h-[267px]`
+        } min-h-[220px] sm:min-h-[236px]`
       )
     : null}
 </article>
