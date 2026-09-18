@@ -14,7 +14,7 @@
   background: linear-gradient(135deg, #042f5a, #075b94);
   box-shadow: 0 0 0 1px rgba(113, 212, 255, 0.12) inset, 0 7px 17px rgba(3, 54, 96, 0.17);
   color: #e9f8ff;
-  font-size: clamp(0.81rem, 0.85vw, 0.91rem);
+  font-size: 14px;
   font-weight: 750;
   letter-spacing: 0.07em;
   line-height: 1.1;
@@ -25,7 +25,7 @@
   max-width: 850px;
   margin: 0;
   color: #092c52;
-  font-size: clamp(2rem, 3.35vw, 3.15rem);
+  font-size: 40px;
   font-weight: 800;
   letter-spacing: -0.052em;
   line-height: 1.02;
@@ -39,14 +39,14 @@
   max-width: 780px;
   margin: 10px 0 0;
   color: #315579;
-  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.52;
 }
 
 .bodyText {
   color: #315579;
-  font-size: clamp(1rem, 1.18vw, 1.1rem);
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.55;
 }
@@ -54,7 +54,7 @@
 .cardTitle {
   margin: 0;
   color: #0d3158;
-  font-size: clamp(1.1rem, 1.42vw, 1.34rem);
+  font-size: 15px;
   font-weight: 750;
   letter-spacing: -0.025em;
   line-height: 1.16;
@@ -63,14 +63,14 @@
 .cardDescription {
   margin: 0;
   color: #446586;
-  font-size: clamp(0.96rem, 1.03vw, 1.04rem);
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.48;
 }
 
 .metaText {
   color: #50708e;
-  font-size: clamp(0.86rem, 0.9vw, 0.94rem);
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.35;
 }
@@ -87,7 +87,7 @@
   background: linear-gradient(110deg, #008a4b, #06ba68);
   box-shadow: 0 10px 20px rgba(0, 139, 75, 0.2);
   color: #fff;
-  font-size: clamp(0.93rem, 0.98vw, 1rem);
+  font-size: 15px;
   font-weight: 750;
   line-height: 1.2;
   text-align: center;
@@ -112,25 +112,25 @@
 
   .eyebrow {
     min-height: 28px;
-    font-size: 0.82rem;
+    font-size: 13px;
   }
 
   .sectionTitle {
-    font-size: clamp(1.92rem, 8.8vw, 2.35rem);
+    font-size: 34px;
   }
 
   .sectionSubtitle,
   .bodyText,
   .cardDescription {
-    font-size: 0.95rem;
+    font-size: 14px;
   }
 
   .metaText {
-    font-size: 0.87rem;
+    font-size: 13px;
   }
 
   .button {
     min-height: 48px;
-    font-size: 0.94rem;
+    font-size: 14px;
   }
 }

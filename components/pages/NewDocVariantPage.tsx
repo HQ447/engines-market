@@ -4,6 +4,8 @@ import NewDocVariantEngineCode from "@/components/sections/new-doc-variant-page-
 import NewDocVariantHero from "@/components/sections/new-doc-variant-page-sections/NewDocVariantHero";
 import NewDocVariantHistorySpecs from "@/components/sections/new-doc-variant-page-sections/NewDocVariantHistorySpecs";
 import NewDocVariantHowItWorks from "@/components/sections/new-doc-variant-page-sections/NewDocVariantHowItWorks";
+import NewDocVariantFaq from "@/components/sections/new-doc-variant-page-sections/NewDocVariantFaq";
+import NewDocVariantWhyChoose from "@/components/sections/new-doc-variant-page-sections/NewDocVariantWhyChoose";
 
 type Props = { data: VariantPreviewData };
 
@@ -16,8 +18,13 @@ export default function NewDocVariantPage({ data }: Props) {
       <NewDocVariantEngineCode data={data.engineGuide} engineImage={data.images.heroEngine} />
       <NewDocVariantCommonProblems
         data={data.commonProblems}
+        backgroundImage={data.images.commonProblemsVehicle}
+      />
+      <NewDocVariantFaq data={data.faq} vehicleImage={data.images.vehicle} />
+      <NewDocVariantWhyChoose
+        data={data.whyChoose}
+        backgroundImage={data.images.commonProblemsVehicle}
         vehicleImage={data.images.vehicle}
-        backgroundImage={data.images.heroBackground}
       />
     </>
   );
