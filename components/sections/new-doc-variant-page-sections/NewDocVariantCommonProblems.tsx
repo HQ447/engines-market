@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FiActivity,
   FiArrowLeft,
@@ -17,17 +16,51 @@ import styles from "./NewDocVariantCommonProblems.module.css";
 
 type Props = {
   data: VariantPreviewData["commonProblems"];
-  vehicleImage: string;
   backgroundImage: string;
 };
 
+type ExpandableTextProps = {
+  label: string;
+  text: string;
+  expanded: boolean;
+  onToggle: () => void;
+};
+
+function ExpandableText({ label, text, expanded, onToggle }: ExpandableTextProps) {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [hasOverflow, setHasOverflow] = useState(false);
+
+  useEffect(() => {
+    const element = textRef.current;
+    if (!element || expanded) return;
+
+    const measure = () => setHasOverflow(element.scrollHeight > element.clientHeight + 1);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [expanded, text]);
+
+  return (
+    <div className={styles.expandableCopy}>
+      <strong>{label}</strong>
+      <span ref={textRef} className={!expanded ? styles.clampedText : undefined}>{text}</span>
+      {hasOverflow ? (
+        <button type="button" className={styles.readMore} onClick={onToggle}>
+          {expanded ? "Show less" : "Read more"} <FiArrowRight />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export default function NewDocVariantCommonProblems({
   data,
-  vehicleImage,
   backgroundImage,
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(3);
   const [offset, setOffset] = useState(0);
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const update = () =>
@@ -41,6 +74,8 @@ export default function NewDocVariantCommonProblems({
 
   const maxOffset = Math.max(0, data.cards.length - visibleCount);
   const currentOffset = Math.min(offset, maxOffset);
+  const toggleExpanded = (key: string) =>
+    setExpanded((value) => ({ ...value, [key]: !value[key] }));
 
   return (
     <section
@@ -71,9 +106,7 @@ export default function NewDocVariantCommonProblems({
               {data.description}
             </p>
           </div>
-          <div className={styles.vehicleVisual} aria-hidden="true">
-            <Image src={vehicleImage} alt="" width={600} height={330} />
-          </div>
+          <div className={styles.vehicleVisual} aria-hidden="true" />
         </div>
       </div>
 
@@ -149,10 +182,12 @@ export default function NewDocVariantCommonProblems({
                   </dl>
                   <div className={styles.rootCause}>
                     <FiInfo />
-                    <p>
-                      <strong>Root cause</strong>
-                      {card.rootCause}
-                    </p>
+                    <ExpandableText
+                      label="Root cause"
+                      text={card.rootCause}
+                      expanded={Boolean(expanded[`${card.title}-root`])}
+                      onToggle={() => toggleExpanded(`${card.title}-root`)}
+                    />
                   </div>
                   <div className={styles.repairTable}>
                     <p>Repair options</p>
@@ -177,10 +212,12 @@ export default function NewDocVariantCommonProblems({
                   </div>
                   <div className={styles.recommendation}>
                     <FiAward />
-                    <p>
-                      <strong>Our recommendation</strong>
-                      {card.recommendation}
-                    </p>
+                    <ExpandableText
+                      label="Our recommendation"
+                      text={card.recommendation}
+                      expanded={Boolean(expanded[`${card.title}-recommendation`])}
+                      onToggle={() => toggleExpanded(`${card.title}-recommendation`)}
+                    />
                   </div>
                   <a href="#quote">
                     {card.cta}
@@ -190,6 +227,19 @@ export default function NewDocVariantCommonProblems({
               );
             })}
           </div>
+        </div>
+      </div>
+
+      <div
+        className={styles.closingCta}
+        style={{ "--problem-bg": `url("${backgroundImage}")` } as React.CSSProperties}
+      >
+        <div className={`${shared.container} ${styles.closingCtaInner}`}>
+          <div>
+            <h3>{data.closingCta.title}</h3>
+            <p>{data.closingCta.description}</p>
+          </div>
+          <a href="#quote">{data.closingCta.cta}<FiArrowRight /></a>
         </div>
       </div>
     </section>

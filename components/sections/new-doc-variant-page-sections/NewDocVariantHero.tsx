@@ -32,11 +32,10 @@ export default function NewDocVariantHero({ brand, model, variant, images, hero 
           <div className={styles.trustGrid}>
             {hero.trustItems.map((item, index) => {
               const Icon = trustIcons[index] ?? FiCheckCircle;
-              const [first, ...rest] = item.split(" ");
               return (
                 <div key={item} className={styles.trustItem}>
                   <Icon />
-                  <span><strong>{first}</strong> {rest.join(" ")}</span>
+                  <span>{item}</span>
                 </div>
               );
             })}
@@ -68,7 +67,7 @@ export default function NewDocVariantHero({ brand, model, variant, images, hero 
         </div>
 
         <div className={styles.visuals} aria-hidden="true">
-          <Image className={styles.engine} src={images.heroEngine} alt="" width={620} height={520} priority />
+          <Image className={styles.brandLogo} src={images.brandLogo} alt="" width={160} height={160} priority />
           <Image className={styles.vehicle} src={images.vehicle} alt="" width={650} height={365} priority />
         </div>
 

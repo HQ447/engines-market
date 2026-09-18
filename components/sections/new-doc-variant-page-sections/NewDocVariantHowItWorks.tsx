@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantHowItWorks.module.css";
 
 type Props = { steps: VariantPreviewData["howItWorks"] };
-const icons = ["🔎", "💷", "🧑‍🔧"];
+const icons = [
+  "/Home/reg-here.webp",
+  "/icons/engine-market/how-compare-prices-3d.png",
+  "/icons/engine-market/how-choose-deal.png",
+];
 
 export default function NewDocVariantHowItWorks({ steps }: Props) {
   const [flipped, setFlipped] = useState<string | null>(null);
@@ -17,12 +22,12 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
       <div className={shared.container}>
         <p className={shared.eyebrow}>How it works</p>
         <h2 id="variant-how-it-works-title" className={shared.sectionTitle}>
-          3 simple steps <span className={shared.headingAccent}>to finding the right replacement engine</span>
+          3 simple steps to finding the right <span className={shared.headingAccent}>replacement engine</span>
         </h2>
         <p className={shared.sectionSubtitle}>Clear information first, then the right engine and specialist for your exact vehicle.</p>
         <div className={styles.grid}>
           {steps.map((step, index) => {
-            const icon = icons[index] ?? "⚙️";
+            const icon = icons[index] ?? "/icons/engine-market/how-choose-deal.png";
             const isFlipped = flipped === step.number;
             return (
               <button
@@ -35,7 +40,7 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                 <span className={styles.cardInner}>
                   <span className={`${styles.face} ${styles.front}`}>
                     <span className={styles.number}>{step.number}</span>
-                    <span className={styles.icon} aria-hidden="true">{icon}</span>
+                    <span className={styles.icon} aria-hidden="true"><Image src={icon} alt="" width={76} height={76} /></span>
                     <span className={`${shared.cardTitle} ${styles.cardTitle}`}>{step.title}</span>
                     <span className={`${shared.cardDescription} ${styles.cardDescription}`}>{step.description}</span>
                     <span className={styles.action}>Learn more <FiArrowRight /></span>
