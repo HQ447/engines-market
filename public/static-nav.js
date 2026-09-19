@@ -5,10 +5,12 @@
   const CALL_NUMBER_DISPLAY = "020 3488 4649";
   const CALL_NUMBER_TEL = "tel:+442034884649";
   const WHATSAPP_URL = "https://wa.me/447311343662";
+  const SITE_URL = "https://enginesmarket.co.uk";
   const DESKTOP_PREVIEW_COUNT = 10;
 
   const state = {
     navMenus: [],
+    footerNavigation: [],
     openMenuId: null,
     activeBrandHref: "",
     brandsExpanded: false,
@@ -89,37 +91,23 @@
   }
 
   function getFooterColumns() {
-    const servicesMenu = getMenu("services");
-    const othersMenu = getMenu("others");
-    const company = othersMenu && othersMenu.kind === "columns"
-      ? othersMenu.groups.find((group) => group.title === "Company")
-      : null;
-    const legal = othersMenu && othersMenu.kind === "columns"
-      ? othersMenu.groups.find((group) => group.title === "Legal")
-      : null;
-    const prices = othersMenu && othersMenu.kind === "columns"
-      ? othersMenu.groups.find((group) => group.title === "Prices")
-      : null;
-    const knowledge = othersMenu && othersMenu.kind === "columns"
-      ? othersMenu.groups.find((group) => group.title === "Knowledge")
-      : null;
+    return state.footerNavigation || [];
+  }
 
-    const serviceLinks = [];
-    if (servicesMenu && servicesMenu.kind === "columns") {
-      servicesMenu.groups.forEach((group) => {
-        (group.links || []).forEach((link) => {
-          if (serviceLinks.length < 8) serviceLinks.push(link);
-        });
-      });
+  function ensureCanonicalLink() {
+    const normalizedPath =
+      window.location.pathname === "/" ? "/" : window.location.pathname.replace(/\/+$/, "");
+    const canonicalHref =
+      normalizedPath === "/" ? SITE_URL + "/" : SITE_URL + normalizedPath;
+    let canonical = document.querySelector('link[rel="canonical"]');
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
     }
 
-    return [
-      company,
-      { title: "Services", links: serviceLinks, viewAll: { label: "All Services", href: "/services" } },
-      prices,
-      knowledge,
-      legal,
-    ].filter(Boolean);
+    canonical.setAttribute("href", canonicalHref);
   }
 
   function buildBrandsPanel(menu) {
@@ -564,25 +552,45 @@
     brand.appendChild(contact);
     inner.appendChild(brand);
 
-    const nav = createElement("nav", "em-static-footer__nav");
-    nav.setAttribute("aria-label", "Footer navigation");
+    const desktopNav = createElement("nav", "em-static-footer__desktop-nav");
+    desktopNav.setAttribute("aria-label", "Footer navigation");
+    const mobileNav = createElement("nav", "em-static-footer__mobile-nav");
+    mobileNav.setAttribute("aria-label", "Footer navigation");
+
     getFooterColumns().forEach((column) => {
-      const block = createElement("div");
-      const heading = createElement("h2", "", column.title);
+      const desktopBlock = createElement("div");
+      const heading = createElement("h2", "", column.label || column.title);
       const list = createElement("ul");
       (column.links || []).forEach((item) => {
         const row = createElement("li");
         row.appendChild(createLink(item.label, item.href));
         list.appendChild(row);
       });
-      block.appendChild(heading);
-      block.appendChild(list);
-      if (column.viewAll) {
-        block.appendChild(createLink(column.viewAll.label, column.viewAll.href, "em-static-footer__view-all"));
-      }
-      nav.appendChild(block);
+
+      desktopBlock.appendChild(heading);
+      desktopBlock.appendChild(list);
+      desktopNav.appendChild(desktopBlock);
+
+      const details = createElement("details", "em-static-footer__mobile-group");
+      const summary = createElement("summary", "em-static-footer__mobile-summary");
+      summary.appendChild(createElement("span", "", column.label || column.title));
+      summary.appendChild(createElement("span", "em-static-footer__mobile-chevron", "v"));
+      details.appendChild(summary);
+
+      const mobilePanel = createElement("div", "em-static-footer__mobile-panel");
+      const mobileList = createElement("ul", "em-static-footer__mobile-list");
+      (column.links || []).forEach((item) => {
+        const row = createElement("li");
+        row.appendChild(createLink(item.label, item.href));
+        mobileList.appendChild(row);
+      });
+      mobilePanel.appendChild(mobileList);
+      details.appendChild(mobilePanel);
+      mobileNav.appendChild(details);
     });
-    inner.appendChild(nav);
+
+    inner.appendChild(desktopNav);
+    inner.appendChild(mobileNav);
     refs.footer.appendChild(inner);
 
     const bottom = createElement(
@@ -638,12 +646,12 @@
     return refs.footer;
   }
 
-  async function loadNavMenus() {
+  async function loadNavData() {
     const response = await fetch("/api/static-nav", { credentials: "same-origin" });
     if (!response.ok) throw new Error("Failed to load static nav data.");
     const payload = await response.json();
     if (!payload || !Array.isArray(payload.navMenus)) throw new Error("Invalid static nav payload.");
-    return payload.navMenus;
+    return payload;
   }
 
   function bindGlobalEvents() {
@@ -673,9 +681,12 @@
     document.body.insertBefore(createHeader(), document.body.firstChild);
     document.body.appendChild(createFooter());
     bindGlobalEvents();
+    ensureCanonicalLink();
 
     try {
-      state.navMenus = await loadNavMenus();
+      const payload = await loadNavData();
+      state.navMenus = payload.navMenus;
+      state.footerNavigation = Array.isArray(payload.footerNavigation) ? payload.footerNavigation : [];
     } catch (error) {
       console.error(error);
       return;
