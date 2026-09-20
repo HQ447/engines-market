@@ -7,7 +7,7 @@ const DEFAULT_CRM_LEAD_ENDPOINT = "https://crm-api.enginesmarket.co.uk/api/v1/le
 const DEFAULT_SUPABASE_WEBHOOK_URL = "https://gfrnxvolaqbfalerfhsr.supabase.co/functions/v1/receive-lead";
 
 const RESEND_API_KEY =
-  process.env.RESEND_API_KEY || "re_H5mQ46DK_M9Uctefx1Nefm9sB1AaKMAff";
+  process.env.RESEND_API_KEY || "RESEND_API_KEY";
 const RESEND_FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Engines Market <sales@enginesmarket.co.uk>";
 const LEAD_RECIPIENT_EMAIL =

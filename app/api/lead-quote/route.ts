@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const RESEND_API_KEY =
-  process.env.RESEND_API_KEY || "re_H5mQ46DK_M9Uctefx1Nefm9sB1AaKMAff";
+  process.env.RESEND_API_KEY || "RESEND_API_KEY";
 const RESEND_FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Engines Market <sales@enginesmarket.co.uk>";
 const LEAD_RECIPIENT_EMAIL =
