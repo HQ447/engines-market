@@ -15,18 +15,11 @@ export async function POST(req: NextRequest) {
     const apiKey = "157be19933d191db7628a7a7afa10bc9";
     const url = `https://api.checkcardetails.co.uk/vehicledata/ukvehicledata?apikey=${apiKey}&vrm=${encodeURIComponent(cleanReg)}`;
 
-    const res = await fetch(url, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
 
     if (!res.ok) {
       return NextResponse.json(
-        {
-          success: false,
-          message: `Vehicle lookup service responded with status ${res.status}. Please verify your registration.`,
-        },
+        { success: false, message: `Vehicle lookup service responded with status ${res.status}.` },
         { status: 502 }
       );
     }
@@ -35,10 +28,7 @@ export async function POST(req: NextRequest) {
 
     if (!data || !data.VehicleRegistration) {
       return NextResponse.json(
-        {
-          success: false,
-          message: data?.Message || "Vehicle details could not be found for this registration number.",
-        },
+        { success: false, message: data?.Message || "Vehicle details not found for this registration." },
         { status: 404 }
       );
     }
@@ -59,7 +49,6 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (error: any) {
-    console.error("Vehicle lookup API error:", error);
     return NextResponse.json(
       { success: false, message: error.message || "Failed to fetch vehicle data." },
       { status: 500 }

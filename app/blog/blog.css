@@ -1,80 +1,126 @@
-/* CMS Content Components Styling */
-.cms-content h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
-.cms-content h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
 
-.cms-content p {
-  margin-bottom: 1.25rem;
+/* =========================================================
+   Blog Post Typography & Semantic Styling (Montserrat Theme)
+   ========================================================= */
+.cms-content {
+  font-family: "Montserrat", sans-serif !important;
+  color: #374151;
   line-height: 1.75;
 }
 
-.cms-callout {
-  border-radius: 0.75rem;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  border-left: 4px solid #8b5cf6;
-  background: rgba(139, 92, 246, 0.08);
+.cms-article-title,
+.cms-content h1 {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 2.5rem !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  color: #0f172a;
 }
 
-.cms-callout-tip {
-  border-left-color: #10b981;
-  background: rgba(16, 185, 129, 0.08);
+.cms-content h2 {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 34px !important;
+  line-height: 1.25 !important;
+  font-weight: 500 !important;
+  border-left: 5px solid #1E3A8A !important;
+  padding-left: 14px !important;
+  margin-top: 2.25rem !important;
+  margin-bottom: 1rem !important;
+  color: #0f172a !important;
 }
 
-.cms-callout-title {
-  display: block;
+.cms-content h3 {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 26px !important;
+  line-height: 1.35 !important;
+  font-weight: 400 !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+  color: #1e293b !important;
+}
+
+.cms-content p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #374151;
+}
+
+.cms-content strong,
+.cms-content b {
   font-weight: 700;
-  margin-bottom: 0.25rem;
-  color: #8b5cf6;
+  color: #0f172a;
 }
 
-.cms-callout-tip .cms-callout-title {
-  color: #10b981;
+.cms-content a {
+  color: #1E3A8A;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
+.cms-content a:hover {
+  color: #2563EB;
+}
+
+/* =========================================================
+   Responsive Table Styling (Matching Mockup)
+   ========================================================= */
 .cms-table-overflow {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  width: 100%;
   overflow-x: auto;
-  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid #E2E8F0;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .cms-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13.5px;
 }
 
-.cms-table th,
+.cms-table th {
+  background-color: #DDE3EA !important;
+  color: #0F172A !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  padding: 12px 18px !important;
+  border-bottom: 1px solid #CBD5E1 !important;
+  border-right: 1px solid #E2E8F0 !important;
+  letter-spacing: -0.01em;
+}
+
+.cms-table th:last-child {
+  border-right: none !important;
+}
+
 .cms-table td {
-  border: 1px solid rgba(150, 150, 150, 0.2);
-  padding: 0.75rem 1rem;
+  padding: 11px 18px !important;
+  border-bottom: 1px solid #F1F5F9 !important;
+  border-right: 1px solid #F1F5F9 !important;
+  color: #334155 !important;
+  background-color: #ffffff;
+  line-height: 1.5;
 }
 
-.cms-cta-block {
-  border-radius: 1rem;
-  padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-  color: #ffffff;
-  margin: 2.5rem 0;
-  text-align: center;
+.cms-table td:last-child {
+  border-right: none !important;
 }
 
-.cms-cta-btn {
-  display: inline-block;
-  background: #ffffff;
-  color: #4f46e5;
-  font-weight: 700;
-  padding: 0.65rem 1.5rem;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  text-decoration: none;
+.cms-table tr:nth-child(even) td {
+  background-color: #F8FAFC !important;
+}
+
+.cms-table tr:hover td {
+  background-color: #F1F5F9 !important;
 }

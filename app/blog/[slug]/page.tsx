@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBlogPostBySlug } from "@/lib/cms";
 import { EngineQuoteWidget } from "@/components/blog/engine-quote-widget";
 import { RelatedGuidesWidget } from "@/components/blog/related-guides-widget";
+import '../blog.css'
 
 export const revalidate = 3600;
 
@@ -38,11 +39,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!post) notFound();
 
-const articleHtml = post.html || "";
+  const articleHtml = post.html || "<p>Article content is being generated...</p>";
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      {/* Schema.org Article & Breadcrumb JSON-LD */}
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 font-['Montserrat',sans-serif]">
+      {/* JSON-LD Schema */}
       {post.jsonLd && (
         <script
           type="application/ld+json"
@@ -51,25 +52,24 @@ const articleHtml = post.html || "";
       )}
 
       {/* Breadcrumb Navigation */}
-      <nav className="mb-6 text-xs text-muted-foreground">
-        <Link href="/" className="hover:underline hover:text-foreground">Home</Link>
+      <nav className="mb-6 text-xs text-slate-500">
+        <Link href="/" className="hover:underline hover:text-slate-900">Home</Link>
         <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:underline hover:text-foreground">Blog</Link>
+        <Link href="/blog" className="hover:underline hover:text-slate-900">Blog</Link>
         <span className="mx-2">/</span>
-        <span className="text-foreground font-medium">{post.title}</span>
+        <span className="text-slate-900 font-medium">{post.title}</span>
       </nav>
 
-      {/* Main Grid: 8 Columns Article (~72%) / 4 Columns Sidebar (~28%) */}
+      {/* 12-Column Grid: 8 Cols Article (~72%) / 4 Cols Sticky Sidebar (~28%) */}
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-start">
-        {/* Left / Main Article Column */}
+        {/* Left Column: Article */}
         <article className="lg:col-span-8 min-w-0">
-          {/* Header */}
           <header className="mb-8 space-y-4">
-            <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-tight">
+            <h1 className="cms-article-title text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl leading-tight">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground border-y border-border/50 py-3">
-              <span>By <strong className="text-foreground font-semibold">{post.author?.name || "Editorial Team"}</strong></span>
+            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 border-y border-slate-200 py-3">
+              <span>By <strong className="text-slate-900 font-semibold">{post.author?.name || "Editorial Team"}</strong></span>
               <span>•</span>
               <span>{post.readingTimeMinutes || 2} min read</span>
               <span>•</span>
@@ -83,19 +83,16 @@ const articleHtml = post.html || "";
             </div>
           </header>
 
-          {/* Rendered Semantic HTML Content */}
+          {/* Rendered Semantic Content with Custom Typography & Table */}
           <div
-            className="cms-content prose prose-neutral max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-2xl"
+            className="cms-content prose prose-neutral max-w-none prose-headings:scroll-mt-20 prose-img:rounded-2xl"
             dangerouslySetInnerHTML={{ __html: articleHtml }}
           />
         </article>
 
-        {/* Right Sticky Sidebar (Desktop 28% width / Stacks at bottom on mobile) */}
+        {/* Right Sticky Sidebar (Desktop 28% / Stacks bottom on mobile) */}
         <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24 self-start">
-          {/* 1. Interactive Reg Lookup & Quote Form */}
           <EngineQuoteWidget siteName="Engines Market" />
-
-          {/* 2. Related Engine Guides */}
           <RelatedGuidesWidget currentSlug={slug} />
         </aside>
       </div>

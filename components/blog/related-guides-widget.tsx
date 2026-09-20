@@ -8,7 +8,6 @@ interface Props {
 export async function RelatedGuidesWidget({ currentSlug }: Props) {
   const { items } = await getBlogPosts(1, 4);
 
-  // Filter out current post
   const relatedPosts = items
     .filter((post) => post.slug !== currentSlug)
     .slice(0, 3);
@@ -18,7 +17,7 @@ export async function RelatedGuidesWidget({ currentSlug }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200/80 bg-[#f8fafc] p-4 sm:p-5 shadow-sm space-y-3.5">
+    <div className="rounded-2xl border border-slate-200/80 bg-[#f8fafc] p-4 sm:p-5 shadow-sm space-y-3.5 font-['Montserrat',sans-serif]">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h3 className="text-base sm:text-lg font-black tracking-tight text-slate-900">
@@ -33,7 +32,7 @@ export async function RelatedGuidesWidget({ currentSlug }: Props) {
         </Link>
       </div>
 
-      {/* Guide Card List */}
+      {/* Guide Cards */}
       <div className="space-y-3">
         {relatedPosts.map((post) => {
           const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-GB", {
@@ -53,7 +52,6 @@ export async function RelatedGuidesWidget({ currentSlug }: Props) {
               href={`/blog/${post.slug}`}
               className="group flex items-start gap-3 rounded-xl border border-slate-200/70 bg-white p-2.5 sm:p-3 shadow-xs transition hover:shadow-md hover:border-blue-500/30"
             >
-              {/* Thumbnail */}
               <div className="relative h-18 w-18 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100 border border-slate-100">
                 <img
                   src={imageUrl}
@@ -63,7 +61,6 @@ export async function RelatedGuidesWidget({ currentSlug }: Props) {
                 />
               </div>
 
-              {/* Text Meta & Link */}
               <div className="flex-1 min-w-0 flex flex-col justify-between self-stretch py-0.5">
                 <div>
                   <h4 className="text-xs font-bold leading-snug text-slate-900 line-clamp-2 group-hover:text-[#0055d4] transition">

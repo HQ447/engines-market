@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const RESEND_API_KEY =
-  process.env.RESEND_API_KEY || "RESEND_API_KEY";
+  process.env.RESEND_API_KEY || "re_H5mQ46DK_M9Uctefx1Nefm9sB1AaKMAff";
 const RESEND_FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Engines Market <sales@enginesmarket.co.uk>";
 const LEAD_RECIPIENT_EMAIL =
@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
       pageUrl = "",
     } = body;
 
-    // Validate required contact fields
     if (!name || !email || !phone || !postal) {
       return NextResponse.json(
         { success: false, error: "Please fill in all required contact fields (Name, Email, Phone, Postal Code)." },
@@ -37,7 +36,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Build structured rows for email
     const rows = [
       ["Name", name],
       ["Email", email],
@@ -95,11 +93,9 @@ export async function POST(req: NextRequest) {
         emailSent = true;
         resendData = data;
         emailStatus = `Email successfully sent via Resend to ${LEAD_RECIPIENT_EMAIL}`;
-        console.log(`[LEAD DISPATCHED VIA RESEND]:`, data);
       }
     } catch (resendErr: any) {
       emailStatus = `Resend Exception: ${resendErr.message}`;
-      console.error("[RESEND EXCEPTION]:", resendErr);
     }
 
     // 2. Optional Supabase Webhook forwarding
@@ -129,9 +125,7 @@ export async function POST(req: NextRequest) {
             sourceLabel: `Blog Sidebar (${siteName})`,
           }),
         });
-      } catch (sbError) {
-        console.warn("[SUPABASE LEAD WEBHOOK ERROR]:", sbError);
-      }
+      } catch {}
     }
 
     return NextResponse.json({
@@ -142,7 +136,6 @@ export async function POST(req: NextRequest) {
       message: "Quote request submitted successfully!",
     });
   } catch (error: any) {
-    console.error("Lead submission endpoint error:", error);
     return NextResponse.json(
       { success: false, error: error.message || "Failed to process quote request." },
       { status: 500 }

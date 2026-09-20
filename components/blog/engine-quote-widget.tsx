@@ -22,7 +22,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
   const [isLookingUp, setIsLookingUp] = React.useState(false);
   const [lookupError, setLookupError] = React.useState("");
 
-  // Vehicle data state from API
   const [vehicleData, setVehicleData] = React.useState<{
     VRM: string;
     Make: string;
@@ -32,7 +31,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
     EngineCapacity: number | string;
   } | null>(null);
 
-  // Form input states
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -43,7 +41,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [submitError, setSubmitError] = React.useState("");
 
-  // Registration Lookup Handler
   const handleLookup = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!reg.trim()) {
@@ -67,14 +64,13 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
       } else {
         setLookupError(data.message || "Vehicle lookup failed. Please check registration.");
       }
-    } catch (err: any) {
+    } catch {
       setLookupError("Network error during lookup. Please try again.");
     } finally {
       setIsLookingUp(false);
     }
   };
 
-  // Lead Quote Form Submit Handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!vehicleData?.Model) {
@@ -112,7 +108,7 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
       } else {
         setSubmitError(data.error || "Failed to submit quote request. Please try again.");
       }
-    } catch (err: any) {
+    } catch {
       setSubmitError("Network error submitting quote. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -121,13 +117,13 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-2xl bg-[#002244] p-6 text-white border border-[#003366] shadow-xl text-center space-y-4">
+      <div className="rounded-2xl bg-[#002244] p-6 text-white border border-[#003366] shadow-xl text-center space-y-4 font-['Montserrat',sans-serif]">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
           <CheckCircle2 className="h-8 w-8" />
         </div>
         <h3 className="text-xl font-black text-white">Quote Request Received!</h3>
         <p className="text-xs text-slate-200 leading-relaxed">
-          Thank you, <b>{name}</b>. An engine specialist for your <b>{vehicleData?.Make} {vehicleData?.Model}</b> ({vehicleData?.VRM}) has received your inquiry and will contact you shortly with prices and warranty options.
+          Thank you, <b>{name}</b>. An engine specialist for your <b>{vehicleData?.Make} {vehicleData?.Model}</b> ({vehicleData?.VRM}) will contact you shortly with prices and warranty options.
         </p>
         <button
           type="button"
@@ -152,7 +148,7 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
   const isFormDisabled = !vehicleData || !vehicleData.Model;
 
   return (
-    <div className="rounded-2xl bg-[#002244] p-6 text-white shadow-xl space-y-4">
+    <div className="rounded-2xl bg-[#002244] p-6 text-white shadow-xl space-y-4 font-['Montserrat',sans-serif]">
       {/* Title */}
       <div>
         <h3 className="text-2xl font-black tracking-tight text-white">
@@ -169,7 +165,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
           ENTER YOUR REGISTRATION
         </label>
 
-        {/* UK Reg Box */}
         <div className="flex items-center rounded-lg bg-white overflow-hidden shadow-inner">
           <div className="flex flex-col items-center justify-center bg-[#003399] px-2.5 py-2 text-white select-none leading-none gap-0.5 min-w-[36px]">
             <span className="text-xs leading-none">🇬🇧</span>
@@ -186,7 +181,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
           />
         </div>
 
-        {/* Find My Engine Button */}
         <button
           type="button"
           onClick={() => handleLookup()}
@@ -204,7 +198,6 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
           </p>
         )}
 
-        {/* Vehicle Identified Box */}
         {vehicleData && (
           <div className="rounded-lg border border-emerald-500/30 bg-emerald-950/30 p-3 text-xs space-y-1 animate-in fade-in">
             <div className="flex items-center justify-between">
@@ -325,7 +318,7 @@ export function EngineQuoteWidget({ siteName = "Engines Market" }: Props) {
         )}
       </form>
 
-      {/* Security / Privacy Footer */}
+      {/* Security Footer */}
       <div className="flex items-center gap-3 pt-2 text-left">
         <div className="flex-shrink-0 text-white">
           <ShieldCheck className="h-7 w-7 stroke-[1.5]" />
