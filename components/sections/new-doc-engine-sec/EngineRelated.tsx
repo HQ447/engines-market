@@ -2,17 +2,104 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FiArrowRight, FiInfo } from "react-icons/fi";
+import { useEffect, useRef, useState } from "react";
+import { FiArrowRight, FiInfo, FiChevronDown } from "react-icons/fi";
 import type { EngineRelatedSectionData } from "@/types/engine-page";
 import styles from "./NewDocEngine.module.css";
 import SectionHeading from "./SectionHeading";
+
 type Props = {
   data: EngineRelatedSectionData;
   engineCode: string;
   engineImage?: string;
   backgroundImage?: string;
 };
+
+type RelatedItem = EngineRelatedSectionData["items"][number];
+
+function RelatedCardItem({
+  item,
+  engineImage,
+}: {
+  item: RelatedItem;
+  engineImage?: string;
+}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const pRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const el = pRef.current;
+    if (!el) return;
+
+    const check = () => {
+      const wasClamped = el.classList.contains(styles.clampSix);
+      if (wasClamped) el.classList.remove(styles.clampSix);
+
+      const fullHeight = el.scrollHeight;
+
+      if (wasClamped) el.classList.add(styles.clampSix);
+
+      // Trigger button only if unconstrained height exceeds 6 lines (~128px)
+      setHasOverflow(fullHeight > 132);
+    };
+
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [item.description]);
+
+  return (
+    <article className={styles.relatedCard}>
+      <span className={styles.relation}>{item.relation}</span>
+
+      {engineImage && item.code !== "none" ? (
+        <Image src={engineImage} alt="" width={108} height={84} />
+      ) : null}
+
+      <h3>{item.code === "none" ? "None" : item.code}</h3>
+      <strong>
+        {item.code === "none"
+          ? "First in UK range"
+          : item.relation === "Successor"
+            ? "Direct replacement"
+            : "Related engine"}
+      </strong>
+
+      <div className={styles.expandableCopy}>
+        <p ref={pRef} className={!isExpanded ? styles.clampSix : undefined}>
+          {item.description}
+        </p>
+
+        {hasOverflow && (
+          <button
+            type="button"
+            className={`${styles.expandInlineButton} ${
+              isExpanded ? styles.expandCopyButtonOpen : ""
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsExpanded((prev) => !prev);
+            }}
+            aria-label={`Toggle description for ${item.code}`}
+          >
+            <FiChevronDown aria-hidden="true" />
+          </button>
+        )}
+      </div>
+
+      {item.code !== "none" ? (
+        <Link href={item.href}>
+          View {item.code} <FiArrowRight />
+        </Link>
+      ) : (
+        <button type="button" className={styles.relatedButtonDisabled} disabled>
+          No direct variant <FiArrowRight />
+        </button>
+      )}
+    </article>
+  );
+}
 
 export default function EngineRelated({
   data,
@@ -22,6 +109,7 @@ export default function EngineRelated({
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(4);
   const [offset, setOffset] = useState(0);
+
   useEffect(() => {
     const update = () =>
       setVisibleCount(
@@ -31,11 +119,14 @@ export default function EngineRelated({
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
   const maxOffset = Math.max(0, data.items.length - visibleCount);
+
   useEffect(
     () => setOffset((current) => Math.min(current, maxOffset)),
     [maxOffset],
   );
+
   return (
     <section
       className={styles.relatedSection}
@@ -80,37 +171,19 @@ export default function EngineRelated({
               transform: `translateX(calc(-${offset} * (100% + 14px) / ${visibleCount}))`,
             }}
           >
-            {data.items.map((item) => (
-              <article
-                className={styles.relatedCard}
-                key={item.code + item.relation}
-              >
-                <span className={styles.relation}>{item.relation}</span>
-                {engineImage && item.code !== "none" ? (
-                  <Image src={engineImage} alt="" width={108} height={84} />
-                ) : null}
-                <h3>{item.code === "none" ? "None" : item.code}</h3>
-                <strong>
-                  {item.code === "none"
-                    ? "First in UK range"
-                    : item.relation === "Successor"
-                      ? "Direct replacement"
-                      : "Related engine"}
-                </strong>
-                <p>{item.description}</p>
-                {item.code !== "none" ? (
-                  <Link href={item.href}>
-                    View {item.code} <FiArrowRight />
-                  </Link>
-                ) : null}
-              </article>
+            {data.items.map((item, index) => (
+              <RelatedCardItem
+                key={`${item.code}-${item.relation}-${index}`}
+                item={item}
+                engineImage={engineImage}
+              />
             ))}
           </div>
         </div>
         <div className={styles.relatedNote}>
           <FiInfo />
           <p>
-            <strong>Important note:</strong>The {engineCode} is not related to
+            <strong>Important note:</strong> The {engineCode} is not related to
             BMW, Ford or VW engine families — it is a wholly SAIC-developed SGE
             unit.
           </p>

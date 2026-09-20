@@ -6,10 +6,13 @@ import {
   FiArrowLeft,
   FiArrowRight,
   FiAward,
+  FiChevronDown,
+  FiChevronUp,
   FiClock,
   FiInfo,
   FiTruck,
 } from "react-icons/fi";
+
 import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantCommonProblems.module.css";
@@ -26,30 +29,84 @@ type ExpandableTextProps = {
   onToggle: () => void;
 };
 
-function ExpandableText({ label, text, expanded, onToggle }: ExpandableTextProps) {
+function ExpandableText({
+  label,
+  text,
+  expanded,
+  onToggle,
+}: ExpandableTextProps) {
   const textRef = useRef<HTMLSpanElement>(null);
   const [hasOverflow, setHasOverflow] = useState(false);
 
   useEffect(() => {
     const element = textRef.current;
-    if (!element || expanded) return;
+    if (!element) return;
 
-    const measure = () => setHasOverflow(element.scrollHeight > element.clientHeight + 1);
+    const measure = () => {
+      // Only recalculate when clamped so expanding doesn't reset hasOverflow to false
+      if (!expanded) {
+        setHasOverflow(element.scrollHeight > element.clientHeight + 1);
+      }
+    };
+
     measure();
+
+    if (typeof document !== "undefined" && document.fonts) {
+      document.fonts.ready.then(measure);
+    }
+
     const observer = new ResizeObserver(measure);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [expanded, text]);
+  }, [text, expanded]);
 
   return (
     <div className={styles.expandableCopy}>
       <strong>{label}</strong>
-      <span ref={textRef} className={!expanded ? styles.clampedText : undefined}>{text}</span>
-      {hasOverflow ? (
-        <button type="button" className={styles.readMore} onClick={onToggle}>
-          {expanded ? "Show less" : "Read more"} <FiArrowRight />
-        </button>
-      ) : null}
+      <div
+        className={`${styles.textContainer} ${hasOverflow ? styles.clickableText : ""}`}
+        onClick={hasOverflow ? onToggle : undefined}
+        role={hasOverflow ? "button" : undefined}
+        tabIndex={hasOverflow ? 0 : undefined}
+        onKeyDown={
+          hasOverflow
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onToggle();
+                }
+              }
+            : undefined
+        }
+        aria-expanded={hasOverflow ? expanded : undefined}
+      >
+        <span
+          ref={textRef}
+          style={
+            !expanded
+              ? {
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }
+              : undefined
+          }
+        >
+          {text}
+          {expanded && hasOverflow && (
+            <span className={styles.inlineToggle} aria-hidden="true">
+              <FiChevronUp />
+            </span>
+          )}
+        </span>
+
+        {!expanded && hasOverflow && (
+          <span className={styles.cornerToggle} aria-hidden="true">
+            <FiChevronDown />
+          </span>
+        )}
+      </div>
     </div>
   );
 }
@@ -215,8 +272,12 @@ export default function NewDocVariantCommonProblems({
                     <ExpandableText
                       label="Our recommendation"
                       text={card.recommendation}
-                      expanded={Boolean(expanded[`${card.title}-recommendation`])}
-                      onToggle={() => toggleExpanded(`${card.title}-recommendation`)}
+                      expanded={Boolean(
+                        expanded[`${card.title}-recommendation`],
+                      )}
+                      onToggle={() =>
+                        toggleExpanded(`${card.title}-recommendation`)
+                      }
                     />
                   </div>
                   <a href="#quote">
@@ -232,14 +293,19 @@ export default function NewDocVariantCommonProblems({
 
       <div
         className={styles.closingCta}
-        style={{ "--problem-bg": `url("${backgroundImage}")` } as React.CSSProperties}
+        style={
+          { "--problem-bg": `url("${backgroundImage}")` } as React.CSSProperties
+        }
       >
         <div className={`${shared.container} ${styles.closingCtaInner}`}>
           <div>
             <h3>{data.closingCta.title}</h3>
             <p>{data.closingCta.description}</p>
           </div>
-          <a href="#quote">{data.closingCta.cta}<FiArrowRight /></a>
+          <a href="#quote">
+            {data.closingCta.cta}
+            <FiArrowRight />
+          </a>
         </div>
       </div>
     </section>

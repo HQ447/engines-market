@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: 12px 0 32px;
+  padding: 0px 0 32px;
   background: linear-gradient(125deg, #f9fdff, #eaf6fd);
 }
 .introGrid {

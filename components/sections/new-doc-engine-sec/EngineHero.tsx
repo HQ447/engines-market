@@ -169,30 +169,35 @@ export default function EngineHero({ data, engineCode }: Props) {
         </div>
 
         <div className={styles.proofRow}>
-          <div>
+          <div className={styles.proofItem}>
             <FiSettings aria-hidden="true" />
             <span>
               <strong>Genuine &amp; quality checked</strong>
               <small>Engines</small>
             </span>
           </div>
-          <div>
+          <div className={styles.proofItem}>
             <FiShield aria-hidden="true" />
             <span>
               <strong>Competitive</strong>
               <small>UK pricing</small>
             </span>
           </div>
-          <div>
+          <div className={styles.proofItem}>
             <FiUsers aria-hidden="true" />
             <span>
               <strong>Expert support</strong>
               <small>We help you find the right engine</small>
             </span>
           </div>
-          <div className={styles.trustpilot}>
-            <span aria-hidden="true">★</span>
-            <strong>Trusted by UK drivers</strong>
+          <div className={`${styles.proofItem} ${styles.trustpilotItem}`}>
+            <span className={styles.starIcon} aria-hidden="true">
+              ★
+            </span>
+            <span>
+              <strong>Trusted by</strong>
+              <small>UK drivers</small>
+            </span>
           </div>
         </div>
       </div>

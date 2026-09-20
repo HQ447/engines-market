@@ -18,16 +18,24 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
   const [flipped, setFlipped] = useState<string | null>(null);
 
   return (
-    <section className={styles.section} aria-labelledby="variant-how-it-works-title">
+    <section
+      className={styles.section}
+      aria-labelledby="variant-how-it-works-title"
+    >
       <div className={shared.container}>
         <p className={shared.eyebrow}>How it works</p>
         <h2 id="variant-how-it-works-title" className={shared.sectionTitle}>
-          3 simple steps to finding the right <span className={shared.headingAccent}>replacement engine</span>
+          3 Simple Steps to Finding the Right{" "}
+          <span className={shared.headingAccent}>Replacement Engine</span>
         </h2>
-        <p className={shared.sectionSubtitle}>Clear information first, then the right engine and specialist for your exact vehicle.</p>
+        <p className={shared.sectionSubtitle}>
+          Clear information first, then the right engine and specialist for your
+          exact vehicle.
+        </p>
         <div className={styles.grid}>
           {steps.map((step, index) => {
-            const icon = icons[index] ?? "/icons/engine-market/how-choose-deal.png";
+            const icon =
+              icons[index] ?? "/icons/engine-market/how-choose-deal.png";
             const isFlipped = flipped === step.number;
             return (
               <button
@@ -40,16 +48,34 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                 <span className={styles.cardInner}>
                   <span className={`${styles.face} ${styles.front}`}>
                     <span className={styles.number}>{step.number}</span>
-                    <span className={styles.icon} aria-hidden="true"><Image src={icon} alt="" width={76} height={76} /></span>
-                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>{step.title}</span>
-                    <span className={`${shared.cardDescription} ${styles.cardDescription}`}>{step.description}</span>
-                    <span className={styles.action}>Learn more <FiArrowRight /></span>
+                    <span className={styles.icon} aria-hidden="true">
+                      <Image src={icon} alt="" width={92} height={92} />
+                    </span>
+                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>
+                      {step.title}
+                    </span>
+                    <span
+                      className={`${shared.cardDescription} ${styles.cardDescription}`}
+                    >
+                      {step.description}
+                    </span>
+                    <span className={styles.action}>
+                      Learn more <FiArrowRight />
+                    </span>
                   </span>
                   <span className={`${styles.face} ${styles.back}`}>
                     <span className={styles.backLabel}>Why this matters</span>
-                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>{step.title}</span>
-                    <span className={`${shared.cardDescription} ${styles.cardDescription}`}>{step.back}</span>
-                    <span className={styles.action}>Tap to return <FiArrowRight /></span>
+                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>
+                      {step.title}
+                    </span>
+                    <span
+                      className={`${shared.cardDescription} ${styles.cardDescription}`}
+                    >
+                      {step.back}
+                    </span>
+                    <span className={styles.action}>
+                      Tap to return <FiArrowRight />
+                    </span>
                   </span>
                 </span>
               </button>

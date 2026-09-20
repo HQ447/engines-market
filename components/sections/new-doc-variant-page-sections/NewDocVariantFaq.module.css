@@ -50,7 +50,7 @@
 .introVisual img {
   position: absolute;
   right: -11%;
-  bottom: -22px;
+  bottom: -70px;
   width: min(118%, 620px);
   height: auto;
   filter: drop-shadow(0 19px 22px rgba(14, 51, 80, 0.24));
@@ -134,21 +134,14 @@
   border-top-color: #e1edf5;
   padding-top: 14px;
 }
-.answerLead {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+.answerText {
+  margin: 0;
+  color: #294d6d;
+  font-size: 15px;
+  line-height: 1.55;
+  width: 100%;
 }
-.answerIcon {
-  display: grid;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #eff8fd, #e4f1f8);
-  color: #0b4d78;
-}
+
 .answerIcon svg {
   width: 32px;
   height: 32px;
@@ -258,10 +251,7 @@
   .section {
     padding: 30px 0 32px;
   }
-  .intro {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
+
   .description,
   .answerLead p,
   .detailStrip strong,
@@ -271,13 +261,41 @@
   .cardCta {
     font-size: 14px;
   }
-  .introVisual {
-    min-height: 150px;
+
+  /* 1. Make the intro container the relative anchor */
+  .intro {
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
   }
+
+  .introCopy {
+    position: relative;
+    z-index: 2; /* Keeps heading and paragraph sharp on top */
+  }
+
+  /* 2. Position the car image absolutely behind the text */
+  .introVisual {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .introVisual::before {
+    display: none; /* Removes the bottom shadow circle */
+  }
+
   .introVisual img {
-    right: -8%;
-    bottom: -22px;
-    width: min(108%, 500px);
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: min(80%, 300px);
+    height: auto;
+    opacity: 0.22; /* Soft opacity so the text remains completely readable */
+    filter: none;
   }
   .grid {
     margin-top: 14px;
@@ -298,9 +316,12 @@
     padding-right: 12px;
     padding-left: 12px;
   }
-  .answerLead {
-    grid-template-columns: 48px minmax(0, 1fr);
-    gap: 10px;
+  .answerText {
+    margin: 0;
+    color: #294d6d;
+    font-size: 14px;
+    line-height: 1.55;
+    width: 100%;
   }
   .answerIcon {
     width: 44px;

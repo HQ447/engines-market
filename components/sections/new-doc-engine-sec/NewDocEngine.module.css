@@ -155,11 +155,23 @@
   box-shadow: 0 10px 22px rgba(24, 61, 102, 0.08);
 }
 .price {
+  position: relative;
   min-height: 68px;
   padding: 13px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-.price + .price {
-  border-left: 1px solid #e6eef7;
+.price + .price::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: #e6eef7;
 }
 .price span {
   display: block;
@@ -339,18 +351,14 @@
   color: #315b85;
 }
 
-.proofRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr 1.1fr;
-  gap: 18px;
-  align-items: center;
-  padding: 17px 11px 0;
-  color: #254b74;
-}
-.proofRow > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.proofRow > div + div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(22, 73, 113, 0.23);
 }
 .proofRow > div > svg {
   flex: 0 0 auto;
@@ -360,22 +368,20 @@
 }
 .proofRow span:not(.trustpilot span) {
   display: grid;
-  gap: 1px;
+  gap: 2px;
 }
 .proofRow strong {
   color: #12365f;
-  font-size: 10.5px;
-  line-height: 1.05;
+  font-size: 13px;
+  line-height: 1.2;
 }
 .proofRow small {
-  font-size: 9.5px;
+  color: #254b74;
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.2;
 }
-.trustpilot {
-  justify-content: flex-end;
-  white-space: nowrap;
-}
+
 .trustpilot span {
   color: #00a56a;
   font-size: 24px;
@@ -413,7 +419,7 @@
   font-size: 15px !important;
 }
 .sectionIntro {
-  font-size: 16px !important;
+  font-size: 15px;
 }
 @media (max-width: 720px) {
   .background {
@@ -463,6 +469,13 @@
   .price {
     min-height: 62px;
     padding: 11px 12px 9px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .price + .price::before {
+    top: 10px;
+    bottom: 10px;
   }
   .price strong {
     font-size: 18px;
@@ -500,20 +513,10 @@
     min-height: 50px;
     height: 50px;
   }
-  .proofRow {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 8px;
-    padding: 15px 2px 0;
-  }
-  .proofRow > div > svg {
-    width: 20px;
-    height: 20px;
-  }
-  .proofRow strong {
-    font-size: 10px;
-  }
+
+  .proofRow strong,
   .proofRow small {
-    font-size: 9px;
+    font-size: 13px;
   }
   .trustpilot {
     justify-content: flex-start;
@@ -524,8 +527,8 @@
 }
 
 .fitmentSection {
-  padding: 32px 0 39px;
-  background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
+  padding: 23px 0px;
+  background: linear-gradient(180deg, #fff 0%, #ffffff 60%);
   color: #08264b;
 }
 .fitmentContainer {
@@ -562,6 +565,7 @@
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 12px 25px rgba(20, 58, 100, 0.07);
+  height: fit-content;
 }
 .modelHeader,
 .modelRow {
@@ -625,23 +629,26 @@
   color: #0056af;
 }
 .fitmentNotes {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: -11px;
 }
 .fitmentNote {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
+  grid-template-columns: 28px minmax(0, 1fr);
   gap: 10px;
-  padding: 14px;
+  padding: 11px 13px;
   border: 1px solid #d7e8f8;
   border-radius: 8px;
   background: linear-gradient(110deg, #f0f8ff, #fbfdff);
   box-shadow: 0 8px 20px rgba(26, 75, 117, 0.05);
 }
 .fitmentNote > svg {
-  width: 28px;
-  height: 28px;
-  padding: 6px;
+  width: 26px;
+  height: 26px;
+  padding: 5px;
   border-radius: 50%;
   background: #2789ed;
   color: #fff;
@@ -652,14 +659,15 @@
 .fitmentNote strong {
   display: block;
   color: #14395f;
-  font-size: 11px;
+  font-size: 15px !important;
   font-weight: 850;
+  line-height: 1.25;
 }
 .fitmentNote p {
   margin: 6px 0 0;
   color: #315a7d;
-  font-size: 10.5px;
-  font-weight: 600;
+  font-size: 13px !important;
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -707,7 +715,7 @@
     padding: 7px;
   }
   .fitmentNote strong {
-    font-size: 12px;
+    font-size: 14px !important;
   }
   .fitmentNote p {
     font-size: 11.5px;
@@ -727,15 +735,19 @@
   .benefit {
     font-size: 11px;
   }
+  .fitmentNotes {
+    margin-top: -3px !important;
+  }
 }
 
 .specsSection {
   position: relative;
   overflow: hidden;
-  padding: 30px 0 38px;
-  background: linear-gradient(110deg, #f8fbff 0%, #eef6fc 72%, #e6f1f8 100%);
+  padding: 23px 0;
+  background: linear-gradient(110deg, #ffffff 0%, #e9f5ff 110%, #e6f1f8 1%);
   color: #08264b;
 }
+
 .specsSection::after {
   position: absolute;
   top: -130px;
@@ -895,7 +907,7 @@
   padding: 16px 18px;
   border: 1px solid #d8eaef;
   border-radius: 8px;
-  background: linear-gradient(112deg, #e6f7f8 0%, #f9feff 100%);
+  background: linear-gradient(110deg, #ffffff 0%, #f2f9ff 110%);
   box-shadow: 0 10px 24px rgba(22, 83, 106, 0.08);
   color: #173d5d;
 }
@@ -922,7 +934,7 @@
   display: block;
   margin-top: 6px;
   color: #2b5a78;
-  font-size: 9.5px;
+  font-size: 13px !important;
   font-style: normal;
   font-weight: 850;
 }
@@ -933,9 +945,9 @@
 }
 .sectionIntro {
   max-width: 900px;
-  margin: 8px 0 18px;
+  margin: 9px 0px;
   color: #21486f;
-  font-size: 17px !important;
+  font-size: 15px;
   font-weight: 0;
   line-height: 1.45;
 }
@@ -957,7 +969,7 @@
 }
 
 .costSection {
-  padding: 34px 0 27px;
+  padding: 23px 0;
   background: linear-gradient(115deg, #f7fbff 0%, #edf5fc 72%, #e2edf7 100%);
   color: #092b52;
 }
@@ -1180,7 +1192,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 35px 0 39px;
+  padding: 23px 0px;
   background: linear-gradient(125deg, #061a31 0%, #102d49 62%, #0a2037 100%);
   color: #fff;
 }
@@ -1270,7 +1282,7 @@
 .relatedTrack {
   display: flex;
   gap: 14px;
-  align-items: stretch;
+  align-items: flex-start;
   transition: transform 0.35s ease;
 }
 .failureTrack > .failureCard {
@@ -1322,7 +1334,7 @@
 .failureBody h3 {
   margin: 0;
   color: #0b3158;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 850;
   line-height: 1.1;
 }
@@ -1346,7 +1358,7 @@
   display: block;
   margin-bottom: 2px;
   color: #0a3158;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 850;
 }
 .failureDetail {
@@ -1371,7 +1383,7 @@
   display: block;
   margin-bottom: 3px;
   color: #0a3158;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 0;
 }
 .failureFooter {
@@ -1408,7 +1420,6 @@
 .failureFooter p {
   margin: 0;
   font-size: 13px;
-  font-weight: 600;
   line-height: 1.4;
 }
 .failureFooter p strong {
@@ -1437,7 +1448,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 35px 0 39px;
+  padding: 23px 0;
   background: linear-gradient(180deg, #fbfdff 0%, #edf6fc 100%);
   color: #092b52;
 }
@@ -1520,7 +1531,7 @@
 }
 .engineIdentity img {
   width: 100%;
-  height: 218px;
+  height: 240px;
   object-fit: contain;
   object-position: center 65%;
 }
@@ -1545,7 +1556,7 @@
 .variantCard h3 {
   margin: 10px 0 8px;
   color: #14375f;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 850;
   line-height: 1.05;
 }
@@ -1607,8 +1618,8 @@
   margin-top: 14px;
 }
 .codeList span {
-  display: grid;
-  grid-template-columns: 22px 1fr;
+  display: inline;
+  grid-template-columns: 22px 2fr;
   gap: 4px;
   padding: 8px;
   border-radius: 7px;
@@ -1618,6 +1629,7 @@
 }
 .codeList svg {
   width: 20px;
+  display: inline !important;
   height: 20px;
   color: #18a861;
 }
@@ -1654,7 +1666,6 @@
   margin: 0;
   color: #315679;
   font-size: 13px;
-  font-weight: 600;
 }
 .variantClosing strong {
   display: block;
@@ -1712,7 +1723,8 @@
 }
 .buyingCard {
   position: relative;
-
+  min-height: 0 !important;
+  height: auto;
   gap: 10px;
   padding: 16px;
   border: 1px solid #dce9f4;
@@ -1720,11 +1732,15 @@
   background: #fff;
   box-shadow: 0 10px 22px rgba(20, 58, 100, 0.07);
 }
-
+.relatedCard,
+.buyingCard {
+  min-height: 0 !important;
+  height: auto;
+}
 .buyingCard h3 {
-  margin: 2px 0 7px;
+  margin: 8px 0 7px;
   color: #14375f;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -1745,7 +1761,7 @@
   border: 1px solid #d2e3f1;
   border-radius: 6px;
   color: #163b62;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 850;
   text-decoration: none;
 }
@@ -1838,7 +1854,6 @@
 }
 .relatedCard {
   position: relative;
-  min-height: 276px;
   padding: 17px;
   border: 1px solid #dbe8f4;
   border-radius: 9px;
@@ -1883,7 +1898,7 @@
 .relatedCard p {
   margin: 10px 0 13px;
   color: #244d75;
-  font-size: 16px !important;
+  font-size: 15px;
   font-weight: 0;
   line-height: 1.4;
 }
@@ -1912,9 +1927,9 @@
   margin-top: 14px;
   padding: 14px 17px;
   border-radius: 8px;
-  background: #f3f9fd;
+  background: #d3e8f682;
   color: #315679;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.4;
 }
 .relatedNote svg {
@@ -1982,16 +1997,45 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 18px;
+  align-items: start; /* Prevents an opened card from stretching its sibling in the same row */
 }
+
 .faqCard {
   display: grid;
   grid-template-columns: 31px minmax(0, 1fr);
   gap: 10px;
+  align-items: start;
   padding: 16px;
   border: 1px solid #d3e3f0;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 8px 18px rgba(20, 58, 100, 0.06);
+  height: fit-content;
+}
+
+.faqCard > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.faqQuestion {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faqCard a {
+  margin-top: 8px;
+  align-self: flex-start;
 }
 .questionNumber {
   display: grid;
@@ -2029,16 +2073,7 @@
 .faqCard li::marker {
   color: #08a5d8;
 }
-.faqCard a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 8px;
-  color: #0a70c4;
-  font-size: 10px;
-  font-weight: 850;
-  text-decoration: none;
-}
+
 .faqCard a svg {
   width: 13px;
   height: 13px;
@@ -2049,7 +2084,7 @@
   isolation: isolate;
   overflow: hidden;
   padding: 39px 0 43px;
-  background: linear-gradient(120deg, #05172c, #0b2a48 62%, #061a31);
+  background: linear-gradient(120deg, #061a33, #2e5275 62%, #244164);
   color: #fff;
 }
 .trustCtaSection::before {
@@ -2067,7 +2102,7 @@
   background-size:
     100% 100%,
     760px auto;
-  opacity: 0.66;
+  opacity: 1;
   mix-blend-mode: screen;
 }
 .trustCtaSection h2 {
@@ -2086,27 +2121,41 @@
   font-weight: 600;
   line-height: 1.48;
 }
-.ctaLayout {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: 26px;
-  align-items: center;
-}
+
 .ctaBullets {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 0;
+  align-items: center;
 }
+
 .ctaBullets > div {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 0 16px;
   color: #fff;
   font-size: 11px;
   font-weight: 700;
   line-height: 1.3;
+}
+
+/* First badge aligns flush left */
+.ctaBullets > div:first-child {
+  padding-left: 0;
+}
+
+/* 80% height divider: 10% gap top, 10% gap bottom on desktop */
+.ctaBullets > div + div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
 }
 .ctaBullets svg {
   flex: 0 0 auto;
@@ -2114,20 +2163,39 @@
   height: 29px;
   color: #d5ecff;
 }
-.ctaAction {
+.ctaLayout {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 8px;
+  /* Right column fits to content instead of expanding with a large 0.8fr fraction */
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
 }
+
+.ctaAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  justify-self: end;
+}
+
 .ctaAction a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-height: 48px;
+  /* Adds natural horizontal padding so it sizes to the text */
+  padding: 0 28px;
+  width: auto;
+  white-space: nowrap;
   border-radius: 7px;
   background: #00a858;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 850;
   text-decoration: none;
 }
@@ -2195,6 +2263,18 @@
     min-width: 680px;
     grid-template-columns: 1.05fr 1.35fr 1.35fr 1.1fr;
   }
+  .ctaBullets {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ctaBullets > div {
+    padding: 0;
+  }
+
+  .ctaBullets > div + div::before {
+    display: none;
+  }
   .costTable {
     overflow-x: auto;
   }
@@ -2223,6 +2303,73 @@
   .buyingTrack > .buyingCard {
     flex-basis: 100%;
   }
+  .variantClosing {
+    display: grid !important;
+    grid-template-columns: 31px 1fr !important;
+    row-gap: 10px;
+    column-gap: 10px;
+    align-items: center;
+    padding: 14px;
+  }
+
+  /* Row 1, Col 1: Icon */
+  .variantClosing > svg {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  /* Unwraps the paragraph so its children act as direct grid items */
+  .variantClosing p {
+    display: contents;
+  }
+
+  /* Row 1, Col 2: Title sitting directly beside the icon */
+  .variantClosing p strong {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: 15px;
+    color: #15395f;
+    line-height: 1.2;
+  }
+
+  /* Row 2: Content spanning the full width on the next line */
+  .variantClosing p::after {
+    content: none;
+  }
+
+  .variantClosing {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* 1. Icon stays top-left */
+  .variantClosing > svg {
+    flex: 0 0 30px;
+    margin: 0;
+  }
+
+  /* 2. p is flex container: strong (title) takes top-right, text takes full second row */
+  .variantClosing p {
+    flex: 1 1 calc(100% - 40px) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+  }
+
+  .variantClosing p strong {
+    width: 100% !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  /* 3. Button takes full third row */
+  .variantClosing a {
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
   .labourCard {
     grid-template-columns: 1fr;
   }
@@ -2236,17 +2383,17 @@
   .engineIdentity img {
     height: 155px;
   }
+  .priceCallout h3 {
+    font-size: 15px;
+  }
   .failureFooter,
-  .variantClosing,
   .valueStrip {
     grid-template-columns: 1fr;
   }
   .failureFooter a {
     min-height: 45px;
   }
-  .variantClosing {
-    gap: 8px;
-  }
+
   .supplyStrip {
     grid-template-columns: 30px minmax(0, 1fr);
   }
@@ -2265,6 +2412,9 @@
   }
   .ctaBullets {
     grid-template-columns: 1fr;
+  }
+  .engineIdentity h3 {
+    margin: 0px 0 3px;
   }
 }
 
@@ -2315,6 +2465,9 @@
   }
   .engineIdentity img {
     transform: scale(1.08);
+  }
+  .fitmentNotes {
+    margin-top: -3px !important;
   }
   .costHeader span {
     display: flex;
@@ -2471,6 +2624,7 @@
   background: #fff;
   border-color: #d2e3f1;
   color: #163b62;
+  margin-top: 23px;
 }
 .buyingViewport {
   padding-top: 13px;
@@ -2627,7 +2781,7 @@
   .supplyStrip p,
   .valueStrip p,
   .failureDetail p {
-    font-size: 16px;
+    font-size: 14px;
   }
   .benefit,
   .quoteNote,
@@ -2655,7 +2809,16 @@
     font-size: 14px;
   }
   .failureOnset {
-    font-size: 15px;
+    font-size: 15px !important;
+  }
+  .failureOnset strong {
+    font-size: 15px !important;
+  }
+  .failureBody h3 {
+    font-size: 15px !important;
+  }
+  .failureDetail strong {
+    font-size: 15px !important;
   }
 }
 
@@ -2738,11 +2901,15 @@
 .variantHeading {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .variantHeading h3 {
   margin: 0;
+  font-size: 16px;
+  font-weight: 850;
+  line-height: 1.2;
 }
 
 .buyingCard {
@@ -2802,10 +2969,6 @@
     line-height: 1.2;
   }
 
-  .proofRow > div {
-    gap: 7px;
-  }
-
   .variantGrid > .variantCard:nth-child(3) > p,
   .variantGrid > .variantCard:nth-child(4) > p {
     padding: 8px 0;
@@ -2830,7 +2993,7 @@
   }
 
   .faqCard h3 {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.25;
   }
 
@@ -2933,4 +3096,825 @@
   .specRow dd {
     font-size: 14px;
   }
+}
+
+/* Final engine-page refinement layer.  These rules are intentionally scoped to
+   this CSS module so the production/dynamic pages keep their own typography. */
+.copy h1 {
+  font-size: 44px;
+}
+
+.specsContainer h2,
+.fitmentContainer h2,
+.costSection h2,
+.variantsSection h2,
+.buyingSection h2,
+.relatedSection h2,
+.faqSection h2,
+.trustCtaSection h2,
+.failuresSection h2 {
+  font-size: 40px;
+}
+
+.description,
+.sectionIntro,
+.sectionIntroLight,
+.fitmentIntro,
+.specsIntro,
+.labourCard > p,
+.labourCopy > p,
+.priceCallout p,
+.variantCard > p,
+.buyingCard p,
+.relatedCard p,
+.faqCard p,
+.faqCard ul,
+.ctaParagraph,
+.fitmentNote p,
+.specAside blockquote p,
+.supplyStrip p,
+.valueStrip p,
+.failureDetail p,
+.failureOnset {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.pills,
+.eyebrow,
+.eyebrowLight,
+.benefit,
+.price span,
+.relation,
+.recommendedBadge,
+.priceNotice,
+.faqContact span,
+.faqContact small,
+.supplyStrip span,
+.quoteNote,
+.proofRow small,
+.labourMetric small,
+.variantMini,
+.codeList span,
+.engineIdentity strong,
+.engineIdentity span,
+.ctaBullets,
+.ctaAction small {
+  font-size: 13px;
+}
+
+.costHeader,
+.costRow,
+.modelHeader,
+.modelRow,
+.specRow dt,
+.specRow dd {
+  font-size: 14px;
+}
+
+/* Reuse the approved non-hero variant section-pill treatment. */
+.eyebrow,
+.eyebrowLight {
+  display: inline-flex;
+  align-items: center;
+  min-height: 29px;
+  margin: 0 0 10px;
+  padding: 5px 12px;
+  border: 1px solid rgba(94, 209, 255, 0.68);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #042f5a, #075b94);
+  box-shadow:
+    0 0 0 1px rgba(113, 212, 255, 0.12) inset,
+    0 7px 17px rgba(3, 54, 96, 0.17);
+  color: #e9f8ff;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+/* The three compact spec highlights intentionally use their own smaller scale. */
+.specHighlights strong {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.specHighlights span {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.specsGrid,
+.costGrid {
+  align-items: start;
+}
+@media (min-width: 620px) {
+  .engineIdentity h3 {
+    margin: 100px 0 3px;
+  }
+}
+
+/* Balanced mobile badge cells: divider segments sit inside their own cells and
+   cannot join across the two rows. */
+@media (max-width: 620px) {
+  .copy h1 {
+    font-size: 40px;
+  }
+
+  .specsContainer h2,
+  .fitmentContainer h2,
+  .costSection h2,
+  .variantsSection h2,
+  .buyingSection h2,
+  .relatedSection h2,
+  .faqSection h2,
+  .trustCtaSection h2,
+  .failuresSection h2 {
+    font-size: 34px;
+  }
+
+  .description,
+  .sectionIntro,
+  .sectionIntroLight,
+  .fitmentIntro,
+  .specsIntro,
+  .labourCard > p,
+  .labourCopy > p,
+  .priceCallout p,
+  .variantCard > p,
+  .buyingCard p,
+  .relatedCard p,
+  .faqCard p,
+  .faqCard ul,
+  .ctaParagraph,
+  .fitmentNote p,
+  .specAside blockquote p,
+  .supplyStrip p,
+  .valueStrip p,
+  .failureDetail p,
+  .failureOnset {
+    font-size: 14px !important;
+  }
+
+  .pills,
+  .eyebrow,
+  .eyebrowLight,
+  .benefit,
+  .price span,
+  .relation,
+  .recommendedBadge,
+  .priceNotice,
+  .faqContact span,
+  .faqContact small,
+  .supplyStrip span,
+  .quoteNote,
+  .proofRow small,
+  .labourMetric small,
+  .variantMini,
+  .codeList span,
+  .engineIdentity strong,
+  .engineIdentity span,
+  .ctaBullets,
+  .ctaAction small {
+    font-size: 12px;
+  }
+
+  .costHeader,
+  .costRow,
+  .modelHeader,
+  .modelRow,
+  .specRow dt,
+  .specRow dd {
+    font-size: 12px;
+  }
+
+  .eyebrow,
+  .eyebrowLight {
+    min-height: 28px;
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 14px;
+    width: 100%;
+  }
+
+  .benefit,
+  .benefit + .benefit {
+    min-width: 0;
+    padding: 8px 5px;
+    border: 0;
+    white-space: normal;
+  }
+
+  .benefit > span {
+    min-width: 0;
+  }
+
+  .benefit:nth-child(even)::before,
+  .benefit:nth-child(n + 3)::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+  }
+
+  .benefit:nth-child(even)::before {
+    top: 17%;
+    bottom: 17%;
+    left: -7px;
+    width: 1px;
+    background: rgba(22, 73, 113, 0.25);
+  }
+
+  .benefit:nth-child(n + 3)::after {
+    top: -5px;
+    right: 11%;
+    left: 11%;
+    height: 1px;
+    background: rgba(22, 73, 113, 0.2);
+  }
+
+  .specHighlights strong {
+    font-size: 11px;
+  }
+
+  .specHighlights span {
+    font-size: 10px;
+  }
+}
+
+/* Known-problem reference details. */
+.failureHandwriting {
+  position: absolute;
+  top: 43px;
+  right: 6px;
+  z-index: 2;
+  margin: 0;
+  color: #e3f3ff;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.14;
+  text-align: center;
+  transform: rotate(-5deg);
+}
+
+.failureValue {
+  display: inline-flex;
+  margin: -3px 0 1px 31px;
+  color: black;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+/* Engine-identity and variant-card refinements. */
+.engineIdentity {
+  min-height: 330px;
+  padding: 218px 16px 16px;
+  justify-content: flex-start;
+}
+
+.engineIdentity img {
+  top: 30px;
+  height: 249px;
+  margin: 0;
+  transform: scale(1.08);
+}
+
+.variantMini,
+.codeList span {
+  font-size: 15px;
+  display: flex;
+  font-weight: 400;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.variantMini strong,
+.codeList strong {
+  font-size: 15px;
+}
+
+.codeList span {
+  min-width: 0;
+}
+
+.variantDarkImage {
+  width: 290px;
+  height: 300px;
+}
+
+@media (max-width: 620px) {
+  .engineIdentity {
+    min-height: 275px;
+    padding-top: 177px;
+  }
+
+  .engineIdentity img {
+    top: 15px;
+    height: 154px !important;
+  }
+
+  .variantMini,
+  .codeList span,
+  .variantMini strong,
+  .codeList strong {
+    font-size: 14px;
+  }
+
+  .variantDarkImage {
+    width: 250px;
+    height: 204px;
+  }
+
+  .failureHandwriting {
+    position: static;
+    margin: 9px 0 14px;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .failureValue {
+    margin-left: 30px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 720px) {
+  .copy h1 {
+    font-size: 40px;
+  }
+
+  .specsContainer h2,
+  .fitmentContainer h2,
+  .costSection h2,
+  .variantsSection h2,
+  .buyingSection h2,
+  .relatedSection h2,
+  .faqSection h2,
+  .trustCtaSection h2,
+  .failuresSection h2 {
+    font-size: 34px;
+  }
+
+  .description,
+  .sectionIntro,
+  .sectionIntroLight,
+  .fitmentIntro,
+  .specsIntro,
+  .labourCard > p,
+  .labourCopy > p,
+  .priceCallout p,
+  .variantCard > p,
+  .buyingCard p,
+  .relatedCard p,
+  .faqCard p,
+  .faqCard ul,
+  .ctaParagraph,
+  .fitmentNote p,
+  .specAside blockquote p,
+  .supplyStrip p,
+  .valueStrip p,
+  .failureDetail p,
+  .failureOnset,
+  .expandableCopy p {
+    font-size: 14px !important;
+  }
+}
+
+/* Shared measured-card behavior for Buying Guide and Related Engines. */
+.buyingCard,
+.relatedCard {
+  min-height: 312px;
+}
+
+.buyingCardContent,
+.expandableCopy {
+  min-width: 0;
+}
+
+.buyingCardContent {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.buyingCard .expandableCopy,
+.relatedCard .expandableCopy {
+  position: relative;
+}
+
+.expandableCopy p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+.expandableCopy {
+  position: relative;
+}
+
+.expandableCopy p {
+  margin: 6px 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.42;
+  color: #315679;
+}
+.relatedCard a,
+.relatedButtonDisabled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 21px;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.relatedCard a {
+  background: #f0f7fc;
+  color: #12395f;
+  border: 1px solid transparent;
+}
+
+.relatedButtonDisabled {
+  background: #f4f6f8;
+  color: #94a3b8;
+  border: 1px dashed #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.relatedButtonDisabled svg {
+  width: 14px;
+  height: 14px;
+  color: #94a3b8;
+}
+/* 6-line clamp */
+.clampSix {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+/* 4-line clamp for failure card details */
+.clampFour {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 4 !important;
+  overflow: hidden !important;
+  max-height: calc(15px * 1.42 * 4); /* ~85px strict limit */
+}
+
+.failureDetail .expandableCopy {
+  position: relative;
+  display: block;
+}
+
+/* Sits cleanly at the end of the 6th line */
+.expandInlineButton {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #b9d7e9;
+  border-radius: 50%;
+  background: #f3f9fd;
+  color: #0a5791;
+  cursor: pointer;
+  box-shadow: -10px 0 12px 6px #fff;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.expandInlineButton:hover {
+  background: #e2f1fc;
+}
+
+.expandInlineButton svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+/* Arrow flips up when expanded */
+.expandCopyButtonOpen svg {
+  transform: rotate(180deg);
+}
+
+.expandCopyButtonOpen {
+  position: static;
+  margin: 6px 0 0 auto;
+  box-shadow: none;
+}
+.expandCopyButton svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s ease;
+}
+
+.expandCopyButtonOpen svg {
+  transform: rotate(180deg);
+}
+
+.buyingCard a,
+.relatedCard a {
+  margin-top: auto;
+}
+
+.supplyStrip strong,
+.valueStrip strong {
+  font-size: 15px;
+}
+
+.valueStrip a {
+  font-size: 14px;
+}
+
+@media (max-width: 620px) {
+  .buyingCard,
+  .relatedCard {
+    min-height: 0;
+  }
+
+  .expandableCopy p,
+  .supplyStrip strong,
+  .valueStrip strong {
+    font-size: 14px;
+  }
+
+  .valueStrip a {
+    font-size: 13px;
+  }
+}
+
+/* Collapsible FAQ — questions remain visible while answers are opt-in. */
+.faqQuestion {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faqQuestion svg {
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  padding: 3px;
+  border-radius: 50%;
+  background: #e8f3fb;
+  color: #0d4f82;
+  transition: transform 0.2s ease;
+}
+
+.faqCardOpen .faqQuestion svg {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  overflow: hidden;
+  animation: faqReveal 0.2s ease-out;
+}
+
+.faqAnswer[hidden] {
+  display: none;
+}
+
+@keyframes faqReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================================
+   PROOF ROW (DESKTOP & MOBILE MATCHING TOP BADGES)
+   ========================================================= */
+
+/* Desktop layout: 4 equal columns with vertical dividers */
+.proofRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  align-items: center;
+  padding: 18px 0 0;
+  margin-top: 5px;
+  color: #254b74;
+}
+
+.proofItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 16px;
+  min-width: 0;
+}
+
+/* Desktop vertical divider between columns */
+.proofItem + .proofItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(22, 73, 113, 0.22);
+}
+
+.proofItem > svg {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  color: #154b7f;
+}
+
+.starIcon {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  color: #00a56a;
+}
+
+.proofItem > span:not(.starIcon) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.proofItem strong {
+  color: #12365f;
+  font-size: 13px !important;
+  font-weight: 700;
+  line-height: 1;
+  white-space: normal;
+}
+
+.proofItem small {
+  color: #254b74;
+  font-size: 13px !important;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+/* =========================================================
+   Mobile View (<= 720px): Exact same 2x2 grid & '+' dividers
+   ========================================================= */
+@media (max-width: 720px) {
+  .proofRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px 16px !important;
+    padding: 16px 4px 0 !important;
+  }
+
+  .proofItem {
+    padding: 6px 0 !important;
+    gap: 8px !important;
+  }
+
+  /* 1. Fully reset ALL desktop dividers */
+  .proofRow > div + div::before,
+  .proofItem + .proofItem::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* 2. Vertical divider down the center gap */
+  .proofItem:nth-child(even)::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    left: -8px !important;
+    top: 15% !important;
+    bottom: 15% !important;
+    width: 1px !important;
+    background: rgba(22, 73, 113, 0.22) !important;
+    pointer-events: none !important;
+  }
+
+  /* 3. Single, continuous horizontal divider rendered ONCE across the seam */
+  .proofItem:nth-child(n + 3)::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .proofItem:nth-child(3)::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: -6px !important;
+    left: 4% !important;
+    width: calc(200% + 16px - 8%) !important;
+    height: 1px !important;
+    background: rgba(22, 73, 113, 0.22) !important;
+    transform: scaleY(
+      0.7
+    ); /* Ensures true 1px physical hairline matching the vertical line */
+    pointer-events: none !important;
+  }
+
+  .proofItem > svg {
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .starIcon {
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+  }
+
+  .proofItem strong,
+  .proofItem small {
+    font-size: 12px !important;
+  }
+}
+/* =========================================================
+   CUSTOM THEMED SCROLLBAR (Model Table, Cost Table & Viewports)
+   ========================================================= */
+
+/* 1. Target all horizontal scroll containers */
+.modelTable,
+.costTable,
+.failureViewport,
+.buyingViewport,
+.relatedViewport {
+  /* Standard CSS (Firefox / modern browsers) */
+  scrollbar-width: thin;
+  scrollbar-color: #075b94 #eaf3fb;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 2. WebKit / Blink (Chrome, Safari, Edge, Mobile WebKit) */
+.modelTable::-webkit-scrollbar,
+.costTable::-webkit-scrollbar,
+.failureViewport::-webkit-scrollbar,
+.buyingViewport::-webkit-scrollbar,
+.relatedViewport::-webkit-scrollbar {
+  height: 6px; /* Height for horizontal scrollers */
+  width: 6px; /* Width for vertical scrollers if any */
+}
+
+/* Track styling: Soft light-blue matching the section backgrounds */
+.modelTable::-webkit-scrollbar-track,
+.costTable::-webkit-scrollbar-track,
+.failureViewport::-webkit-scrollbar-track,
+.buyingViewport::-webkit-scrollbar-track,
+.relatedViewport::-webkit-scrollbar-track {
+  background: #eaf3fb;
+  border-radius: 999px;
+  margin: 0 4px;
+}
+
+/* Thumb styling: Project theme linear-gradient */
+.modelTable::-webkit-scrollbar-thumb,
+.costTable::-webkit-scrollbar-thumb,
+.failureViewport::-webkit-scrollbar-thumb,
+.buyingViewport::-webkit-scrollbar-thumb,
+.relatedViewport::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #042f5a, #075b94);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Hover state on desktop / mouse interaction */
+.modelTable::-webkit-scrollbar-thumb:hover,
+.costTable::-webkit-scrollbar-thumb:hover,
+.failureViewport::-webkit-scrollbar-thumb:hover,
+.buyingViewport::-webkit-scrollbar-thumb:hover,
+.relatedViewport::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #063c70, #096fad);
 }

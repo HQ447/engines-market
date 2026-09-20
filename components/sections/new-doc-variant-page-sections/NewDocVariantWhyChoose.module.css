@@ -12,9 +12,10 @@
   z-index: -3;
   background: var(--why-background) center 54% / cover no-repeat;
   content: "";
-  opacity: 0.3;
-  filter: brightness(0.65) saturate(0.8) contrast(1.1);
+  opacity: 0.7; /* Increased from 0.3 */
+  filter: brightness(0.85) saturate(0.95) contrast(1.05); /* Brighter and clearer */
 }
+
 .section::after {
   position: absolute;
   inset: 0;
@@ -22,12 +23,16 @@
   background:
     linear-gradient(
       90deg,
-      rgba(2, 16, 31, 0.99) 0%,
-      rgba(3, 24, 44, 0.95) 49%,
-      rgba(4, 26, 47, 0.7) 72%,
-      rgba(3, 18, 32, 0.82) 100%
+      rgba(2, 16, 31, 0.92) 0%,
+      rgba(3, 24, 44, 0.82) 49%,
+      rgba(4, 26, 47, 0.52) 72%,
+      rgba(3, 18, 32, 0.7) 100%
     ),
-    radial-gradient(circle at 75% 48%, rgba(44, 145, 202, 0.2), transparent 34%);
+    radial-gradient(
+      circle at 75% 48%,
+      rgba(44, 145, 202, 0.24),
+      transparent 38%
+    );
   content: "";
 }
 .layout {
@@ -61,9 +66,7 @@
   letter-spacing: -0.052em;
   line-height: 1.02;
 }
-.copy h2 span {
-  display: block;
-}
+
 .copy h2 span:last-child {
   color: #009b58;
 }
@@ -94,9 +97,9 @@
 .visual img {
   position: absolute;
   right: -8%;
-  bottom: -18px;
+  bottom: -70px;
   z-index: 1;
-  width: min(116%, 670px);
+  width: min(104%, 670px);
   height: auto;
   filter: brightness(0.94) contrast(1.08)
     drop-shadow(0 24px 25px rgba(0, 0, 0, 0.46));
@@ -146,19 +149,24 @@
 .action {
   grid-area: action;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the shrink-wrapped button and note */
   text-align: center;
 }
+
 .action a {
-  display: flex;
-  min-height: 54px;
+  display: inline-flex;
+  width: auto; /* Shrinks width to fit text length */
+  max-width: max-content;
+  min-height: 46px; /* Reduced from 54px for a balanced proportion */
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
-  padding: 12px 18px;
+  padding: 10px 24px; /* Balanced side padding around text */
   border-radius: 8px;
   background: linear-gradient(110deg, #008c4d, #09ba66);
-  box-shadow: 0 13px 25px rgba(0, 149, 80, 0.24);
+  box-shadow: 0 10px 20px rgba(0, 149, 80, 0.24);
   color: #fff;
   font-size: 14px;
   font-weight: 750;
@@ -194,10 +202,17 @@
   .section::after {
     background: linear-gradient(
       180deg,
-      rgba(2, 16, 31, 0.97),
-      rgba(3, 24, 44, 0.9) 58%,
-      rgba(3, 18, 32, 0.88)
+      rgba(2, 16, 31, 0.88) 0%,
+      rgba(3, 24, 44, 0.76) 55%,
+      rgba(3, 18, 32, 0.82) 100%
     );
+  }
+
+  /* Keep the button fit-to-text on mobile rather than full width */
+  .action a {
+    width: auto;
+    min-height: 44px;
+    padding: 10px 22px;
   }
   .layout {
     grid-template-columns: 1fr;
@@ -234,8 +249,5 @@
   }
   .benefit strong {
     font-size: 13px;
-  }
-  .action a {
-    min-height: 50px;
   }
 }

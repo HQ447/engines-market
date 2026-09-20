@@ -1,4 +1,7 @@
-.section { padding: 30px 0 28px; background: #f7f8fb; }
+.section {
+  padding: 30px 0 28px;
+  background: #f7f8fb;
+}
 
 .grid {
   display: grid;
@@ -17,6 +20,40 @@
   perspective: 1100px;
   text-align: center;
 }
+/* 1. Increased icon size on desktop (76px -> 90px) */
+.icon {
+  display: grid;
+  width: 90px;
+  height: 90px;
+  place-items: center;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  background: transparent;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 2. Push "Learn more" and "Tap to return" to the bottom-right corner */
+.action {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end; /* Locks it to the right corner */
+  gap: 6px;
+  margin-top: auto;
+  color: #15803d;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* Optional: Slight height bump to comfortably fit the larger icon */
+.flipCard,
+.cardInner {
+  min-height: 265px; /* Increased from 252px */
+}
 
 .cardInner {
   position: relative;
@@ -28,7 +65,9 @@
   transform-style: preserve-3d;
 }
 
-.flipped .cardInner { transform: rotateY(180deg); }
+.flipped .cardInner {
+  transform: rotateY(180deg);
+}
 
 .face {
   position: absolute;
@@ -44,19 +83,89 @@
   backface-visibility: hidden;
 }
 
-.front { justify-content: flex-start; }
-.back { justify-content: center; background: linear-gradient(135deg, #062544, #0a416b); color: #fff; transform: rotateY(180deg); }
-.number { position: absolute; top: 16px; right: 18px; color: #b3c6d9; font-size: 1.55rem; font-weight: 800; line-height: 1; }
-.icon { display: grid; width: 76px; height: 76px; place-items: center; margin-bottom: 13px; border-radius: 14px; background: transparent; }
-.icon img { width: 100%; height: 100%; object-fit: contain; }
-.cardTitle { display: block; font-size: 22px; }
-.cardDescription { display: block; margin-top: 10px; }
-.back .cardTitle { color: #fff; }
-.back .cardDescription { color: #d7efff; }
-.backLabel { margin-bottom: 10px; color: #52d893; font-size: 0.83rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
-.action { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; color: #15803d; font-size: 13px; font-weight: 750; }
-.action svg { width: 16px; height: 16px; }
-.back .action { color: #52d893; }
+.front {
+  justify-content: flex-start;
+}
+.back {
+  justify-content: center;
+  background: #0d1b2e;
+  border: 1.5px solid #3b82f6;
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 1),
+    0 0 8px rgba(59, 130, 246, 0.5),
+    0 0 16px rgba(59, 130, 246, 0.38),
+    0 0 26px rgba(59, 130, 246, 0.24),
+    0 4px 12px rgba(42, 109, 214, 0.28);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+.number {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: #b3c6d9;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+}
 
-@media (max-width: 850px) { .grid { grid-template-columns: 1fr; } .flipCard, .cardInner { min-height: 252px; } }
-@media (max-width: 620px) { .section { padding: 26px 0; } .face { padding: 18px; } .flipCard, .cardInner { min-height: 250px; } .icon { width: 70px; height: 70px; } .cardTitle { font-size: 19px; } }
+.cardTitle {
+  display: block;
+  font-size: 22px;
+}
+.cardDescription {
+  display: block;
+  margin-top: 10px;
+}
+.back .cardTitle {
+  color: #fff;
+}
+.back .cardDescription {
+  color: #d7efff;
+}
+.backLabel {
+  margin-bottom: 10px;
+  color: #52d893;
+  font-size: 0.83rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.action svg {
+  width: 16px;
+  height: 16px;
+}
+.back .action {
+  color: #52d893;
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .flipCard,
+  .cardInner {
+    min-height: 252px;
+  }
+}
+@media (max-width: 620px) {
+  .section {
+    padding: 26px 0;
+  }
+  .face {
+    padding: 18px;
+  }
+  .flipCard,
+  .cardInner {
+    min-height: 260px; /* Increased from 250px */
+  }
+  /* Increased icon size on small screens (70px -> 84px) */
+  .icon {
+    width: 100px;
+    height: 90px;
+  }
+  .cardTitle {
+    font-size: 19px;
+  }
+}

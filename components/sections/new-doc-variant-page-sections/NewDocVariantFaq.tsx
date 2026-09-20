@@ -59,7 +59,10 @@ export default function NewDocVariantFaq({ data, vehicleImage }: Props) {
             const answerId = `variant-faq-answer-${index + 1}`;
 
             return (
-              <article className={`${styles.card} ${isOpen ? styles.open : ""}`} key={item.question}>
+              <article
+                className={`${styles.card} ${isOpen ? styles.open : ""}`}
+                key={item.question}
+              >
                 <button
                   className={styles.question}
                   type="button"
@@ -67,26 +70,35 @@ export default function NewDocVariantFaq({ data, vehicleImage }: Props) {
                   aria-controls={answerId}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
-                  <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
+                  <span className={styles.number}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <span>{item.question}</span>
-                  <span className={styles.toggle} aria-hidden="true">{isOpen ? <FiMinus /> : <FiPlus />}</span>
+                  <span className={styles.toggle} aria-hidden="true">
+                    {isOpen ? <FiMinus /> : <FiPlus />}
+                  </span>
                 </button>
 
-                <div className={styles.answerWrap} id={answerId} aria-hidden={!isOpen}>
+                <div
+                  className={styles.answerWrap}
+                  id={answerId}
+                  aria-hidden={!isOpen}
+                >
                   <div className={styles.answerOverflow}>
                     <div className={styles.answer}>
-                      <div className={styles.answerLead}>
-                        <span className={styles.answerIcon}><Icon /></span>
-                        <p>{item.answer}</p>
-                      </div>
+                      <p className={styles.answerText}>{item.answer}</p>
 
                       {item.highlights?.length ? (
-                        <div className={`${styles.detailStrip} ${item.highlights.length === 2 ? styles.twoColumns : ""}`}>
+                        <div
+                          className={`${styles.detailStrip} ${item.highlights.length === 2 ? styles.twoColumns : ""}`}
+                        >
                           {item.highlights.map((highlight) => (
                             <div key={highlight.label}>
                               <strong>{highlight.label}</strong>
                               <b>{highlight.value}</b>
-                              {highlight.detail ? <span>{highlight.detail}</span> : null}
+                              {highlight.detail ? (
+                                <span>{highlight.detail}</span>
+                              ) : null}
                             </div>
                           ))}
                         </div>
@@ -94,11 +106,19 @@ export default function NewDocVariantFaq({ data, vehicleImage }: Props) {
 
                       {item.bullets?.length ? (
                         <ul className={styles.bullets}>
-                          {item.bullets.map((bullet) => <li key={bullet}><FiCheck />{bullet}</li>)}
+                          {item.bullets.map((bullet) => (
+                            <li key={bullet}>
+                              <FiCheck />
+                              {bullet}
+                            </li>
+                          ))}
                         </ul>
                       ) : null}
 
-                      <a className={styles.cardCta} href="#quote">{item.cta}<FiArrowRight /></a>
+                      <a className={styles.cardCta} href="#quote">
+                        {item.cta}
+                        <FiArrowRight />
+                      </a>
                     </div>
                   </div>
                 </div>

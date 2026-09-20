@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   FiArrowRight,
@@ -10,6 +12,7 @@ import {
 import type { EngineVariantsSectionData } from "@/types/engine-page";
 import styles from "./NewDocEngine.module.css";
 import SectionHeading from "./SectionHeading";
+
 type Props = {
   data: EngineVariantsSectionData;
   engineCode: string;
@@ -40,6 +43,7 @@ export default function EngineVariants({
 }: Props) {
   const cards =
     data.cards ?? fallbackCards.map(([title, body]) => ({ title, body }));
+
   return (
     <section
       className={styles.variantsSection}
@@ -59,6 +63,7 @@ export default function EngineVariants({
         <p className={styles.sectionIntro}>
           {data.intro.split(" Where to find")[0]}
         </p>
+
         <div className={styles.variantGrid}>
           <article className={styles.engineIdentity}>
             {engineImage ? (
@@ -73,18 +78,26 @@ export default function EngineVariants({
             <strong>1.0-litre Turbo GDI</strong>
             <span>Part of SAIC&apos;s SGE family</span>
           </article>
+
           {cards.map((card, index) => {
             const Icon = [FiSearch, FiShuffle, FiTool][index] ?? FiInfo;
             return (
               <article
-                className={`${styles.variantCard} ${index === 2 ? styles.variantDarkCard : ""}`}
+                className={`${styles.variantCard} ${
+                  index === 2 ? styles.variantDarkCard : ""
+                }`}
                 key={card.title}
               >
-                <div className={styles.variantIcon}>
-                  <Icon />
+                {/* Icon and Title aligned on the same horizontal line & vertically centered */}
+                <div className={styles.variantHeading}>
+                  <div className={styles.variantIcon}>
+                    <Icon />
+                  </div>
+                  <h3>{card.title}</h3>
                 </div>
-                <h3>{card.title}</h3>
+
                 <p>{card.body}</p>
+
                 {index === 0 ? (
                   <div className={styles.variantMiniList}>
                     <div className={styles.variantMini}>
@@ -109,6 +122,7 @@ export default function EngineVariants({
                     </div>
                   </div>
                 ) : null}
+
                 {index === 1 ? (
                   <div className={styles.codeList}>
                     <span>
@@ -125,6 +139,7 @@ export default function EngineVariants({
                     </span>
                   </div>
                 ) : null}
+
                 {index === 2 && engineImage ? (
                   <Image
                     className={styles.variantDarkImage}
@@ -138,6 +153,7 @@ export default function EngineVariants({
             );
           })}
         </div>
+
         <div className={styles.variantClosing}>
           <FiInfo />
           <p>

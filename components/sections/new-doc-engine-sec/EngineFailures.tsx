@@ -1,22 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FiActivity,
   FiArrowRight,
   FiCheckCircle,
+  FiChevronDown,
   FiSettings,
   FiTool,
 } from "react-icons/fi";
 import type { EngineFailuresSectionData } from "@/types/engine-page";
 import styles from "./NewDocEngine.module.css";
 import SectionHeading from "./SectionHeading";
+
 type Props = {
   data: EngineFailuresSectionData;
   engineCode: string;
   backgroundImage?: string;
 };
+
 const fallbackImages = [
   "/case-studies/assets/borescope-valves-pistons.png",
   "/case-studies/assets/injector-carbon.png",
@@ -30,6 +33,126 @@ function ctaLabel(value: string) {
     .trim();
 }
 
+type FailureItem = EngineFailuresSectionData["items"][number];
+
+function FailureCardItem({
+  item,
+  index,
+}: {
+  item: FailureItem;
+  index: number;
+}) {
+  const image = item.image ?? fallbackImages[index % fallbackImages.length];
+  const titleParts = item.title.split(" - ");
+
+  // Independent state for "What happens"
+  const [expandWhat, setExpandWhat] = useState(false);
+  const [overflowWhat, setOverflowWhat] = useState(false);
+  const whatRef = useRef<HTMLParagraphElement | null>(null);
+
+  // Independent state for "Repair vs replace"
+  const [expandRepair, setExpandRepair] = useState(false);
+  const [overflowRepair, setOverflowRepair] = useState(false);
+  const repairRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      // 4 lines at 15px with 1.42 line-height is ~85px
+      if (whatRef.current) {
+        const wasClamped = whatRef.current.classList.contains(styles.clampFour);
+        if (wasClamped) whatRef.current.classList.remove(styles.clampFour);
+        setOverflowWhat(whatRef.current.scrollHeight > 88);
+        if (wasClamped) whatRef.current.classList.add(styles.clampFour);
+      }
+
+      if (repairRef.current) {
+        const wasClamped = repairRef.current.classList.contains(
+          styles.clampFour,
+        );
+        if (wasClamped) repairRef.current.classList.remove(styles.clampFour);
+        setOverflowRepair(repairRef.current.scrollHeight > 88);
+        if (wasClamped) repairRef.current.classList.add(styles.clampFour);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [item.whatHappens, item.repairVsReplace]);
+
+  return (
+    <article className={styles.failureCard}>
+      <div className={styles.failureImage}>
+        <Image src={image} alt="" fill sizes="(max-width: 760px) 100vw, 33vw" />
+        <span>{String(index + 1).padStart(2, "0")}</span>
+      </div>
+      <div className={styles.failureBody}>
+        <h3>{titleParts[0]}</h3>
+
+        <div className={styles.failureOnset}>
+          <FiActivity />
+          <span>
+            <strong>Typical onset</strong>
+            {item.onset.replace(/\s*\[PATTERN DATA.*$/, "")}
+          </span>
+        </div>
+
+        {/* What happens block */}
+        <div className={styles.failureDetail}>
+          <FiSettings />
+          <div className={styles.expandableCopy}>
+            <p
+              ref={whatRef}
+              className={!expandWhat ? styles.clampFour : undefined}
+            >
+              <strong>What happens</strong>
+              {item.whatHappens}
+            </p>
+            {overflowWhat && (
+              <button
+                type="button"
+                className={`${styles.expandInlineButton} ${
+                  expandWhat ? styles.expandCopyButtonOpen : ""
+                }`}
+                onClick={() => setExpandWhat((prev) => !prev)}
+                aria-label="Toggle full details for What happens"
+              >
+                <FiChevronDown aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Repair vs replace block */}
+        <div className={styles.failureDetail}>
+          <FiTool />
+          <div className={styles.expandableCopy}>
+            <p
+              ref={repairRef}
+              className={!expandRepair ? styles.clampFour : undefined}
+            >
+              <strong>Repair vs replace</strong>
+              {item.repairVsReplace}
+            </p>
+            {overflowRepair && (
+              <button
+                type="button"
+                className={`${styles.expandInlineButton} ${
+                  expandRepair ? styles.expandCopyButtonOpen : ""
+                }`}
+                onClick={() => setExpandRepair((prev) => !prev)}
+                aria-label="Toggle full details for Repair vs replace"
+              >
+                <FiChevronDown aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function EngineFailures({
   data,
   engineCode,
@@ -37,6 +160,7 @@ export default function EngineFailures({
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(3);
   const [offset, setOffset] = useState(0);
+
   useEffect(() => {
     const update = () =>
       setVisibleCount(
@@ -46,7 +170,9 @@ export default function EngineFailures({
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
   const maxOffset = Math.max(0, data.items.length - visibleCount);
+
   useEffect(
     () => setOffset((current) => Math.min(current, maxOffset)),
     [maxOffset],
@@ -65,11 +191,12 @@ export default function EngineFailures({
         <h2 id={`${engineCode.toLowerCase()}-failures-title`}>
           <SectionHeading title={data.title} accentFrom="What Actually Fails" />
         </h2>
-        {/* <p className={styles.sectionIntroLight}>
-          While the {engineCode} is generally a reliable and efficient engine,
-          there are some well-documented issues to be aware of, particularly
-          with its GDI system.
-        </p> */}
+        <p className={styles.failureHandwriting} aria-hidden="true">
+          Know the issues.
+          <br />
+          Drive with confidence.
+        </p>
+
         <div className={styles.sliderControls}>
           <button
             type="button"
@@ -90,6 +217,7 @@ export default function EngineFailures({
             <FiArrowRight />
           </button>
         </div>
+
         <div className={styles.failureViewport}>
           <div
             className={styles.failureTrack}
@@ -97,50 +225,16 @@ export default function EngineFailures({
               transform: `translateX(calc(-${offset} * (100% + 14px) / ${visibleCount}))`,
             }}
           >
-            {data.items.map((item, index) => {
-              const image =
-                item.image ?? fallbackImages[index % fallbackImages.length];
-              const titleParts = item.title.split(" - ");
-              return (
-                <article className={styles.failureCard} key={item.title}>
-                  <div className={styles.failureImage}>
-                    <Image
-                      src={image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 760px) 100vw, 33vw"
-                    />
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                  </div>
-                  <div className={styles.failureBody}>
-                    <h3>{titleParts[0]}</h3>
-                    <div className={styles.failureOnset}>
-                      <FiActivity />
-                      <span>
-                        <strong>Typical onset</strong>
-                        {item.onset.replace(/\s*\[PATTERN DATA.*$/, "")}
-                      </span>
-                    </div>
-                    <div className={styles.failureDetail}>
-                      <FiSettings />
-                      <p>
-                        <strong>What happens</strong>
-                        {item.whatHappens}
-                      </p>
-                    </div>
-                    <div className={styles.failureDetail}>
-                      <FiTool />
-                      <p>
-                        <strong>Repair vs replace</strong>
-                        {item.repairVsReplace}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+            {data.items.map((item, index) => (
+              <FailureCardItem
+                key={`${item.title}-${index}`}
+                item={item}
+                index={index}
+              />
+            ))}
           </div>
         </div>
+
         <div className={styles.failureFooter}>
           <div>
             <FiCheckCircle />
