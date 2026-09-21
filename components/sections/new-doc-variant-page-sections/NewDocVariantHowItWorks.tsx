@@ -9,7 +9,7 @@ import styles from "./NewDocVariantHowItWorks.module.css";
 
 type Props = { steps: VariantPreviewData["howItWorks"] };
 const icons = [
-  "/Home/reg-here.webp",
+  "/icons/engine-market/reg-here.webp",
   "/icons/engine-market/how-compare-prices-3d.png",
   "/icons/engine-market/how-choose-deal.png",
 ];
@@ -34,9 +34,10 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
         </p>
         <div className={styles.grid}>
           {steps.map((step, index) => {
-            const icon =
-              icons[index] ?? "/icons/engine-market/how-choose-deal.png";
+            const icon = icons[index] ?? "/icons/how-choose-deal.png";
             const isFlipped = flipped === step.number;
+            const isFirst = index === 0;
+
             return (
               <button
                 key={step.number}
@@ -46,10 +47,20 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                 onClick={() => setFlipped(isFlipped ? null : step.number)}
               >
                 <span className={styles.cardInner}>
+                  {/* FRONT */}
                   <span className={`${styles.face} ${styles.front}`}>
                     <span className={styles.number}>{step.number}</span>
-                    <span className={styles.icon} aria-hidden="true">
-                      <Image src={icon} alt="" width={92} height={92} />
+                    <span
+                      className={`${styles.icon} ${isFirst ? styles.iconFirst : ""}`}
+                      aria-hidden="true"
+                    >
+                      <Image
+                        src={icon}
+                        alt=""
+                        width={isFirst ? 120 : 92}
+                        height={isFirst ? 120 : 92}
+                        className={isFirst ? styles.imageFirst : undefined}
+                      />
                     </span>
                     <span className={`${shared.cardTitle} ${styles.cardTitle}`}>
                       {step.title}
@@ -63,15 +74,21 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                       Learn more <FiArrowRight />
                     </span>
                   </span>
+
+                  {/* BACK */}
                   <span className={`${styles.face} ${styles.back}`}>
-                    <span className={styles.backLabel}>Why this matters</span>
-                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>
-                      {step.title}
-                    </span>
-                    <span
-                      className={`${shared.cardDescription} ${styles.cardDescription}`}
-                    >
-                      {step.back}
+                    <span className={styles.backBody}>
+                      <span className={styles.backLabel}>Why this matters</span>
+                      <span
+                        className={`${shared.cardTitle} ${styles.cardTitle}`}
+                      >
+                        {step.title}
+                      </span>
+                      <span
+                        className={`${shared.cardDescription} ${styles.cardDescription}`}
+                      >
+                        {step.back}
+                      </span>
                     </span>
                     <span className={styles.action}>
                       Tap to return <FiArrowRight />

@@ -182,20 +182,20 @@ export const peugeot207HdiPreviewData: VariantPreviewData = {
       title: "Confirm your Peugeot 207 1.4 HDi",
       description:
         "Instantly verify your exact model, engine code (8HZ) and fuel type.",
-      back: "We cross-check your vehicle details against known 207 1.4 HDi engine codes before your request reaches a supplier — no paperwork, no guesswork and completely free.",
+      back: "EnginesMarket cross-checks the DVLA record against known Peugeot 207 1.4 HDi engine codes so your quote request is accurate before it reaches a supplier — no paperwork, no guesswork, 100% free. Whether you have the 68hp or 70hp 8HZ variant, we match you with the right specialists.",
     },
     {
       number: "02",
       title: "Compare specialist engine quotes",
       description:
         "See used, reconditioned and rebuilt 8HZ options side-by-side.",
-      back: "Receive transparent, itemised options for your exact diesel engine code. Compare condition, price, warranty and fitting support with no obligation.",
+      back: "Our UK network of Peugeot 207 1.4 HDi specialists sends you transparent, itemised quotes covering all condition types — no obligation, no hidden fees, just genuine prices for your exact diesel engine code.",
     },
     {
       number: "03",
       title: "Choose your specialist",
       description: "Book supply and fit with a minimum 12-month warranty.",
-      back: "Choose supply-only or nationwide supply and fit. Rebuilt engines include a minimum 12-month unlimited-mileage warranty for added confidence.",
+      back: "Every rebuilt Peugeot 207 1.4 HDi engine comes with a minimum 12‑month unlimited mileage warranty. Choose supply‑only or full supply & fit with nationwide delivery to your chosen garage.",
     },
   ],
   history: {

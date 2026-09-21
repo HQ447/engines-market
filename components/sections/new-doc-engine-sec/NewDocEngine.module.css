@@ -1106,7 +1106,7 @@
   grid-template-columns: 46px minmax(0, 1fr) 250px;
   gap: 14px;
   align-items: center;
-  margin-top: 18px;
+  /* margin-top: 18px; */
   padding: 18px 20px;
   border: 1px solid #d7e6f4;
   border-radius: 9px;
@@ -1245,7 +1245,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 7px;
-  margin: 0 0 8px;
+  /* margin: 0 0 8px; */
 }
 .sliderControls button {
   display: grid;
@@ -1617,31 +1617,56 @@
   gap: 7px;
   margin-top: 14px;
 }
-.codeList span {
-  display: inline;
-  grid-template-columns: 22px 2fr;
-  gap: 4px;
-  padding: 8px;
+
+.codeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 10px;
   border-radius: 7px;
   background: #eef7f8;
   color: #315679;
-  font-size: 10px;
+  align-items: center;
 }
-.codeList svg {
-  width: 20px;
-  display: inline !important;
-  height: 20px;
-  color: #18a861;
-}
-.codeList span + span {
+
+.codeItem + .codeItem {
   background: #f2f7fb;
 }
-.codeList span + span svg {
+
+.codeItem svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: #18a861;
+}
+
+.codeItem + .codeItem svg {
   color: #778da4;
 }
-.codeList strong {
+
+/* Container holding the stacked small title and content */
+.codeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.codeText strong {
+  display: block;
   color: #15395f;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.codeText span {
+  display: block;
+  color: #315679;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.35;
 }
 .variantClosing {
   display: grid;
@@ -2482,6 +2507,18 @@
   .costHeader svg {
     width: 15px;
     height: 15px;
+  }
+  .codeItem {
+    padding: 7px 8px;
+    gap: 8px;
+  }
+
+  .codeText strong {
+    font-size: 13px;
+  }
+
+  .codeText span {
+    font-size: 12px;
   }
 }
 

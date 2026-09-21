@@ -1,14 +1,14 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: 0px 0 32px;
+  padding: 25px 0px;
   background: linear-gradient(125deg, #f9fdff, #eaf6fd);
 }
 .introGrid {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
   gap: 18px;
-  align-items: end;
+  /* align-items: end; */
 }
 .mainGrid {
   display: grid;
@@ -77,7 +77,7 @@
 .engineVisual {
   position: relative;
   display: grid;
-  min-height: 230px;
+  /* min-height: 230px; */
   place-items: end center;
   overflow: hidden;
   border-radius: 13px;
@@ -102,7 +102,7 @@
   position: relative;
   z-index: 1;
   width: min(108%, 440px);
-  height: 227px;
+  height: 178px;
   object-fit: contain;
   filter: contrast(1.08) brightness(1.08)
     drop-shadow(0 17px 15px rgba(14, 56, 84, 0.28));

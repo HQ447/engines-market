@@ -125,21 +125,29 @@ export default function EngineVariants({
 
                 {index === 1 ? (
                   <div className={styles.codeList}>
-                    <span>
+                    <div className={styles.codeItem}>
                       <FiCheckCircle />
-                      <strong>10E4E</strong> Original engine code
-                    </span>
-                    <span>
+                      <div className={styles.codeText}>
+                        <strong>10E4E</strong>
+                        <span>Original engine code</span>
+                      </div>
+                    </div>
+                    <div className={styles.codeItem}>
                       <FiInfo />
-                      <strong>10E4F</strong> Later revision (2020+)
-                    </span>
-                    <span>
+                      <div className={styles.codeText}>
+                        <strong>10E4F</strong>
+                        <span>Later revision (2020+)</span>
+                      </div>
+                    </div>
+                    <div className={styles.codeItem}>
                       <FiInfo />
-                      <strong>10S4G</strong> Naturally aspirated
-                    </span>
+                      <div className={styles.codeText}>
+                        <strong>10S4G</strong>
+                        <span>Naturally aspirated</span>
+                      </div>
+                    </div>
                   </div>
                 ) : null}
-
                 {index === 2 && engineImage ? (
                   <Image
                     className={styles.variantDarkImage}

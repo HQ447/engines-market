@@ -111,18 +111,29 @@
   align-self: stretch;
 }
 .benefit {
+  position: relative;
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr);
   gap: 10px;
   align-items: start;
   padding: 6px 16px;
-  border-right: 1px solid rgba(154, 207, 238, 0.17);
+  /* Removed border-right */
 }
+
 .benefit:first-child {
   padding-left: 0;
 }
-.benefit:last-child {
-  border-right: 0;
+
+/* Vertical divider with reduced height */
+.benefit:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%; /* Adjust this percentage or use pixels (e.g., 32px) to control height */
+  background: rgba(154, 207, 238, 0.17);
+  content: "";
 }
 .benefit > svg {
   width: 30px;
@@ -192,7 +203,10 @@
   }
   .benefit {
     padding: 5px 0;
-    border-right: 0;
+  }
+
+  .benefit:not(:last-child)::after {
+    display: none; /* Hides divider on stacked screens */
   }
 }
 @media (max-width: 620px) {
