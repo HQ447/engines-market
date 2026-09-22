@@ -6,6 +6,7 @@ import QuoteCheckoutModal from "@/components/checkout/QuoteCheckoutModal";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { SITE_URL } from "@/lib/site";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,6 +38,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+                <Script
+          src="https://js.clickrank.ai/seo/de019d8b-2456-42e0-b196-442de9f3c54c/script"
+          strategy="afterInteractive"
+        />
+        </head>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <div className="flex min-h-screen flex-col">
           <Navbar />
