@@ -17,6 +17,17 @@ type Props = {
 
 type RelatedItem = EngineRelatedSectionData["items"][number];
 
+const buttonLabelWordLimit = 3;
+const titleWordLimit = 3;
+
+function getWordClampedLabel(label: string, wordLimit: number) {
+  const words = label.trim().split(/\s+/);
+
+  return words.length > wordLimit
+    ? `${words.slice(0, wordLimit).join(" ")}…`
+    : label;
+}
+
 function RelatedCardItem({
   item,
   engineImage,
@@ -57,7 +68,11 @@ function RelatedCardItem({
         <Image src={engineImage} alt="" width={108} height={84} />
       ) : null}
 
-      <h3>{item.code === "none" ? "None" : item.code}</h3>
+      <h3 title={item.code === "none" ? "None" : item.code}>
+        {item.code === "none"
+          ? "None"
+          : getWordClampedLabel(item.code, titleWordLimit)}
+      </h3>
       <strong>
         {item.code === "none"
           ? "First in UK range"
@@ -89,8 +104,13 @@ function RelatedCardItem({
       </div>
 
       {item.code !== "none" ? (
-        <Link href={item.href}>
-          View {item.code} <FiArrowRight />
+        <Link
+          href={item.href}
+          aria-label={`View ${item.code}`}
+          title={`View ${item.code}`}
+        >
+          View {getWordClampedLabel(item.code, buttonLabelWordLimit)}{" "}
+          <FiArrowRight />
         </Link>
       ) : (
         <button type="button" className={styles.relatedButtonDisabled} disabled>

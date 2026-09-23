@@ -45,7 +45,10 @@ export default function EngineCompatibility({
                   ? "/images/brands/mg/models/mg-3-model-card.png"
                   : "/images/brands/mg/models/mg-zs-model-card.png");
               return (
-                <div className={styles.modelRow} key={model.model}>
+                <div
+                  className={styles.modelRow}
+                  key={`${model.model}-${index}`}
+                >
                   <div className={styles.modelName}>
                     <Image
                       src={image}

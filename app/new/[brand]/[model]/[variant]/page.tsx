@@ -4,6 +4,7 @@ import NewDocVariantPage from "@/components/pages/NewDocVariantPage";
 import { getInternalLinkPlan } from "@/lib/internalLinkIndex";
 import { resolveModelImagePaths } from "@/lib/modelImageAssets";
 import { mapVariantPageDataToNewDocData } from "@/lib/newDocVariantPageData";
+import { resolveVariantHeroImageOverride } from "@/lib/variantHeroImageOverrides";
 import {
   getVariantPageData,
   getVariantPageStaticParams,
@@ -39,11 +40,22 @@ function getTestingAssetOverrides(
     modelName,
     configuredMainImage: sourceMainImage,
   }).resolvedMainImage;
-  const brandLogo = `/BrandsLogos/${brandSlug}-logo-small.webp.webp`;
+  const vehicle = resolveVariantHeroImageOverride({
+    brandSlug,
+    modelSlug,
+    resolvedImage: modelImage,
+  });
+  const previewBrandLogos: Record<string, string> = {
+    "mercedes-benz": "/BrandsLogos/mercedes-logo-small.webp.webp",
+    volkswagen: "/BrandsLogos/volkswagon-logo-small.webp.webp",
+    vw: "/BrandsLogos/volkswagon-logo-small.webp.webp",
+  };
+  const brandLogo =
+    previewBrandLogos[brandSlug] ?? `/BrandsLogos/${brandSlug}-logo-small.webp.webp`;
 
   return {
     heroBackground: `${previewAssetRoot}/hero-background.png`,
-    vehicle: modelImage || sourceMainImage,
+    vehicle,
     brandLogo,
     commonProblemsVehicle: `${previewAssetRoot}/common-problems-scene.png`,
     usedEngine: `${previewAssetRoot}/used-engine-cutout.png`,

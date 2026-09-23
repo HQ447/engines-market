@@ -7,6 +7,7 @@ import VariantHistoryTimelineSection from "@/components/sections/VariantHistoryT
 import VariantTrustCtaSection from "@/components/sections/VariantTrustCtaSection";
 import imageManifest from "@/lib/image-manifest.json";
 import { resolveModelImagePaths } from "@/lib/modelImageAssets";
+import { resolveVariantHeroImageOverride } from "@/lib/variantHeroImageOverrides";
 import { resolveVariantArtwork } from "@/lib/variantImageAssets";
 import type { VariantPageData } from "@/types/variant";
 
@@ -35,6 +36,11 @@ export default function DocumentVariantPage({ data }: DocumentVariantPageProps) 
     configuredCtaImage: data.assets.ctaImage,
   });
   const mainImage = resolvedImages.resolvedMainImage;
+  const heroVehicleImage = resolveVariantHeroImageOverride({
+    brandSlug: data.brand.slug,
+    modelSlug: data.model.slug,
+    resolvedImage: mainImage,
+  });
   const heroImage =
     [mainImage, resolvedImages.resolvedSmallImage, data.assets.heroBg, data.assets.mainImage].find(assetExists)
     ?? data.assets.heroBg
@@ -66,7 +72,7 @@ export default function DocumentVariantPage({ data }: DocumentVariantPageProps) 
       <VariantHeroSection
         data={data.sections.hero}
         backgroundArtwork={heroImage}
-        vehicleImage={mainImage || heroImage}
+        vehicleImage={heroVehicleImage}
       />
 
       <HowItWorksSection

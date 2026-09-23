@@ -20,6 +20,92 @@ type Props = {
   backgroundImage?: string;
 };
 
+const ctaWordLimit = 4;
+
+function getShortCtaLabel(label: string) {
+  const words = label.trim().split(/\s+/);
+
+  return words.length > ctaWordLimit
+    ? `${words.slice(0, ctaWordLimit).join(" ")}…`
+    : label;
+}
+
+function ExpandableValueNote({ note }: { note: string }) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const noteRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const updateViewport = () => setIsMobile(window.innerWidth <= 620);
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
+  useEffect(() => {
+    const noteElement = noteRef.current;
+    if (!noteElement || !isMobile) {
+      setHasOverflow(false);
+      return;
+    }
+
+    const checkOverflow = () => {
+      const computed = window.getComputedStyle(noteElement);
+      const lineHeight = parseFloat(computed.lineHeight);
+      const fontSize = parseFloat(computed.fontSize);
+      const effectiveLineHeight = Number.isNaN(lineHeight)
+        ? fontSize * 1.35
+        : lineHeight;
+
+      noteElement.classList.remove(styles.clampValueNote);
+      const fullHeight = noteElement.scrollHeight;
+      noteElement.classList.toggle(styles.clampValueNote, !isExpanded);
+
+      setHasOverflow(fullHeight > effectiveLineHeight * 6 + 2);
+    };
+
+    checkOverflow();
+
+    window.addEventListener("resize", checkOverflow);
+    if (document.fonts) {
+      document.fonts.ready.then(checkOverflow);
+    }
+
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [isExpanded, isMobile, note]);
+
+  return (
+    <div className={styles.valueNoteCopy}>
+      <p
+        ref={noteRef}
+        className={isMobile && !isExpanded ? styles.clampValueNote : undefined}
+      >
+        <strong>Vehicle value considerations</strong>
+        {note}
+      </p>
+      {isMobile && hasOverflow ? (
+        <button
+          type="button"
+          className={`${styles.expandInlineButton} ${
+            isExpanded ? styles.expandCopyButtonOpen : ""
+          }`}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+          aria-expanded={isExpanded}
+          aria-label={
+            isExpanded
+              ? "Show less vehicle value information"
+              : "Show more vehicle value information"
+          }
+        >
+          <FiChevronDown aria-hidden="true" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export default function EngineBuyingGuide({
   data,
   engineCode,
@@ -182,12 +268,9 @@ export default function EngineBuyingGuide({
 
         <div className={styles.valueStrip}>
           <FiTool />
-          <p>
-            <strong>Vehicle value considerations</strong>
-            {data.vehicleValueNote}
-          </p>
-          <a href="#quote-form">
-            {data.cta} <FiArrowRight />
+          <ExpandableValueNote note={data.vehicleValueNote} />
+          <a href="#quote-form" aria-label={data.cta} title={data.cta}>
+            {getShortCtaLabel(data.cta)} <FiArrowRight />
           </a>
         </div>
       </div>

@@ -36,7 +36,77 @@
   z-index: 1;
   padding: 2px 0 0;
 }
+.variantExpandableWrapper {
+  position: relative;
+  display: block;
+  margin: 5px 0;
+}
 
+.variantParagraph {
+  margin: 0;
+  color: #315679;
+  font-size: 15px;
+  line-height: 1.42;
+}
+
+/* 10-line clamp */
+.clampTen {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 10 !important;
+  overflow: hidden !important;
+}
+
+.expandVariantButton {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #b9d7e9;
+  border-radius: 50%;
+  background: #f3f9fd;
+  color: #0a5791;
+  cursor: pointer;
+  box-shadow: -8px 0 10px 4px rgba(255, 255, 255, 0.95);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  z-index: 2;
+}
+
+.expandVariantButton:hover {
+  background: #e2f1fc;
+}
+
+.expandVariantButton svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.expandVariantButtonOpen {
+  box-shadow: none;
+}
+
+.expandVariantButtonOpen svg {
+  transform: rotate(180deg);
+}
+
+.variantDarkCard .variantParagraph {
+  color: #edf7ff;
+}
+
+.variantDarkCard .expandVariantButton {
+  background: #0d385e;
+  border-color: #235882;
+  color: #61c6ff;
+  box-shadow: -8px 0 10px 4px #071d35;
+}
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -1937,6 +2007,10 @@
   color: #0d3158;
   font-size: 25px;
   font-weight: 900;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .relatedCard > strong {
   color: #234c73;
@@ -3717,6 +3791,30 @@
 
 .valueStrip a {
   font-size: 14px;
+}
+
+.valueNoteCopy {
+  min-width: 0;
+}
+
+@media (max-width: 620px) {
+  .valueNoteCopy {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .clampValueNote {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+  }
+
+  .valueNoteCopy .expandInlineButton {
+    background: #f2f8fd;
+    box-shadow: -10px 0 12px 6px #f2f8fd;
+  }
 }
 
 @media (max-width: 620px) {

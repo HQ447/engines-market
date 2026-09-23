@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   FiArrowRight,
   FiCheckCircle,
+  FiChevronDown,
   FiInfo,
   FiSearch,
   FiShuffle,
@@ -34,6 +36,135 @@ const fallbackCards = [
     "A later revision may physically fit but can cause injector timing mismatches or emissions test failures. Always match the exact suffix when buying a replacement.",
   ],
 ];
+function ExpandableVariantText({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) {
+  const [isClamped, setIsClamped] = useState(true);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const [iconPosition, setIconPosition] = useState<{
+    left: number;
+    top: number;
+  } | null>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    const checkOverflow = () => {
+      // 1. Get computed line-height
+      const computed = window.getComputedStyle(el);
+      let lh = parseFloat(computed.lineHeight);
+      if (isNaN(lh)) {
+        // Fallback: font-size * 1.42
+        lh = parseFloat(computed.fontSize) * 1.42;
+      }
+
+      // Max allowable height for 10 lines (+2px buffer for subpixel rounding)
+      const maxHeightFor10Lines = lh * 10 + 2;
+
+      // 2. Temporarily unclamp to get real natural scroll height
+      const currentClamp = el.style.webkitLineClamp;
+      const currentDisplay = el.style.display;
+      el.style.webkitLineClamp = "unset";
+      el.style.display = "block";
+
+      const fullHeight = el.scrollHeight;
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const lineRects = Array.from(range.getClientRects()).reduce<DOMRect[]>(
+        (lines, rect) => {
+          const previousLine = lines.at(-1);
+
+          if (!previousLine || Math.abs(previousLine.top - rect.top) > 1) {
+            lines.push(rect);
+          }
+
+          return lines;
+        },
+        [],
+      );
+
+      // Restore styling
+      el.style.webkitLineClamp = currentClamp;
+      el.style.display = currentDisplay;
+
+      const overflows = fullHeight > maxHeightFor10Lines;
+      setHasOverflow(overflows);
+
+      const wrapper = wrapperRef.current;
+      const lastVisibleLine = lineRects[isClamped ? 9 : lineRects.length - 1];
+      if (overflows && wrapper && lastVisibleLine) {
+        const wrapperRect = wrapper.getBoundingClientRect();
+        setIconPosition({
+          left: Math.min(
+            lastVisibleLine.right - wrapperRect.left + 4,
+            wrapperRect.width - 24,
+          ),
+          top:
+            lastVisibleLine.top -
+            wrapperRect.top +
+            (lastVisibleLine.height - 24) / 2,
+        });
+      } else {
+        setIconPosition(null);
+      }
+    };
+
+    checkOverflow();
+
+    if (typeof document !== "undefined" && document.fonts) {
+      document.fonts.ready.then(checkOverflow);
+    }
+
+    const observer = new ResizeObserver(() => checkOverflow());
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [isClamped, text]);
+
+  return (
+    <div ref={wrapperRef} className={styles.variantExpandableWrapper}>
+      <p
+        ref={textRef}
+        className={`${styles.variantParagraph} ${className} ${
+          isClamped ? styles.clampTen : ""
+        }`}
+      >
+        {text}
+      </p>
+
+      {hasOverflow && (
+        <button
+          type="button"
+          className={`${styles.expandVariantButton} ${
+            !isClamped ? styles.expandVariantButtonOpen : ""
+          }`}
+          onClick={() => setIsClamped((prev) => !prev)}
+          aria-expanded={!isClamped}
+          aria-label={isClamped ? "Show more text" : "Show less text"}
+          style={
+            iconPosition
+              ? {
+                  left: `${iconPosition.left}px`,
+                  top: `${iconPosition.top}px`,
+                  right: "auto",
+                  bottom: "auto",
+                }
+              : undefined
+          }
+        >
+          <FiChevronDown />
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function EngineVariants({
   data,
@@ -60,9 +191,10 @@ export default function EngineVariants({
             accentFrom={`You Have the ${engineCode}`}
           />
         </h2>
-        <p className={styles.sectionIntro}>
-          {data.intro.split(" Where to find")[0]}
-        </p>
+        <ExpandableVariantText
+          text={data.intro.split(" Where to find")[0]}
+          className={styles.sectionIntro}
+        />
 
         <div className={styles.variantGrid}>
           <article className={styles.engineIdentity}>
@@ -88,7 +220,6 @@ export default function EngineVariants({
                 }`}
                 key={card.title}
               >
-                {/* Icon and Title aligned on the same horizontal line & vertically centered */}
                 <div className={styles.variantHeading}>
                   <div className={styles.variantIcon}>
                     <Icon />
@@ -96,7 +227,7 @@ export default function EngineVariants({
                   <h3>{card.title}</h3>
                 </div>
 
-                <p>{card.body}</p>
+                <ExpandableVariantText text={card.body} />
 
                 {index === 0 ? (
                   <div className={styles.variantMiniList}>
