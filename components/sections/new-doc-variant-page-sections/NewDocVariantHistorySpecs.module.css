@@ -43,8 +43,8 @@
   width: min(260%, 840px);
   max-width: none;
   height: auto;
-  max-height: 360px;
-  transform: translateX(-2%);
+  max-height: 280px;
+  transform: translateX(7%);
   object-fit: contain;
   object-position: 50% 88%;
   filter: drop-shadow(0 20px 21px rgba(22, 61, 92, 0.25));
@@ -129,20 +129,41 @@
 }
 
 .timeline {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: flex; /* Switched to flex to enforce a single horizontal row */
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Enables horizontal scrolling when items overflow */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #087bb9 #edf7fd;
   gap: 0;
   margin: 13px 0 0;
-  padding: 14px 10px;
+  padding: 24px 10px 14px; /* Added extra top padding so circle icons don't get clipped */
   border: 1px solid #d6e9f7;
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.75);
   list-style: none;
 }
+
+/* Custom scrollbar styling for Chrome/Safari/Edge */
+.timeline::-webkit-scrollbar {
+  height: 6px;
+}
+.timeline::-webkit-scrollbar-track {
+  background: #edf7fd;
+  border-radius: 999px;
+  margin: 0 8px;
+}
+.timeline::-webkit-scrollbar-thumb {
+  background: #087bb9;
+  border-radius: 999px;
+}
+
 .timeline li {
   position: relative;
-  min-width: 0;
-  padding: 0 13px;
+  flex: 0 0 240px; /* Locks each card to a fixed min-width so they slide rather than squish */
+  min-width: 240px;
+  padding: 0 16px;
   text-align: center;
 }
 .timeline li + li {
@@ -153,7 +174,7 @@
   width: 25px;
   height: 25px;
   place-items: center;
-  margin: -26px auto 6px;
+  margin: -15px auto 6px;
   border: 3px solid #edf7fd;
   border-radius: 50%;
   background: #087bb9;
@@ -287,19 +308,14 @@
     font-size: 13px;
   }
 
-  .timeline {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 12px 14px;
-  }
-
   .timeline li {
-    display: grid;
-    grid-template-columns: 30px 64px 1fr;
-    gap: 6px;
-    align-items: start;
-    padding: 10px 0;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically */
+    text-align: center; /* Centers text inside */
+    padding: 14px 8px;
+    min-width: 0;
   }
 
   .timeline li + li {
@@ -308,20 +324,23 @@
   }
 
   .timeline li span {
-    width: 24px;
-    height: 24px;
-    margin: 0;
+    width: 26px;
+    height: 26px;
+    margin: 0 0 8px 0; /* Sits cleanly on line 1 */
   }
 
   .timeline strong {
-    padding-top: 3px;
-    font-size: 13px;
+    display: block;
+    margin-bottom: 5px; /* Sits cleanly on line 2 */
+    font-size: 14px;
+    text-align: center;
   }
 
   .timeline p {
-    grid-column: 2 / -1;
-    margin: 0;
+    margin: 0; /* Sits cleanly on line 3 */
     font-size: 13px;
+    text-align: center;
+    max-width: 420px; /* Keeps paragraph readable */
   }
 
   .closing {

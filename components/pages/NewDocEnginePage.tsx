@@ -12,9 +12,13 @@ import EngineVariants from "../sections/new-doc-engine-sec/EngineVariants";
 
 type Props = {
   data: EnginePageData;
+  trustBackgroundImage?: string;
 };
 
-export default function NewDocEnginePage({ data }: Props) {
+export default function NewDocEnginePage({ data, trustBackgroundImage }: Props) {
+  const engineVisual =
+    data.sections.hero.engineCutout?.src ?? data.sections.hero.engineImage.src;
+
   return (
     <>
       <EngineHero data={data.sections.hero} engineCode={data.engine.code} />
@@ -22,17 +26,24 @@ export default function NewDocEnginePage({ data }: Props) {
         data={data.sections.specs}
         engineCode={data.engine.code}
         brandName={data.brand.name}
-        engineImage={data.sections.hero.engineImage}
+        engineImage={{
+          ...data.sections.hero.engineImage,
+          src: engineVisual,
+        }}
         compatibility={data.sections.compatibility}
       />
       <EngineCompatibility data={data.sections.compatibility} engineCode={data.engine.code} brandName={data.brand.name} />
       <EngineCostGuide data={data.sections.costGuide} engineCode={data.engine.code} image={data.sections.costGuide.image} />
-      <EngineFailures data={data.sections.failures} engineCode={data.engine.code} backgroundImage={data.sections.hero.engineCutout?.src} />
-      <EngineVariants data={data.sections.variants} engineCode={data.engine.code} engineImage={data.sections.hero.engineCutout?.src} backgroundImage={data.sections.hero.engineCutout?.src} />
-      <EngineBuyingGuide data={data.sections.buyingGuide} engineCode={data.engine.code} engineImage={data.sections.hero.engineCutout?.src} backgroundImage={data.sections.hero.backgroundImage?.src} />
-      <EngineRelated data={data.sections.related} engineCode={data.engine.code} engineImage={data.sections.hero.engineCutout?.src} backgroundImage={data.sections.hero.engineCutout?.src} />
+      <EngineFailures data={data.sections.failures} engineCode={data.engine.code} backgroundImage={engineVisual} />
+      <EngineVariants data={data.sections.variants} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={engineVisual} />
+      <EngineBuyingGuide data={data.sections.buyingGuide} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={data.sections.hero.backgroundImage?.src} />
+      <EngineRelated data={data.sections.related} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={engineVisual} />
       <EngineFaq data={data.sections.faq} engineCode={data.engine.code} />
-      <EngineTrustCta data={data.sections.trustCta} engineCode={data.engine.code} backgroundImage="/images/brands/mg/brand/mg-live-market-bg.png" />
+      <EngineTrustCta
+        data={data.sections.trustCta}
+        engineCode={data.engine.code}
+        backgroundImage={trustBackgroundImage}
+      />
     </>
   );
 }

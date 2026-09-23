@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import {
   FiArrowRight,
@@ -7,12 +10,12 @@ import {
   FiTruck,
   FiUsers,
 } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantHero.module.css";
 
 type Props = Pick<
-  VariantPreviewData,
+  NewDocVariantData,
   "brand" | "model" | "variant" | "engineCode" | "images" | "hero"
 >;
 
@@ -22,9 +25,17 @@ export default function NewDocVariantHero({
   brand,
   model,
   variant,
+  engineCode,
   images,
   hero,
 }: Props) {
+  const [showFullPrice, setShowFullPrice] = useState(false);
+  const isLongPrice = hero.price.range.length > 16;
+  const displayedPrice =
+    !showFullPrice && isLongPrice
+      ? `${hero.price.range.slice(0, 16)}...`
+      : hero.price.range;
+
   const ticker = [
     ...hero.tickerItems,
     ...hero.tickerItems,
@@ -64,19 +75,55 @@ export default function NewDocVariantHero({
           </div>
 
           <div className={styles.priceAnchor}>
-            <div>
-              <strong>{hero.price.engineName}</strong>
-              <span>
-                from <b>{hero.price.range}</b>
-              </span>
+            <div className={styles.priceMain}>
+              <span className={styles.enginePill}>{hero.price.engineName}</span>
+              <div className={styles.priceBlock}>
+                <span className={styles.fromLabel}>from</span>
+                <b
+                  onClick={() =>
+                    isLongPrice && setShowFullPrice((prev) => !prev)
+                  }
+                  className={`${styles.priceValue} ${isLongPrice ? styles.clickablePrice : ""}`}
+                  title={
+                    isLongPrice
+                      ? showFullPrice
+                        ? "Click to collapse"
+                        : "Click to view full price"
+                      : undefined
+                  }
+                >
+                  {displayedPrice}
+                </b>
+              </div>
             </div>
-            <ul>
-              {hero.price.details.map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
+
+            <ul className={styles.detailsList}>
+              {hero.price.details.map((detail) => {
+                // Splits "Used from £800" or "Common codes: DW12, 224DT" into Title & Subtitle
+                let title = detail;
+                let subtitle = "";
+
+                if (detail.includes(" from ")) {
+                  const [t, s] = detail.split(" from ");
+                  title = t.trim();
+                  subtitle = `from ${s.trim()}`;
+                } else if (detail.includes(":")) {
+                  const [t, s] = detail.split(":");
+                  title = t.trim();
+                  subtitle = s.trim();
+                }
+
+                return (
+                  <li key={detail} className={styles.detailCard}>
+                    <span className={styles.detailTitle}>{title}</span>
+                    {subtitle && (
+                      <span className={styles.detailSub}>{subtitle}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
-
           <div className={styles.optionCardsWrap}>
             <div className={styles.optionCards}>
               {hero.options.map((option) => (
@@ -84,6 +131,10 @@ export default function NewDocVariantHero({
                   key={option.description}
                   className={styles.optionCard}
                   href={option.href}
+                  data-quote-trigger="true"
+                  data-quote-context={option.description}
+                  data-quote-source="new-variant-engine-option"
+                  data-quote-engine-code={engineCode}
                 >
                   <span className={styles.optionImageArea}>
                     <Image
@@ -120,7 +171,7 @@ export default function NewDocVariantHero({
           />
         </div>
 
-        <form className={styles.quoteCard} id="quote">
+        <form className={styles.quoteCard} id="quote-form">
           <h2>
             Get your free {brand} {model} {variant} engine quotes
           </h2>
@@ -131,10 +182,18 @@ export default function NewDocVariantHero({
             <span aria-hidden="true">🇬🇧 GB</span>
             <input
               id="variant-registration"
+              name="reg"
+              aria-label="Vehicle registration"
               placeholder="Enter your reg — e.g. AB12 CDE"
             />
           </div>
-          <button type="submit">
+          <button
+            type="button"
+            data-quote-trigger="true"
+            data-quote-context={`Get your free ${brand} ${model} ${variant} engine quotes`}
+            data-quote-source="new-variant-hero"
+            data-quote-engine-code={engineCode}
+          >
             {hero.cta} <FiArrowRight />
           </button>
           <p>

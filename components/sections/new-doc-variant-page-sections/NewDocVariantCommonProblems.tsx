@@ -13,12 +13,12 @@ import {
   FiTruck,
 } from "react-icons/fi";
 
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantCommonProblems.module.css";
 
 type Props = {
-  data: VariantPreviewData["commonProblems"];
+  data: NewDocVariantData["commonProblems"];
   backgroundImage: string;
 };
 
@@ -280,7 +280,12 @@ export default function NewDocVariantCommonProblems({
                       }
                     />
                   </div>
-                  <a href="#quote">
+                  <a
+                    href="#quote-form"
+                    data-quote-trigger="true"
+                    data-quote-context={card.cta}
+                    data-quote-source="new-variant-common-problems"
+                  >
                     {card.cta}
                     <FiArrowRight />
                   </a>
@@ -302,7 +307,12 @@ export default function NewDocVariantCommonProblems({
             <h3>{data.closingCta.title}</h3>
             <p>{data.closingCta.description}</p>
           </div>
-          <a href="#quote">
+          <a
+            href="#quote-form"
+            data-quote-trigger="true"
+            data-quote-context={data.closingCta.cta}
+            data-quote-source="new-variant-common-problems-closing"
+          >
             {data.closingCta.cta}
             <FiArrowRight />
           </a>

@@ -14,12 +14,12 @@ import {
   FiPlus,
   FiSettings,
 } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantFaq.module.css";
 
 type Props = {
-  data: VariantPreviewData["faq"];
+  data: NewDocVariantData["faq"];
   vehicleImage: string;
 };
 
@@ -115,7 +115,13 @@ export default function NewDocVariantFaq({ data, vehicleImage }: Props) {
                         </ul>
                       ) : null}
 
-                      <a className={styles.cardCta} href="#quote">
+                      <a
+                        className={styles.cardCta}
+                        href="#quote-form"
+                        data-quote-trigger="true"
+                        data-quote-context={item.cta}
+                        data-quote-source="new-variant-faq"
+                      >
                         {item.cta}
                         <FiArrowRight />
                       </a>

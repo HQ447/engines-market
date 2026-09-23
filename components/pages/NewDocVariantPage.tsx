@@ -1,4 +1,4 @@
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import NewDocVariantCommonProblems from "@/components/sections/new-doc-variant-page-sections/NewDocVariantCommonProblems";
 import NewDocVariantEngineCode from "@/components/sections/new-doc-variant-page-sections/NewDocVariantEngineCode";
 import NewDocVariantHero from "@/components/sections/new-doc-variant-page-sections/NewDocVariantHero";
@@ -7,7 +7,7 @@ import NewDocVariantHowItWorks from "@/components/sections/new-doc-variant-page-
 import NewDocVariantFaq from "@/components/sections/new-doc-variant-page-sections/NewDocVariantFaq";
 import NewDocVariantWhyChoose from "@/components/sections/new-doc-variant-page-sections/NewDocVariantWhyChoose";
 
-type Props = { data: VariantPreviewData };
+type Props = { data: NewDocVariantData };
 
 export default function NewDocVariantPage({ data }: Props) {
   return (

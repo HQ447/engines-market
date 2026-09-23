@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { FiActivity, FiCpu } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantHistorySpecs.module.css";
 
-type Props = { history: VariantPreviewData["history"]; vehicleImage: string };
+type Props = { history: NewDocVariantData["history"]; vehicleImage: string };
 
 export default function NewDocVariantHistorySpecs({ history, vehicleImage }: Props) {
   return (

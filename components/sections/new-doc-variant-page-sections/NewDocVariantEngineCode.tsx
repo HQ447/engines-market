@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { FiArrowRight, FiInfo, FiSettings } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantEngineCode.module.css";
 
-type Props = { data: VariantPreviewData["engineGuide"]; engineImage: string };
+type Props = { data: NewDocVariantData["engineGuide"]; engineImage: string };
 
 export default function NewDocVariantEngineCode({ data, engineImage }: Props) {
   return (
@@ -43,7 +43,15 @@ export default function NewDocVariantEngineCode({ data, engineImage }: Props) {
 
         <div className={styles.actionRow}>
           <p><FiInfo /><span><strong>Can’t find your exact engine code?</strong>{data.closing}</span></p>
-          <a className={shared.button} href="#quote">{data.cta}<FiArrowRight /></a>
+          <a
+            className={shared.button}
+            href="#quote-form"
+            data-quote-trigger="true"
+            data-quote-context={data.cta}
+            data-quote-source="new-variant-engine-code"
+          >
+            {data.cta}<FiArrowRight />
+          </a>
         </div>
       </div>
     </section>

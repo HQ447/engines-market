@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantHowItWorks.module.css";
 
-type Props = { steps: VariantPreviewData["howItWorks"] };
+type Props = { steps: NewDocVariantData["howItWorks"] };
 const icons = [
   "/icons/engine-market/reg-here.webp",
   "/icons/engine-market/how-compare-prices-3d.png",

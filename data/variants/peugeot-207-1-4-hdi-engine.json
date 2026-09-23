@@ -23,7 +23,17 @@
     "smallImage": "/images/brands/peugeot/models/peugeot-207-model-card.png",
     "heroBg": "/images/brands/peugeot/models/peugeot-207-model-card.png",
     "howItWorksBg": "/images/brands/peugeot/brand/peugeot-how-it-works-bg.webp",
-    "ctaImage": "/images/brands/peugeot/models/peugeot-207-model-card.png"
+    "ctaImage": "/images/brands/peugeot/models/peugeot-207-model-card.png",
+    "newDocImages": {
+      "heroBackground": "/images/variant-preview/peugeot-207-1-4-hdi/hero-background.png",
+      "vehicle": "/images/variant-preview/peugeot-207-1-4-hdi/peugeot-207.png",
+      "brandLogo": "/images/variant-preview/peugeot-207-1-4-hdi/peugeot-logo.png",
+      "commonProblemsVehicle": "/images/variant-preview/peugeot-207-1-4-hdi/common-problems-scene.png",
+      "usedEngine": "/images/variant-preview/peugeot-207-1-4-hdi/used-engine.png",
+      "reconditionedEngine": "/images/variant-preview/peugeot-207-1-4-hdi/reconditioned-engine.png",
+      "rebuiltEngine": "/images/variant-preview/peugeot-207-1-4-hdi/rebuilt-engine.png",
+      "heroEngine": "/images/variant-preview/peugeot-207-1-4-hdi/engine-cutout.png"
+    }
   },
   "structuredData": {
     "@context": "https://schema.org",

@@ -1,13 +1,41 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import NewDocVariantPage from "@/components/pages/NewDocVariantPage";
-import { peugeot207HdiPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import { mapVariantPageDataToNewDocData } from "@/lib/newDocVariantPageData";
+import { getVariantPageData } from "@/lib/variantPageData";
 
-export const metadata: Metadata = {
-  title: "Peugeot 207 1.4 HDi Engine Replacement | Preview",
-  description: "Preview of the new Peugeot 207 1.4 HDi Variant Landing Page.",
-  robots: { index: false, follow: false },
-};
+const sourceRoute = {
+  brand: "peugeot",
+  model: "207",
+  variant: "1-4-hdi-engine",
+} as const;
 
-export default function Peugeot207PreviewPage() {
-  return <NewDocVariantPage data={peugeot207HdiPreviewData} />;
+export async function generateMetadata(): Promise<Metadata> {
+  const sourceData = await getVariantPageData(
+    sourceRoute.brand,
+    sourceRoute.model,
+    sourceRoute.variant,
+  );
+
+  return {
+    title: sourceData?.seo.title || "Peugeot 207 1.4 HDi Engine Replacement | Preview",
+    description:
+      sourceData?.seo.description ||
+      "Preview of the new Peugeot 207 1.4 HDi Variant Landing Page.",
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function Peugeot207PreviewPage() {
+  const sourceData = await getVariantPageData(
+    sourceRoute.brand,
+    sourceRoute.model,
+    sourceRoute.variant,
+  );
+
+  if (!sourceData) {
+    notFound();
+  }
+
+  return <NewDocVariantPage data={mapVariantPageDataToNewDocData(sourceData)} />;
 }

@@ -49,9 +49,9 @@
 }
 .introVisual img {
   position: absolute;
-  right: -11%;
-  bottom: -70px;
-  width: min(118%, 620px);
+  right: 1%;
+  bottom: -28px;
+  width: min(95%, 620px);
   height: auto;
   filter: drop-shadow(0 19px 22px rgba(14, 51, 80, 0.24));
 }

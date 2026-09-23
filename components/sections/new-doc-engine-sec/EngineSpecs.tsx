@@ -31,9 +31,15 @@ export default function EngineSpecs({
   engineImage,
   compatibility,
 }: Props) {
-  const compatibleModels = compatibility.rows
-    .map((row) => row.model)
-    .join(" & ");
+  const compatibleModels = Array.from(
+    new Set(
+      compatibility.rows.map((row) =>
+        row.model.replace(new RegExp(`^${brandName}\\s*`, "i"), "").trim(),
+      ),
+    ),
+  )
+    .slice(0, 3)
+    .join(", ");
 
   return (
     <section

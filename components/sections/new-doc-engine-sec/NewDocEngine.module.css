@@ -559,26 +559,34 @@
   gap: 17px;
   align-items: start;
 }
-.modelTable {
-  overflow: hidden;
-  border: 1px solid #e0ebf6;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 12px 25px rgba(20, 58, 100, 0.07);
-  height: fit-content;
-}
+
 .modelHeader,
 .modelRow {
   display: grid;
   grid-template-columns: 1.28fr 1.45fr 1.05fr 0.92fr 1.05fr;
   align-items: center;
 }
+.modelTable {
+  overflow-x: auto;
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 356px; /* Exactly 36px header + (5 rows * 64px) */
+  border: 1px solid #e0ebf6;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 25px rgba(20, 58, 100, 0.07);
+  height: fit-content;
+}
+
 .modelHeader {
+  position: sticky; /* Keeps the header locked at top while scrolling */
+  top: 0;
+  z-index: 2;
   min-height: 36px;
   background: linear-gradient(90deg, #eef5fb, #f7fbff);
   color: #1c3f68;
   font-size: 10px;
   font-weight: 850;
+  box-shadow: 0 1px 0 #e8eff7; /* Clean seam separator */
 }
 .modelHeader span {
   padding: 0 10px;
@@ -686,15 +694,22 @@
     grid-template-columns: 1fr;
     gap: 13px;
   }
-  .modelTable {
-    overflow-x: auto;
-  }
+
   .modelHeader,
   .modelRow {
     min-width: 680px;
     grid-template-columns: 1.28fr 1.45fr 1.05fr 0.92fr 1.05fr;
   }
+  .modelTable {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 390px; /* 40px header + (5 rows * 70px) */
+  }
+
   .modelHeader {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     min-height: 40px;
     font-size: 10.5px;
   }
@@ -723,6 +738,9 @@
 }
 
 @media (max-width: 390px) {
+  .modelName img {
+    width: 68px;
+  }
   .price {
     padding-inline: 9px;
   }
@@ -996,7 +1014,12 @@
   align-items: stretch;
 }
 .costTable {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* CRITICAL: allows grid child to shrink and enable scrolling */
   border: 1px solid #dfebf6;
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.87);
@@ -1245,7 +1268,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 7px;
-  /* margin: 0 0 8px; */
+  margin: 0 0 6px;
 }
 .sliderControls button {
   display: grid;
@@ -1436,7 +1459,7 @@
   border-radius: 9px;
   background: #00a858;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 850;
   text-decoration: none;
 }
@@ -2283,9 +2306,14 @@
   .faqSection {
     padding: 28px 0 31px;
   }
+  .costTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
   .costHeader,
   .costRow {
-    min-width: 680px;
+    min-width: 580px;
     grid-template-columns: 1.05fr 1.35fr 1.35fr 1.1fr;
   }
   .ctaBullets {
@@ -2724,10 +2752,20 @@
 }
 
 @media (max-width: 620px) {
+  .costTable {
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: block; /* Ensures standard block-scrolling behavior */
+  }
+
   .costHeader,
   .costRow {
-    min-width: 0;
-    grid-template-columns: 0.82fr 1.08fr 1.13fr 0.95fr;
+    width: max-content; /* Forces rows to take full content width */
+    min-width: 580px;
+    grid-template-columns: 140px 150px 150px 140px; /* Explicit columns so none get squeezed */
   }
   .costTable {
     overflow: hidden;
@@ -2754,7 +2792,7 @@
     overflow-wrap: anywhere;
   }
   .greenPrice {
-    font-size: 11px;
+    font-size: 14px !important;
   }
   .failureFooter a {
     width: min(100%, 290px);
@@ -3322,7 +3360,7 @@
   .modelRow,
   .specRow dt,
   .specRow dd {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .eyebrow,

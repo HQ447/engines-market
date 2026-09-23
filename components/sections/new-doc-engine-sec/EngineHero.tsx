@@ -43,6 +43,7 @@ function UkFlag() {
 export default function EngineHero({ data, engineCode }: Props) {
   const engineCutout =
     data.engineCutout?.src ??
+    data.engineImage.src ??
     "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
   const backgroundImage = data.backgroundImage?.src ?? data.engineImage.src;
   const tagline = data.visualTagline ?? "Same engineering.\nMore journeys.";
@@ -51,7 +52,7 @@ export default function EngineHero({ data, engineCode }: Props) {
 
   return (
     <section className={styles.hero} aria-labelledby={titleId}>
-      <div className={styles.background} aria-hidden="true">
+      {/* <div className={styles.background} aria-hidden="true">
         <Image
           src={backgroundImage}
           alt={data.backgroundImage?.alt ?? ""}
@@ -59,7 +60,7 @@ export default function EngineHero({ data, engineCode }: Props) {
           priority
           sizes="100vw"
         />
-      </div>
+      </div> */}
       <div className={styles.container}>
         <div className={styles.topGrid}>
           <div className={styles.copy}>

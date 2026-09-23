@@ -1,12 +1,12 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { FiArrowRight, FiShield, FiTruck, FiUsers } from "react-icons/fi";
-import type { VariantPreviewData } from "@/data/variant-preview/peugeot207Hdi";
+import type { NewDocVariantData } from "@/types/new-doc-variant";
 import shared from "./VariantShared.module.css";
 import styles from "./NewDocVariantWhyChoose.module.css";
 
 type Props = {
-  data: VariantPreviewData["whyChoose"];
+  data: NewDocVariantData["whyChoose"];
   backgroundImage: string;
   vehicleImage: string;
 };
@@ -55,7 +55,12 @@ export default function NewDocVariantWhyChoose({
         </div>
 
         <div className={styles.action}>
-          <a href="#quote">
+          <a
+            href="#quote-form"
+            data-quote-trigger="true"
+            data-quote-context={data.cta}
+            data-quote-source="new-variant-why-choose"
+          >
             {data.cta}
             <FiArrowRight />
           </a>
