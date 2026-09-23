@@ -125,7 +125,7 @@ export default function EngineRelated({
   data,
   engineCode,
   engineImage,
-  backgroundImage = "/images/brands/mg/brand/mg-hero-bg.png",
+  backgroundImage,
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(4);
   const [offset, setOffset] = useState(0);
@@ -141,17 +141,15 @@ export default function EngineRelated({
   }, []);
 
   const maxOffset = Math.max(0, data.items.length - visibleCount);
-
-  useEffect(
-    () => setOffset((current) => Math.min(current, maxOffset)),
-    [maxOffset],
-  );
+  const currentOffset = Math.min(offset, maxOffset);
 
   return (
     <section
       className={styles.relatedSection}
       style={
-        { "--related-bg": `url("${backgroundImage}")` } as React.CSSProperties
+        backgroundImage
+          ? ({ "--related-bg": `url("${backgroundImage}")` } as React.CSSProperties)
+          : undefined
       }
       aria-labelledby={`${engineCode.toLowerCase()}-related-title`}
     >
@@ -161,24 +159,22 @@ export default function EngineRelated({
           <SectionHeading title={data.title} accentFrom={engineCode} />
         </h2>
         <p className={styles.sectionIntro}>
-          The {engineCode} is part of the SAIC&apos;s SGE family and has a few
-          close relatives that replacement buyers should be aware of.
+          Review related engine codes and confirm the exact fitment before
+          ordering a replacement.
         </p>
         <div className={styles.sliderControls}>
           <button
             type="button"
-            onClick={() => setOffset((current) => Math.max(0, current - 1))}
-            disabled={offset === 0}
+            onClick={() => setOffset(Math.max(0, currentOffset - 1))}
+            disabled={currentOffset === 0}
             aria-label="Previous related engine"
           >
             <FiArrowRight className={styles.previousArrow} />
           </button>
           <button
             type="button"
-            onClick={() =>
-              setOffset((current) => Math.min(maxOffset, current + 1))
-            }
-            disabled={offset >= maxOffset}
+            onClick={() => setOffset(Math.min(maxOffset, currentOffset + 1))}
+            disabled={currentOffset >= maxOffset}
             aria-label="Next related engine"
           >
             <FiArrowRight />
@@ -188,7 +184,7 @@ export default function EngineRelated({
           <div
             className={styles.relatedTrack}
             style={{
-              transform: `translateX(calc(-${offset} * (100% + 14px) / ${visibleCount}))`,
+              transform: `translateX(calc(-${currentOffset} * (100% + 14px) / ${visibleCount}))`,
             }}
           >
             {data.items.map((item, index) => (
@@ -203,9 +199,8 @@ export default function EngineRelated({
         <div className={styles.relatedNote}>
           <FiInfo />
           <p>
-            <strong>Important note:</strong> The {engineCode} is not related to
-            BMW, Ford or VW engine families — it is a wholly SAIC-developed SGE
-            unit.
+            <strong>Important note:</strong> Always match the full {engineCode}
+            engine code with your vehicle before ordering.
           </p>
         </div>
       </div>

@@ -110,7 +110,7 @@ export default function EngineBuyingGuide({
   data,
   engineCode,
   engineImage,
-  backgroundImage = "/images/brands/mg/brand/mg-hero-bg.png",
+  backgroundImage,
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(3);
   const [offset, setOffset] = useState(0);
@@ -131,11 +131,7 @@ export default function EngineBuyingGuide({
   }, []);
 
   const maxOffset = Math.max(0, data.options.length - visibleCount);
-
-  useEffect(
-    () => setOffset((current) => Math.min(current, maxOffset)),
-    [maxOffset],
-  );
+  const currentOffset = Math.min(offset, maxOffset);
 
   // Reliably detect if text exceeds 6 lines
   useEffect(() => {
@@ -162,7 +158,9 @@ export default function EngineBuyingGuide({
     <section
       className={styles.buyingSection}
       style={
-        { "--buying-bg": `url("${backgroundImage}")` } as React.CSSProperties
+        backgroundImage
+          ? ({ "--buying-bg": `url("${backgroundImage}")` } as React.CSSProperties)
+          : undefined
       }
       aria-labelledby={`${engineCode.toLowerCase()}-buying-title`}
     >
@@ -175,18 +173,16 @@ export default function EngineBuyingGuide({
         <div className={styles.sliderControls}>
           <button
             type="button"
-            onClick={() => setOffset((current) => Math.max(0, current - 1))}
-            disabled={offset === 0}
+            onClick={() => setOffset(Math.max(0, currentOffset - 1))}
+            disabled={currentOffset === 0}
             aria-label="Previous buying option"
           >
             <FiArrowRight className={styles.previousArrow} />
           </button>
           <button
             type="button"
-            onClick={() =>
-              setOffset((current) => Math.min(maxOffset, current + 1))
-            }
-            disabled={offset >= maxOffset}
+            onClick={() => setOffset(Math.min(maxOffset, currentOffset + 1))}
+            disabled={currentOffset >= maxOffset}
             aria-label="Next buying option"
           >
             <FiArrowRight />
@@ -197,7 +193,7 @@ export default function EngineBuyingGuide({
           <div
             className={styles.buyingTrack}
             style={{
-              transform: `translateX(calc(-${offset} * (100% + 14px) / ${visibleCount}))`,
+              transform: `translateX(calc(-${currentOffset} * (100% + 14px) / ${visibleCount}))`,
             }}
           >
             {data.options.map((option, index) => {

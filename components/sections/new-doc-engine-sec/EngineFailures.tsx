@@ -156,7 +156,7 @@ function FailureCardItem({
 export default function EngineFailures({
   data,
   engineCode,
-  backgroundImage = "/images/brands/mg/brand/mg-hero-bg.png",
+  backgroundImage,
 }: Props) {
   const [visibleCount, setVisibleCount] = useState(3);
   const [offset, setOffset] = useState(0);
@@ -172,17 +172,15 @@ export default function EngineFailures({
   }, []);
 
   const maxOffset = Math.max(0, data.items.length - visibleCount);
-
-  useEffect(
-    () => setOffset((current) => Math.min(current, maxOffset)),
-    [maxOffset],
-  );
+  const currentOffset = Math.min(offset, maxOffset);
 
   return (
     <section
       className={styles.failuresSection}
       style={
-        { "--failures-bg": `url("${backgroundImage}")` } as React.CSSProperties
+        backgroundImage
+          ? ({ "--failures-bg": `url("${backgroundImage}")` } as React.CSSProperties)
+          : undefined
       }
       aria-labelledby={`${engineCode.toLowerCase()}-failures-title`}
     >
@@ -200,18 +198,16 @@ export default function EngineFailures({
         <div className={styles.sliderControls}>
           <button
             type="button"
-            onClick={() => setOffset((current) => Math.max(0, current - 1))}
-            disabled={offset === 0}
+            onClick={() => setOffset(Math.max(0, currentOffset - 1))}
+            disabled={currentOffset === 0}
             aria-label="Previous engine problem"
           >
             <FiArrowRight className={styles.previousArrow} />
           </button>
           <button
             type="button"
-            onClick={() =>
-              setOffset((current) => Math.min(maxOffset, current + 1))
-            }
-            disabled={offset >= maxOffset}
+            onClick={() => setOffset(Math.min(maxOffset, currentOffset + 1))}
+            disabled={currentOffset >= maxOffset}
             aria-label="Next engine problem"
           >
             <FiArrowRight />
@@ -222,7 +218,7 @@ export default function EngineFailures({
           <div
             className={styles.failureTrack}
             style={{
-              transform: `translateX(calc(-${offset} * (100% + 14px) / ${visibleCount}))`,
+              transform: `translateX(calc(-${currentOffset} * (100% + 14px) / ${visibleCount}))`,
             }}
           >
             {data.items.map((item, index) => (

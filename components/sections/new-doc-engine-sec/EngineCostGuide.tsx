@@ -28,7 +28,7 @@ export default function EngineCostGuide({
   engineCode,
   image = "/prices/img/hero3.png",
 }: Props) {
-  const estimateNotice = data.paragraphs[0]
+  const estimateNotice = (data.paragraphs[0] ?? "Prices are estimates and may vary by supplier.")
     .replace(/^\(All figures\s*\.\s*/, "All figures are estimates — ")
     .replace(/\s*Fitted\s*=.*$/i, "")
     .trim();
@@ -89,7 +89,7 @@ export default function EngineCostGuide({
               <h3>
                 <FiClock /> Labour time &amp; rates
               </h3>
-              <p>{data.labourLine.replace(/\s*\[PATTERN DATA.*$/, "")}</p>
+              <p>{data.labourLine?.replace(/\s*\[PATTERN DATA.*$/, "")}</p>
               <div className={styles.labourMetric}>
                 <FiClock />
                 <strong>7–10 hours</strong>
@@ -110,7 +110,7 @@ export default function EngineCostGuide({
           <FiBarChart2 aria-hidden="true" />
           <div>
             <h3>What affects the price?</h3>
-            <p>{data.paragraphs[1] ?? data.paragraphs[0]}</p>
+            <p>{data.paragraphs[1] ?? data.paragraphs[0] ?? estimateNotice}</p>
           </div>
           <a href="#quote-form">
             {ctaLabel(data.cta)} <FiArrowRight />

@@ -20,7 +20,7 @@ export default function NewDocVariantEngineCode({ data, engineImage }: Props) {
           </div>
 
           <div className={styles.engineVisual}>
-            <Image src={engineImage} alt="Peugeot 207 1.4 HDi 8HZ engine" width={620} height={520} />
+            <Image src={engineImage} alt={`${data.engineName} engine`} width={620} height={520} />
           </div>
         </div>
 

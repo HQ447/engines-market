@@ -39,24 +39,21 @@ export default function EngineCompatibility({
               <span>View model</span>
             </div>
             {data.rows.map((model, index) => {
-              const image =
-                model.image ??
-                (index === 0
-                  ? "/images/brands/mg/models/mg-3-model-card.png"
-                  : "/images/brands/mg/models/mg-zs-model-card.png");
               return (
                 <div
                   className={styles.modelRow}
                   key={`${model.model}-${index}`}
                 >
                   <div className={styles.modelName}>
-                    <Image
-                      src={image}
-                      alt={model.model}
-                      width={88}
-                      height={48}
-                      sizes="88px"
-                    />
+                    {model.image ? (
+                      <Image
+                        src={model.image}
+                        alt={model.model}
+                        width={88}
+                        height={48}
+                        sizes="88px"
+                      />
+                    ) : null}
                     <strong>{model.model}</strong>
                   </div>
                   <span>{model.generation}</span>

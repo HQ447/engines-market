@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import { FiArrowRight, FiShield, FiTruck, FiUsers } from "react-icons/fi";
 import type { NewDocVariantData } from "@/types/new-doc-variant";
@@ -8,7 +7,6 @@ import styles from "./NewDocVariantWhyChoose.module.css";
 type Props = {
   data: NewDocVariantData["whyChoose"];
   backgroundImage: string;
-  vehicleImage: string;
 };
 
 const icons = { network: FiUsers, warranty: FiShield, delivery: FiTruck };
@@ -16,7 +14,6 @@ const icons = { network: FiUsers, warranty: FiShield, delivery: FiTruck };
 export default function NewDocVariantWhyChoose({
   data,
   backgroundImage,
-  vehicleImage,
 }: Props) {
   return (
     <section
@@ -34,10 +31,6 @@ export default function NewDocVariantWhyChoose({
           </h2>
           <p className={styles.description}>{data.description}</p>
         </div>
-
-        {/* <div className={styles.visual} aria-hidden="true">
-          <Image src={vehicleImage} alt="" width={680} height={390} />
-        </div> */}
 
         <div className={styles.benefits}>
           {data.benefits.map((benefit) => {

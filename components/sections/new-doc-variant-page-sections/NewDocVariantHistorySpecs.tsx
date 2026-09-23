@@ -21,7 +21,7 @@ export default function NewDocVariantHistorySpecs({ history, vehicleImage }: Pro
 
           <div className={styles.vehicleStage}>
             <div className={styles.vehicleGlow} />
-            <Image src={vehicleImage} alt="Peugeot 207 1.4 HDi" width={640} height={360} />
+            <Image src={vehicleImage} alt={history.titleLead} width={640} height={360} />
           </div>
 
           <aside className={`${shared.glassPanel} ${styles.snapshot}`} aria-label="Key specifications snapshot">
@@ -35,8 +35,8 @@ export default function NewDocVariantHistorySpecs({ history, vehicleImage }: Pro
         </div>
 
         <ol className={styles.timeline}>
-          {history.timeline.map((item) => (
-            <li key={item.year}><span><FiActivity /></span><strong>{item.year}</strong><p>{item.text}</p></li>
+          {history.timeline.map((item, index) => (
+            <li key={`${item.year}-${index}`}><span><FiActivity /></span><strong>{item.year}</strong><p>{item.text}</p></li>
           ))}
         </ol>
         <p className={styles.closing}><FiActivity />{history.closing}</p>

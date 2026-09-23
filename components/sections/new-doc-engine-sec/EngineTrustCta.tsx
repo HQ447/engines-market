@@ -12,12 +12,16 @@ const icons = [FiUsers, FiShield, FiTruck];
 export default function EngineTrustCta({
   data,
   engineCode,
-  backgroundImage = "/images/brands/mg/brand/mg-hero-bg.png",
+  backgroundImage,
 }: Props) {
   return (
     <section
       className={styles.trustCtaSection}
-      style={{ "--cta-bg": `url("${backgroundImage}")` } as React.CSSProperties}
+      style={
+        backgroundImage
+          ? ({ "--cta-bg": `url("${backgroundImage}")` } as React.CSSProperties)
+          : undefined
+      }
       aria-labelledby={`${engineCode.toLowerCase()}-cta-title`}
     >
       <div className={styles.sectionContainer}>

@@ -15,13 +15,70 @@ type Props = {
   trustBackgroundImage?: string;
 };
 
+function getEngineCutout(data: EnginePageData["sections"]["hero"]) {
+  if (data.engineCutout?.src) return data.engineCutout;
+
+  const signals = [
+    ...data.pills,
+    data.title,
+    data.description,
+    data.engineImage.src,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  const src = /diesel|bluehdi|hdi|tdi|dci|cdi|turbodiesel/.test(signals)
+    ? "/images/shared/hero-engines/temporary-diesel-engine-cutout.png"
+    : /performance|gti|amg|m-power|v8|v6|type r|quattro rs/.test(signals)
+      ? "/images/shared/hero-engines/temporary-performance-engine-cutout.png"
+      : "/images/shared/hero-engines/temporary-petrol-engine-cutout.png";
+
+  return { src, alt: data.engineImage.alt };
+}
+
+function getHeroPrices(
+  data: EnginePageData,
+): EnginePageData["sections"]["hero"]["prices"] {
+  if (data.sections.hero.prices.length > 0) {
+    return data.sections.hero.prices;
+  }
+
+  return data.sections.costGuide.rows
+    .map((row) => {
+      const condition = row.condition.trim();
+      const tone = condition.toLowerCase();
+
+      if (tone !== "used" && tone !== "reconditioned" && tone !== "rebuilt") {
+        return null;
+      }
+
+      const price = row.supplyOnly.match(/£\s*[\d,]+/i)?.[0] ?? "";
+      if (!price) return null;
+
+      return {
+        label: `${condition} from`,
+        price,
+        tone: tone as "used" | "reconditioned" | "rebuilt",
+      };
+    })
+    .filter(
+      (price): price is NonNullable<typeof price> => price !== null,
+    );
+}
+
 export default function NewDocEnginePage({ data, trustBackgroundImage }: Props) {
-  const engineVisual =
-    data.sections.hero.engineCutout?.src ?? data.sections.hero.engineImage.src;
+  const engineCutout = getEngineCutout(data.sections.hero);
+  const heroPrices = getHeroPrices(data);
+  const engineVisual = engineCutout.src;
+  const sectionBackground =
+    trustBackgroundImage ?? data.sections.hero.backgroundImage?.src ?? engineVisual;
 
   return (
     <>
-      <EngineHero data={data.sections.hero} engineCode={data.engine.code} />
+      <EngineHero
+        data={{ ...data.sections.hero, engineCutout, prices: heroPrices }}
+        engineCode={data.engine.code}
+      />
       <EngineSpecs
         data={data.sections.specs}
         engineCode={data.engine.code}
@@ -34,15 +91,15 @@ export default function NewDocEnginePage({ data, trustBackgroundImage }: Props) 
       />
       <EngineCompatibility data={data.sections.compatibility} engineCode={data.engine.code} brandName={data.brand.name} />
       <EngineCostGuide data={data.sections.costGuide} engineCode={data.engine.code} image={data.sections.costGuide.image} />
-      <EngineFailures data={data.sections.failures} engineCode={data.engine.code} backgroundImage={engineVisual} />
-      <EngineVariants data={data.sections.variants} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={engineVisual} />
-      <EngineBuyingGuide data={data.sections.buyingGuide} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={data.sections.hero.backgroundImage?.src} />
-      <EngineRelated data={data.sections.related} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={engineVisual} />
+      <EngineFailures data={data.sections.failures} engineCode={data.engine.code} backgroundImage={sectionBackground} />
+      <EngineVariants data={data.sections.variants} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={sectionBackground} />
+      <EngineBuyingGuide data={data.sections.buyingGuide} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={sectionBackground} />
+      <EngineRelated data={data.sections.related} engineCode={data.engine.code} engineImage={engineVisual} backgroundImage={sectionBackground} />
       <EngineFaq data={data.sections.faq} engineCode={data.engine.code} />
       <EngineTrustCta
         data={data.sections.trustCta}
         engineCode={data.engine.code}
-        backgroundImage={trustBackgroundImage}
+        backgroundImage={sectionBackground}
       />
     </>
   );

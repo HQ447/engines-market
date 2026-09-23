@@ -24,7 +24,6 @@ export default function NewDocVariantPage({ data }: Props) {
       <NewDocVariantWhyChoose
         data={data.whyChoose}
         backgroundImage={data.images.commonProblemsVehicle}
-        vehicleImage={data.images.vehicle}
       />
     </>
   );

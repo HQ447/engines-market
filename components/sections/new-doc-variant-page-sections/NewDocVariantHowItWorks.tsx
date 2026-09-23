@@ -9,7 +9,7 @@ import styles from "./NewDocVariantHowItWorks.module.css";
 
 type Props = { steps: NewDocVariantData["howItWorks"] };
 const icons = [
-  "/icons/engine-market/reg-here.webp",
+  "/Home/reg-here.webp",
   "/icons/engine-market/how-compare-prices-3d.png",
   "/icons/engine-market/how-choose-deal.png",
 ];

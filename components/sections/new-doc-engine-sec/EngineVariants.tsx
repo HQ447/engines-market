@@ -22,20 +22,22 @@ type Props = {
   backgroundImage?: string;
 };
 
-const fallbackCards = [
-  [
-    "Where to find the code",
-    "The engine code is stamped on the engine block, typically on the front face near the timing cover or on the driver’s side. It also appears on the V5C registration document under “Engine number”. A VIN decoder will confirm the exact factory build code.",
-  ],
-  [
-    "Which codes get confused with it",
-    "The 10E4E is commonly confused with the later 10E4F (2020+) and the naturally aspirated 1.0-litre 10S4G used in some Chinese-market SAIC vehicles.",
-  ],
-  [
-    "Why fitting the wrong revision matters",
-    "A later revision may physically fit but can cause injector timing mismatches or emissions test failures. Always match the exact suffix when buying a replacement.",
-  ],
-];
+function getFallbackCards(engineCode: string) {
+  return [
+    {
+      title: "Where to find the code",
+      body: `Check the engine block, vehicle registration document, or manufacturer records to confirm the ${engineCode} code.`,
+    },
+    {
+      title: "Check the exact revision",
+      body: "Engines with similar names can have different fitment, electronics, or emissions equipment.",
+    },
+    {
+      title: "Why the exact match matters",
+      body: "Confirm the complete engine code and compatibility before ordering a replacement engine.",
+    },
+  ];
+}
 function ExpandableVariantText({
   text,
   className = "",
@@ -170,16 +172,17 @@ export default function EngineVariants({
   data,
   engineCode,
   engineImage,
-  backgroundImage = "/images/brands/mg/brand/mg-hero-bg.png",
+  backgroundImage,
 }: Props) {
-  const cards =
-    data.cards ?? fallbackCards.map(([title, body]) => ({ title, body }));
+  const cards = data.cards ?? getFallbackCards(engineCode);
 
   return (
     <section
       className={styles.variantsSection}
       style={
-        { "--variants-bg": `url("${backgroundImage}")` } as React.CSSProperties
+        backgroundImage
+          ? ({ "--variants-bg": `url("${backgroundImage}")` } as React.CSSProperties)
+          : undefined
       }
       aria-labelledby={`${engineCode.toLowerCase()}-variants-title`}
     >
@@ -207,8 +210,8 @@ export default function EngineVariants({
               />
             ) : null}
             <h3>{engineCode}</h3>
-            <strong>1.0-litre Turbo GDI</strong>
-            <span>Part of SAIC&apos;s SGE family</span>
+            <strong>Engine code</strong>
+            <span>Confirm the exact specification for your vehicle before ordering.</span>
           </article>
 
           {cards.map((card, index) => {

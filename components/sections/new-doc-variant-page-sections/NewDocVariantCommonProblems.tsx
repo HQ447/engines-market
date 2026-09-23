@@ -177,7 +177,7 @@ export default function NewDocVariantCommonProblems({
         </aside>
 
         <div className={styles.controls}>
-          <p>Most common 8HZ failure points and repair options</p>
+          <p>Common failure points and repair options</p>
           <div>
             <button
               type="button"
