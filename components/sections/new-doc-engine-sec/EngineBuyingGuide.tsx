@@ -89,6 +89,8 @@ function ExpandableValueNote({ note }: { note: string }) {
         <button
           type="button"
           className={`${styles.expandInlineButton} ${
+            styles.valueNoteExpandButton
+          } ${
             isExpanded ? styles.expandCopyButtonOpen : ""
           }`}
           onClick={() => setIsExpanded((expanded) => !expanded)}
@@ -237,7 +239,7 @@ export default function EngineBuyingGuide({
                     </div>
                   </div>
 
-                  <a href={option.href}>
+                  <a className={styles.buyingCardCta} href={option.href}>
                     View {option.label} engines <FiArrowRight />
                   </a>
                 </article>
@@ -265,7 +267,12 @@ export default function EngineBuyingGuide({
         <div className={styles.valueStrip}>
           <FiTool />
           <ExpandableValueNote note={data.vehicleValueNote} />
-          <a href="#quote-form" aria-label={data.cta} title={data.cta}>
+          <a
+            className={styles.valueCta}
+            href="#quote-form"
+            aria-label={data.cta}
+            title={data.cta}
+          >
             {getShortCtaLabel(data.cta)} <FiArrowRight />
           </a>
         </div>

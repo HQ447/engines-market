@@ -35,6 +35,53 @@ function ctaLabel(value: string) {
 
 type FailureItem = EngineFailuresSectionData["items"][number];
 
+function ExpandableGoodToKnow({ text }: { text: string }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const copyRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const element = copyRef.current;
+    if (!element) return;
+
+    const checkOverflow = () => {
+      const wasClamped = element.classList.contains(styles.clampFour);
+      if (wasClamped) element.classList.remove(styles.clampFour);
+
+      const lineHeight = parseFloat(window.getComputedStyle(element).lineHeight);
+      setHasOverflow(element.scrollHeight > lineHeight * 4 + 1);
+
+      if (wasClamped) element.classList.add(styles.clampFour);
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [text]);
+
+  return (
+    <div className={styles.goodToKnowCopy}>
+      <p ref={copyRef} className={!isExpanded ? styles.clampFour : undefined}>
+        <strong>Good to know</strong>
+        {text}
+      </p>
+      {hasOverflow ? (
+        <button
+          type="button"
+          className={`${styles.expandInlineButton} ${
+            isExpanded ? styles.expandCopyButtonOpen : ""
+          }`}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? "Show less information" : "Show more information"}
+        >
+          <FiChevronDown aria-hidden="true" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 function FailureCardItem({
   item,
   index,
@@ -234,10 +281,7 @@ export default function EngineFailures({
         <div className={styles.failureFooter}>
           <div>
             <FiCheckCircle />
-            <p>
-              <strong>Good to know</strong>
-              {data.goodYearsLine}
-            </p>
+            <ExpandableGoodToKnow text={data.goodYearsLine} />
           </div>
           <a href="#quote-form">
             {ctaLabel(data.cta)} <FiArrowRight />

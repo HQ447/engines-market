@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import {
   FiArrowRight,
   FiBarChart2,
   FiClock,
+  FiChevronDown,
   FiInfo,
   FiShield,
   FiTool,
@@ -23,6 +27,52 @@ function ctaLabel(value: string) {
     .trim();
 }
 
+function ExpandableLabourLine({ text }: { text: string }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const copyRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const element = copyRef.current;
+    if (!element) return;
+
+    const checkOverflow = () => {
+      const wasClamped = element.classList.contains(styles.clampFour);
+      if (wasClamped) element.classList.remove(styles.clampFour);
+
+      const lineHeight = parseFloat(window.getComputedStyle(element).lineHeight);
+      setHasOverflow(element.scrollHeight > lineHeight * 4 + 1);
+
+      if (wasClamped) element.classList.add(styles.clampFour);
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [text]);
+
+  return (
+    <div className={styles.labourExpandable}>
+      <p ref={copyRef} className={!isExpanded ? styles.clampFour : undefined}>
+        {text}
+      </p>
+      {hasOverflow ? (
+        <button
+          type="button"
+          className={`${styles.expandInlineButton} ${
+            isExpanded ? styles.expandCopyButtonOpen : ""
+          }`}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? "Show less labour information" : "Show more labour information"}
+        >
+          <FiChevronDown aria-hidden="true" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export default function EngineCostGuide({
   data,
   engineCode,
@@ -32,6 +82,7 @@ export default function EngineCostGuide({
     .replace(/^\(All figures\s*\.\s*/, "All figures are estimates — ")
     .replace(/\s*Fitted\s*=.*$/i, "")
     .trim();
+  const labourLine = data.labourLine?.replace(/\s*\[PATTERN DATA.*$/, "") ?? "";
   return (
     <section
       className={styles.costSection}
@@ -89,7 +140,7 @@ export default function EngineCostGuide({
               <h3>
                 <FiClock /> Labour time &amp; rates
               </h3>
-              <p>{data.labourLine?.replace(/\s*\[PATTERN DATA.*$/, "")}</p>
+              <ExpandableLabourLine text={labourLine} />
               <div className={styles.labourMetric}>
                 <FiClock />
                 <strong>7–10 hours</strong>

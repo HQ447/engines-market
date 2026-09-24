@@ -1228,7 +1228,7 @@
   line-height: 1.45;
 }
 .priceCallout a,
-.valueStrip a {
+.valueCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1244,7 +1244,7 @@
   text-decoration: none;
 }
 .priceCallout a svg,
-.valueStrip a svg {
+.valueCta svg {
   width: 16px;
   height: 16px;
 }
@@ -1502,7 +1502,7 @@
   color: #143957;
   box-shadow: 0 8px 22px rgba(0, 23, 46, 0.15);
 }
-.failureFooter > div svg {
+.failureFooter > div > svg {
   width: 30px;
   height: 30px;
   padding: 5px;
@@ -1869,7 +1869,7 @@
   font-weight: 0;
   line-height: 1.42;
 }
-.buyingCard a {
+.buyingCardCta {
   grid-column: 1 / -1;
   display: inline-flex;
   align-items: center;
@@ -1889,12 +1889,12 @@
 .buyingCard.recommended {
   border: 2px solid #2393f0;
 }
-.buyingCard.recommended a {
+.buyingCard.recommended .buyingCardCta {
   background: #087fea;
   border-color: #087fea;
   color: #fff;
 }
-.buyingCard.blueButtonCard a {
+.buyingCard.blueButtonCard .buyingCardCta {
   border-color: #178df0;
   background: linear-gradient(110deg, #087bea, #22b1ff);
   color: #fff;
@@ -2754,12 +2754,12 @@
   opacity: 0.17;
 }
 
-.buyingCard.recommended a {
+.buyingCard.recommended .buyingCardCta {
   border-color: #178df0;
   background: linear-gradient(110deg, #087bea, #22b1ff);
   color: #fff;
 }
-.buyingCard.blueButtonCard a {
+.buyingCard.blueButtonCard .buyingCardCta {
   background: #fff;
   border-color: #d2e3f1;
   color: #163b62;
@@ -3073,7 +3073,7 @@
   min-width: 0;
 }
 
-.buyingCard a {
+.buyingCardCta {
   width: 100%;
   align-self: end;
 }
@@ -3133,7 +3133,7 @@
     flex: 1 1 auto;
   }
 
-  .buyingCard a {
+  .buyingCardCta {
     margin-top: 16px;
   }
 
@@ -3219,7 +3219,7 @@
     justify-self: start;
   }
 
-  .valueStrip a {
+  .valueCta {
     grid-column: 1 / -1;
     width: 100%;
   }
@@ -3713,6 +3713,13 @@
   -webkit-line-clamp: 6;
   overflow: hidden;
 }
+/* 5-line clamp for related-engine descriptions. */
+.clampFive {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
 /* 4-line clamp for failure card details */
 .clampFour {
   display: -webkit-box !important;
@@ -3779,7 +3786,7 @@
   transform: rotate(180deg);
 }
 
-.buyingCard a,
+.buyingCardCta,
 .relatedCard a {
   margin-top: auto;
 }
@@ -3789,12 +3796,39 @@
   font-size: 15px;
 }
 
-.valueStrip a {
+.valueCta {
   font-size: 14px;
 }
 
 .valueNoteCopy {
   min-width: 0;
+}
+
+.valueNoteExpandButton {
+  position: static;
+  width: 24px;
+  min-height: 24px;
+  margin: 6px 0 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.relatedTitleExpandable {
+  cursor: pointer;
+}
+
+.goodToKnowCopy,
+.labourExpandable {
+  position: relative;
+  min-width: 0;
+}
+
+.goodToKnowCopy p {
+  color: inherit;
+}
+
+.labourExpandable > p {
+  margin: 10px 0 19px;
 }
 
 @media (max-width: 620px) {
@@ -3829,7 +3863,7 @@
     font-size: 14px;
   }
 
-  .valueStrip a {
+  .valueCta {
     font-size: 13px;
   }
 }

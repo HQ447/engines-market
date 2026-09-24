@@ -37,22 +37,25 @@ function RelatedCardItem({
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasOverflow, setHasOverflow] = useState(false);
+  const [isTitleExpanded, setIsTitleExpanded] = useState(false);
   const pRef = useRef<HTMLParagraphElement | null>(null);
+  const titleWords = item.code.trim().split(/\s+/);
+  const hasLongTitle = item.code !== "none" && titleWords.length > titleWordLimit;
 
   useEffect(() => {
     const el = pRef.current;
     if (!el) return;
 
     const check = () => {
-      const wasClamped = el.classList.contains(styles.clampSix);
-      if (wasClamped) el.classList.remove(styles.clampSix);
+      const wasClamped = el.classList.contains(styles.clampFive);
+      if (wasClamped) el.classList.remove(styles.clampFive);
 
       const fullHeight = el.scrollHeight;
 
-      if (wasClamped) el.classList.add(styles.clampSix);
+      if (wasClamped) el.classList.add(styles.clampFive);
 
-      // Trigger button only if unconstrained height exceeds 6 lines (~128px)
-      setHasOverflow(fullHeight > 132);
+      const lineHeight = parseFloat(window.getComputedStyle(el).lineHeight);
+      setHasOverflow(fullHeight > lineHeight * 5 + 1);
     };
 
     check();
@@ -68,10 +71,34 @@ function RelatedCardItem({
         <Image src={engineImage} alt="" width={108} height={84} />
       ) : null}
 
-      <h3 title={item.code === "none" ? "None" : item.code}>
+      <h3
+        title={item.code === "none" ? "None" : item.code}
+        className={hasLongTitle ? styles.relatedTitleExpandable : undefined}
+        role={hasLongTitle ? "button" : undefined}
+        tabIndex={hasLongTitle ? 0 : undefined}
+        aria-expanded={hasLongTitle ? isTitleExpanded : undefined}
+        onClick={
+          hasLongTitle
+            ? () => setIsTitleExpanded((expanded) => !expanded)
+            : undefined
+        }
+        onKeyDown={
+          hasLongTitle
+            ? (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setIsTitleExpanded((expanded) => !expanded);
+                }
+              }
+            : undefined
+        }
+      >
         {item.code === "none"
           ? "None"
-          : getWordClampedLabel(item.code, titleWordLimit)}
+          : isTitleExpanded
+            ? item.code
+            : titleWords.slice(0, titleWordLimit).join(" ")}
+        {hasLongTitle ? <span>{isTitleExpanded ? " Show less" : "…"}</span> : null}
       </h3>
       <strong>
         {item.code === "none"
@@ -82,7 +109,7 @@ function RelatedCardItem({
       </strong>
 
       <div className={styles.expandableCopy}>
-        <p ref={pRef} className={!isExpanded ? styles.clampSix : undefined}>
+        <p ref={pRef} className={!isExpanded ? styles.clampFive : undefined}>
           {item.description}
         </p>
 
@@ -98,7 +125,7 @@ function RelatedCardItem({
             }}
             aria-label={`Toggle description for ${item.code}`}
           >
-            <FiChevronDown aria-hidden="true" />
+            <span>{isExpanded ? "Show less" : "…"}</span>
           </button>
         )}
       </div>
