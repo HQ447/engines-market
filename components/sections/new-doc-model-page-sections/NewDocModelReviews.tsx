@@ -137,15 +137,15 @@ function RatingCircle({ value, count }: { value: number; count: number }) {
             strokeDashoffset={dashOffset}
           />
         </svg>
-        <div className="absolute inset-[5px] grid place-items-center rounded-full bg-white p-2 lg:inset-[6px]">
-          <div>
+        <div className="absolute inset-[5px] flex flex-col items-center justify-center rounded-full bg-white p-2 lg:inset-[6px]">
+          <div className="flex flex-col items-center gap-1 lg:gap-1.5">
             <p className="font-[var(--font-urbanist)] text-[34px] font-extrabold leading-none text-[#092b58] lg:text-[44px]">
               {value.toFixed(1)}
             </p>
-            <p className="mt-1 whitespace-nowrap text-[16px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]">
+            <p className="whitespace-nowrap text-[16px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]">
               ★★★★★
             </p>
-            <p className="mt-1 text-[11px] font-medium text-[#59718f] lg:text-[12px]">
+            <p className="text-[11px] font-medium leading-none text-[#59718f] lg:text-[12px]">
               out of 5
             </p>
           </div>
