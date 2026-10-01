@@ -255,7 +255,7 @@ export default function NewDocModelEngineCodes({ data: modelData }: Props) {
               <div className="flex items-center gap-3 border-b border-[#cfe4f5] px-4 py-3 text-[#092b58] sm:px-6">
                 <EngineIcon />
                 <div className="min-w-0">
-                  <h3 className="truncate text-[15px] font-extrabold lg:text-[19px]">
+                  <h3 className="truncate text-[15px] font-extrabold lg:text-[17px]">
                     {activeGroup.name}
                   </h3>
                   <p className="mt-0.5 text-[11px] leading-[1.4] text-[#617b9c] sm:text-[12px]">

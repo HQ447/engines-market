@@ -139,10 +139,10 @@ function RatingCircle({ value, count }: { value: number; count: number }) {
         </svg>
         <div className="absolute inset-[5px] grid place-items-center rounded-full bg-white p-2 lg:inset-[6px]">
           <div>
-            <p className="font-[var(--font-urbanist)] text-[35px] font-extrabold leading-none text-[#092b58] lg:text-[44px]">
+            <p className="font-[var(--font-urbanist)] text-[34px] font-extrabold leading-none text-[#092b58] lg:text-[44px]">
               {value.toFixed(1)}
             </p>
-            <p className="mt-1 whitespace-nowrap text-[18px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]">
+            <p className="mt-1 whitespace-nowrap text-[16px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]">
               ★★★★★
             </p>
             <p className="mt-1 text-[11px] font-medium text-[#59718f] lg:text-[12px]">
