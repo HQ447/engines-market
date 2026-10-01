@@ -95,11 +95,12 @@ function FuelIcon({ hybrid = false }: { hybrid?: boolean }) {
 }
 
 function DetailIcon({ kind }: { kind: number }) {
+  const icons = [PiEngineBold, RiCarLine, FaTools, IoStatsChart] as const;
+  const Icon = icons[kind];
+
   return (
     <span className="flex h-8 w-8 shrink-0 items-center justify-center text-[22px]">
-      {[<PiEngineBold />, <RiCarLine />, <FaTools />, <IoStatsChart />, "●"][
-        kind
-      ] ?? "•"}
+      {Icon ? <Icon /> : "●"}
     </span>
   );
 }
