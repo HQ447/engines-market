@@ -127,7 +127,13 @@ export default function NewDocModelEngineYears({ data }: Props) {
           </div>
           <article className="mt-5 overflow-hidden rounded-xl border border-[#8cc5ef] bg-white ">
             <div className="grid lg:grid-cols-[275px_minmax(0,1fr)]">
-              <aside className="relative  min-h-[280px] overflow-hidden bg-[#061a33] p-6 text-white">
+              <aside
+                className="relative  min-h-[280px] overflow-hidden bg-[#061a33] p-6 text-white"
+                style={{
+                  background:
+                    "linear-gradient(181deg, rgba(255, 255, 255, 0.32) 0%, rgb(248 248 248 / 5%) 42%, rgb(255 255 255 / 0%) 55%), linear-gradient(180deg, #244875 0%, #030e1c 50%, #051428 100%)",
+                }}
+              >
                 <div className="relative flex h-full flex-col justify-center ">
                   <p className="text-[30px] font-black leading-none tracking-[-0.04em]">
                     {normalize(active.year)}
