@@ -16,6 +16,7 @@ type Props = {
   modelSlug?: string;
   variantRouteMap?: Record<string, string>;
   documentMode?: boolean;
+  newDesignMode?: boolean;
 };
 
 type VariantCard = ModelVariantCoverageSectionData["cards"][number];
@@ -354,6 +355,7 @@ export default function VariantCoverageSection({
   modelSlug,
   variantRouteMap,
   documentMode = false,
+  newDesignMode = false,
 }: Props) {
   const renderableCards = useMemo(
     () => data.cards.filter(isRenderableVariantCard),
@@ -517,14 +519,14 @@ export default function VariantCoverageSection({
         }
       `}</style>
 
-      <Section className="bg-[#f7f8fb]">
-        <Container className={`max-w-[1400px] ${documentMode ? "px-0 sm:px-0 lg:px-0" : "px-2"}`}>
+      <Section className={newDesignMode ? "bg-[#f2f8fe] py-9 sm:py-10 lg:py-12" : "bg-[#f7f8fb]"}>
+        <Container className={`max-w-7xl ${documentMode ? newDesignMode ? "!px-4 sm:!px-6 lg:!px-8" : "px-0 sm:px-0 lg:px-0" : "px-2"}`}>
           <div className=" max-w-[760px] text-left">
-            <div className="section-pill mb-[14px]">
+            <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#1289d5]/40 bg-[#06244d]/95 px-3.5 py-1.5 text-[14px] font-bold uppercase text-[white] shadow-[0_0_20px_rgba(26,145,232,0.25)] sm:mb-5 sm:text-[13px]">
               <span>{documentMode ? "Variants We Cover" : data.tag}</span>
             </div>
 
-            <h2 className=" max-w-[760px] text-[30px] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#0d1b2e] md:text-[40px]">
+            <h2 className={`max-w-[760px] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#0d1b2e] ${newDesignMode ? "text-[34px] lg:text-[40px]" : "text-[30px] md:text-[40px]"}`}>
               {headingLines.map((line, index) => {
                 const isAccent = headingLines.length > 1 && index === headingLines.length - 1;
                 return (
@@ -555,7 +557,7 @@ export default function VariantCoverageSection({
                 const opensUpward = index >= mobileCardsToDisplay.length - 2;
 
                 return (
-                  <article key={card.slug} className={`relative ${isOpen ? "z-50" : "z-[1]"}`}>
+                  <article key={card.slug} className={`relative isolate ${isOpen ? "z-[60]" : "z-[1]"}`}>
                     <div
                       className={`relative ${isOpen ? "overflow-visible" : "overflow-hidden"} rounded-[12px] border bg-white transition duration-300 ${
                         isOpen
@@ -574,7 +576,7 @@ export default function VariantCoverageSection({
                               src={vehicleImage.src}
                               alt={shortName}
                               fill
-                              className="object-contain object-center p-[6px]"
+                              className={newDesignMode ? "object-cover object-center scale-110" : "object-contain object-center p-[6px]"}
                               sizes="(max-width: 767px) 50vw, 25vw"
                             />
                         </div>
@@ -650,7 +652,7 @@ export default function VariantCoverageSection({
             src={vehicleImage.src}
             alt={shortName}
             fill
-            className="object-contain object-center p-[6px]"
+            className={newDesignMode ? "object-cover object-center scale-110" : "object-contain object-center p-[6px]"}
             sizes="20vw"
           />
         </div>
@@ -661,7 +663,7 @@ export default function VariantCoverageSection({
           src={vehicleImage.src}
           alt={shortName}
           fill
-          className="object-contain object-center p-[6px]"
+          className={newDesignMode ? "object-cover object-center scale-110" : "object-contain object-center p-[6px]"}
           sizes="20vw"
         />
       </div>
