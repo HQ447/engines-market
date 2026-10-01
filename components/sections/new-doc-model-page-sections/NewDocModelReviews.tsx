@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaExclamation, FaFacebookF, FaGoogle } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { SiTrustpilot } from "react-icons/si";
@@ -168,16 +168,15 @@ export default function NewDocModelReviews({ data }: Props) {
     : [reviews.h2];
   const reviewsHeading = splitReviewsHeading(reviews.h2);
 
-  const desktopReviews = useMemo(
-    () =>
-      Array.from({ length: Math.min(3, reviewCount) }, (_, offset) => {
-        const index = (currentIndex + offset) % reviewCount;
-        return {
-          review: reviews.reviews[index],
-          source: REVIEW_SOURCES[index % REVIEW_SOURCES.length],
-        };
-      }),
-    [currentIndex, reviewCount, reviews.reviews],
+  const desktopReviews = Array.from(
+    { length: Math.min(3, reviewCount) },
+    (_, offset) => {
+      const index = (currentIndex + offset) % reviewCount;
+      return {
+        review: reviews.reviews[index],
+        source: REVIEW_SOURCES[index % REVIEW_SOURCES.length],
+      };
+    },
   );
 
   useEffect(() => {
