@@ -139,13 +139,22 @@ function RatingCircle({ value, count }: { value: number; count: number }) {
         </svg>
         <div className="absolute inset-[5px] flex flex-col items-center justify-center rounded-full bg-white p-2 lg:inset-[6px]">
           <div className="flex flex-col items-center gap-1 lg:gap-1.5">
-            <p className="font-[var(--font-urbanist)] text-[35px] font-extrabold leading-none text-[#092b58] lg:text-[44px]">
+            <p
+              className="font-[var(--font-urbanist)] text-[35px] font-extrabold leading-none text-[#092b58] lg:text-[44px]"
+              style={{ lineHeight: 1 }}
+            >
               {value.toFixed(1)}
             </p>
-            <p className="whitespace-nowrap text-[18px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]">
+            <p
+              className="whitespace-nowrap text-[18px] leading-none tracking-[1px] text-[#ffb400] lg:text-[21px]"
+              style={{ lineHeight: 1 }}
+            >
               ★★★★★
             </p>
-            <p className="text-[11px] font-medium leading-none text-[#59718f] lg:text-[12px]">
+            <p
+              className="text-[11px] font-medium leading-none text-[#59718f] lg:text-[12px]"
+              style={{ lineHeight: 1 }}
+            >
               out of 5
             </p>
           </div>
