@@ -162,7 +162,7 @@ export default function NewDocModelEngineSizes({ data: modelData }: Props) {
   return (
     <section
       id="model-engine-sizes"
-      className="relative overflow-hidden bg-[#f7f8fb] px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-10"
+      className="relative overflow-hidden bg-[#f7f8fb] px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-7"
     >
       <ModelMobileAccordion
         title={normalize(
@@ -172,7 +172,7 @@ export default function NewDocModelEngineSizes({ data: modelData }: Props) {
         )}
         icon={<TbEngine className="h-5 w-5" aria-hidden="true" />}
       >
-        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[215px] w-full opacity-24 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[-2px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-80">
+        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[215px] w-full opacity-24 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[12px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-80">
           {data.assets.mainImage ? (
             <Image
               src={data.assets.mainImage}

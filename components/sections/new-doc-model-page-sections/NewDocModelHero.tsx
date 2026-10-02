@@ -12,11 +12,23 @@ import { FaUsers } from "react-icons/fa";
 
 type Props = { data: ModelPageData };
 
-const tickerIcons = [
-  "/icons/engine-market/light-green-instant-quote.png",
-  "/icons/engine-market/light-green-pound.png",
-  "/icons/engine-market/light-green-warranty.png",
-  "/icons/engine-market/light-green-supply-fit.png",
+const tickerItems = [
+  {
+    src: "/icons/engine-market/light-green-instant-quote.png",
+    text: "Instant engine replacement quote - 100% free, no obligation",
+  },
+  {
+    src: "/icons/engine-market/light-green-nationwide-delivery.png",
+    text: "Engine replacement near me - UK-wide specialist network",
+  },
+  {
+    src: "/icons/engine-market/light-green-pound.png",
+    text: "Compare reconditioned, rebuilt & used engine prices",
+  },
+  {
+    src: "/icons/engine-market/light-green-supply-fit.png",
+    text: "Supply & fit available - parts and labour from vetted specialists",
+  },
 ] as const;
 
 function UkFlagIcon() {
@@ -110,6 +122,31 @@ function normalizeText(text: string) {
     .replace(/[–—]/g, "-");
 }
 
+function buildDisclaimerLines(note: string) {
+  const normalized = note.replace(/\s+/g, " ").trim();
+  const sentences =
+    normalized
+      .match(/[^.!?]+[.!?]?/g)
+      ?.map((sentence) => sentence.trim())
+      .filter(Boolean) ?? [];
+
+  return (sentences.length ? sentences : [normalized]).slice(0, 3);
+}
+
+function splitInlineDisclaimerText(text: string, trailingWords = 3) {
+  const normalized = normalizeText(text).replace(/\s+/g, " ").trim();
+  const words = normalized.split(" ").filter(Boolean);
+
+  if (words.length <= trailingWords) {
+    return { leading: "", trailing: normalized };
+  }
+
+  return {
+    leading: words.slice(0, -trailingWords).join(" "),
+    trailing: words.slice(-trailingWords).join(" "),
+  };
+}
+
 function getHighlightDetail(detail?: string) {
   return normalizeText(detail ?? "").replace(/^\s*(?:->|→)\s*/, "");
 }
@@ -133,6 +170,7 @@ function renderHeroHeading(title: string) {
 export default function NewDocModelHero({ data }: Props) {
   const [registration, setRegistration] = useState("");
   const [hasImageError, setHasImageError] = useState(false);
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
 
   const hero = data.sections.hero;
   const modelName = displayModelName(data);
@@ -140,20 +178,14 @@ export default function NewDocModelHero({ data }: Props) {
     data.assets.mainImage || data.assets.smallImage || data.assets.heroBg;
 
   const engineHighlights = hero.highlights?.slice(0, 3) ?? [];
+  const disclaimer = hero.disclaimer;
+  const hasDisclaimer = Boolean(disclaimer?.note?.trim());
+  const disclaimerLines = disclaimer?.note?.trim()
+    ? buildDisclaimerLines(disclaimer.note)
+    : [];
+  const subheadingParts = splitInlineDisclaimerText(hero.subheading);
 
-  const tickerItems = useMemo(() => {
-    const segments = hero.ticker
-      .split(/[·•]/)
-      .map((segment) => segment.replace(/^\s*[●•]\s*/, "").trim())
-      .filter(Boolean);
-
-    return segments.length ? segments : hero.trustBadges.filter(Boolean);
-  }, [hero.ticker, hero.trustBadges]);
-
-  const tickerLoop = useMemo(
-    () => [...tickerItems, ...tickerItems],
-    [tickerItems],
-  );
+  const tickerLoop = useMemo(() => [...tickerItems, ...tickerItems], []);
 
   function openQuoteCheckout(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -208,8 +240,35 @@ export default function NewDocModelHero({ data }: Props) {
             </h1>
 
             <p className="mt-3 max-w-[555px] text-[14px] leading-[1.55] text-[#415670] lg:mt-4 lg:text-[15px]">
-              {normalizeText(hero.subheading)}
+              {subheadingParts.leading ? `${subheadingParts.leading} ` : ""}
+              <span className="whitespace-nowrap">
+                {subheadingParts.trailing}
+                {hasDisclaimer ? (
+                  <>
+                    {" "}
+                    <button
+                      type="button"
+                      onClick={() => setIsDisclaimerOpen((current) => !current)}
+                      aria-expanded={isDisclaimerOpen}
+                      aria-label="Toggle disclaimer"
+                      className="inline-flex h-5 w-5 translate-y-[-1px] items-center justify-center rounded-full border border-black align-middle text-[11px] font-bold leading-none text-black transition focus:outline-none focus:ring-2 focus:ring-[#2d7a3a] focus:ring-offset-2"
+                    >
+                      !
+                    </button>
+                  </>
+                ) : null}
+              </span>
             </p>
+
+            {hasDisclaimer && isDisclaimerOpen ? (
+              <div className="mt-2 rounded-[12px] border border-white/70 bg-white/35 px-3 py-2.5 text-[11.5px] leading-[1.55] text-[#415670] shadow-[0_14px_32px_rgba(20,72,120,0.16),inset_0_1px_rgba(255,255,255,0.85)] backdrop-blur-xl md:px-4 md:py-3 md:text-[12.5px]">
+                <div className="space-y-1.5">
+                  {disclaimerLines.map((line, index) => (
+                    <p key={`${line}-${index}`}>{normalizeText(line)}</p>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             <div className="mt-4 grid max-w-[650px] grid-cols-2 overflow-hidden rounded-2xl border border-[#158de2]/45 bg-[#061a33] shadow-[0_0_22px_rgba(20,140,228,0.3)] sm:mt-5 sm:grid-cols-4">
               {hero.trustBadges.slice(0, 4).map((badge, index) => (
@@ -240,7 +299,7 @@ export default function NewDocModelHero({ data }: Props) {
                 {engineHighlights.map((highlight) => (
                   <article
                     key={highlight.title}
-                    className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/75 bg-white/75 px-3 py-3 shadow-[0_12px_28px_rgba(20,72,120,0.14)] backdrop-blur-xl sm:px-4"
+                    className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/70 bg-white/45 px-3 py-3 shadow-[0_14px_32px_rgba(20,72,120,0.2),inset_0_1px_rgba(255,255,255,0.85)] backdrop-blur-[18px] sm:px-4"
                   >
                     <div className="flex h-14 w-20 shrink-0 items-center justify-center rounded-xl border-0 bg-transparent p-0">
                       {imageSrc ? (
@@ -280,7 +339,7 @@ export default function NewDocModelHero({ data }: Props) {
           <div className="relative flex flex-col items-center sm:block sm:min-h-[380px] lg:-ml-12 lg:min-h-[455px]">
             <p
               aria-hidden="true"
-              className="pointer-events-none absolute left-10 top-6 z-[4] max-w-[90%] whitespace-nowrap text-left text-[60px] font-black uppercase leading-none tracking-[-0.08em] text-[#0b3a68]/[0.15] sm:left-7 sm:text-[80px] lg:left-70 lg:top-[4%] lg:max-w-[94%] lg:text-[78px] lg:text-white/[0.22]"
+              className="pointer-events-none absolute left-10 -top-3 z-[4] max-w-[90%] whitespace-nowrap text-left text-[60px] font-black uppercase leading-none tracking-[-0.08em] text-[#0b3a68]/[0.15] sm:left-7 sm:text-[80px] lg:left-76 lg:top-[-2%] lg:max-w-[94%] lg:text-[78px] lg:text-white/[0.22]"
             >
               {modelName}
             </p>
@@ -294,7 +353,7 @@ export default function NewDocModelHero({ data }: Props) {
                   priority
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 80vw, 52vw"
                   onError={() => setHasImageError(true)}
-                  className="scale-[1.1] object-contain object-center drop-shadow-[0_22px_19px_rgba(1,9,25,0.5)] sm:scale-[1.28] lg:scale-[1.18] xl:scale-[1.18]"
+                  className="-translate-y-[8%] scale-[1.1] object-contain object-center drop-shadow-[0_22px_19px_rgba(1,9,25,0.5)] sm:translate-y-0 sm:scale-[1.28] lg:scale-[1.18] xl:scale-[1.18]"
                 />
               ) : (
                 <div className="absolute inset-x-[13%] bottom-[16%] top-[20%] rounded-full border border-[#6acaff]/30 bg-[#0a315d]/25 shadow-[0_0_70px_rgba(61,182,255,0.36)]" />
@@ -373,20 +432,23 @@ export default function NewDocModelHero({ data }: Props) {
 
       {tickerLoop.length ? (
         <div className="overflow-hidden bg-[#061a33] text-white shadow-[inset_0_1px_rgba(105,212,255,0.32)]">
-          <div className="hero-ticker-track h-[52px] ![animation-duration:36s] [animation-direction:reverse] hover:[animation-play-state:paused] sm:h-[58px]">
+          <div
+            className="hero-ticker-track h-[52px] hover:[animation-play-state:paused] sm:h-[58px]"
+            style={{ animationDuration: "32s" }}
+          >
             {tickerLoop.map((item, index) => (
               <span
-                key={`${item}-${index}`}
+                key={`${item.text}-${index}`}
                 className="flex h-full flex-none items-center gap-2 border-r border-white/15 px-5 text-[12px] font-medium leading-none text-white/90 sm:px-6"
               >
                 <Image
-                  src={tickerIcons[index % tickerIcons.length]}
+                  src={item.src}
                   alt=""
                   width={24}
                   height={24}
-                  className="h-5 w-5 object-contain"
+                  className="h-6 w-6 object-contain sm:h-7 sm:w-7"
                 />
-                {normalizeText(item)}
+                {item.text}
               </span>
             ))}
           </div>

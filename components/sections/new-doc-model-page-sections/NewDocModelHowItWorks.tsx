@@ -233,14 +233,15 @@ export default function NewDocModelHowItWorks({
   return (
     <Section
       id={sectionId}
-      className={`relative overflow-hidden ${newDesignMode ? "bg-white" : "bg-[#f7f8fb]"} ${flush
+      className={`relative overflow-hidden ${newDesignMode ? "bg-white" : "bg-[#f7f8fb]"} ${
+        flush
           ? "!px-0 !py-[2px]"
           : compactSpacing
             ? "px-2 pb-5 pt-3 sm:pb-6 sm:pt-5 lg:pb-7 lg:pt-6"
             : newDesignMode
-              ? "!px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-10"
-              : " pb-7 pt-4 sm:py-8 lg:py-10"
-        }`}
+              ? "!px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-7"
+              : " pb-7 pt-4 sm:py-8 lg:py-7"
+      }`}
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
@@ -306,10 +307,11 @@ export default function NewDocModelHowItWorks({
             return (
               <div
                 key={card.number}
-                className={`perspective-1000 ${variantLayout
-                    ? "min-h-[252px] sm:min-h-[256px] lg:min-h-[248px] xl:min-h-[272px]"
-                    : "min-h-[244px] sm:min-h-[252px] lg:min-h-[244px] xl:min-h-[274px]"
-                  } ${card.number === 1 ? "md:col-span-2 md:mx-auto md:w-full md:max-w-[420px] lg:col-span-1 lg:max-w-none" : ""}`}
+                className={`perspective-1000 ${
+                  variantLayout
+                    ? "min-h-[248px] sm:min-h-[252px] lg:min-h-[236px] xl:min-h-[258px]"
+                    : "min-h-[236px] sm:min-h-[244px] lg:min-h-[228px] xl:min-h-[256px]"
+                } ${card.number === 1 ? "md:col-span-2 md:mx-auto md:w-full md:max-w-[420px] lg:col-span-1 lg:max-w-none" : ""}`}
               >
                 <button
                   type="button"
@@ -319,12 +321,13 @@ export default function NewDocModelHowItWorks({
                   aria-label={`${flipped ? "Hide details for" : "Show details for"} step ${card.number}`}
                 >
                   <div
-                    className={`relative h-full ${variantLayout
-                        ? "min-h-[252px] sm:min-h-[256px] lg:min-h-[248px] xl:min-h-[272px]"
-                        : "min-h-[244px] sm:min-h-[252px] lg:min-h-[244px] xl:min-h-[274px]"
-                      } rounded-[18px] transition duration-500 [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}
+                    className={`relative h-full ${
+                      variantLayout
+                        ? "min-h-[248px] sm:min-h-[252px] lg:min-h-[236px] xl:min-h-[258px]"
+                        : "min-h-[236px] sm:min-h-[244px] lg:min-h-[228px] xl:min-h-[256px]"
+                    } rounded-[18px] transition duration-500 [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}
                   >
-                    <div className="absolute inset-0 flex h-full flex-col overflow-hidden rounded-[18px] border border-[#dbe4ef] bg-white px-3 pb-2.5 pt-3 text-center shadow-[0_18px_40px_rgba(13,27,46,0.08)] [backface-visibility:hidden] sm:px-4 sm:pb-3 sm:pt-4 lg:px-4 lg:pb-3 lg:pt-4">
+                    <div className="absolute inset-0 flex h-full flex-col overflow-hidden rounded-[18px] border border-[#dbe4ef] bg-white px-3 pb-2.5 pt-2 text-center shadow-[0_18px_40px_rgba(13,27,46,0.08)] [backface-visibility:hidden] sm:px-4 sm:pb-3 sm:pt-4 lg:px-4 lg:pb-3 lg:pt-4">
                       <span
                         className={`ml-auto font-[var(--font-urbanist)] font-extrabold uppercase leading-none tracking-[0.14em] text-[#b3bcc9] ${variantLayout ? "text-[18px] sm:text-[22px] lg:text-[21px]" : "text-[20px] sm:text-[24px] lg:text-[22px]"}`}
                       >
@@ -332,18 +335,19 @@ export default function NewDocModelHowItWorks({
                       </span>
 
                       <div
-                        className={`mx-auto flex items-center justify-center rounded-[14px] ${isRegistrationCard
+                        className={`mx-auto flex items-center justify-center rounded-[14px] ${
+                          isRegistrationCard
                             ? variantLayout
                               ? "h-[74px] w-[224px] sm:h-[86px] sm:w-[242px] lg:h-[76px] lg:w-[214px]"
-                              : "h-[82px] w-[238px] sm:h-[94px] sm:w-[256px] lg:h-[82px] lg:w-[230px]"
+                              : "h-[94px] w-[254px] sm:h-[106px] sm:w-[274px] lg:h-[94px] lg:w-[246px]"
                             : isComparisonCard
                               ? variantLayout
                                 ? "h-[76px] w-[76px] sm:h-[88px] sm:w-[88px] lg:h-[82px] lg:w-[82px]"
-                                : "h-[84px] w-[84px] sm:h-[94px] sm:w-[94px] lg:h-[86px] lg:w-[86px]"
+                                : "h-[96px] w-[96px] sm:h-[106px] sm:w-[106px] lg:h-[98px] lg:w-[98px]"
                               : variantLayout
                                 ? "h-[72px] w-[72px] sm:h-[84px] sm:w-[84px] lg:h-[78px] lg:w-[78px]"
-                                : "h-[80px] w-[80px] sm:h-[90px] sm:w-[90px] lg:h-[82px] lg:w-[82px]"
-                          }`}
+                                : "h-[92px] w-[92px] sm:h-[102px] sm:w-[102px] lg:h-[94px] lg:w-[94px]"
+                        }`}
                       >
                         <img
                           src={stepIconSrc(card)}
@@ -352,14 +356,14 @@ export default function NewDocModelHowItWorks({
                             isRegistrationCard
                               ? variantLayout
                                 ? "h-[58px] w-[198px] object-contain sm:h-[66px] sm:w-[220px] lg:h-[60px] lg:w-[194px]"
-                                : "h-[64px] w-[210px] object-contain sm:h-[72px] sm:w-[232px] lg:h-[66px] lg:w-[206px]"
+                                : "h-[84px] w-[234px] object-contain sm:h-[92px] sm:w-[256px] lg:h-[86px] lg:w-[230px]"
                               : isComparisonCard
                                 ? variantLayout
                                   ? "h-[68px] w-[68px] object-contain sm:h-[80px] sm:w-[80px] lg:h-[74px] lg:w-[74px]"
-                                  : "h-[76px] w-[76px] object-contain sm:h-[84px] sm:w-[84px] lg:h-[78px] lg:w-[78px]"
+                                  : "h-[94px] w-[94px] object-contain sm:h-[102px] sm:w-[102px] lg:h-[96px] lg:w-[96px]"
                                 : variantLayout
                                   ? "h-[64px] w-[64px] object-contain sm:h-[76px] sm:w-[76px] lg:h-[70px] lg:w-[70px]"
-                                  : "h-[72px] w-[72px] object-contain sm:h-[80px] sm:w-[80px] lg:h-[74px] lg:w-[74px]"
+                                  : "h-[90px] w-[90px] object-contain sm:h-[98px] sm:w-[98px] lg:h-[92px] lg:w-[92px]"
                           }
                         />
                       </div>
@@ -371,10 +375,11 @@ export default function NewDocModelHowItWorks({
                               '"Bebas Neue", "Urbanist", ui-sans-serif, system-ui, sans-serif',
                             letterSpacing: "0.03em",
                           }}
-                          className={`leading-[1.14] text-[#0d1b2e] ${variantLayout
-                              ? "text-[22px] lg:text-[21px] xl:text-[23px]"
-                              : "text-[23px] lg:text-[22px] xl:text-[25px]"
-                            }`}
+                          className={`leading-[1.14] text-[#0d1b2e] ${
+                            variantLayout
+                              ? "text-[26px] lg:text-[23px] xl:text-[25px]"
+                              : "text-[27px] lg:text-[24px] xl:text-[27px]"
+                          }`}
                         >
                           {card.front.h3}
                         </h3>
@@ -382,16 +387,17 @@ export default function NewDocModelHowItWorks({
 
                       <div className="mt-1.5 flex items-start justify-center lg:mt-1.5">
                         <p
-                          className={`mx-auto w-full max-w-[340px] text-[#5a6478] ${variantLayout
+                          className={`mx-auto w-full max-w-[340px] text-[#5a6478] ${
+                            variantLayout
                               ? "text-[13px] leading-[1.45] lg:max-w-[300px] lg:text-[12px] lg:leading-[1.45]"
                               : "text-[13px] leading-[1.5] lg:max-w-[300px] lg:text-[13px] lg:leading-[1.5]"
-                            }`}
+                          }`}
                         >
                           {card.front.text}
                         </p>
                       </div>
 
-                      <div className="mt-auto flex items-center justify-end pt-2.5 lg:pt-2.5">
+                      <div className="mt-2 flex items-center justify-end pt-0 lg:pt-0">
                         <span className="inline-flex min-h-[22px] shrink-0 items-center gap-2 px-1 pb-0 pt-0 text-[12px] font-bold leading-none text-[#15803d] sm:min-h-[22px] sm:text-[13px] lg:text-[12px]">
                           <span>See more</span>
                           <ArrowIcon />
@@ -445,21 +451,24 @@ export default function NewDocModelHowItWorks({
         </div>
 
         <div
-          className={`mx-auto mt-2 flex flex-nowrap items-stretch justify-center gap-2 rounded-[12px] px-4 sm:mx-0 sm:flex-wrap sm:items-center sm:gap-3 lg:gap-4 ${compactSpacing ? "py-2 sm:mt-4 sm:py-3" : "py-4 sm:mt-6"
-            } ${variantLayout
+          className={`mx-auto mt-2 flex flex-nowrap items-stretch justify-center gap-2 rounded-[12px] px-4 sm:mx-0 sm:flex-wrap sm:items-center sm:gap-3 lg:gap-4 ${
+            compactSpacing ? "py-2 sm:mt-4 sm:py-3" : "py-4 sm:mt-6"
+          } ${
+            variantLayout
               ? `border-t border-[#e3ebf5] ${compactSpacing ? "lg:mt-3" : "lg:mt-5"} lg:px-0`
               : compactSpacing
                 ? "lg:mt-4"
                 : "lg:mt-[24px]"
-            }`}
+          }`}
         >
           {footerTrustItems.map((item, index) => (
             <div key={item.label} className="contents">
               <div
-                className={`flex flex-1 flex-col items-center justify-center gap-1 p-1.5 sm:flex-none sm:flex-row sm:gap-2 ${variantLayout
+                className={`flex flex-1 flex-col items-center justify-center gap-1 p-1.5 sm:flex-none sm:flex-row sm:gap-2 ${
+                  variantLayout
                     ? "rounded-none bg-transparent sm:px-1 sm:py-0"
                     : "rounded-lg bg-slate-50 sm:rounded-full sm:px-3 sm:py-1.5"
-                  }`}
+                }`}
               >
                 <img
                   src={item.icon.src}

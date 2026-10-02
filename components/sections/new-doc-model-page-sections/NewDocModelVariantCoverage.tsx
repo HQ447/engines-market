@@ -476,7 +476,7 @@ function VariantCoverageSectionImplementation({
 
     return (
       <div
-        className={`${isAbsolutePanel ? "" : "relative"} overflow-hidden border-[0.5px] border-[#2969af] bg-[#061a33] px-3 pb-3 pt-3 text-white shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)] ${extraClassName}`}
+        className={`${isAbsolutePanel ? "" : "relative"} overflow-hidden border-[0.5px] border-[#2969af] bg-[#0d1b2e] px-3 pb-3 pt-3 text-white shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(125deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.05)_22%,rgba(255,255,255,0)_42%,rgba(45,107,255,0.16)_50%,rgba(255,255,255,0)_64%)] after:pointer-events-none after:absolute after:inset-x-0 after:top-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/70 after:to-transparent ${extraClassName}`}
       >
         <div className="relative z-10 space-y-2">
           <div className="flex items-center justify-between gap-2 rounded-[8px] border border-blue-500 bg-white/[0.03] px-2.5 py-2.5 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_12px_rgba(59,130,246,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_15px_rgba(59,130,246,0.5)] sm:py-3">
@@ -503,7 +503,7 @@ function VariantCoverageSectionImplementation({
             <span className="flex-none text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60">
               {ui.rebuiltLabel ?? "Rebuilt"}
             </span>
-            <span className="min-w-0 flex-1 text-right font-[var(--font-urbanist)] text-[12px] font-extrabold leading-tight text-white md:text-[13px]">
+            <span className="min-w-0 flex-1 text-right font-['Manrope'] text-[12px] font-extrabold leading-tight text-white md:text-[13px]">
               {card.priceRange}
             </span>
           </div>
@@ -512,7 +512,7 @@ function VariantCoverageSectionImplementation({
         {variantHref ? (
           <Link
             href={variantHref}
-            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-[#15803d] bg-[#15803d] px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5)] transition hover:bg-[#15803d] hover:shadow-[0_0_20px_rgba(74,222,128,0.8)]"
+            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
             aria-label={`Open ${card.h3} variant page`}
           >
             <span className="min-w-0 flex-1 text-left text-[10px] font-semibold uppercase tracking-[0.08em] leading-[1.35] text-white/85 break-words">
@@ -527,7 +527,7 @@ function VariantCoverageSectionImplementation({
             href="#quote-form"
             data-quote-context={card.h3}
             data-quote-source="variant-coverage"
-            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-[#15803d]  px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5)] transition hover:shadow-[0_0_20px_rgba(74,222,128,0.8)]"
+            className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-2 overflow-hidden rounded-xl border border-green-400 bg-slate-900 px-2.5 py-2 text-white shadow-[0_0_15px_rgba(74,222,128,0.5),inset_0_0_12px_rgba(74,222,128,0.3)] transition hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(74,222,128,0.8),inset_0_0_15px_rgba(74,222,128,0.5)]"
           >
             <span className="min-w-0 flex-1 text-left text-[10px] font-semibold uppercase tracking-[0.08em] leading-[1.35] text-white/85 break-words">
               {card.cta}
@@ -572,14 +572,14 @@ function VariantCoverageSectionImplementation({
       <Section
         className={
           newDesignMode
-            ? "relative isolate overflow-hidden bg-[#f7f8fb] !px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-10"
+            ? "relative isolate overflow-hidden bg-[#f7f8fb] !px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-7"
             : "bg-[#f7f8fb]"
         }
       >
         {newDesignMode && modelImage ? (
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[-2px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70"
+            className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[12px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70"
           >
             <Image
               src={modelImage}
@@ -628,7 +628,7 @@ function VariantCoverageSectionImplementation({
 
           <div className="mt-6 md:mt-9">
             <div className="grid grid-cols-2 gap-3 md:hidden">
-              {mobileCardsToDisplay.map((card) => {
+              {mobileCardsToDisplay.map((card, index) => {
                 const shortName = formatVariantName(card.h3);
                 const isOpen = openCard === card.slug;
                 const animateChevron = !isOpen && !seenCards[card.slug];
@@ -639,6 +639,7 @@ function VariantCoverageSectionImplementation({
                   modelSlug,
                   modelName,
                 });
+                const opensUpward = index >= mobileCardsToDisplay.length - 2;
                 return (
                   <article
                     key={card.slug}
@@ -646,7 +647,7 @@ function VariantCoverageSectionImplementation({
                   >
                     <div
                       className={`relative ${isOpen ? "overflow-visible" : "overflow-hidden"} rounded-[12px] border bg-white transition duration-300 ${isOpen
-                          ? "rounded-t-[12px] rounded-b-none border-b-0 border-[#2969af] shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)]"
+                          ? `${opensUpward ? "rounded-b-[12px] rounded-t-none border-t-0" : "rounded-t-[12px] rounded-b-none border-b-0"} border-[#2969af] shadow-[0_0_0_1px_rgba(42,109,214,1),0_0_5px_rgba(42,109,214,0.4),0_0_12px_rgba(42,109,214,0.3),0_0_20px_rgba(42,109,214,0.2),0_3px_10px_rgba(42,109,214,0.25)]`
                           : "border-slate-200 shadow-[0_2px_8px_rgba(13,27,46,0.05)]"
                         }`}
                     >
@@ -656,28 +657,24 @@ function VariantCoverageSectionImplementation({
                         aria-expanded={isOpen}
                         className="flex h-[252px] w-full flex-col items-center px-0 pb-4 pt-0 text-center"
                       >
-                        <div className="relative h-[118px] w-full overflow-hidden rounded-t-[12px] bg-[#f8fbff]">
+                        <div className="relative h-[118px] w-full overflow-hidden rounded-t-[12px] bg-[linear-gradient(180deg,#f8fbff_0%,#eef3f9_100%)]">
                           <Image
                             src={vehicleImage.src}
                             alt={shortName}
                             fill
-                            className={
-                              newDesignMode
-                                ? "object-contain object-center p-[6px]"
-                                : "object-contain object-center p-[6px]"
-                            }
+                            className="object-contain object-center p-[6px]"
                             sizes="(max-width: 767px) 50vw, 25vw"
                           />
                         </div>
 
                         <div className="mt-2 flex w-full flex-1 flex-col px-3">
-                          <div className="min-h-[32px] font-[var(--font-urbanist)] text-[13px] font-extrabold leading-[1.18] text-[#0d1b2e]">
+                          <div className="min-h-[32px] font-['Manrope'] text-[13px] font-extrabold leading-[1.18] text-[#0d1b2e]">
                             {shortName}
                           </div>
                           <p className="mt-1.5 min-h-[28px] text-[10px] font-semibold leading-[1.4] text-[#4b5563]">
                             {normalizeVariantSubtitle(card.subtitle)}
                           </p>
-                          <p className="mt-auto pt-2 font-[var(--font-urbanist)] text-[12.5px] font-semibold leading-tight text-[#374151]">
+                          <p className="mt-auto pt-2 font-['Manrope'] text-[12.5px] font-semibold leading-tight text-[#374151]">
                             Rebuilt: {card.priceRange}
                           </p>
                         </div>
@@ -693,7 +690,9 @@ function VariantCoverageSectionImplementation({
                       {isOpen
                         ? renderExpandedPanel(
                           card,
-                          "absolute left-[-1px] right-[-1px] top-full z-50 min-h-[252px] rounded-b-[12px] border-t-0",
+                          opensUpward
+                            ? "absolute bottom-full left-[-1px] right-[-1px] z-50 rounded-t-[12px] border-b-0"
+                            : "absolute left-[-1px] right-[-1px] top-full z-50 rounded-b-[12px] border-t-0",
                         )
                         : null}
                     </div>
@@ -735,31 +734,23 @@ function VariantCoverageSectionImplementation({
                       {/* CLICKABLE WALL-TO-WALL IMAGE */}
                       {variantHref ? (
                         <Link href={variantHref} className="block w-full">
-                          <div className="relative h-[118px] w-full overflow-hidden bg-[#f8fbff]">
+                          <div className="relative h-[118px] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#eef3f9_100%)]">
                             <Image
                               src={vehicleImage.src}
                               alt={shortName}
                               fill
-                              className={
-                                newDesignMode
-                                  ? "object-contain object-center p-[6px]"
-                                  : "object-contain object-center p-[6px]"
-                              }
+                              className="object-contain object-center p-[6px]"
                               sizes="20vw"
                             />
                           </div>
                         </Link>
                       ) : (
-                        <div className="relative h-[118px] w-full overflow-hidden bg-[#f8fbff]">
+                        <div className="relative h-[118px] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#eef3f9_100%)]">
                           <Image
                             src={vehicleImage.src}
                             alt={shortName}
                             fill
-                            className={
-                              newDesignMode
-                                ? "object-contain object-center p-[6px]"
-                                : "object-contain object-center p-[6px]"
-                            }
+                            className="object-contain object-center p-[6px]"
                             sizes="20vw"
                           />
                         </div>
@@ -775,13 +766,13 @@ function VariantCoverageSectionImplementation({
                           >
                             <AutoTicker
                               text={shortName}
-                              className="font-[var(--font-urbanist)] text-[13px] font-semibold leading-[1.25] text-[#0d1b2e]"
+                              className="font-['Manrope'] text-[13px] font-semibold leading-[1.25] text-[#0d1b2e]"
                             />
                           </Link>
                         ) : (
                           <AutoTicker
                             text={shortName}
-                            className="mt-2 font-[var(--font-urbanist)] text-[13px] font-semibold leading-[1.25] text-[#0d1b2e]"
+                            className="mt-2 font-['Manrope'] text-[13px] font-semibold leading-[1.25] text-[#0d1b2e]"
                           />
                         )}
 
@@ -794,7 +785,7 @@ function VariantCoverageSectionImplementation({
                         {/* REBUILT PRICE */}
                         <AutoTicker
                           text={`Rebuilt Engines: ${card.priceRange}`}
-                          className="mt-2 font-[var(--font-urbanist)] text-[12px] font-semibold leading-[1.35] text-[#374151]"
+                          className="mt-2 font-['Manrope'] text-[12px] font-semibold leading-[1.35] text-[#374151]"
                         />
 
                         {/* EXPAND ARROW */}

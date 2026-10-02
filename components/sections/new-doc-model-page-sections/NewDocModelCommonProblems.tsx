@@ -59,6 +59,32 @@ type Problem = NonNullable<
   ModelPageData["sections"]["commonProblems"]
 >["problems"][number];
 
+function ProblemIcon({
+  index,
+  className = "h-[38px] w-[38px]",
+}: {
+  index: number;
+  className?: string;
+}) {
+  const icons = [
+    "/icons/engine-market/dark-green-timing-chain.png",
+    "/icons/engine-market/dark-green-rod-bearing.png",
+    "/icons/engine-market/dark-green-hpfp-icon.png",
+    "/icons/engine-market/dark-green-cooling-system.png",
+    "/icons/engine-market/dark-green-egr-icon.png",
+  ];
+
+  return (
+    <Image
+      src={icons[index % icons.length]}
+      alt=""
+      width={42}
+      height={42}
+      className={`${className} object-contain`}
+    />
+  );
+}
+
 function ProblemDetails({
   active,
   activeIndex,
@@ -73,8 +99,8 @@ function ProblemDetails({
       className={`${className} min-w-0 w-full max-w-full overflow-hidden rounded-2xl border border-[#1e95df]/75 bg-[#061a33] p-4 text-white  sm:p-5 lg:p-6`}
     >
       <div className="flex items-center gap-3 border-b border-white/15 pb-4">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-[#64cfff]/50 bg-[#061a33] text-[17px] font-extrabold text-[#a4eaff] sm:text-[20px] lg:h-12 lg:w-12">
-          {activeIndex + 1}
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-[#64cfff]/50 bg-[#061a33] sm:h-12 sm:w-12">
+          <ProblemIcon index={activeIndex} className="h-7 w-7 sm:h-9 sm:w-9" />
         </span>
         <div>
           <h3 className="line-clamp-2 text-[16px] text-white font-extrabold leading-[1.2] hover:line-clamp-none sm:line-clamp-none sm:text-[21px] lg:text-[22px]">
@@ -218,12 +244,12 @@ export default function NewDocModelCommonProblems({ data }: Props) {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#f7f8fb] px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+    <section className="relative overflow-hidden bg-[#f7f8fb] px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-7">
       <ModelMobileAccordion
         title={heading.primary}
         icon={<FiAlertTriangle className="h-5 w-5" aria-hidden="true" />}
       >
-        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[-2px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70">
+        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[12px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70">
           <span className="absolute right-0 top-0 text-[60px] font-black uppercase leading-none tracking-[-0.08em] text-[#a9c8e2]/50">
             {data.model.name.replace(
               new RegExp(`^${data.brand.name}\\s+`, "i"),
@@ -285,10 +311,8 @@ export default function NewDocModelCommonProblems({ data }: Props) {
                       onClick={() => selectProblem(index)}
                       className={`flex lg:mb-2 w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition ${selected ? "border-[#2da8ff] bg-[#061a33] text-white shadow-[0_0_18px_rgba(25,160,255,0.55)]" : "border-[#cde2f2] bg-white/75 text-[#09264e] shadow-[0_5px_15px_rgba(23,84,131,0.06)] hover:border-[#4bb7fb]"}`}
                     >
-                      <span
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border text-[15px] font-extrabold ${selected ? "border-[#75d8ff] text-[#a5eaff]" : "border-[#84bbdf] text-[#126dd4]"}`}
-                      >
-                        {index + 1}
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center">
+                        <ProblemIcon index={index} className="h-9 w-9" />
                       </span>
                       <span className="min-w-0 flex-1 text-[13px] font-bold leading-[1.25]">
                         {normalize(problem.group)}

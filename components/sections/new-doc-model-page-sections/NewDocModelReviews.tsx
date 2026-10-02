@@ -222,7 +222,7 @@ export default function NewDocModelReviews({ data }: Props) {
   const goPrev = () => goTo(currentIndex - 1);
 
   return (
-    <Section className="relative isolate overflow-hidden bg-white !px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-10">
+    <Section className="relative isolate overflow-hidden bg-white !px-4 !py-5 sm:!px-6 sm:!py-8 lg:!px-8 lg:!py-7">
       <Container className="relative z-10 !max-w-7xl !px-0">
         <div className="mb-4 inline-flex w-fit rounded-full border border-[#1289d5]/40 bg-[linear-gradient(135deg,#042f5a,#075b94)] px-3.5 py-1.5 text-[13px] font-bold uppercase text-white shadow-[0_0_20px_rgba(26,145,232,0.25)]">
           {reviews.tag}

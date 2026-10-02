@@ -161,7 +161,7 @@ function MobileEngineTypeStack({
               className={`relative transition-all duration-300 ${active ? "z-30" : "z-10"}`}
               style={{
                 marginTop: stackIndex === 0 ? 0 : previousIsActive ? 8 : -54,
-                transform: `translateX(${offsetX}px)`,
+                transform: `translateX(${offsetX}px) rotate(0deg)`,
                 width: "calc(100% - 42px)",
                 height: active ? (flipped ? 220 : 188) : undefined,
                 perspective: active ? "1200px" : undefined,
@@ -564,16 +564,16 @@ function EngineCard({
                 ← Back to front
               </button>
             </div>
-            <h3 className="mt-2 text-[20px] font-extrabold leading-tight text-white">
+            <h4 className="mt-5 text-[17px] font-extrabold leading-tight text-white">
               {normalize(type.title)}
-            </h3>
-            <p className="mt-1 text-[14px] text-white/75">
+            </h4>
+            <p className="my-0.5 text-[14px] text-white/75">
               Key benefits &amp; what to expect
             </p>
-            <p className="mt-1 text-[13px] leading-[1.45] text-white/85">
+            <p className="mt-3 text-[13px] leading-[1.45] text-white/85">
               {normalize(type.backDescription || type.description)}
             </p>
-            <ul className="mt-1 space-y-2">
+            <ul className="mt-3 space-y-3">
               {bullets.map((bullet) => (
                 <li
                   key={bullet}
@@ -584,14 +584,6 @@ function EngineCard({
                 </li>
               ))}
             </ul>
-            <div className="mt-auto border-t border-white/25 pt-2">
-              <p className="text-[13px] font-bold">
-                Trusted replacement engines
-              </p>
-              <p className="mt-1 text-[11px] text-white/70">
-                Built for a longer journey with warranty-backed support.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -613,7 +605,7 @@ export default function NewDocModelEngineTypes({ data }: Props) {
   return (
     <section
       id="model-engine-types"
-      className="relative overflow-hidden bg-white px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-10"
+      className="relative overflow-hidden bg-white px-4 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-7"
     >
       <ModelMobileAccordion
         title={normalize(
@@ -623,7 +615,7 @@ export default function NewDocModelEngineTypes({ data }: Props) {
         )}
         icon={<TbEngine className="h-5 w-5" aria-hidden="true" />}
       >
-        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[-2px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70">
+        <div className="pointer-events-none absolute right-0 top-0 z-0 h-[210px] w-full opacity-25 sm:h-[240px] sm:opacity-30 md:right-[max(1rem,calc((100vw-80rem)/2+1rem))] md:top-[12px] md:h-[220px] md:w-[430px] md:overflow-hidden md:opacity-70">
           {sectionImage ? (
             <Image
               src={sectionImage}
