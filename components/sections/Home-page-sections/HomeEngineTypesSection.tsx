@@ -257,7 +257,7 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                   >
                     <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${getIconClasses(card.icon)}`}>{getIcon(card.title, "h-7 w-7")}</span>
                     <span className="min-w-0">
-                      <span className="block break-words font-['Manrope'] text-[18px] font-bold leading-[1.05] text-[#0d1b2e]">{card.title}</span>
+                      <span className="block break-words font-['Manrope'] text-[13px] font-bold leading-[1.05] text-[#0d1b2e]">{card.title}</span>
                     </span>
                   </button>
                   <div className="ml-auto flex flex-none items-center gap-2">
@@ -300,7 +300,7 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
               >
                 <div className="back-inner flex min-h-0 flex-1 flex-col">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-['Manrope'] text-[18px] font-bold leading-[1.15] text-white">{card.backHeader}</h3>
+                    <h3 className="font-['Manrope'] text-[13px] font-bold leading-[1.15] text-white">{card.backHeader}</h3>
                     <button
                       type="button"
                       onClick={(event) => {

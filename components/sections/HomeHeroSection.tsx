@@ -888,9 +888,9 @@ function CTAPanel({
                   <button
                     type="button"
                     onClick={() => openSelector("makes")}
-                    className="flex min-h-[72px] min-w-0 flex-col items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a] shadow-[0_2px_5px_rgba(9,42,83,0.07)]"
+                    className="flex min-h-[72px] min-w-0 flex-row items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a] shadow-[0_2px_5px_rgba(9,42,83,0.07)]"
                   >
-                    <span>View All Brands</span>
+                    <span>View All</span>
                     <ArrowIcon />
                   </button>
                 </div>
@@ -927,9 +927,9 @@ function CTAPanel({
                     <button
                       type="button"
                       onClick={() => openSelector("models")}
-                      className="min-h-[72px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                      className="flex min-h-[72px] items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
                     >
-                      <span>View All Models</span>
+                      <span>View All</span>
                       <ArrowIcon />
                     </button>
                   ) : null}
@@ -959,9 +959,9 @@ function CTAPanel({
                       <button
                         type="button"
                         onClick={() => openSelector("variants")}
-                        className="min-h-[40px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                        className="flex min-h-[40px] items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
                       >
-                        <span>View All Variants</span>
+                        <span>View All</span>
                         <ArrowIcon />
                       </button>
                     ) : null}
@@ -989,7 +989,7 @@ function CTAPanel({
                     <button
                       type="button"
                       onClick={() => openSelector("years")}
-                      className="min-h-[30px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                      className="flex min-h-[30px] items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
                     >
                       <span>View All Years</span>
                       <ArrowIcon />
