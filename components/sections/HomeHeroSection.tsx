@@ -8,6 +8,8 @@ import Container from "@/components/ui/Container";
 import type { HomeHeroData } from "@/lib/homepageData";
 import { getEngineLinkForCode, type EngineLinkMap } from "@/lib/engineLinks";
 import { carModelsBySeries, carSeries } from "@/data/brands_Models";
+import { resolveVariantArtwork } from "@/lib/variantImageAssets";
+import imageManifest from "@/lib/image-manifest.json";
 import { PiEngine } from "react-icons/pi";
 import { GoShield } from "react-icons/go";
 import { GoVerified } from "react-icons/go";
@@ -15,13 +17,6 @@ import { GoVerified } from "react-icons/go";
 type Props = {
   data: HomeHeroData;
   engineLinks?: EngineLinkMap;
-};
-
-type HeroBrandRow = {
-  brand: string;
-  stat: string;
-  price: string;
-  codes: string;
 };
 
 type TickerItem = {
@@ -53,6 +48,117 @@ type VehicleRegistrationData = {
 const manualMakeOptions = Object.keys(carSeries).sort();
 const manualYearOptions = Array.from({ length: 2026 - 1990 + 1 }, (_, index) => String(2026 - index));
 const carModelsBySeriesMap = carModelsBySeries as Record<string, string[]>;
+const featuredMakeKeys = ["BMW", "Mercedesbenz", "Jaguar", "LandRover", "RangeRover"];
+const makeLogoFiles: Record<string, string> = {
+  AlfaRomeo: "/prices/img/alfa-romeo-logo-small.webp",
+  AstonMartin: "/prices/img/aston-martin-logo-small.webp",
+  Audi: "/prices/img/audi-logo-small.webp",
+  Bentley: "/prices/img/bentley-logo-small.webp",
+  BMW: "/prices/img/bmw-logo-small.webp",
+  Cadillac: "/prices/img/cadillac-logo-small.webp",
+  Chevrolet: "/prices/img/chevrolet-logo-small.webp",
+  Chrysler: "/prices/img/chrysler-logo-small.webp",
+  Citroen: "/prices/img/citroen-logo-small.webp",
+  Dacia: "/BrandsLogos/dacia-logo-small.webp",
+  Daewoo: "/BrandsLogos/daewoo-logo-small.webp.webp",
+  Daihatsu: "/prices/img/daihatsu-logo-small.webp",
+  Dodge: "/prices/img/dodge-logo-small.webp",
+  Ferrari: "/prices/img/ferrari-logo-small.webp",
+  Fiat: "/prices/img/fiat-logo-small.webp",
+  Ford: "/prices/img/ford-logo-small.webp",
+  Genesis: "/BrandsLogos/gensis-logo-small.webp",
+  Honda: "/prices/img/honda-logo-small.webp",
+  Hyundai: "/prices/img/hyundai-logo-small.webp",
+  Isuzu: "/prices/img/isuzu-logo-small.webp",
+  Iveco: "/prices/img/iveco-logo-small.webp",
+  Jaguar: "/prices/img/jaguar-logo-small.webp",
+  Jeep: "/prices/img/jeep-logo-small.webp",
+  KIA: "/prices/img/kia-logo-small.webp",
+  Lancia: "/BrandsLogos/lancia-logo-small.webp",
+  LandRover: "/prices/img/land-rover-logo-small.webp",
+  Lexus: "/prices/img/lexus-logo-small.webp",
+  Lotus: "/BrandsLogos/lotus-logo-small.webp",
+  Mazda: "/prices/img/mazda-logo-small.webp",
+  Mercedesbenz: "/prices/img/mercedes-logo-small.webp",
+  Mclaren: "/BrandsLogos/mclaren-logo-small.webp",
+  MG: "/prices/img/mg-logo-small.webp",
+  MINI: "/prices/img/mini-logo-small.webp",
+  Mitsubishi: "/prices/img/mitsubishi-logo-small.webp",
+  Nissan: "/prices/img/nissan-logo-small.webp",
+  Opel: "",
+  Peugeot: "/prices/img/peugeot-logo-small.webp",
+  Polestar: "/BrandsLogos/polestar-logo-small.webp",
+  Porsche: "/prices/img/porsche-logo-small.webp",
+  RangeRover: "/prices/img/range-rover-logo-small.webp",
+  Renault: "/prices/img/renault-logo-small.webp",
+  Rover: "",
+  RollsRoyce: "/prices/img/rolls-royce-logo-small.webp",
+  Seat: "/prices/img/seat-logo-small.webp",
+  Skoda: "/prices/img/skoda-logo-small.webp",
+  Smart: "/prices/img/smart-logo-small.webp",
+  Ssangyong: "/BrandsLogos/ssangyong-logo-small.webp",
+  Subaru: "/prices/img/subaru-logo-small.webp",
+  Suzuki: "/prices/img/suzuki-logo-small.webp",
+  Toyota: "/prices/img/toyota-logo-small.webp",
+  Vauxhall: "/prices/img/vauxhall-logo-small.webp",
+  Volkswagen: "/prices/img/volkswagen-logo-small.webp",
+  Volvo: "/prices/img/volvo-logo-small.webp",
+};
+const manualBrandSlugs: Record<string, string> = {
+  BMW: "bmw",
+  Mercedesbenz: "mercedes-benz",
+  Jaguar: "jaguar",
+  LandRover: "land-rover",
+  RangeRover: "range-rover",
+};
+const manualImageManifest = imageManifest as Record<string, number>;
+
+function getMakeLabel(make: string) {
+  return make === "Mercedesbenz" ? "Mercedes-Benz" : make === "LandRover" ? "Land Rover" : make === "RangeRover" ? "Range Rover" : make;
+}
+
+function getMakeLogoPath(make: string) {
+  return makeLogoFiles[make] || null;
+}
+
+function slugifyManualImageValue(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function getManualModelImagePath(make: string, model: string) {
+  const brandName = getMakeLabel(make);
+  const brandSlug = manualBrandSlugs[make] ?? slugifyManualImageValue(brandName);
+  const modelSlug = slugifyManualImageValue(model);
+  const variantArtwork = resolveVariantArtwork({
+    brandSlug,
+    brandName,
+    modelSlug,
+    modelName: model,
+    variantSlug: model,
+    variantName: model,
+  });
+
+  if (variantArtwork) {
+    return variantArtwork;
+  }
+
+  const modelWithoutBrand = model
+    .replace(new RegExp(`^${brandName.replace(/[.*+?^${}()|[\\]\\]/g, "\\\\$&")}\\s+`, "i"), "")
+    .replace(/\s+(diesel|petrol|hybrid|electric|flexfuel).*$/i, "")
+    .trim();
+  const familyTokens = modelWithoutBrand.split(/\s+/).slice(0, 2).join("-");
+  const modelCardCandidates = [
+    `/images/brands/${brandSlug}/models/${brandSlug}-${slugifyManualImageValue(modelWithoutBrand)}-model-card.png`,
+    `/images/brands/${brandSlug}/models/${brandSlug}-${slugifyManualImageValue(familyTokens)}-model-card.png`,
+    `/images/brands/${brandSlug}/models/${brandSlug}-${slugifyManualImageValue(modelWithoutBrand)}-model-card.webp`,
+  ];
+
+  return modelCardCandidates.find((candidate) => manualImageManifest[candidate]) ?? null;
+}
 
 const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
 
@@ -76,34 +182,6 @@ const modelsByMake: Record<string, string[] | Record<string, string[]>> = Object
   },
   {} as Record<string, string[] | Record<string, string[]>>,
 );
-
-const rowGroups: HeroBrandRow[][] = [
-  [
-    { brand: "BMW", stat: "820+ quotes · last 30 days", price: "£1,800 - £4,500", codes: "N47D20 · B47D20 · N57D30" },
-    { brand: "Land Rover", stat: "540+ quotes · last 30 days", price: "£3,200 - £6,500", codes: "306DT · 508PN · 276DT" },
-    { brand: "Mercedes-Benz", stat: "675+ quotes · last 30 days", price: "£2,200 - £5,500", codes: "OM651 · M271 · M276" },
-  ],
-  [
-    { brand: "Ford", stat: "480+ quotes · last 30 days", price: "£1,200 - £3,200", codes: "HHDA · M8MA · PNDA" },
-    { brand: "Volkswagen", stat: "340+ quotes · last 30 days", price: "£1,400 - £3,500", codes: "CAYC · CFFB · CZCA" },
-    { brand: "Jaguar", stat: "300+ quotes · last 30 days", price: "£2,800 - £5,800", codes: "306PS · 508PN · AJ126" },
-  ],
-  [
-    { brand: "Nissan", stat: "280+ quotes · last 30 days", price: "£1,400 - £3,200", codes: "K9K · HR16DE · YD25DDTi" },
-    { brand: "Renault", stat: "250+ quotes · last 30 days", price: "£1,100 - £2,800", codes: "K9K · M9R · H4M" },
-    { brand: "Toyota", stat: "220+ quotes · last 30 days", price: "£1,200 - £3,000", codes: "1ND-TV · 2AD-FTV · 2ZR-FE" },
-  ],
-  [
-    { brand: "Mitsubishi", stat: "175+ quotes · last 30 days", price: "£1,800 - £3,800", codes: "4N14 · 4D56 · 6G74" },
-    { brand: "Peugeot", stat: "160+ quotes · last 30 days", price: "£1,100 - £2,800", codes: "DV6C · DW10 · EP6" },
-    { brand: "Audi", stat: "160+ quotes · last 30 days", price: "£1,600 - £4,200", codes: "CAGA · CFFB · CDUC" },
-  ],
-  [
-    { brand: "Honda", stat: "140+ quotes · last 30 days", price: "£1,300 - £3,000", codes: "N22A · R20A · K20C" },
-    { brand: "Kia", stat: "125+ quotes · last 30 days", price: "£1,200 - £2,800", codes: "D4FB · G4FJ · D4HA" },
-    { brand: "Mazda", stat: "120+ quotes · last 30 days", price: "£1,400 - £3,200", codes: "SH-VPTS · R2AA · L5-VE" },
-  ],
-];
 
 const tickerItems: TickerItem[] = [
   { brand: "BMW", code: "N47D20", price: "£2,200" },
@@ -142,28 +220,6 @@ const bottomBarItems = [
   { icon: "shield", text: "12-24 month warranty on all replacement engines" },
 ];
 
-// Map brand names to their logo image filenames
-function getBrandLogoPath(brand: string): string {
-  const brandMap: Record<string, string> = {
-    BMW: "bmw-logo-small.webp.webp",
-    "Land Rover": "land-rover-logo-small.webp.webp",
-    "Mercedes-Benz": "mercedes-logo-small.webp.webp",
-    Ford: "ford-logo-small.webp.webp",
-    Volkswagen: "volkswagon-logo-small.webp.webp",
-    Jaguar: "jaguar-logo-small.webp.webp",
-    Nissan: "nissan-logo-small.webp.webp",
-    Renault: "renault-logo-small.webp.webp",
-    Toyota: "toyota-logo-small.webp.webp",
-    Mitsubishi: "mitsubishi-logo-small.webp.webp",
-    Peugeot: "peugeot-logo-small.webp.webp",
-    Audi: "audi-logo-small.webp.webp",
-    Honda: "honda-logo-small.webp.webp",
-    Kia: "kia-logo-small.webp.webp",
-    Mazda: "mazda-logo-small.webp.webp",
-  };
-  return `/BrandsLogos/${brandMap[brand] || "default-logo.webp"}`;
-}
-
 // Map engine codes to their image filenames
 function getEngineImagePath(code: string): string {
   const engineMap: Record<string, string> = {
@@ -194,6 +250,23 @@ function LockIcon() {
     <svg viewBox="0 0 24 24" className="h-3 w-3 flex-none" fill="none" aria-hidden="true">
       <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
+      <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" strokeWidth="2" />
+      <path d="m16 16 5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -437,19 +510,6 @@ function EngineIllustration() {
   );
 }
 
-/* Logo Badge */
-function LogoBadge({ brand }: { brand: string }) {
-  return (
-    <div className="flex h-11 w-11 flex-none items-center justify-center overflow-hidden">
-      <img
-        src={getBrandLogoPath(brand)}
-        alt={`${brand} logo`}
-        className="h-11 w-11 object-contain"
-      />
-    </div>
-  );
-}
-
 function renderLinkedEngineCodes(codes: string, engineLinks?: EngineLinkMap) {
   return codes.split(/(,\s*|\s*\/\s*|\s*·\s*)/).map((part, index) => {
     if (!part.trim() || /^[,\s/·]+$/.test(part)) {
@@ -470,49 +530,122 @@ function renderLinkedEngineCodes(codes: string, engineLinks?: EngineLinkMap) {
   });
 }
 
-/* Brand Row - matches screenshot layout exactly */
-function HeroRow({ row, engineLinks }: { row: HeroBrandRow; engineLinks?: EngineLinkMap }) {
+type ManualSelectorKind = "makes" | "models" | "variants" | "years";
+
+function ManualSelectorPanel({
+  kind,
+  query,
+  onQueryChange,
+  onClose,
+  makeOptions,
+  modelOptions,
+  variantOptions,
+  yearOptions,
+  manualMake,
+  manualModel,
+  manualVariant,
+  manualYear,
+  onMakeSelect,
+  onModelSelect,
+  onVariantSelect,
+  onYearSelect,
+}: {
+  kind: ManualSelectorKind;
+  query: string;
+  onQueryChange: (value: string) => void;
+  onClose: () => void;
+  makeOptions: string[];
+  modelOptions: string[];
+  variantOptions: string[];
+  yearOptions: string[];
+  manualMake: string;
+  manualModel: string;
+  manualVariant: string;
+  manualYear: string;
+  onMakeSelect: (make: string) => void;
+  onModelSelect: (model: string) => void;
+  onVariantSelect: (variant: string) => void;
+  onYearSelect: (year: string) => void;
+}) {
+  const sourceOptions = kind === "makes" ? makeOptions : kind === "models" ? modelOptions : kind === "variants" ? variantOptions : yearOptions;
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredOptions = sourceOptions.filter((option) => option.toLowerCase().includes(normalizedQuery));
+  const title = kind === "makes" ? "Select Your Make" : kind === "models" ? "Select Your Model" : kind === "variants" ? "Select Your Variant" : "Select Your Year";
+  const placeholder = kind === "makes" ? "Search brands..." : kind === "models" ? "Search models..." : kind === "variants" ? "Search variants..." : "Search years...";
+
   return (
-    // Changed px-4 to px-2 sm:px-4 to reduce overall left/right space on mobile
-    <div className="flex h-[80px] cursor-pointer items-center sm:gap-15 border-b border-[rgba(13,27,46,0.1)] px-2 sm:px-4 last:border-b-0 transition-colors hover:bg-[#f9fafb]">
-
-      {/* LEFT: Logo + Brand name grouped together */}
-      {/* Changed w-[110px] to w-[50px] sm:w-[110px] to reduce space around the logo on mobile */}
-      <div className="flex w-[50px] min-[380px]:w-[60px] sm:w-[10px] flex-shrink-0 flex-col items-center gap-2 sm:flex-row sm:gap-4">
-        <LogoBadge brand={row.brand} />
-        {/* <span className="hidden sm:inline text-md font-bold text-[#0d1b2e] sm:text-left">{row.brand}</span> */}
-      </div>
-
-      {/* CENTER: 3-line stats block */}
-      <div className="min-w-0 flex-1">
-        {/* Line 1: green quote count */}
-        <div className="mb-[3px] text-[13px] font-bold text-[#15803d]">
-          {/* Added brand name here for mobile only, in dark blue */}
-          <span className=" mr-1.5 text-[#0d1b2e]">{row.brand}</span>
-          {row.stat}
+    <div className="bg-transparent">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#8a97aa]">Choose vehicle</div>
+          <div className="text-[15px] font-bold leading-tight text-[#102452]">{title}</div>
         </div>
-        
-{/* Line 2: price range */}
-<div className="mb-[2px] text-[13px] text-[#0d1b2e]">
-  Avg. <span className="font-semibold">Rebuilt</span> Quote:{" "}
-  <span className="font-semibold">{row.price}</span>{" "}
-  <span className="text-[11px] text-[#6b7280]">· supply only</span>
-</div>
-
-{/* Line 3: most requested codes */}
-<div className="truncate text-[11px] text-[#6b7280]">
-  Most requested:{" "}
-  <span className="font-medium text-[#2563eb]">{renderLinkedEngineCodes(row.codes, engineLinks)}</span>
-</div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close selector"
+          className="grid h-7 w-7 flex-none place-items-center rounded-full border border-[#d6e0ec] bg-white text-[#52657d] shadow-sm transition hover:border-[#0878ee] hover:text-[#0878ee]"
+        >
+          <CloseIcon />
+        </button>
       </div>
 
-      {/* RIGHT: chevron arrow */}
-      <span className="flex-none text-[#9ca3af]">
-        <ArrowIcon />
-      </span>
+      <label className="relative mt-3 block">
+        <span className="sr-only">{placeholder}</span>
+        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#8a97aa]">
+          <SearchIcon />
+        </span>
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => onQueryChange(event.currentTarget.value)}
+          placeholder={placeholder}
+          autoComplete="off"
+          className="h-9 w-full rounded-[8px] border border-[#cbd8e7] bg-white pl-9 pr-3 text-[12px] text-[#102452] outline-none placeholder:text-[#8a97aa] focus:border-[#0878ee] focus:ring-2 focus:ring-[#0878ee]/15"
+        />
+      </label>
+
+      <div className={`mt-3 overflow-y-auto overscroll-contain pr-1 ${kind === "years" ? "max-h-[108px]" : "max-h-[216px]"}`}>
+        {filteredOptions.length > 0 ? (
+          <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+            {filteredOptions.map((option, index) => {
+              const isMake = kind === "makes";
+              const isModel = kind === "models";
+              const isVariant = kind === "variants";
+              const isSelected = isMake ? manualMake === option : isModel ? manualModel === option : isVariant ? manualVariant === option : manualYear === option;
+              const optionImagePath = isMake ? getMakeLogoPath(option) : isModel ? getManualModelImagePath(manualMake, option) : null;
+
+              return (
+                <button
+                  key={`${kind}-${option}-${index}`}
+                  type="button"
+                  onClick={() => {
+                    if (isMake) onMakeSelect(option);
+                    else if (isModel) onModelSelect(option);
+                    else if (isVariant) onVariantSelect(option);
+                    else onYearSelect(option);
+                  }}
+                  className={`flex ${isModel || isMake ? "min-h-[72px] flex-col gap-1" : isVariant ? "min-h-[40px]" : "min-h-[30px]"} items-center justify-center rounded-[8px] border px-1 py-1 text-center text-[10px] font-semibold leading-[1.05] transition ${isSelected
+                    ? "border-2 border-[#0878ee] bg-[#eaf5ff] text-[#064ea7]"
+                    : "border-[#d6e0ec] bg-gradient-to-b from-white to-[#f9fbfd] text-[#102452] hover:border-[#65aefa]"
+                    }`}
+                >
+                  {optionImagePath ? <img src={optionImagePath} alt="" className="h-8 w-full object-contain" /> : isMake ? <span className="grid h-8 w-8 place-items-center rounded-full bg-[#e7eef8] text-[13px] text-[#1e3a8a]">{getMakeLabel(option).charAt(0)}</span> : null}
+                  <span className={isModel || isVariant ? "line-clamp-2" : "line-clamp-1"}>{isMake ? getMakeLabel(option) : option}</span>
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex min-h-[62px] items-center justify-center rounded-[8px] border border-dashed border-[#cbd8e7] bg-white/65 px-3 text-center text-[11px] font-semibold text-[#8a97aa]">
+            No matches found
+          </div>
+        )}
+      </div>
     </div>
   );
 }
+
 /* CTA Panel - reused on both mobile and desktop */
 function CTAPanel({
   registration,
@@ -529,6 +662,7 @@ function CTAPanel({
     regNumber?: string;
     make?: string;
     model?: string;
+    variant?: string;
     series?: string;
     year?: string;
     engineCode?: string;
@@ -538,53 +672,81 @@ function CTAPanel({
   gdprNote: string;
 }) {
   const [searchMode, setSearchMode] = useState<SearchMode>("registration");
-  const [manualMake, setManualMake] = useState<string>("");
+  const [manualMake, setManualMake] = useState<string>("BMW");
   const [manualModel, setManualModel] = useState<string>("");
-  const [manualSeries, setManualSeries] = useState<string>("");
+  const [manualVariant, setManualVariant] = useState<string>("");
   const [manualYear, setManualYear] = useState<string>("");
   const [manualEngineCode, setManualEngineCode] = useState("");
+  const [expandedSelector, setExpandedSelector] = useState<ManualSelectorKind | null>(null);
+  const [selectorQuery, setSelectorQuery] = useState("");
 
-  const { seriesOptions, modelOptions } = useMemo(() => {
+  const { modelOptions, variantsByModel } = useMemo(() => {
     const entry = modelsByMake[normalize(manualMake)];
 
     if (entry && !Array.isArray(entry)) {
       return {
-        seriesOptions: Object.keys(entry),
-        modelOptions: [],
+        modelOptions: Object.keys(entry),
+        variantsByModel: entry,
       };
     }
 
     return {
-      seriesOptions: [],
       modelOptions: (entry as string[]) ?? [],
+      variantsByModel: {} as Record<string, string[]>,
     };
   }, [manualMake]);
 
   useEffect(() => {
     setManualModel("");
-    setManualSeries("");
+    setManualVariant("");
+    setManualYear("");
+    setExpandedSelector(null);
+    setSelectorQuery("");
   }, [manualMake]);
 
-  useEffect(() => {
-    if (seriesOptions.length > 0) {
-      setManualSeries(seriesOptions[0]);
-    } else if (modelOptions.length > 0) {
-      setManualModel(modelOptions[0]);
-    }
-  }, [seriesOptions, modelOptions]);
+  const visibleMakeOptions = featuredMakeKeys.filter((make) => manualMakeOptions.includes(make));
+  const visibleModelOptions = modelOptions.slice(0, 5);
+  const variantOptions = variantsByModel[manualModel] ?? [];
+  const visibleVariantOptions = variantOptions.slice(0, 5);
+  const visibleYearOptions = manualYearOptions.slice(0, 4);
+  const isYearSelectionReady = Boolean(manualMake && manualModel && manualVariant);
+  const isManualSelectionComplete = Boolean(manualMake && manualModel && manualVariant && manualYear);
 
-  const activeModelOptions = useMemo(() => {
-    if (seriesOptions.length === 0) {
-      return modelOptions;
-    }
+  function openSelector(kind: ManualSelectorKind) {
+    setSelectorQuery("");
+    setExpandedSelector(kind);
+  }
 
-    const selectedSeriesModels = modelsByMake[normalize(manualMake)];
-    if (!selectedSeriesModels || Array.isArray(selectedSeriesModels) || manualSeries === "") {
-      return [];
-    }
+  function closeSelector() {
+    setSelectorQuery("");
+    setExpandedSelector(null);
+  }
 
-    return selectedSeriesModels[manualSeries] ?? [];
-  }, [manualMake, manualSeries, modelOptions, seriesOptions]);
+  function selectMake(make: string) {
+    setManualMake(make);
+    setManualModel("");
+    setManualVariant("");
+    setManualYear("");
+    closeSelector();
+  }
+
+  function selectModel(model: string) {
+    setManualModel(model);
+    setManualVariant("");
+    setManualYear("");
+    closeSelector();
+  }
+
+  function selectVariant(variant: string) {
+    setManualVariant(variant);
+    setManualYear("");
+    closeSelector();
+  }
+
+  function selectYear(year: string) {
+    setManualYear(year);
+    closeSelector();
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -597,11 +759,15 @@ function CTAPanel({
       return;
     }
 
+    if (!isManualSelectionComplete) {
+      return;
+    }
+
     await onSubmit({
       searchMode,
       make: manualMake,
       model: manualModel,
-      series: manualSeries || undefined,
+      variant: manualVariant,
       year: manualYear,
       engineCode: manualEngineCode.trim().toUpperCase(),
     });
@@ -610,14 +776,17 @@ function CTAPanel({
   return (
     <div>
       {/* Toggle buttons */}
-      <div className="mb-4 flex w-full gap-0 rounded-t-lg bg-[#f5f5f5] p-1">
+      <div className="mb-2 grid w-full grid-cols-2 gap-0 overflow-hidden rounded-[15px] border border-white/70 bg-white/80 p-0 shadow-[0_4px_12px_rgba(10,39,83,0.12)] backdrop-blur-[20px]">
         <button
           type="button"
-          onClick={() => setSearchMode("registration")}
+          onClick={() => {
+            setSearchMode("registration");
+            closeSelector();
+          }}
           aria-pressed={searchMode === "registration"}
-          className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 sm:px-4 py-3 text-[12px] sm:text-[13px] font-semibold transition-all ${searchMode === "registration"
-            ? "border border-[#0000A3] bg-white text-[#15803d] shadow-sm"
-            : "border border-transparent bg-transparent text-[#9ca3af] hover:text-[#6b7280]"
+          className={`flex min-h-[40px] flex-1 items-center justify-center gap-1 px-1.5 py-2 text-[10px] font-semibold transition-all [&>svg]:h-3 [&>svg]:w-3 sm:min-h-[50px] sm:gap-1.5 sm:rounded-md sm:px-4 sm:py-3 sm:text-[13px] sm:[&>svg]:h-4 sm:[&>svg]:w-4 ${searchMode === "registration"
+            ? "border border-white/15 bg-[#061a33]/90 text-white shadow-[0_4px_12px_rgba(6,26,51,0.28)] backdrop-blur-[18px]"
+            : "bg-white text-[#0b245a] hover:bg-[#f2f8ff]"
             }`}
         >
           <CarIcon />
@@ -625,11 +794,14 @@ function CTAPanel({
         </button>
         <button
           type="button"
-          onClick={() => setSearchMode("manual")}
+          onClick={() => {
+            setSearchMode("manual");
+            closeSelector();
+          }}
           aria-pressed={searchMode === "manual"}
-          className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 sm:px-4 py-3 text-[12px] sm:text-[13px] font-semibold transition-all ${searchMode === "manual"
-            ? "border border-[#0000A3] bg-white text-[#15803d] shadow-sm"
-            : "border border-transparent bg-transparent text-[#9ca3af] hover:text-[#6b7280]"
+          className={`flex min-h-[40px] flex-1 items-center justify-center gap-1 px-1.5 py-2 text-[10px] font-semibold transition-all [&>svg]:h-3 [&>svg]:w-3 sm:min-h-[50px] sm:gap-1.5 sm:rounded-md sm:px-4 sm:py-3 sm:text-[13px] sm:[&>svg]:h-4 sm:[&>svg]:w-4 ${searchMode === "manual"
+            ? "border border-white/15 bg-[#061a33]/90 text-white shadow-[0_4px_12px_rgba(6,26,51,0.28)] backdrop-blur-[18px]"
+            : "bg-white text-[#0b245a] hover:bg-[#f2f8ff]"
             }`}
         >
           <SwapIcon />
@@ -637,7 +809,7 @@ function CTAPanel({
         </button>
       </div>
 
-      <div className={`text-center ${searchMode === "manual" ? "p-2 sm:px-6 py-4" : "p-2 sm:p-6"}`}>
+      <div className={`text-center ${searchMode === "manual" ? (expandedSelector ? "p-1 sm:p-2" : "p-3 sm:p-4") : "p-2 sm:p-6"}`}>
         {searchMode === "registration" ? (
           <>
             <h3 className="mb-1 text-[18px] font-semibold text-[#0d1b2e] mx-auto">Get Your Free Engine Quotes</h3>
@@ -645,105 +817,188 @@ function CTAPanel({
           </>
         ) : null}
 
-        <form onSubmit={handleSubmit} className={searchMode === "manual" ? "mb-2" : "mb-4"}>
+        <form onSubmit={handleSubmit} className={searchMode === "manual" ? (expandedSelector ? "mb-0" : "mb-2") : "mb-4"}>
           {searchMode === "registration" ? (
-            <div className="flex items-center gap-3 rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 py-[10px]">
-              <div className="flex flex-none items-center gap-[6px]">
+            <div className="relative mx-auto block w-full">
+              <div className="flex h-[50px] w-full min-w-0 overflow-hidden rounded-[9px] border-[2px] border-[#102442] bg-[#ffdd00] shadow-[0_6px_0_rgba(0,6,27,0.35)]">
+                <div className="flex w-[48px] shrink-0 flex-col items-center justify-center border-r-2 border-[#102442] bg-[#003399] px-1">
                 <UKFlag />
-                <span className="text-[12px] font-extrabold text-[#0d1b2e]">UK</span>
+                  <span className="mt-0.5 text-[10px] font-extrabold leading-none text-[#ffdd00]">UK</span>
+                </div>
+                <input
+                  type="text"
+                  value={registration}
+                  onChange={(e) => onRegistrationChange(e.currentTarget.value.toUpperCase())}
+                  placeholder="REG HERE"
+                  maxLength={8}
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                  spellCheck={false}
+                  className="min-w-0 flex-1 bg-transparent px-3 text-center text-[14px] font-black uppercase tracking-[0.07em] text-[#10151c] outline-none placeholder:text-[#6b7280] placeholder:opacity-100 sm:text-[15px]"
+                  style={{ fontFamily: '"Charles Wright", "Arial Black", Arial, sans-serif' }}
+                />
               </div>
-              <div className="h-4 w-px bg-[rgba(13,27,46,0.12)]" />
-              <input
-                type="text"
-                value={registration}
-                onChange={(e) => onRegistrationChange(e.currentTarget.value.toUpperCase())}
-                placeholder="Enter your reg - e.g. AB12 CDE"
-                maxLength={8}
-                autoCapitalize="characters"
-                autoComplete="off"
-                spellCheck={false}
-                className="min-w-0 flex-1 border-none bg-transparent text-[15px] font-bold tracking-[0.06em] text-[#0d1b2e] outline-none placeholder:text-[13px] placeholder:font-normal placeholder:tracking-normal placeholder:text-[#9ca3af]"
-              />
             </div>
+          ) : expandedSelector ? (
+            <ManualSelectorPanel
+              kind={expandedSelector}
+              query={selectorQuery}
+              onQueryChange={setSelectorQuery}
+              onClose={closeSelector}
+              makeOptions={manualMakeOptions}
+              modelOptions={modelOptions}
+              variantOptions={variantOptions}
+              yearOptions={manualYearOptions}
+              manualMake={manualMake}
+              manualModel={manualModel}
+              manualVariant={manualVariant}
+              manualYear={manualYear}
+              onMakeSelect={selectMake}
+              onModelSelect={selectModel}
+              onVariantSelect={selectVariant}
+              onYearSelect={selectYear}
+            />
           ) : (
             <div className="grid gap-2 text-left">
-              <div className="grid grid-cols-1 gap-2">
-                <label className="grid gap-0.5 text-[12px] font-semibold text-[#0d1b2e]">
-                  Make
-                  <select
-                    value={manualMake}
-                    onChange={(e) => {
-                      const value = e.currentTarget.value;
-                      setManualMake(value);
-                      setManualModel("");
-                      setManualSeries("");
-                    }}
-                    className="h-11 w-full rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 text-[14px] text-[#0d1b2e] outline-none"
+              <div>
+                <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">Select Your Make</div>
+                <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  {visibleMakeOptions.map((make, index) => {
+                    const logoPath = getMakeLogoPath(make);
+                    const isSelected = manualMake === make;
+
+                    return (
+                      <button
+                        key={`${make}-${index}`}
+                        type="button"
+                        onClick={() => {
+                          setManualMake(make);
+                          setManualModel("");
+                        }}
+                        className={`flex min-h-[72px] min-w-0 flex-col items-center justify-center gap-1 rounded-[8px] border px-1 py-1 text-center text-[10px] font-semibold leading-[1.05] transition ${isSelected
+                          ? "border-2 border-[#0878ee] bg-[#eaf5ff] text-[#064ea7] shadow-[0_0_0_2px_rgba(8,120,238,0.12),0_3px_8px_rgba(8,120,238,0.14)]"
+                          : "border-[#d6e0ec] bg-gradient-to-b from-white to-[#f9fbfd] text-[#102452] shadow-[0_2px_5px_rgba(9,42,83,0.07)] hover:-translate-y-px hover:border-[#65aefa]"
+                          }`}
+                      >
+                        {logoPath ? <img src={logoPath} alt="" className="h-7 w-full object-contain" /> : <span className="grid h-7 w-8 place-items-center rounded-full bg-[#e7eef8] text-[13px] text-[#1e3a8a]">{getMakeLabel(make).charAt(0)}</span>}
+                        <span className="max-w-full truncate">{getMakeLabel(make)}</span>
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={() => openSelector("makes")}
+                    className="flex min-h-[72px] min-w-0 flex-col items-center justify-center gap-1 rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a] shadow-[0_2px_5px_rgba(9,42,83,0.07)]"
                   >
-                    <option value="">Select Make</option>
-                    {manualMakeOptions.map((make) => (
-                      <option key={make} value={make}>
-                        {make}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                {seriesOptions.length > 0 ? (
-                  <label className="grid gap-0.5 text-[12px] font-semibold text-[#0d1b2e]">
-                    Series
-                    <select
-                      value={manualSeries}
-                      onChange={(e) => {
-                        const value = e.currentTarget.value;
-                        setManualSeries(value);
-                        setManualModel("");
-                      }}
-                      className="h-11 w-full rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 text-[14px] text-[#0d1b2e] outline-none"
-                    >
-                      {seriesOptions.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                ) : null}
-                <label className="grid gap-0.5 text-[12px] font-semibold text-[#0d1b2e]">
-                  Model
-                  <select
-                    value={manualModel}
-                    onChange={(e) => setManualModel(e.currentTarget.value)}
-                    className="h-11 w-full rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 text-[14px] text-[#0d1b2e] outline-none"
-                  >
-                    {activeModelOptions.length ? (
-                      activeModelOptions.map((model) => (
-                        <option key={model} value={model}>
-                          {model}
-                        </option>
-                      ))
-                    ) : (
-                      <option value="">Select a model</option>
-                    )}
-                  </select>
-                </label>
-                <label className="grid gap-0.5 text-[12px] font-semibold text-[#0d1b2e]">
-                  Year
-                  <select
-                    value={manualYear}
-                    onChange={(e) => setManualYear(e.currentTarget.value)}
-                    disabled={manualModel === ""}
-                    className="h-11 w-full rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 text-[14px] text-[#0d1b2e] outline-none"
-                  >
-                    <option value="">{manualModel === "" ? "Select Model First" : "Select Year"}</option>
-                    {manualModel !== "" && manualYearOptions.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                    <span>View All Brands</span>
+                    <ArrowIcon />
+                  </button>
+                </div>
               </div>
-              <label className="grid gap-0.5 text-left text-[12px] font-semibold text-[#0d1b2e]">
+
+              <div>
+                <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">Select Your Model</div>
+                <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  {visibleModelOptions.length > 0 ? visibleModelOptions.map((model, index) => (
+                    (() => {
+                      const modelImagePath = getManualModelImagePath(manualMake, model);
+
+                      return (
+                        <button
+                          key={`${manualMake}-model-${model}-${index}`}
+                          type="button"
+                          onClick={() => selectModel(model)}
+                          className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[8px] border px-1 py-1 text-center text-[10px] font-semibold leading-[1.05] transition ${manualModel === model
+                            ? "border-2 border-[#0878ee] bg-[#eaf5ff] text-[#064ea7]"
+                            : "border-[#d6e0ec] bg-gradient-to-b from-white to-[#f9fbfd] text-[#102452] hover:border-[#65aefa]"
+                            }`}
+                        >
+                          {modelImagePath ? <img src={modelImagePath} alt="" className="h-8 w-full object-contain" /> : null}
+                          <span className="line-clamp-2">{model}</span>
+                        </button>
+                      );
+                    })()
+                  )) : (
+                    <button type="button" disabled className="flex min-h-[72px] min-w-0 cursor-default items-center justify-center rounded-[8px] border border-dashed border-[#cbd8e7] bg-white/65 px-2 text-center text-[10px] font-semibold text-[#8a97aa]">
+                      Select a make
+                    </button>
+                  )}
+                  {modelOptions.length > 5 ? (
+                    <button
+                      type="button"
+                      onClick={() => openSelector("models")}
+                      className="min-h-[72px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                    >
+                      <span>View All Models</span>
+                      <ArrowIcon />
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+
+              {manualModel !== "" && variantOptions.length > 0 ? (
+                <div>
+                  <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">Select Your Variant</div>
+                  <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                    {visibleVariantOptions.map((variant, index) => {
+                      return (
+                        <button
+                          key={`${manualMake}-variant-${variant}-${index}`}
+                          type="button"
+                          onClick={() => selectVariant(variant)}
+                          className={`flex min-h-[40px] items-center justify-center rounded-[8px] border px-1 py-1 text-center text-[10px] font-semibold leading-[1.05] transition ${manualVariant === variant
+                            ? "border-2 border-[#0878ee] bg-[#eaf5ff] text-[#064ea7]"
+                            : "border-[#d6e0ec] bg-gradient-to-b from-white to-[#f9fbfd] text-[#102452] hover:border-[#65aefa]"
+                            }`}
+                        >
+                          <span className="line-clamp-2">{variant}</span>
+                        </button>
+                      );
+                    })}
+                    {variantOptions.length > 5 ? (
+                      <button
+                        type="button"
+                        onClick={() => openSelector("variants")}
+                        className="min-h-[40px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                      >
+                        <span>View All Variants</span>
+                        <ArrowIcon />
+                      </button>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
+
+              {isYearSelectionReady ? (
+                <div>
+                  <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">Select Your Year</div>
+                  <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                    {visibleYearOptions.map((year, index) => (
+                      <button
+                        key={`${year}-${index}`}
+                        type="button"
+                        onClick={() => setManualYear(year)}
+                        className={`min-h-[30px] rounded-[8px] border px-1 py-1 text-center text-[12px] font-bold transition ${manualYear === year
+                          ? "border-2 border-[#0878ee] bg-[#eaf5ff] text-[#064ea7]"
+                          : "border-[#d6e0ec] bg-gradient-to-b from-white to-[#f9fbfd] text-[#102452] hover:border-[#65aefa]"
+                          }`}
+                      >
+                        {year}
+                      </button>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => openSelector("years")}
+                      className="min-h-[30px] rounded-[8px] border border-[#d6e0ec] bg-gradient-to-b from-white to-[#f2f8ff] px-1 py-1 text-center text-[10px] font-bold leading-[1.05] text-[#1e3a8a]"
+                    >
+                      <span>View All Years</span>
+                      <ArrowIcon />
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+
+              <label className="grid gap-1 text-left text-[12px] font-bold text-[#2d567c]">
                 Engine Code
                 <input
                   type="text"
@@ -752,18 +1007,20 @@ function CTAPanel({
                   placeholder="Enter engine code"
                   autoComplete="off"
                   spellCheck={false}
-                  className="h-11 w-full rounded-[8px] border border-[rgba(13,27,46,0.12)] bg-[#f9fafb] px-3 text-[14px] uppercase text-[#0d1b2e] outline-none placeholder:normal-case placeholder:text-[#9ca3af]"
+                  className="h-10 w-full rounded-[8px] border border-[#d6e0ec] bg-white/80 px-3 text-[13px] uppercase text-[#0d1b2e] outline-none shadow-[inset_0_1px_2px_rgba(12,39,77,0.05)] placeholder:normal-case placeholder:text-[#8a97aa] focus:border-[#0878ee] focus:ring-2 focus:ring-[#0878ee]/15"
                 />
               </label>
             </div>
           )}
-          <button
-            type="submit"
-            disabled={searchMode === "registration" && isRegistrationLookupLoading}
-            className={`w-full rounded-[8px] bg-[#15803d] px-6 py-[13px] text-[15px] font-bold text-white shadow-[0_4px_18px_rgba(21,128,61,0.3)] transition hover:bg-[#166534] active:scale-[0.99] ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
-          >
-            {searchMode === "registration" && isRegistrationLookupLoading ? "Checking Registration..." : "Get Free Engine Quotes →"}
-          </button>
+          {expandedSelector ? null : (
+            <button
+              type="submit"
+              disabled={(searchMode === "registration" && isRegistrationLookupLoading) || (searchMode === "manual" && !isManualSelectionComplete)}
+              className={`w-full rounded-[8px] bg-[#15803d] px-6 py-[13px] text-[15px] font-bold text-white shadow-[0_4px_18px_rgba(21,128,61,0.3)] transition hover:bg-[#166534] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
+            >
+              {searchMode === "registration" && isRegistrationLookupLoading ? "Checking Registration..." : "Get Free Engine Quotes →"}
+            </button>
+          )}
         </form>
 
         {searchMode === "registration" && registrationLookupError ? (
@@ -836,7 +1093,6 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
   const [isRegistrationLookupLoading, setIsRegistrationLookupLoading] = useState(false);
   const [registrationLookupError, setRegistrationLookupError] = useState("");
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
-  const [groupIndex, setGroupIndex] = useState(0);
   const [carouselOffset, setCarouselOffset] = useState(0);
   const [desktopCarouselOffset, setDesktopCarouselOffset] = useState(0);
 
@@ -845,13 +1101,6 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
   const DESKTOP_VISIBLE = 6;
   const maxOffset = Math.max(0, engineCarouselItems.length - MOBILE_VISIBLE);
   const desktopMaxOffset = Math.max(0, engineCarouselItems.length - DESKTOP_VISIBLE);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setGroupIndex((current) => (current + 1) % rowGroups.length);
-    }, 5000);
-    return () => window.clearInterval(intervalId);
-  }, []);
 
   const engineTickerLoop = useMemo(() => [...tickerItems, ...tickerItems], []);
   const bottomTickerLoop = useMemo(() => [...bottomBarItems, ...bottomBarItems], []);
@@ -883,6 +1132,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
     regNumber?: string;
     make?: string;
     model?: string;
+      variant?: string;
     series?: string;
     year?: string;
     engineCode?: string;
@@ -893,6 +1143,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
       const queryParams = new URLSearchParams();
       if (payload.make) queryParams.append("make", payload.make);
       if (payload.model) queryParams.append("model", payload.model);
+      if (payload.variant) queryParams.append("variant", payload.variant);
       if (payload.year) queryParams.append("year", payload.year);
       if (payload.engineCode) queryParams.append("engineCode", payload.engineCode);
       queryParams.set("sourceLabel", "home-manual-search");
@@ -927,7 +1178,6 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
     }
   }
 
-  const activeGroup = rowGroups[groupIndex] ?? rowGroups[0];
   const homeSubheadingParts = splitInlineDisclaimerText(data.subheading);
   const homeDisclaimerText =
     "Prices are indicative rebuilt/reconditioned supply-only averages. Actual quotes vary by variant, year and supplier.";
@@ -949,29 +1199,23 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
         .desktop-carousel-track {
           animation: slideLeftDesktop 40s linear infinite;
         }
-                @media (max-width: 767px) {
-          .hero-background {
-            background-image: none !important;
-            background-color: #ffffff !important; /* Fallback to solid white */
-          }
-        }
       `}</style>
       {/* ─── HERO SECTION ─── */}
       <section
         className="hero-background overflow-hidden pt-8 lg:pt-12"
         style={{
-  backgroundImage:
-    "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.85) 100%), url('/bg.webp')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-}}
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.78) 30%, rgba(255,255,255,0.64) 58%, rgba(255,255,255,0.54) 100%), url('/images/home/home-hero-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <Container className="max-w-[1400px] px-2 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 gap-0 lg:grid-cols-10 lg:gap-12 lg:pb-10">
 
             {/* ── LEFT / MAIN COLUMN ── */}
-            <div className="flex flex-col lg:col-span-6">
+            <div className="flex flex-col lg:col-span-6 lg:justify-center">
               {/* Badge */}
               {/* <span className="mb-4 inline-flex w-fit items-center gap-[6px] rounded-full bg-[#0d1b2e] px-[10px] py-[4px] text-[10px] font-bold uppercase tracking-[0.12em] text-white">
                 <span className="h-[6px] w-[6px] rounded-full bg-[#15803d]" />
@@ -984,7 +1228,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <span className="block text-[26px] sm:text-[clamp(28px,5vw,48px)] font-extrabold">{data.headingLead}</span>
-                <span className="mt-[2px] block text-[clamp(20px,3.5vw,36px)] font-semibold text-[#15803d]">
+                <span className="mt-[2px] block text-[26px] font-extrabold text-[#15803d] sm:text-[clamp(28px,5vw,48px)]">
                   {data.headingAccent}
                 </span>
               </h1>
@@ -1036,36 +1280,11 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
               {/* ── MOBILE: "Compare quotes" heading ── */}
               
 
-              {/* Brand rows */}
-              <div className="overflow-hidden rounded-[12px] border max-w-2xl border-[rgba(13,27,46,0.1)] bg-white shadow-[0_8px_30px_rgba(13,27,46,0.2)]">
-                <h3
-                className="mb-3 text-[15px] font-bold text-[#0d1b2e] lg:hidden text-center pt-5"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                Compare quotes from vetted specialists
-              </h3>
-                {activeGroup.map((row) => (
-                  <HeroRow key={`${groupIndex}-${row.brand}`} row={row} engineLinks={engineLinks} />
-                ))}
-              </div>
-
-              {/* Desktop coverage stats */}
-              <p
-                className="mb-5 hidden pt-5 text-center text-[13px] leading-[1.5] text-[#6b7280] lg:block lg:text-left"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                Covering <strong className="font-bold text-[#0d1b2e]">8,000+</strong> engine codes across{" "}
-                <strong className="font-bold text-[#0d1b2e]">40+</strong> makes - from{" "}
-                <strong className="font-bold text-[#0d1b2e]">BMW</strong> and{" "}
-                <strong className="font-bold text-[#0d1b2e]">Land Rover</strong> to{" "}
-                <strong className="font-bold text-[#0d1b2e]">Ford</strong> and{" "}
-                <strong className="font-bold text-[#0d1b2e]">Vauxhall</strong>.
-              </p>
             </div>
 
             {/* ── RIGHT COLUMN - Desktop CTA ── */}
             <div className="relative hidden lg:flex lg:flex-col lg:col-span-4 mt-2">
-              <div className="rounded-[12px] border border-[rgba(13,27,46,0.08)] bg-white shadow-[0_8px_32px_rgba(13,27,46,0.08)]">
+              <div className="overflow-hidden rounded-[18px] border border-white/75 bg-white/55 shadow-[0_14px_30px_rgba(4,30,72,0.23),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-[26px] saturate-[155%]">
                 <CTAPanel
                   registration={registration}
                   onRegistrationChange={setRegistration}
