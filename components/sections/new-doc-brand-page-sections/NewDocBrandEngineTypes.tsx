@@ -148,7 +148,8 @@ function MobileEngineTypeStack({
           const priceRange = splitPriceRange(type.priceRange);
           const previousIsActive =
             stackIndex > 0 && stackIndex - 1 === activeIndex;
-          const offsetX = stackIndex * 12;
+          // Keep the mobile stack fully inside the viewport, including the top card.
+          const offsetX = stackIndex * 6;
           const badge = typeBadge(type.title);
           const variant = typeVariant(type.title);
           const badgeClass =

@@ -203,7 +203,7 @@ export default function HomeBrandGridSection({ brands, featuredSlugs }: Props) {
           }
         }
       `}</style>
-      <Container className="max-w-[1200px]">
+      <Container className="max-w-[1400px]">
         <div className="mx-auto max-w-[760px] text-center">
           <div className="section-pill mx-auto">
             <span>Engine Replacement By Make</span>

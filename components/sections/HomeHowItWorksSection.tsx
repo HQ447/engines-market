@@ -69,9 +69,7 @@ export default function HomeHowItWorksSection({ steps }: Props) {
                     <div className="absolute inset-0 flex h-full flex-col overflow-hidden rounded-[18px] border border-[#dbe4ef] bg-white p-2 sm:p-4 lg:p-4 shadow-[0_18px_40px_rgba(13,27,46,0.08)] [backface-visibility:hidden] text-center">
 
 
-                      <span className="mt-0 text-right font-['Manrope'] text-2xl font-extrabold uppercase tracking-[0.18em] text-gray-400 lg:text-[22px]">
-                        0{step.number}
-                      </span>
+
 
                       <div
                         className={`mx-auto flex items-center justify-center rounded-[14px] p-2 ${

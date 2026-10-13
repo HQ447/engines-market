@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
-import { homeEngineTypeCards, type HomeEngineTypeCard } from "@/lib/homepageData";
+import {
+  homeEngineTypeCards,
+  type HomeEngineTypeCard,
+} from "@/lib/homepageData";
 
 type Props = {
   cards?: HomeEngineTypeCard[];
@@ -13,8 +16,19 @@ type Props = {
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
-      <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="m13 6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M5 12h14"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="m13 6 6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -22,9 +36,26 @@ function ArrowIcon() {
 function FlipIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-      <path d="M20 7v5h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M4 17v-5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18.2 12A6.5 6.5 0 0 0 7.1 7.4L5 9M5.8 12a6.5 6.5 0 0 0 11.1 4.6L19 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path
+        d="M20 7v5h-5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 17v-5h5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M18.2 12A6.5 6.5 0 0 0 7.1 7.4L5 9M5.8 12a6.5 6.5 0 0 0 11.1 4.6L19 15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -32,8 +63,19 @@ function FlipIcon() {
 function CheckIcon() {
   return (
     <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#16a34a] text-white">
-      <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" aria-hidden="true">
-        <path d="m3.2 8.2 3 3 6.6-6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg
+        viewBox="0 0 16 16"
+        className="h-3 w-3"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="m3.2 8.2 3 3 6.6-6.5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </span>
   );
@@ -44,10 +86,20 @@ function getIcon(title: string, className = "h-10 w-10") {
   let iconName = "type-rebuilt";
 
   if (normalizedTitle.includes("used")) iconName = "type-used";
-  else if (normalizedTitle.includes("refurbished")) iconName = "type-refurbished";
-  else if (normalizedTitle.includes("reconditioned")) iconName = "type-reconditioned";
-  else if (normalizedTitle.includes("supply") || normalizedTitle.includes("fit")) iconName = "type-supply-fit";
-  else if (normalizedTitle.includes("remanufactured") || normalizedTitle.includes("manufactured")) iconName = "type-remanufactured";
+  else if (normalizedTitle.includes("refurbished"))
+    iconName = "type-refurbished";
+  else if (normalizedTitle.includes("reconditioned"))
+    iconName = "type-reconditioned";
+  else if (
+    normalizedTitle.includes("supply") ||
+    normalizedTitle.includes("fit")
+  )
+    iconName = "type-supply-fit";
+  else if (
+    normalizedTitle.includes("remanufactured") ||
+    normalizedTitle.includes("manufactured")
+  )
+    iconName = "type-remanufactured";
 
   return (
     <Image
@@ -95,9 +147,13 @@ function PriceLine({ price }: { price: string }) {
 
   return (
     <>
-      <span className="font-bold text-[#087f55]">{price.slice(0, match.index)}</span>
+      <span className="font-bold text-[#087f55]">
+        {price.slice(0, match.index)}
+      </span>
       <span className="font-bold text-[#087f55]">{match[0]}</span>
-      <span className="font-normal text-[#5b6675]">{price.slice(match.index + match[0].length)}</span>
+      <span className="font-normal text-[#5b6675] text-[12px]">
+        {price.slice(match.index + match[0].length)}
+      </span>
     </>
   );
 }
@@ -111,8 +167,10 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
         const flipped = activeCard === card.id;
 
         return (
-          <div key={card.id} className="h-[290px] [perspective:1400px]">
-            <div className={`relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}>
+          <div key={card.id} className="h-[250px] [perspective:1400px]">
+            <div
+              className={`relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}
+            >
               <button
                 type="button"
                 onClick={() => setActiveCard(flipped ? null : card.id)}
@@ -120,13 +178,23 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
                 aria-pressed={flipped}
                 aria-label={`${flipped ? "Hide details for" : "Show details for"} ${card.title}`}
               >
-                <CardCornerAccent tone={card.id === "used" || card.id === "reconditioned" || card.id === "supply-fit" ? "green" : "blue"} />
+                <CardCornerAccent
+                  tone={
+                    card.id === "used" ||
+                    card.id === "reconditioned" ||
+                    card.id === "supply-fit"
+                      ? "green"
+                      : "blue"
+                  }
+                />
                 <div className="relative z-10 flex h-full flex-col">
                   <div className="flex items-center gap-3">
-                    <span className={`flex h-14 w-14 items-center justify-center rounded-full ${getIconClasses(card.icon)}`}>
+                    <span
+                      className={`flex h-14 w-14 items-center justify-center rounded-full ${getIconClasses(card.icon)}`}
+                    >
                       {getIcon(card.title)}
                     </span>
-                    <h3 className="min-w-0 flex-1 font-['Manrope'] text-[25px] font-bold leading-[1.05] text-[#0d1b2e]">
+                    <h3 className="min-w-0 flex-1 font-['Manrope'] !text-[22px] font-bold leading-[1.05] text-[#0d1b2e]">
                       {card.title}
                     </h3>
                     <span className="text-[#50647d]">
@@ -134,7 +202,7 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
                     </span>
                   </div>
 
-                  <p className="mt-3 text-[17px] font-bold leading-[1.3] text-[#087f55]">
+                  <p className="mt-3 text-[17px] line-clamp-1 font-bold leading-[1.3] text-[#087f55]">
                     <PriceLine price={card.price} />
                   </p>
 
@@ -149,29 +217,44 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
                 </div>
               </button>
 
-              <div className={`absolute inset-0 isolate flex h-full w-full flex-col overflow-hidden rounded-[18px] border-[1.5px] border-[#3b82f6] bg-[linear-gradient(155deg,rgba(13,27,46,0.88)_0%,rgba(15,38,66,0.82)_40%,rgba(13,27,46,0.9)_100%)] p-5 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)] ${flipped ? "pointer-events-auto" : "pointer-events-none"}`}>
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-['Manrope'] text-[19px] font-bold leading-[1.15] text-white">{card.backHeader}</h3>
-                    <button type="button" onClick={() => setActiveCard(null)} className="text-white/80 transition hover:text-white" aria-label={`Close details for ${card.title}`}>
-                      <span className="text-2xl leading-none">×</span>
-                    </button>
-                  </div>
+              <div
+                className={`absolute inset-0 isolate flex h-full w-full flex-col overflow-hidden rounded-[18px] border-[1.5px] border-[#3b82f6] bg-[#061a33] p-5 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)] ${flipped ? "pointer-events-auto" : "pointer-events-none"}`}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-['Manrope'] !text-[22px] font-bold leading-[1.15] text-white">
+                    {card.backHeader}
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => setActiveCard(null)}
+                    className="text-white/80 transition hover:text-white"
+                    aria-label={`Close details for ${card.title}`}
+                  >
+                    <span className="text-2xl leading-none">×</span>
+                  </button>
+                </div>
 
-                  <div className="mt-5 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-2 [scrollbar-color:#86efac_transparent] [scrollbar-width:thin]">
-                    {card.details.map((detail) => (
-                      <div key={`${card.id}-${detail.label}`} className="flex items-start gap-3 text-[14px] leading-[1.45] text-[#e8eef7]">
-                        <CheckIcon />
-                        <div>
-                          <span className="font-semibold text-white">{detail.label}:</span>{" "}
-                          <span className="text-[#c7d3e1]">{detail.value}</span>
-                        </div>
+                <div className="mt-5 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-2 [scrollbar-color:#86efac_transparent] [scrollbar-width:thin]">
+                  {card.details.map((detail) => (
+                    <div
+                      key={`${card.id}-${detail.label}`}
+                      className="flex items-start gap-3 text-[14px] leading-[1.45] text-[#e8eef7]"
+                    >
+                      <CheckIcon />
+                      <div>
+                        <span className="font-semibold text-white">
+                          {detail.label}:
+                        </span>{" "}
+                        <span className="text-[#c7d3e1]">{detail.value}</span>
                       </div>
-                    ))}
-                    <p className="border-t border-white/15 pt-4 text-[13px] leading-[1.55] text-[#c7d3e1]">{card.closing}</p>
-                  </div>
-
+                    </div>
+                  ))}
+                  <p className="border-t border-white/15 pt-4 text-[13px] leading-[1.55] text-[#c7d3e1]">
+                    {card.closing}
+                  </p>
                 </div>
               </div>
+            </div>
           </div>
         );
       })}
@@ -180,7 +263,9 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
 }
 
 function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
-  const [activeIdx, setActiveIdx] = useState(() => (cards.length > 0 ? cards.length - 1 : -1));
+  const [activeIdx, setActiveIdx] = useState(() =>
+    cards.length > 0 ? cards.length - 1 : -1,
+  );
   const [flippedIdx, setFlippedIdx] = useState(-1);
   const cardExpandRefs = useRef<Array<HTMLDivElement | null>>([]);
   const expandInnerRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -246,7 +331,15 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
           >
             <div className="flip-inner">
               <div className="face relative isolate overflow-hidden border border-white/70 bg-white/65 shadow-[0_8px_30px_rgba(0,0,50,0.1)] backdrop-blur-xl">
-                <CardCornerAccent tone={card.id === "used" || card.id === "reconditioned" || card.id === "supply-fit" ? "green" : "blue"} />
+                <CardCornerAccent
+                  tone={
+                    card.id === "used" ||
+                    card.id === "reconditioned" ||
+                    card.id === "supply-fit"
+                      ? "green"
+                      : "blue"
+                  }
+                />
                 <div className="relative z-10 flex min-h-[82px] w-full items-center gap-3 px-4 py-4 text-left">
                   <button
                     type="button"
@@ -255,13 +348,21 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                     aria-expanded={active}
                     aria-label={`${active ? "Close" : "Open"} ${card.title}`}
                   >
-                    <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${getIconClasses(card.icon)}`}>{getIcon(card.title, "h-7 w-7")}</span>
+                    <span
+                      className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${getIconClasses(card.icon)}`}
+                    >
+                      {getIcon(card.title, "h-7 w-7")}
+                    </span>
                     <span className="min-w-0">
-                      <span className="block break-words font-['Manrope'] text-[13px] font-bold leading-[1.05] text-[#0d1b2e]">{card.title}</span>
+                      <span className="block break-words font-['Manrope'] text-[14px] font-bold leading-[1.05] text-[#0d1b2e]">
+                        {card.title}
+                      </span>
                     </span>
                   </button>
                   <div className="ml-auto flex flex-none items-center gap-2">
-                    <span className="whitespace-nowrap text-[12px]"><PriceLine price={card.pricetag} /></span>
+                    <span className="whitespace-nowrap text-[12px]">
+                      <PriceLine price={card.pricetag} />
+                    </span>
                     <button
                       type="button"
                       onPointerDown={(event) => event.stopPropagation()}
@@ -274,33 +375,61 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                   </div>
                 </div>
 
-                <div ref={(element) => { cardExpandRefs.current[index] = element; }} className="relative z-10 h-0 overflow-hidden transition-[height] duration-500">
+                <div
+                  ref={(element) => {
+                    cardExpandRefs.current[index] = element;
+                  }}
+                  className="relative z-10 h-0 overflow-hidden transition-[height] duration-500"
+                >
                   <div
-                    ref={(element) => { expandInnerRefs.current[index] = element; }}
+                    ref={(element) => {
+                      expandInnerRefs.current[index] = element;
+                    }}
                     role="button"
                     tabIndex={0}
                     onClick={() => active && setFlippedIdx(index)}
-                    onKeyDown={(event) => { if (active && (event.key === "Enter" || event.key === " ")) setFlippedIdx(index); }}
+                    onKeyDown={(event) => {
+                      if (
+                        active &&
+                        (event.key === "Enter" || event.key === " ")
+                      )
+                        setFlippedIdx(index);
+                    }}
                     className="border-t border-[#edf1f5] px-4 pb-5 pt-4 text-left"
                     aria-label={`Show full details for ${card.title}`}
                   >
-                    <p className="text-[14px] leading-[1.55] text-[#5b6675]">{card.summary}</p>
+                    <p className="text-[14px] leading-[1.55] text-[#5b6675]">
+                      {card.summary}
+                    </p>
                     <div className="mt-4 space-y-2.5">
                       {card.details.slice(0, 3).map((detail) => (
-                        <div key={`${card.id}-${detail.label}`} className="flex items-start gap-2 text-[13px] leading-[1.45] text-[#4b5b70]"><CheckIcon /><span><strong className="text-[#172b45]">{detail.label}:</strong> {detail.value}</span></div>
+                        <div
+                          key={`${card.id}-${detail.label}`}
+                          className="flex items-start gap-2 text-[13px] leading-[1.45] text-[#4b5b70]"
+                        >
+                          <CheckIcon />
+                          <span>
+                            <strong className="text-[#172b45]">
+                              {detail.label}:
+                            </strong>{" "}
+                            {detail.value}
+                          </span>
+                        </div>
                       ))}
                     </div>
-                    <p className="mt-4 text-[14px]"><PriceLine price={card.price} /></p>
+                    <p className="mt-4 text-[14px]">
+                      <PriceLine price={card.price} />
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div
-                className="face face-back isolate flex min-h-[310px] flex-col overflow-hidden border-[1.5px] border-white/35 bg-[linear-gradient(155deg,rgba(13,27,46,0.88)_0%,rgba(15,38,66,0.82)_40%,rgba(13,27,46,0.9)_100%)] p-4 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl"
-              >
+              <div className="face face-back isolate flex min-h-[310px] flex-col overflow-hidden border-[1.5px] border-white/35 bg-[#061a33] p-4 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl">
                 <div className="back-inner flex min-h-0 flex-1 flex-col">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-['Manrope'] text-[13px] font-bold leading-[1.15] text-white">{card.backHeader}</h3>
+                    <h3 className="font-['Manrope'] text-[13px] font-bold leading-[1.15] text-white">
+                      {card.backHeader}
+                    </h3>
                     <button
                       type="button"
                       onClick={(event) => {
@@ -314,10 +443,23 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                       <span>Back</span>
                     </button>
                   </div>
-                  <div className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-[1.55] text-white/80">{card.closing}</div>
+                  <div className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-[1.55] text-white/80">
+                    {card.closing}
+                  </div>
                   <div className="back-list mt-4 space-y-3 pr-2">
                     {card.details.map((detail) => (
-                      <div key={`${card.id}-back-${detail.label}`} className="flex items-start gap-2.5 text-[13px] leading-[1.45] text-[#e8eef7]"><CheckIcon /><span><strong className="text-white">{detail.label}:</strong> <span className="text-[#c7d3e1]">{detail.value}</span></span></div>
+                      <div
+                        key={`${card.id}-back-${detail.label}`}
+                        className="flex items-start gap-2.5 text-[13px] leading-[1.45] text-[#e8eef7]"
+                      >
+                        <CheckIcon />
+                        <span>
+                          <strong className="text-white">
+                            {detail.label}:
+                          </strong>{" "}
+                          <span className="text-[#c7d3e1]">{detail.value}</span>
+                        </span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -330,17 +472,34 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
   );
 }
 
-export default function HomeEngineTypesSection({ cards = homeEngineTypeCards }: Props) {
+export default function HomeEngineTypesSection({
+  cards = homeEngineTypeCards,
+}: Props) {
   return (
-    <Section id="engine-types" className="relative overflow-hidden bg-[#f8fbff] py-7 sm:py-8 lg:py-10">
-      <div className="pointer-events-none absolute -left-40 top-44 h-[430px] w-[900px] rotate-[25deg] bg-[#edf5ff] opacity-80" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-48 top-16 h-[620px] w-[800px] rotate-[28deg] border border-white/70 bg-[#effaf8]/70" aria-hidden="true" />
-      <div className="pointer-events-none absolute bottom-[-20%] left-[28%] h-[360px] w-[750px] rotate-[-23deg] bg-[#f1f7ff] opacity-90" aria-hidden="true" />
+    <Section
+      id="engine-types"
+      className="relative overflow-hidden bg-[#f8fbff] py-7 sm:py-8 lg:py-10"
+    >
+      <div
+        className="pointer-events-none absolute -left-40 top-44 h-[430px] w-[900px] rotate-[25deg] bg-[#edf5ff] opacity-80"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-48 top-16 h-[620px] w-[800px] rotate-[28deg] border border-white/70 bg-[#effaf8]/70"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-[-20%] left-[28%] h-[360px] w-[750px] rotate-[-23deg] bg-[#f1f7ff] opacity-90"
+        aria-hidden="true"
+      />
 
-      <Container className="relative z-10 max-w-[1180px]">
+      <Container className="relative z-10 max-w-[1400px]">
         <div className="max-w-[800px]">
           <div className="section-pill">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#19d67a]" aria-hidden="true" />
+            <span
+              className="h-2.5 w-2.5 rounded-full bg-[#19d67a]"
+              aria-hidden="true"
+            />
             <span>Replacement Engine Options</span>
           </div>
 
@@ -351,15 +510,36 @@ export default function HomeEngineTypesSection({ cards = homeEngineTypeCards }: 
           </h2>
 
           <p className="mt-5 max-w-[720px] text-[16px] leading-[1.55] text-[#526174] sm:text-[18px]">
-            Every engine type available through our UK network - with typical price ranges, honest definitions and the right choice for your budget, mileage and how long you plan to keep the vehicle.
+            Every engine type available through our UK network - with typical
+            price ranges, honest definitions and the right choice for your
+            budget, mileage and how long you plan to keep the vehicle.
           </p>
         </div>
 
         <div className="pointer-events-none absolute right-[12%] top-[150px] hidden text-center text-[#62738a] lg:block">
-          <p className="font-['Manrope'] text-[14px] font-semibold italic leading-[1.25]">Click<br />to flip</p>
-          <svg viewBox="0 0 80 70" className="ml-10 mt-1 h-14 w-16" fill="none" aria-hidden="true">
-            <path d="M8 8c36-3 57 15 57 48" stroke="currentColor" strokeWidth="1.4" />
-            <path d="m57 48 8 8 7-9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <p className="font-['Manrope'] text-[14px] font-semibold italic leading-[1.25]">
+            Click
+            <br />
+            to flip
+          </p>
+          <svg
+            viewBox="0 0 80 70"
+            className="ml-10 mt-1 h-14 w-16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 8c36-3 57 15 57 48"
+              stroke="currentColor"
+              strokeWidth="1.4"
+            />
+            <path
+              d="m57 48 8 8 7-9"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
 
