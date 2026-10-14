@@ -1344,9 +1344,11 @@ function ManualSelectorPanel({
       : kind === "variants"
         ? "max-h-[216px] lg:max-h-[126px]"
         : "max-h-[108px] lg:max-h-[132px]";
+  const inlinePaddingClass =
+    kind === "makes" || kind === "models" ? "px-[6px] sm:px-[4px]" : "";
 
   return (
-    <div className="bg-transparent">
+    <div className={`bg-transparent ${inlinePaddingClass}`}>
       <div className="flex items-center justify-between gap-3">
         <div className="text-[15px] font-bold leading-none text-[#102452]">
           {title}

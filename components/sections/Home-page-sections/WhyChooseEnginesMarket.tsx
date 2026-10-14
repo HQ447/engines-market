@@ -348,7 +348,7 @@ export default function WhyChooseEnginesMarket() {
         </p>
 
         <div className="mt-6 rounded-[16px] border border-[#d8e2ed] bg-white/90 p-5 shadow-[0_5px_18px_rgba(13,27,46,0.05)] sm:p-6">
-          <div className="border-l-4 border-[#13ad6d] pl-4 sm:pl-5">
+          <div className="">
             <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-[#0d1b2e]">
               Who We Are?
             </p>
