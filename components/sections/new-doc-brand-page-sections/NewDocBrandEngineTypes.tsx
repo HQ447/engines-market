@@ -167,7 +167,7 @@ function MobileEngineTypeStack({
           return (
             <article
               key={type.title}
-              className={`relative transition-all duration-300 ${active ? "z-30" : "z-10"}`}
+              className={`relative ${active ? "z-30" : "z-10"}`}
               style={{
                 marginTop: stackIndex === 0 ? 0 : previousIsActive ? 8 : -54,
                 transform: `translateX(${offsetX}px) rotate(0deg)`,
@@ -218,7 +218,7 @@ function MobileEngineTypeStack({
                               <FiChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" />
                             </span>
                           </div>
-                          <span className="mt-1.5 block text-[11px] leading-[1.42] text-[#64748b]">
+                          <span className="mt-1.5 block text-[12px] leading-[1.42] text-[#64748b]">
                             {normalize(
                               type.frontDescription || type.description,
                             )}
@@ -293,11 +293,11 @@ function MobileEngineTypeStack({
                           Flip back
                         </button>
                       </div>
-                      <p className="text-[12px] leading-[1.48] text-[#e2e8f0]">
+                      <p className="text-[13px] leading-[1.48] text-[#e2e8f0]">
                         {normalize(type.backDescription || type.description)}
                       </p>
                       {type.backBullets?.length ? (
-                        <ul className="mt-2 space-y-1 text-[10.5px] leading-[1.42] text-[#cbd5e1]">
+                        <ul className="mt-2 space-y-1 text-[11.5px] leading-[1.42] text-[#cbd5e1]">
                           {type.backBullets.map((bullet) => (
                             <li key={bullet} className="flex gap-2">
                               <span className="mt-[4px] h-[5px] w-[5px] flex-none rounded-full bg-[#22c55e]" />
@@ -339,7 +339,7 @@ function MobileEngineTypeStack({
                       </span>
                     </span>
                     <span className="ml-auto flex-none text-right">
-                      <span className="block whitespace-nowrap text-[12px] font-extrabold leading-none text-[#15803d]">
+                      <span className="block whitespace-nowrap text-[13px] font-extrabold leading-none text-[#15803d]">
                         {priceRange.price}
                       </span>
                     </span>
@@ -393,7 +393,7 @@ function MobileSupplyFitCard({
               {type.title}
             </h3>
             <p
-              className={`mt-1 text-[11px] leading-[1.38] ${flipped ? "text-[#475569]" : "line-clamp-2 text-white/78"}`}
+              className={`mt-1 text-[12px] leading-[1.38] ${flipped ? "text-[#475569]" : "line-clamp-2 text-white/78"}`}
             >
               {normalize(
                 flipped
@@ -410,7 +410,7 @@ function MobileSupplyFitCard({
           </span>
         </div>
         {flipped && type.backBullets?.length ? (
-          <ul className="mx-3 mb-2 space-y-1 rounded-[8px] bg-[#f8fbff] px-3 py-2 text-[10.5px] leading-[1.38] text-[#475569]">
+          <ul className="mx-3 mb-2 space-y-1 rounded-[8px] bg-[#f8fbff] px-3 py-2 text-[11.5px] leading-[1.38] text-[#475569]">
             {type.backBullets.map((bullet) => (
               <li key={bullet} className="flex gap-2">
                 <span className="mt-[5px] h-[4px] w-[4px] flex-none rounded-full bg-[#15803d]" />
@@ -431,7 +431,7 @@ function MobileSupplyFitCard({
             </div>
             {priceRange.suffix ? (
               <div
-                className={`mt-0.5 whitespace-nowrap text-[9px] font-semibold ${flipped ? "text-[#64748b]" : "text-white/65"}`}
+                className={`mt-0.5 whitespace-nowrap text-[10px] font-semibold ${flipped ? "text-[#64748b]" : "text-white/65"}`}
               >
                 ({priceRange.suffix})
               </div>
@@ -444,7 +444,7 @@ function MobileSupplyFitCard({
             href="#quote-form"
             data-quote-context={type.title}
             data-quote-source="engine-types-supply-fit-mobile"
-            className={`inline-flex min-w-0 items-center justify-between gap-2 text-[10px] font-semibold uppercase ${flipped ? "text-[#059669]" : "text-[#4ade80]"}`}
+            className={`inline-flex min-w-0 items-center justify-between gap-2 text-[11px] font-semibold uppercase ${flipped ? "text-[#059669]" : "text-[#4ade80]"}`}
             onClick={(event) => event.stopPropagation()}
           >
             <span className="min-w-0">{type.cta}</span>

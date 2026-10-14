@@ -151,7 +151,7 @@ function PriceLine({ price }: { price: string }) {
         {price.slice(0, match.index)}
       </span>
       <span className="font-bold text-[#087f55]">{match[0]}</span>
-      <span className="font-normal text-[#5b6675] text-[12px]">
+      <span className="font-normal text-[#5b6675] text-[13px] md:text-[12px]">
         {price.slice(match.index + match[0].length)}
       </span>
     </>
@@ -263,9 +263,16 @@ function DesktopGrid({ cards }: { cards: HomeEngineTypeCard[] }) {
 }
 
 function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
-  const [activeIdx, setActiveIdx] = useState(() =>
-    cards.length > 0 ? cards.length - 1 : -1,
-  );
+  const [activeIdx, setActiveIdx] = useState(() => {
+    const refurbishedIndex = cards.findIndex((card) =>
+      card.title.toLowerCase().includes("refurbish"),
+    );
+    return refurbishedIndex >= 0
+      ? refurbishedIndex
+      : cards.length > 0
+        ? cards.length - 1
+        : -1;
+  });
   const [flippedIdx, setFlippedIdx] = useState(-1);
   const cardExpandRefs = useRef<Array<HTMLDivElement | null>>([]);
   const expandInnerRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -302,13 +309,8 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
   }
 
   return (
-    <div className="mobile-engine-stack mt-8 px-1">
+    <div className="mobile-engine-stack mt-[18px] md:hidden">
       <style>{`
-        .mobile-engine-stack .stack-card { position: relative; z-index: 1; perspective: 1000px; transition: transform .35s ease, margin-top .35s ease; }
-        .mobile-engine-stack .stack-card + .stack-card { margin-top: -8px; }
-        .mobile-engine-stack .stack-card.active { z-index: 10; transform: translateY(-5px); }
-        .mobile-engine-stack .stack-card.active + .stack-card { margin-top: 14px; }
-        .mobile-engine-stack .stack-card.active ~ .stack-card + .stack-card { margin-top: -8px; }
         .mobile-engine-stack .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.16,1,.3,1); }
         .mobile-engine-stack .stack-card.flipped .flip-inner { height: min(70vh, 420px); min-height: 310px; }
         .mobile-engine-stack .stack-card.flipped .flip-inner { transform: rotateY(180deg); }
@@ -319,18 +321,27 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
         .mobile-engine-stack .back-list::-webkit-scrollbar { width: 6px; }
         .mobile-engine-stack .back-list::-webkit-scrollbar-thumb { background: #86efac; border-radius: 999px; }
       `}</style>
+      <div className="relative mx-auto max-w-[520px] overflow-visible px-[2px] pb-4">
       {cards.map((card, index) => {
         const active = activeIdx === index;
         const flipped = flippedIdx === index;
+        const previousIsActive = index > 0 && index - 1 === activeIdx;
+        const offsetX = active ? 0 : Math.min(index * 16, 80);
 
         return (
           <article
             key={card.id}
-            className={`stack-card mt-4 ${active ? "active" : ""} ${flipped ? "flipped" : ""}`}
-            style={{ zIndex: active ? 10 : 1 }}
+            className={`relative ${active ? "z-30" : "z-10"} ${flipped ? "stack-card flipped" : "stack-card"}`}
+            style={{
+              marginTop: index === 0 ? 0 : previousIsActive ? 8 : -4,
+              transform: `translateX(${offsetX}px) rotate(0deg)`,
+              width: active ? "100%" : "calc(100% - 80px)",
+              perspective: active ? "1200px" : undefined,
+              WebkitPerspective: active ? "1200px" : undefined,
+            }}
           >
             <div className="flip-inner">
-              <div className="face relative isolate overflow-hidden border border-white/70 bg-white/65 shadow-[0_8px_30px_rgba(0,0,50,0.1)] backdrop-blur-xl">
+              <div className="face relative isolate overflow-hidden border border-white/70 bg-white/65 shadow-[0_8px_30px_rgba(0,0,50,0.1)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-[2px] before:rounded-t-[18px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']">
                 <CardCornerAccent
                   tone={
                     card.id === "used" ||
@@ -340,21 +351,25 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                       : "blue"
                   }
                 />
-                <div className="relative z-10 flex min-h-[58px] w-full items-center gap-3 px-4 pb-2 py-0 text-left">
+                <div
+                  className={`relative z-10 flex w-full text-left ${active ? "min-h-[60px] items-center gap-3 px-4 py-2.5" : "min-h-[60px] items-center gap-1 px-3.5 py-2"}`}
+                >
                   <button
                     type="button"
                     onClick={() => activateCard(index)}
-                    className="flex min-w-0 flex-1 items-center gap-3 text-left"
+                    className={`flex min-w-0 flex-1 items-center text-left ${active ? "gap-3" : "gap-1"}`}
                     aria-expanded={active}
                     aria-label={`${active ? "Close" : "Open"} ${card.title}`}
                   >
                     <span
-                      className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${getIconClasses(card.icon)}`}
+                      className={`flex flex-none items-center justify-center rounded-full ${active ? `h-10 w-10 ${getIconClasses(card.icon)}` : "h-8 w-8"}`}
                     >
-                      {getIcon(card.title, "h-7 w-7")}
+                      {getIcon(card.title, active ? "h-7 w-7" : "h-6 w-6")}
                     </span>
                     <span className="min-w-0">
-                      <span className="block break-words font-['Manrope'] text-[14px] font-bold leading-[1.05] text-[#0d1b2e]">
+                      <span
+                        className={`block font-['Manrope'] font-bold text-[#0d1b2e] ${active ? "break-words text-[18px] leading-[1.05]" : "line-clamp-2 text-[13px] uppercase leading-[1.12]"}`}
+                      >
                         {card.title}
                       </span>
                     </span>
@@ -363,15 +378,17 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                     <span className="whitespace-nowrap text-[12px]">
                       <PriceLine price={card.pricetag} />
                     </span>
-                    <button
-                      type="button"
-                      onPointerDown={(event) => event.stopPropagation()}
-                      onClick={() => showBack(index)}
-                      className="flex-none text-[#50647d]"
-                      aria-label={`${active ? "Flip" : "Open"} ${card.title}`}
-                    >
-                      <FlipIcon />
-                    </button>
+                    {active ? (
+                      <button
+                        type="button"
+                        onPointerDown={(event) => event.stopPropagation()}
+                        onClick={() => showBack(index)}
+                        className="flex-none text-[#50647d]"
+                        aria-label={`Flip ${card.title}`}
+                      >
+                        <FlipIcon />
+                      </button>
+                    ) : null}
                   </div>
                 </div>
 
@@ -379,7 +396,7 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                   ref={(element) => {
                     cardExpandRefs.current[index] = element;
                   }}
-                  className="relative z-10 h-0 overflow-hidden transition-[height] duration-500"
+                  className="relative z-10 h-0 overflow-hidden"
                 >
                   <div
                     ref={(element) => {
@@ -398,14 +415,14 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                     className="border-t border-[#edf1f5] px-4 pb-5 pt-4 text-left"
                     aria-label={`Show full details for ${card.title}`}
                   >
-                    <p className="text-[14px] leading-[1.55] text-[#5b6675]">
+                    <p className="text-[15px] leading-[1.55] text-[#5b6675]">
                       {card.summary}
                     </p>
                     <div className="mt-4 space-y-2.5">
                       {card.details.slice(0, 3).map((detail) => (
                         <div
                           key={`${card.id}-${detail.label}`}
-                          className="flex items-start gap-2 text-[13px] leading-[1.45] text-[#4b5b70]"
+                          className="flex items-start gap-2 text-[14px] leading-[1.45] text-[#4b5b70]"
                         >
                           <CheckIcon />
                           <span>
@@ -424,10 +441,10 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                 </div>
               </div>
 
-              <div className="face face-back isolate flex min-h-[310px] flex-col overflow-hidden border-[1.5px] border-white/35 bg-[#061a33] p-4 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl">
+                  <div className="face face-back isolate flex min-h-[310px] flex-col overflow-hidden border-[1.5px] border-white/35 bg-[linear-gradient(155deg,rgba(13,27,46,0.88)_0%,rgba(15,38,66,0.82)_40%,rgba(13,27,46,0.9)_100%)] p-4 text-white shadow-[0_0_0_1px_rgba(59,130,246,1),0_0_8px_rgba(59,130,246,0.5),0_0_16px_rgba(59,130,246,0.38),0_0_26px_rgba(59,130,246,0.24),0_4px_12px_rgba(42,109,214,0.28)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-[2px] before:rounded-t-[18px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']">
                 <div className="back-inner flex min-h-0 flex-1 flex-col">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-['Manrope'] text-[13px] font-bold leading-[1.15] text-white">
+                    <h3 className="font-['Manrope'] text-[18px] font-bold leading-[1.15] text-white">
                       {card.backHeader}
                     </h3>
                     <button
@@ -443,14 +460,14 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                       <span>Back</span>
                     </button>
                   </div>
-                  <div className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-[1.55] text-white/80">
+                  <div className="mt-3 border-t border-white/15 pt-3 text-[14px] leading-[1.55] text-white/80">
                     {card.closing}
                   </div>
                   <div className="back-list mt-4 space-y-3 pr-2">
                     {card.details.map((detail) => (
                       <div
                         key={`${card.id}-back-${detail.label}`}
-                        className="flex items-start gap-2.5 text-[13px] leading-[1.45] text-[#e8eef7]"
+                        className="flex items-start gap-2.5 text-[14px] leading-[1.45] text-[#e8eef7]"
                       >
                         <CheckIcon />
                         <span>
@@ -468,6 +485,7 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
           </article>
         );
       })}
+      </div>
     </div>
   );
 }

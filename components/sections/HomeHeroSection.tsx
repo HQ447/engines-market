@@ -2289,7 +2289,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
 
               {/* Subheading */}
               <p
-                className="mb-6 text-center text-[16px] leading-[1.6] text-[#6b7280] lg:max-w-[62ch] lg:text-left"
+                className="mb-6 text-center text-[18px] leading-[1.6] text-[#6b7280] lg:max-w-[62ch] lg:text-left"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 {homeSubheadingParts.leading
