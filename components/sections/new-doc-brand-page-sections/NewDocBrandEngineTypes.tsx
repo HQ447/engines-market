@@ -202,7 +202,7 @@ function MobileEngineTypeStack({
                           onFlip(stackIndex);
                         }
                       }}
-                      className="relative flex min-h-[188px] w-full cursor-pointer flex-col overflow-hidden rounded-[16px] border border-[#dce7f0] bg-[linear-gradient(135deg,#ffffff_0%,#fbfdff_100%)] shadow-[0_14px_30px_rgba(13,27,46,0.11)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-3 before:rounded-t-[16px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']"
+                      className="relative flex min-h-[188px] w-full cursor-pointer flex-col overflow-hidden rounded-[16px] border border-[#dce7f0] bg-[linear-gradient(135deg,#ffffff_0%,#fbfdff_100%)] shadow-[0_14px_30px_rgba(13,27,46,0.11)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-[16px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']"
                       aria-expanded={!flipped}
                     >
                       <div className="flex items-start gap-1 px-3.5 py-3">
@@ -274,7 +274,7 @@ function MobileEngineTypeStack({
                       WebkitBackfaceVisibility: "hidden",
                     }}
                   >
-                    <div className="relative h-full overflow-y-auto rounded-[16px] border-[1.5px] border-[#3b82f6] bg-[#061a33] px-3 py-2.5 text-white shadow-[0_0_20px_rgba(59,130,246,0.32)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-3 before:rounded-t-[16px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']">
+                    <div className="relative h-full overflow-y-auto rounded-[16px] border-[1.5px] border-[#3b82f6] bg-[#061a33] px-3 py-2.5 text-white shadow-[0_0_20px_rgba(59,130,246,0.32)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-[16px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']">
                       <div className="mb-2 flex items-center justify-between gap-3">
                         <span
                           className={`inline-flex rounded-full border px-[8px] py-[1px] text-[8.5px] font-bold uppercase tracking-[0.7px] ${badgeClass}`}
@@ -326,7 +326,7 @@ function MobileEngineTypeStack({
                     WebkitClipPath:
                       "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px))",
                   }}
-                  className="relative min-h-[112px] w-full cursor-pointer overflow-hidden rounded-t-[14px] border border-[#dce7f0] bg-[linear-gradient(135deg,#ffffff_0%,#fbfdff_100%)] text-left shadow-[0_10px_22px_rgba(13,27,46,0.1)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-3 before:rounded-t-[14px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']"
+                  className="relative min-h-[112px] w-full cursor-pointer overflow-hidden rounded-t-[14px] border border-[#dce7f0] bg-[linear-gradient(135deg,#ffffff_0%,#fbfdff_100%)] text-left shadow-[0_10px_22px_rgba(13,27,46,0.1)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:rounded-t-[14px] before:bg-[linear-gradient(90deg,#061a33_0%,#0c4f8a_32%,#36c293_52%,#061a33_100%)] before:content-['']"
                   aria-expanded={false}
                 >
                   <div className="flex items-center gap-1 px-3.5 py-3">

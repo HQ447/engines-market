@@ -2015,12 +2015,12 @@ function CTAPanel({
                   isRegistrationLookupLoading) ||
                 (searchMode === "manual" && !isManualSelectionComplete)
               }
-              className={`w-full rounded-[8px] bg-[#1E3A8A] px-6 py-[13px] text-[15px] font-bold text-white transition hover:bg-[#162e6f] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
+              className={`w-full rounded-[8px] bg-[#15803d] px-6 py-[13px] text-[15px] font-bold text-white transition hover:bg-[#166534] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
               style={{
                 background:
-                  "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                  "linear-gradient(180deg, #22a447 0%, #15803d 55%, #0f5f2d 100%)",
                 boxShadow:
-                  "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
+                  "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,90,35,0.35)",
               }}
             >
               {searchMode === "registration" && isRegistrationLookupLoading
