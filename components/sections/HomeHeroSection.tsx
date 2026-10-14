@@ -13,6 +13,7 @@ import manualSelectorVariantPages from "@/data/manual-selector-variants.json";
 import { PiEngine } from "react-icons/pi";
 import { GoShield } from "react-icons/go";
 import { GoVerified } from "react-icons/go";
+import { FiLock } from "react-icons/fi";
 
 type Props = {
   data: HomeHeroData;
@@ -1121,17 +1122,12 @@ function BottomBarIcon({ type }: { type: string }) {
 /* UK Flag SVG */
 function UKFlag() {
   return (
-    <svg
-      viewBox="0 0 20 14"
-      className="h-[14px] w-[20px] flex-none rounded-[2px]"
+    <img
+      src="/failures/img/gb.webp"
+      alt=""
+      className="h-full w-full rounded-[1px] object-fill"
       aria-hidden="true"
-    >
-      <rect width="20" height="14" fill="#012169" />
-      <path d="M0 0 L20 14 M20 0 L0 14" stroke="white" strokeWidth="3" />
-      <path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" strokeWidth="1.8" />
-      <path d="M10 0 V14 M0 7 H20" stroke="white" strokeWidth="4.5" />
-      <path d="M10 0 V14 M0 7 H20" stroke="#C8102E" strokeWidth="2.8" />
-    </svg>
+    />
   );
 }
 
@@ -1342,11 +1338,17 @@ function ManualSelectorPanel({
       : kind === "models" || kind === "variants"
         ? "grid-cols-3 md:grid-cols-4"
         : "grid-cols-4 md:grid-cols-8";
+  const optionListHeightClass =
+    kind === "makes" || kind === "models"
+      ? "max-h-[216px] lg:max-h-[270px]"
+      : kind === "variants"
+        ? "max-h-[216px] lg:max-h-[126px]"
+        : "max-h-[108px] lg:max-h-[132px]";
 
   return (
     <div className="bg-transparent">
-      <div className="flex items-start justify-between gap-3">
-        <div className="text-[15px] font-bold leading-tight text-[#102452]">
+      <div className="flex items-center justify-between gap-3">
+        <div className="text-[15px] font-bold leading-none text-[#102452]">
           {title}
         </div>
 
@@ -1354,13 +1356,13 @@ function ManualSelectorPanel({
           type="button"
           onClick={onClose}
           aria-label="Close selector"
-          className="grid h-7 w-7 flex-none place-items-center rounded-full border border-[#d6e0ec] bg-white text-[#52657d] shadow-sm transition hover:border-[#0878ee] hover:text-[#0878ee]"
+          className="grid h-6 w-6 flex-none place-items-center rounded-full border border-[#d6e0ec] bg-white text-[#52657d] shadow-sm transition hover:border-[#0878ee] hover:text-[#0878ee]"
         >
           <CloseIcon />
         </button>
       </div>
 
-      <label className="relative mt-3 block">
+      <label className="relative mt-1 block">
         <span className="sr-only">{placeholder}</span>
         <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#8a97aa]">
           <SearchIcon />
@@ -1376,7 +1378,7 @@ function ManualSelectorPanel({
       </label>
 
       <div
-        className={`mt-3 overflow-y-auto overscroll-contain pr-1 ${kind === "years" ? "max-h-[108px] lg:max-h-[140px]" : "max-h-[216px] lg:max-h-[300px]"}`}
+        className={`mt-2 overflow-y-auto overscroll-contain pr-1 ${optionListHeightClass}`}
       >
         {filteredOptions.length > 0 ? (
           <div className={`grid gap-1.5 ${selectorGridClass}`}>
@@ -1674,13 +1676,18 @@ function CTAPanel({
           aria-pressed={searchMode === "registration"}
           style={
             searchMode === "registration"
-              ? { background: "linear-gradient(135deg, #042f5a, #075b94)" }
+              ? {
+                  background:
+                    "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                  boxShadow:
+                    "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
+                }
               : undefined
           }
           className={`flex min-h-[46px] flex-1 items-center justify-center gap-1 px-1.5 py-2 text-[10px] font-semibold transition-all [&>svg]:h-3 [&>svg]:w-3 sm:min-h-[55px] sm:gap-1.5 sm:rounded-md sm:px-4 sm:py-3 sm:text-[13px] sm:[&>svg]:h-4 sm:[&>svg]:w-4 ${
             searchMode === "registration"
-              ? "border border-white/20 text-white shadow-[0_4px_12px_rgba(6,26,51,0.28)]"
-              : "border border-transparent bg-white text-[#0b245a] hover:bg-[#f2f8ff]"
+              ? "border border-white/20 text-white active:translate-y-[3px] active:shadow-none"
+              : "border border-transparent bg-white text-[#0b245a] shadow-[inset_0_2px_5px_rgba(10,39,83,0.10)] hover:bg-[#f2f8ff] active:translate-y-[2px] active:shadow-none"
           }`}
         >
           <CarIcon />
@@ -1695,13 +1702,18 @@ function CTAPanel({
           aria-pressed={searchMode === "manual"}
           style={
             searchMode === "manual"
-              ? { background: "linear-gradient(135deg, #042f5a, #075b94)" }
+              ? {
+                  background:
+                    "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                  boxShadow:
+                    "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
+                }
               : undefined
           }
           className={`flex min-h-[46px] flex-1 items-center justify-center gap-1 px-1.5 py-2 text-[10px] font-semibold transition-all [&>svg]:h-3 [&>svg]:w-3 sm:min-h-[55px] sm:gap-1.5 sm:rounded-md sm:px-4 sm:py-3 sm:text-[13px] sm:[&>svg]:h-4 sm:[&>svg]:w-4 ${
             searchMode === "manual"
-              ? "border border-white/20 text-white shadow-[0_4px_12px_rgba(6,26,51,0.28)]"
-              : "border border-transparent bg-white text-[#0b245a] hover:bg-[#f2f8ff]"
+              ? "border border-white/20 text-white active:translate-y-[3px] active:shadow-none"
+              : "border border-transparent bg-white text-[#0b245a] shadow-[inset_0_2px_5px_rgba(10,39,83,0.10)] hover:bg-[#f2f8ff] active:translate-y-[2px] active:shadow-none"
           }`}
         >
           <SwapIcon />
@@ -1710,7 +1722,7 @@ function CTAPanel({
       </div>
 
       <div
-        className={`text-center ${searchMode === "manual" ? (expandedSelector ? "p-1 sm:p-2 lg:p-2" : "p-3 sm:p-4 lg:px-[15px] lg:py-[6px]") : "p-2 sm:p-6"}`}
+        className={`text-center ${searchMode === "manual" ? (expandedSelector ? "p-0.5 sm:p-1 lg:p-1" : "p-3 sm:p-4 lg:px-[15px] lg:py-[6px]") : "p-2 sm:p-6"}`}
       >
         {searchMode === "registration" ? (
           <>
@@ -1735,12 +1747,9 @@ function CTAPanel({
         >
           {searchMode === "registration" ? (
             <div className="relative mx-auto block w-full">
-              <div className="flex h-[60px] w-full min-w-0 overflow-hidden rounded-[9px] border-[2px] border-[#102442] bg-[#ffdd00] shadow-[0_6px_0_rgba(0,6,27,0.35)] sm:h-[65px]">
-                <div className="flex w-[48px] shrink-0 flex-col items-center justify-center border-r-2 border-[#102442] bg-[#003399] px-1">
+              <div className="flex h-[60px] w-full min-w-0 overflow-hidden rounded-[9px] border-[4px] border-[#102442] bg-[#ffdd00] sm:h-[68px]">
+                <div className="flex w-[48px] shrink-0 items-center justify-center border-r-[4px] border-[#102442] bg-[#003399]">
                   <UKFlag />
-                  <span className="mt-0.5 text-[10px] font-extrabold leading-none text-[#ffdd00]">
-                    UK
-                  </span>
                 </div>
                 <input
                   type="text"
@@ -1753,7 +1762,7 @@ function CTAPanel({
                   autoCapitalize="characters"
                   autoComplete="off"
                   spellCheck={false}
-                  className="min-w-0 flex-1 bg-transparent px-3 text-center text-[14px] font-black uppercase tracking-[0.07em] text-[#10151c] outline-none placeholder:text-[16px] placeholder:text-[#292a2b] placeholder:opacity-100 sm:placeholder:text-[20px] sm:text-[15px]"
+                  className="min-w-0 flex-1 bg-transparent px-2 text-center text-[28px] font-black uppercase tracking-[0.07em] text-[#10151c] outline-none placeholder:text-[28px] placeholder:text-[#10151c] placeholder:opacity-100 focus:outline-none focus:ring-0 sm:text-[40px] sm:placeholder:text-[40px]"
                   style={{
                     fontFamily:
                       '"Charles Wright", "Arial Black", Arial, sans-serif',
@@ -1796,7 +1805,7 @@ function CTAPanel({
                   >
                     <SelectorChevron direction="left" />
                   </button>
-                  <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  <div className="manual-selector-grid manual-selector-grid--three-plus-view-all grid grid-cols-3 gap-1.5 sm:grid-cols-6">
                     {visibleMakeOptions.map((make, index) => {
                       const logoPath = getMakeLogoPath(make);
                       const isSelected = manualMake === make;
@@ -1854,7 +1863,9 @@ function CTAPanel({
                 <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">
                   Select Your Model
                 </div>
-                <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                <div
+                  className={`manual-selector-grid grid grid-cols-3 gap-1.5 sm:grid-cols-6 ${modelOptions.length > 5 ? "manual-selector-grid--three-plus-view-all" : ""}`}
+                >
                   {visibleModelOptions.length > 0 ? (
                     visibleModelOptions.map((model, index) =>
                       (() => {
@@ -1913,7 +1924,9 @@ function CTAPanel({
                   <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">
                     Select Your Variant
                   </div>
-                  <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  <div
+                    className={`manual-selector-grid grid grid-cols-3 gap-1.5 sm:grid-cols-6 ${variantOptions.length > 5 ? "manual-selector-grid--three-plus-view-all" : ""}`}
+                  >
                     {visibleVariantOptions.map((variant, index) => {
                       return (
                         <button
@@ -1949,7 +1962,7 @@ function CTAPanel({
                   <div className="mb-1 text-[13.5px] font-bold leading-tight text-[#2d567c]">
                     Select Your Year
                   </div>
-                  <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  <div className="manual-selector-grid manual-selector-grid--year grid grid-cols-3 gap-1.5 sm:grid-cols-6">
                     {visibleYearOptions.map((year, index) => (
                       <button
                         key={`${year}-${index}`}
@@ -2000,7 +2013,13 @@ function CTAPanel({
                   isRegistrationLookupLoading) ||
                 (searchMode === "manual" && !isManualSelectionComplete)
               }
-              className={`w-full rounded-[8px] bg-[#15803d] px-6 py-[13px] text-[15px] font-bold text-white shadow-[0_4px_18px_rgba(21,128,61,0.3)] transition hover:bg-[#166534] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
+              className={`w-full rounded-[8px] bg-[#1E3A8A] px-6 py-[13px] text-[15px] font-bold text-white transition hover:bg-[#162e6f] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
+              style={{
+                background:
+                  "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                boxShadow:
+                  "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
+              }}
             >
               {searchMode === "registration" && isRegistrationLookupLoading
                 ? "Checking Registration..."
@@ -2017,9 +2036,9 @@ function CTAPanel({
 
         {/* GDPR */}
         {searchMode === "registration" ? (
-          <p className="mb-4 flex items-center justify-center gap-1.5 text-center text-[12px] sm:text-[14px] text-gray-500">
-            {/* <LockIcon /> */}
-            <span>{gdprNote}</span>
+          <p className="mb-4 text-center text-[12px] text-gray-500 sm:text-[14px]">
+            <FiLock className="mr-1 inline h-4 w-4 align-text-bottom text-[#15803d]" />
+            {gdprNote}
           </p>
         ) : null}
 
@@ -2204,6 +2223,16 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
   return (
     <>
       <style>{`
+        @media (max-width: 639px) {
+          .manual-selector-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+          }
+          .manual-selector-grid--three-plus-view-all > :nth-child(4):not(:last-child),
+          .manual-selector-grid--three-plus-view-all > :nth-child(5):not(:last-child),
+          .manual-selector-grid--year > :nth-child(4):not(:last-child) {
+            display: none;
+          }
+        }
         @keyframes slideLeftMobile {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }

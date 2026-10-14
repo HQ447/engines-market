@@ -148,13 +148,18 @@ const cardIconMap: Record<Card["icon"], string> = {
   coverage: "/icons/uk-wide.png",
 };
 
-function getCardIcon(icon: Card["icon"], size: "sm" | "md" | "lg" = "md") {
+function getCardIcon(
+  icon: Card["icon"],
+  size: "sm" | "md" | "lg" | "xl" = "md",
+) {
   const cls =
     size === "sm"
       ? "h-9 w-9 object-contain"
-      : size === "lg"
-        ? "h-14 w-14 object-contain"
-        : "h-11 w-11 object-contain";
+      : size === "xl"
+        ? "h-16 w-16 object-contain"
+        : size === "lg"
+          ? "h-14 w-14 object-contain"
+          : "h-11 w-11 object-contain";
   return (
     <Image
       src={cardIconMap[icon]}
@@ -272,10 +277,9 @@ export default function WhyChooseEnginesMarket() {
             >
               <CardCornerAccent tone={index % 2 === 0 ? "green" : "blue"} />
               <div className="relative z-10 flex h-full flex-col">
-
                 <div className="flex items-center gap-3 sm:hidden">
-                  <div className="flex h-10 w-10 flex-none items-center justify-center rounded-[10px] border border-[#e1e8f1] bg-[#fbfdff] text-[#0d1b2e] shadow-[0_3px_9px_rgba(13,27,46,0.08)]">
-                    {getCardIcon(card.icon, "sm")}
+                  <div className="flex flex-none items-center justify-center">
+                    {getCardIcon(card.icon, "lg")}
                   </div>
                   <h3 className="min-w-0 font-['Manrope'] !text-[22px] font-bold uppercase leading-[0.98] text-[#0d1b2e]">
                     {card.title}
@@ -284,14 +288,14 @@ export default function WhyChooseEnginesMarket() {
 
                 <div className="hidden items-center gap-3 sm:flex">
                   <div className="flex flex-none items-center justify-center">
-                    {getCardIcon(card.icon, "lg")}
+                    {getCardIcon(card.icon, "xl")}
                   </div>
                   <h3 className="min-w-0 font-['Manrope'] !text-[20px] font-bold uppercase leading-[1.05] text-[#0d1b2e]">
                     {card.title}
                   </h3>
                 </div>
 
-                <ul className="mt-5 space-y-2 sm:mt-3 sm:space-y-2">
+                <ul className="mt-2 space-y-2 sm:mt-1 sm:space-y-2">
                   {card.bullets.map((bullet) => (
                     <li
                       key={bullet}

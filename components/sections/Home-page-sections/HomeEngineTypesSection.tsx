@@ -305,10 +305,10 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
     <div className="mobile-engine-stack mt-8 px-1">
       <style>{`
         .mobile-engine-stack .stack-card { position: relative; z-index: 1; perspective: 1000px; transition: transform .35s ease, margin-top .35s ease; }
-        .mobile-engine-stack .stack-card + .stack-card { margin-top: -18px; }
+        .mobile-engine-stack .stack-card + .stack-card { margin-top: -8px; }
         .mobile-engine-stack .stack-card.active { z-index: 10; transform: translateY(-5px); }
         .mobile-engine-stack .stack-card.active + .stack-card { margin-top: 14px; }
-        .mobile-engine-stack .stack-card.active ~ .stack-card + .stack-card { margin-top: -18px; }
+        .mobile-engine-stack .stack-card.active ~ .stack-card + .stack-card { margin-top: -8px; }
         .mobile-engine-stack .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.16,1,.3,1); }
         .mobile-engine-stack .stack-card.flipped .flip-inner { height: min(70vh, 420px); min-height: 310px; }
         .mobile-engine-stack .stack-card.flipped .flip-inner { transform: rotateY(180deg); }
@@ -340,7 +340,7 @@ function MobileStack({ cards }: { cards: HomeEngineTypeCard[] }) {
                       : "blue"
                   }
                 />
-                <div className="relative z-10 flex min-h-[82px] w-full items-center gap-3 px-4 py-4 text-left">
+                <div className="relative z-10 flex min-h-[58px] w-full items-center gap-3 px-4 pb-2 py-0 text-left">
                   <button
                     type="button"
                     onClick={() => activateCard(index)}
