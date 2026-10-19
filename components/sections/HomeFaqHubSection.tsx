@@ -366,14 +366,17 @@ export default function HomeFaqHubSection() {
     }
 
     return (
-        <Section className="bg-[#f8fafc] py-8 sm:py-10 lg:py-12">
+        <Section className="bg-[#f7f8fb] py-8 sm:py-10 lg:py-12">
             <Container className="max-w-[1400px]">
                 <div className="mx-auto mb-6 max-w-[860px] text-center">
                     <div className="section-pill mx-auto">
                         <span>ENGINE REPLACEMENT FAQ HUB</span>
                     </div>
 
-                    <h2 className="mt-4 font-['Manrope'] text-[30px] font-bold leading-[1.08] text-[#0d1b2e] sm:text-[34px] lg:text-[40px]">
+                    <h2
+                        className="mt-4 text-[37px] font-bold leading-[1.08] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+                        style={{ fontFamily: "Inter, sans-serif" }}
+                    >
                         <span>Your Engine Replacement </span>
                         <span className="text-[#15803d]">Questions, Answered </span>
                         <span>by Cluster and Brand.</span>

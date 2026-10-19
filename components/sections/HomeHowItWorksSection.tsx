@@ -30,14 +30,17 @@ export default function HomeHowItWorksSection({ steps }: Props) {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <Section id="how-it-works" className="bg-[#f7f8fb] py-7 sm:py-8 lg:py-10">
+    <Section id="how-it-works" className="bg-white py-7 sm:py-8 lg:py-10">
       <Container className="max-w-[1400px]">
         <div className="mx-auto  text-center">
           <div className="section-pill ">
             <span>How It Works</span>
           </div>
 
-          <h2 className="mt-4 text-center font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[30px] lg:text-[32px]">
+          <h2
+            className="mt-4 text-center text-[37px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <span>How EnginesMarket Works - </span>
             <span className="text-[#15803d]">3 Steps</span>
             <span> to Your Replacement Engine Quote</span>

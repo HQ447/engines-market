@@ -496,21 +496,8 @@ export default function HomeEngineTypesSection({
   return (
     <Section
       id="engine-types"
-      className="relative overflow-hidden bg-[#f8fbff] py-7 sm:py-8 lg:py-10"
+      className="relative overflow-hidden bg-white py-7 sm:py-8 lg:py-10"
     >
-      <div
-        className="pointer-events-none absolute -left-40 top-44 h-[430px] w-[900px] rotate-[25deg] bg-[#edf5ff] opacity-80"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -right-48 top-16 h-[620px] w-[800px] rotate-[28deg] border border-white/70 bg-[#effaf8]/70"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-[-20%] left-[28%] h-[360px] w-[750px] rotate-[-23deg] bg-[#f1f7ff] opacity-90"
-        aria-hidden="true"
-      />
-
       <Container className="relative z-10 max-w-[1400px]">
         <div className="max-w-[800px]">
           <div className="section-pill">
@@ -521,7 +508,10 @@ export default function HomeEngineTypesSection({
             <span>Replacement Engine Options</span>
           </div>
 
-          <h2 className="mt-5 max-w-[900px] font-['Manrope'] text-[38px] font-bold uppercase leading-[0.98] text-[#0d1b2e] sm:text-[48px] lg:text-[58px]">
+          <h2
+            className="mt-5 max-w-[900px] text-[37px] font-bold uppercase leading-[0.98] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <span>Compare Used, </span>
             <span className="text-[#087f55]">Reconditioned &amp; Rebuilt</span>
             <span> Replacement Engines</span>

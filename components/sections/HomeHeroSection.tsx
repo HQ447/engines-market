@@ -20,6 +20,13 @@ type Props = {
   engineLinks?: EngineLinkMap;
 };
 
+type HeroBrandRow = {
+  brand: string;
+  stat: string;
+  price: string;
+  codes: string;
+};
+
 type TickerItem = {
   brand: string;
   code: string;
@@ -623,6 +630,34 @@ function getManualWindowStart(options: string[], visibleOptions: string[]) {
 
 const manualSelectedTileClass =
   "relative z-[3] overflow-visible after:absolute after:-right-1.5 after:-top-1.5 after:grid after:h-[18px] after:w-[18px] after:place-items-center after:rounded-full after:bg-[#0878ee] after:text-[11px] after:font-black after:leading-none after:text-white after:shadow-[0_2px_5px_rgba(8,80,180,0.35)] after:content-['✓']";
+
+const rowGroups: HeroBrandRow[][] = [
+  [
+    { brand: "BMW", stat: "820+ quotes · last 30 days", price: "£1,800 - £4,500", codes: "N47D20 · B47D20 · N57D30" },
+    { brand: "Land Rover", stat: "540+ quotes · last 30 days", price: "£3,200 - £6,500", codes: "306DT · 508PN · 276DT" },
+    { brand: "Mercedes-Benz", stat: "675+ quotes · last 30 days", price: "£2,200 - £5,500", codes: "OM651 · M271 · M276" },
+  ],
+  [
+    { brand: "Ford", stat: "480+ quotes · last 30 days", price: "£1,200 - £3,200", codes: "HHDA · M8MA · PNDA" },
+    { brand: "Volkswagen", stat: "340+ quotes · last 30 days", price: "£1,400 - £3,500", codes: "CAYC · CFFB · CZCA" },
+    { brand: "Jaguar", stat: "300+ quotes · last 30 days", price: "£2,800 - £5,800", codes: "306PS · 508PN · AJ126" },
+  ],
+  [
+    { brand: "Nissan", stat: "280+ quotes · last 30 days", price: "£1,400 - £3,200", codes: "K9K · HR16DE · YD25DDTi" },
+    { brand: "Renault", stat: "250+ quotes · last 30 days", price: "£1,100 - £2,800", codes: "K9K · M9R · H4M" },
+    { brand: "Toyota", stat: "220+ quotes · last 30 days", price: "£1,200 - £3,000", codes: "1ND-TV · 2AD-FTV · 2ZR-FE" },
+  ],
+  [
+    { brand: "Mitsubishi", stat: "175+ quotes · last 30 days", price: "£1,800 - £3,800", codes: "4N14 · 4D56 · 6G74" },
+    { brand: "Peugeot", stat: "160+ quotes · last 30 days", price: "£1,100 - £2,800", codes: "DV6C · DW10 · EP6" },
+    { brand: "Audi", stat: "160+ quotes · last 30 days", price: "£1,600 - £4,200", codes: "CAGA · CFFB · CDUC" },
+  ],
+  [
+    { brand: "Honda", stat: "140+ quotes · last 30 days", price: "£1,300 - £3,000", codes: "N22A · R20A · K20C" },
+    { brand: "Kia", stat: "125+ quotes · last 30 days", price: "£1,200 - £2,800", codes: "D4FB · G4FJ · D4HA" },
+    { brand: "Mazda", stat: "120+ quotes · last 30 days", price: "£1,400 - £3,200", codes: "SH-VPTS · R2AA · L5-VE" },
+  ],
+];
 
 const tickerItems: TickerItem[] = [
   { brand: "BMW", code: "N47D20", price: "£2,200" },
@@ -1243,6 +1278,40 @@ function EngineIllustration() {
   );
 }
 
+function getBrandLogoPath(brand: string): string {
+  const brandMap: Record<string, string> = {
+    BMW: "bmw-logo-small.webp.webp",
+    "Land Rover": "land-rover-logo-small.webp.webp",
+    "Mercedes-Benz": "mercedes-logo-small.webp.webp",
+    Ford: "ford-logo-small.webp.webp",
+    Volkswagen: "volkswagon-logo-small.webp.webp",
+    Jaguar: "jaguar-logo-small.webp.webp",
+    Nissan: "nissan-logo-small.webp.webp",
+    Renault: "renault-logo-small.webp.webp",
+    Toyota: "toyota-logo-small.webp.webp",
+    Mitsubishi: "mitsubishi-logo-small.webp.webp",
+    Peugeot: "peugeot-logo-small.webp.webp",
+    Audi: "audi-logo-small.webp.webp",
+    Honda: "honda-logo-small.webp.webp",
+    Kia: "kia-logo-small.webp.webp",
+    Mazda: "mazda-logo-small.webp.webp",
+  };
+
+  return `/BrandsLogos/${brandMap[brand] || "default-logo.webp"}`;
+}
+
+function LogoBadge({ brand }: { brand: string }) {
+  return (
+    <div className="flex h-11 w-11 flex-none items-center justify-center overflow-hidden">
+      <img
+        src={getBrandLogoPath(brand)}
+        alt={`${brand} logo`}
+        className="h-11 w-11 object-contain"
+      />
+    </div>
+  );
+}
+
 function renderLinkedEngineCodes(codes: string, engineLinks?: EngineLinkMap) {
   return codes.split(/(,\s*|\s*\/\s*|\s*·\s*)/).map((part, index) => {
     if (!part.trim() || /^[,\s/·]+$/.test(part)) {
@@ -1265,6 +1334,50 @@ function renderLinkedEngineCodes(codes: string, engineLinks?: EngineLinkMap) {
       </Link>
     );
   });
+}
+
+/* Brand Row - matches screenshot layout exactly */
+function HeroRow({ row, engineLinks }: { row: HeroBrandRow; engineLinks?: EngineLinkMap }) {
+  return (
+    // Changed px-4 to px-2 sm:px-4 to reduce overall left/right space on mobile
+    <div className="flex h-[80px] cursor-pointer items-center sm:gap-15 border-b border-[rgba(13,27,46,0.1)] px-2 sm:px-4 last:border-b-0 transition-colors hover:bg-[#f9fafb]">
+
+      {/* LEFT: Logo + Brand name grouped together */}
+      {/* Changed w-[110px] to w-[50px] sm:w-[110px] to reduce space around the logo on mobile */}
+      <div className="flex w-[50px] min-[380px]:w-[60px] sm:w-[10px] flex-shrink-0 flex-col items-center gap-2 sm:flex-row sm:gap-4">
+        <LogoBadge brand={row.brand} />
+        {/* <span className="hidden sm:inline text-md font-bold text-[#0d1b2e] sm:text-left">{row.brand}</span> */}
+      </div>
+
+      {/* CENTER: 3-line stats block */}
+      <div className="min-w-0 flex-1">
+        {/* Line 1: green quote count */}
+        <div className="mb-[3px] text-[13px] font-bold text-[#15803d]">
+          {/* Added brand name here for mobile only, in dark blue */}
+          <span className="mr-1.5 text-[#0d1b2e]">{row.brand}</span>
+          {row.stat}
+        </div>
+
+{/* Line 2: price range */}
+<div className="mb-[2px] text-[13px] text-[#0d1b2e]">
+  Avg. <span className="font-semibold">Rebuilt</span> Quote:{" "}
+  <span className="font-semibold">{row.price}</span>{" "}
+  <span className="text-[11px] text-[#6b7280]">· supply only</span>
+</div>
+
+{/* Line 3: most requested codes */}
+<div className="truncate text-[11px] text-[#6b7280]">
+  Most requested:{" "}
+  <span className="font-medium text-[#2563eb]">{renderLinkedEngineCodes(row.codes, engineLinks)}</span>
+</div>
+      </div>
+
+      {/* RIGHT: chevron arrow */}
+      <span className="flex-none text-[#9ca3af]">
+        <ArrowIcon />
+      </span>
+    </div>
+  );
 }
 
 type ManualSelectorKind = "makes" | "models" | "variants" | "years";
@@ -1764,7 +1877,7 @@ function CTAPanel({
                   autoCapitalize="characters"
                   autoComplete="off"
                   spellCheck={false}
-                  className="min-w-0 flex-1 bg-transparent px-2 text-center text-[28px] font-black uppercase tracking-[0.07em] text-[#10151c] outline-none placeholder:text-[28px] placeholder:text-[#10151c] placeholder:opacity-100 focus:outline-none focus:ring-0 sm:text-[40px] sm:placeholder:text-[40px]"
+                  className="min-w-0 flex-1 bg-transparent px-2 text-center text-[22px] font-bold uppercase tracking-[0.07em] text-[#10151c] outline-none placeholder:text-[22px] placeholder:text-[#10151c] placeholder:opacity-100 focus:outline-none focus:ring-0 sm:text-[32px] sm:placeholder:text-[32px]"
                   style={{
                     fontFamily:
                       '"Charles Wright", "Arial Black", Arial, sans-serif',
@@ -2111,6 +2224,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
     useState(false);
   const [registrationLookupError, setRegistrationLookupError] = useState("");
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const [groupIndex, setGroupIndex] = useState(0);
   const [carouselOffset, setCarouselOffset] = useState(0);
   const [desktopCarouselOffset, setDesktopCarouselOffset] = useState(0);
 
@@ -2122,6 +2236,14 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
     0,
     engineCarouselItems.length - DESKTOP_VISIBLE,
   );
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setGroupIndex((current) => (current + 1) % rowGroups.length);
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const engineTickerLoop = useMemo(() => [...tickerItems, ...tickerItems], []);
   const bottomTickerLoop = useMemo(
@@ -2221,6 +2343,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
   const homeSubheadingParts = splitInlineDisclaimerText(data.subheading);
   const homeDisclaimerText =
     "Prices are indicative rebuilt/reconditioned supply-only averages. Actual quotes vary by variant, year and supplier.";
+  const activeGroup = rowGroups[groupIndex] ?? rowGroups[0];
 
   return (
     <>
@@ -2276,10 +2399,8 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
                 className="mb-2 text-center leading-[1.1] tracking-[-0.03em] text-[#0d1b2e] lg:text-left"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
-                <span className="block text-[26px] sm:text-[clamp(28px,5vw,48px)] font-extrabold">
-                  {data.headingLead}
-                </span>
-                <span className="mt-[2px] block text-[26px] font-extrabold text-[#15803d] sm:text-[clamp(28px,5vw,48px)]">
+                <span className="block text-[26px] sm:text-[clamp(28px,5vw,48px)] font-extrabold">{data.headingLead}</span>
+                <span className="mt-[2px] block text-[clamp(20px,3.5vw,36px)] font-semibold text-[#15803d]">
                   {data.headingAccent}
                 </span>
               </h1>
@@ -2330,7 +2451,33 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
                 />
               </div>
 
-              {/* ── MOBILE: "Compare quotes" heading ── */}
+              <div className="hidden max-w-2xl overflow-hidden rounded-[12px] border border-[rgba(13,27,46,0.1)] bg-white shadow-[0_8px_30px_rgba(13,27,46,0.2)] lg:block">
+                <h3
+                  className="mb-3 pt-5 text-center text-[15px] font-bold text-[#0d1b2e] lg:hidden"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Compare quotes from vetted specialists
+                </h3>
+                {activeGroup.map((row) => (
+                  <HeroRow
+                    key={`${groupIndex}-${row.brand}`}
+                    row={row}
+                    engineLinks={engineLinks}
+                  />
+                ))}
+              </div>
+
+              <p
+                className="mb-5 hidden pt-5 text-center text-[13px] leading-[1.5] text-[#6b7280] lg:block lg:text-left"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                Covering <strong className="font-bold text-[#0d1b2e]">8,000+</strong> engine codes across{" "}
+                <strong className="font-bold text-[#0d1b2e]">40+</strong> makes - from{" "}
+                <strong className="font-bold text-[#0d1b2e]">BMW</strong> and{" "}
+                <strong className="font-bold text-[#0d1b2e]">Land Rover</strong> to{" "}
+                <strong className="font-bold text-[#0d1b2e]">Ford</strong> and{" "}
+                <strong className="font-bold text-[#0d1b2e]">Vauxhall</strong>.
+              </p>
             </div>
 
             {/* ── RIGHT COLUMN - Desktop CTA ── */}
@@ -2408,8 +2555,8 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
           </div>
         </div>
 
-        {/* DESKTOP SLIDER - Kept INSIDE Container for proper centering and padding */}
-        <Container className="max-w-[1400px] px-2 sm:px-10">
+        {/* DESKTOP SLIDER - Full bleed so the engine ticker reaches both viewport edges */}
+        <div className="w-full">
           <div className="hidden items-center gap-3 lg:flex">
             <div className="overflow-hidden flex-1">
               <div className="desktop-carousel-track flex">
@@ -2446,7 +2593,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
               </div>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* ─── MOBILE LIVE BAR ─── */}

@@ -239,7 +239,10 @@ export default function HomeBrandGridSection({ brands, featuredSlugs }: Props) {
             <span>Engine Replacement By Make</span>
           </div>
 
-          <h2 className="mt-4 font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[32px] lg:text-[36px]">
+          <h2
+            className="mt-4 text-[37px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <span>Replacement Engine Prices for </span>
             <span className="text-[#15803d]">Your Make</span>
           </h2>

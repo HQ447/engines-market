@@ -222,21 +222,8 @@ export default function WhyChooseEnginesMarket() {
   return (
     <Section
       id="home-why-use-us"
-      className="relative overflow-hidden bg-[#f7fbff] py-7 sm:py-8 lg:py-10"
+      className="relative overflow-hidden bg-white py-7 sm:py-8 lg:py-10"
     >
-      <div
-        className="pointer-events-none absolute -left-40 top-24 h-[520px] w-[900px] rotate-[23deg] bg-[#edf4ff] opacity-80"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -right-48 bottom-24 h-[620px] w-[900px] rotate-[-26deg] bg-[#e9f5ff] opacity-75"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute right-[-12%] top-[-24%] h-[420px] w-[760px] rotate-[29deg] border border-white/80 bg-white/45"
-        aria-hidden="true"
-      />
-
       <Container className="relative z-10 max-w-[1400px]">
         <div className="mx-auto max-w-[1120px] text-center">
           <div className="section-pill relative mx-auto overflow-hidden border border-white/15 bg-[#061a33]/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_8px_20px_rgba(6,26,51,0.22)] backdrop-blur-md">
@@ -255,7 +242,10 @@ export default function WhyChooseEnginesMarket() {
             <span className="relative z-10">Why Use EnginesMarket</span>
           </div>
 
-          <h2 className="mx-auto mt-5 max-w-[980px] font-['Manrope'] text-[38px] font-bold uppercase leading-[0.98] text-[#0d1b2e] sm:text-[48px] lg:text-[58px]">
+          <h2
+            className="mx-auto mt-5 max-w-[980px] text-[37px] font-bold uppercase leading-[0.98] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <span>How We </span>
             <span className="text-[#15805f]">Vet UK Engine Specialists</span>
             <span> - And Why It Matters</span>

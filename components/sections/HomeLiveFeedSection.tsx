@@ -111,7 +111,7 @@ export default function HomeLiveFeedSection({ rows, initialTimestamp }: Props) {
   }, [activeBrand, rows]);
 
   return (
-    <Section className="bg-[#f5f5f5] py-7 sm:py-8 lg:py-10">
+    <Section className="bg-[#f7f8fb] py-7 sm:py-8 lg:py-10">
       {/* Mobile Image: Full width, appears before the Container on phone screens */}
       <div className="relative mb-6 h-150 w-full overflow-hidden lg:hidden">
         <Image
@@ -133,7 +133,10 @@ export default function HomeLiveFeedSection({ rows, initialTimestamp }: Props) {
 
           {/* Flex column ensures the info text stays below the heading and pushes content down */}
           <div className="mt-4 flex flex-col items-center">
-            <h2 className="font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[30px] lg:text-[32px]">
+            <h2
+              className="text-[37px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
               What Are UK Drivers Paying for Engine Replacements?
               <button
                 type="button"

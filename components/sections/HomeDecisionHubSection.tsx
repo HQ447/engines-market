@@ -457,7 +457,10 @@ export default function HomeDecisionHubSection() {
             <span className="text-white">Engine Failure Cost Calculator</span>
           </div>
 
-          <h2 className="mt-4 font-['Manrope'] text-[30px] font-bold leading-[1.08] text-white sm:text-[34px] lg:text-[40px]">
+          <h2
+            className="mt-4 text-[37px] font-bold leading-[1.08] text-white sm:text-[38px] lg:text-[43px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <span>Is Engine Replacement </span>
             <span className="text-[#22c55e]">Worth It?</span>
             <span> Find Out in 60 Seconds.</span>
