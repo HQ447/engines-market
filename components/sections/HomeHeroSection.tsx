@@ -2375,7 +2375,7 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
       `}</style>
       {/* ─── HERO SECTION ─── */}
       <section
-        className="hero-background overflow-hidden pt-8 lg:pt-12"
+        className="home-hero-background overflow-hidden pt-8 lg:pt-12"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.78) 30%, rgba(255,255,255,0.64) 58%, rgba(255,255,255,0.54) 100%), url('/images/home/home-hero-bg.jpg')",
@@ -2564,7 +2564,10 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
                   (item, index) => (
                     <div
                       key={`desktop-carousel-${item.code}-${index}`}
-                      className="flex items-center gap-2 p-2 min-w-[16.667%] flex-shrink-0"
+                      className="flex min-w-0 flex-none items-center gap-2 p-2"
+                      style={{
+                        flex: "0 0 clamp(157px, calc((100vw - 80px) / 6), 220px)",
+                      }}
                     >
                       <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden">
                         <img

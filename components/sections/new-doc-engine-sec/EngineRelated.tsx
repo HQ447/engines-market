@@ -98,7 +98,14 @@ function RelatedCardItem({
           : isTitleExpanded
             ? item.code
             : titleWords.slice(0, titleWordLimit).join(" ")}
-        {hasLongTitle ? <span>{isTitleExpanded ? " Show less" : "…"}</span> : null}
+        {hasLongTitle ? (
+          <FiChevronDown
+            className={`${styles.relatedTitleToggle} ${
+              isTitleExpanded ? styles.relatedTitleToggleOpen : ""
+            }`}
+            aria-hidden="true"
+          />
+        ) : null}
       </h3>
       <strong>
         {item.code === "none"
@@ -123,9 +130,10 @@ function RelatedCardItem({
               e.preventDefault();
               setIsExpanded((prev) => !prev);
             }}
+            aria-expanded={isExpanded}
             aria-label={`Toggle description for ${item.code}`}
           >
-            <span>{isExpanded ? "Show less" : "…"}</span>
+            <FiChevronDown aria-hidden="true" />
           </button>
         )}
       </div>

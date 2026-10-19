@@ -226,7 +226,7 @@ export default function WhyChooseEnginesMarket() {
     >
       <Container className="relative z-10 max-w-[1400px]">
         <div className="mx-auto max-w-[1120px] text-center">
-          <div className="section-pill relative mx-auto overflow-hidden border border-white/15 bg-[#061a33]/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_8px_20px_rgba(6,26,51,0.22)] backdrop-blur-md">
+          <div className="section-pill relative mx-auto overflow-hidden border border-[rgba(94,209,255,0.68)] !bg-gradient-to-br from-[#042f5a] to-[#075b94] !text-[#e9f8ff] shadow-[inset_0_0_0_1px_rgba(113,212,255,0.12),0_7px_17px_rgba(3,54,96,0.17)]">
             <span
               className="pointer-events-none absolute -right-2 top-[-12px] h-12 w-20 rotate-[28deg] bg-white/10"
               aria-hidden="true"
@@ -242,10 +242,7 @@ export default function WhyChooseEnginesMarket() {
             <span className="relative z-10">Why Use EnginesMarket</span>
           </div>
 
-          <h2
-            className="mx-auto mt-5 max-w-[980px] text-[37px] font-bold uppercase leading-[0.98] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
+          <h2 className="mt-4 font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[32px] lg:text-[36px]">
             <span>How We </span>
             <span className="text-[#15805f]">Vet UK Engine Specialists</span>
             <span> - And Why It Matters</span>

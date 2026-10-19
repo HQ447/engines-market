@@ -54,11 +54,10 @@
   justify-content: flex-start;
 }
 
-/* Icon layout locked to uniform 80px height to align all card titles */
 .icon {
   display: grid;
-  width: 102px;
-  height: 102px;
+  width: 92px;
+  height: 92px;
   place-items: center;
   margin-bottom: 4px;
   border-radius: 12px;
@@ -66,21 +65,29 @@
 }
 
 .icon img {
-  width: 100%;
-  height: 100%;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
 }
 
-/* Wider box with equal 80px height to prevent title upward shift */
 .iconFirst {
-  width: 136px;
-  height: 102px;
+  width: 254px;
+  height: 94px;
 }
 
-/* Zooms past transparent canvas padding on reg-here.webp */
-.imageFirst {
-  transform: scale(1.35);
-  transform-origin: center center;
+.iconFirst img {
+  width: 234px;
+  height: 84px;
+}
+
+.iconComparison {
+  width: 96px;
+  height: 96px;
+}
+
+.iconComparison img {
+  width: 94px;
+  height: 94px;
 }
 
 .number {
@@ -95,8 +102,10 @@
 
 .cardTitle {
   display: block;
-  font-size: 22px;
-  line-height: 1.25;
+  font-size: 27px;
+  font-weight: 550;
+  letter-spacing: 0.03em;
+  line-height: 1.14;
   margin-top: 2px;
 }
 
@@ -118,6 +127,18 @@
   color: #15803d;
   font-size: 12.5px;
   font-weight: 750;
+}
+
+.front .action {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.front {
+  padding-bottom: 18px;
 }
 
 .action svg {
@@ -162,6 +183,8 @@
 
 .back .cardTitle {
   color: #fff;
+  font-size: 22px;
+  line-height: 1.15;
 }
 
 .back .cardDescription {
@@ -202,23 +225,6 @@
     min-height: 216px;
   }
 
-  /* Responsive matched height preserves title alignment on mobile */
-  .icon {
-    width: 92px;
-    height: 92px;
-    margin-bottom: 3px;
-  }
-  .iconFirst {
-    width: 122px;
-    height: 92px;
-  }
-  .imageFirst {
-    transform: scale(1.3);
-  }
-
-  .cardTitle {
-    font-size: 22px;
-  }
   .cardDescription {
     font-size: 13px;
     margin-top: 3px;
@@ -228,5 +234,99 @@
   }
   .backBody {
     margin: auto 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .cardTitle {
+    font-size: 22px;
+  }
+
+  .back .cardTitle {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 640px) {
+  .icon {
+    width: 102px;
+    height: 102px;
+  }
+
+  .icon img {
+    width: 98px;
+    height: 98px;
+  }
+
+  .iconFirst {
+    width: 274px;
+    height: 106px;
+  }
+
+  .iconFirst img {
+    width: 256px;
+    height: 92px;
+  }
+
+  .iconComparison {
+    width: 106px;
+    height: 106px;
+  }
+
+  .iconComparison img {
+    width: 102px;
+    height: 102px;
+  }
+
+  .back .cardTitle {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon {
+    width: 94px;
+    height: 94px;
+  }
+
+  .icon img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .iconFirst {
+    width: 246px;
+    height: 94px;
+  }
+
+  .iconFirst img {
+    width: 230px;
+    height: 86px;
+  }
+
+  .iconComparison {
+    width: 98px;
+    height: 98px;
+  }
+
+  .iconComparison img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .back .cardTitle {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardTitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cardTitle {
+    font-size: 27px;
   }
 }

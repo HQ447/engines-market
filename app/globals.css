@@ -145,6 +145,19 @@ a {
   text-transform: uppercase;
 }
 
+@media (max-width: 767px) {
+  .home-hero-background {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.97) 0%,
+        rgba(255, 255, 255, 0.93) 36%,
+        rgba(255, 255, 255, 0.84) 70%,
+        rgba(255, 255, 255, 0.72) 100%
+      ),
+      url("/images/home/home-hero-bg.jpg") !important;
+  }
+}
+
 .hero-ticker-track {
   display: flex;
   width: max-content;

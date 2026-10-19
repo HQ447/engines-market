@@ -33,14 +33,11 @@ export default function HomeHowItWorksSection({ steps }: Props) {
     <Section id="how-it-works" className="bg-white py-7 sm:py-8 lg:py-10">
       <Container className="max-w-[1400px]">
         <div className="mx-auto  text-center">
-          <div className="section-pill ">
+          <div className="section-pill border border-[rgba(94,209,255,0.68)] !bg-gradient-to-br from-[#042f5a] to-[#075b94] !text-[#e9f8ff] shadow-[inset_0_0_0_1px_rgba(113,212,255,0.12),0_7px_17px_rgba(3,54,96,0.17)]">
             <span>How It Works</span>
           </div>
 
-          <h2
-            className="mt-4 text-center text-[37px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
+          <h2 className="mt-4 text-center font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[30px] lg:text-[32px]">
             <span>How EnginesMarket Works - </span>
             <span className="text-[#15803d]">3 Steps</span>
             <span> to Your Replacement Engine Quote</span>

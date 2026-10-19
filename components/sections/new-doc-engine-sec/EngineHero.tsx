@@ -123,7 +123,6 @@ export default function EngineHero({ data, engineCode }: Props) {
           </div>
 
           <div className={styles.visual}>
-            <div className={styles.visualGlow} />
             <Image
               className={styles.engine}
               src={engineCutout}

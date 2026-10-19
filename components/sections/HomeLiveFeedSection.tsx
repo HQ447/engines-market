@@ -126,17 +126,14 @@ export default function HomeLiveFeedSection({ rows, initialTimestamp }: Props) {
 
       <Container className="max-w-[1510px]">
         <div className="mx-auto max-w-190 text-center">
-          <div className="section-pill mx-auto">
+          <div className="section-pill mx-auto border border-[rgba(94,209,255,0.68)] !bg-gradient-to-br from-[#042f5a] to-[#075b94] !text-[#e9f8ff] shadow-[inset_0_0_0_1px_rgba(113,212,255,0.12),0_7px_17px_rgba(3,54,96,0.17)]">
             <span className="h-2 w-2 rounded-full bg-[#22c55e]" />
             <span>Live Market Data</span>
           </div>
 
           {/* Flex column ensures the info text stays below the heading and pushes content down */}
           <div className="mt-4 flex flex-col items-center">
-            <h2
-              className="text-[37px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[38px] lg:text-[43px]"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
+            <h2 className="font-['Manrope'] text-[28px] font-bold leading-[1.12] text-[#0d1b2e] sm:text-[30px] lg:text-[32px]">
               What Are UK Drivers Paying for Engine Replacements?
               <button
                 type="button"
