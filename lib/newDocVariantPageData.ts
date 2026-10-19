@@ -1,5 +1,6 @@
 import type { NewDocVariantData } from "@/types/new-doc-variant";
 import type { VariantPageData } from "@/types/variant";
+import { getBrandEngineImage } from "@/lib/engineBrandImage";
 import { resolveModelImagePaths } from "@/lib/modelImageAssets";
 import { resolveVariantHeroImageOverride } from "@/lib/variantHeroImageOverrides";
 
@@ -203,6 +204,11 @@ export function mapVariantPageDataToNewDocData(
     engineCode,
     ...engineOptions.map((option) => `${option.label} ${option.image}`),
   ]);
+  const brandEngineImage = getBrandEngineImage(brand.slug) ?? variantEngineCutout;
+  const variantEngineImage =
+    brand.slug.trim().toLowerCase() === "audi"
+      ? "/images/engines/Audi/audi-a-range-engine-hero.webp"
+      : brandEngineImage;
 
   const priceText = firstHighlight?.price ?? "";
   const priceRange = priceText.match(/from\s+(.+)$/i)?.[1] ?? priceText;
@@ -245,11 +251,9 @@ export function mapVariantPageDataToNewDocData(
         "rebuiltEngine",
         variantEngineCutout,
       ),
-      heroEngine: getImage(
-        imageOverrides,
-        "heroEngine",
-        variantEngineCutout,
-      ),
+      // The Engine Codes section must always use the brand engine artwork.
+      // Do not allow legacy variant/model image overrides to supply a vehicle image here.
+      heroEngine: variantEngineImage,
     },
     hero: {
       eyebrow: sections.hero.tag,

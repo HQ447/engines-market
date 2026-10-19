@@ -36,7 +36,7 @@ function fuelTone(title: string) {
   )
     return {
       border: "border-[#b7a4ed]",
-      card: "bg-[##f6f3ff73]",
+      card: "bg-[#f6f3ff73]",
       badge: "border-[#a58be4] bg-[#eee8ff] text-[#6845ad]",
       icon: "text-[#6845ad]",
       iconBg: "bg-[#e8defd]",

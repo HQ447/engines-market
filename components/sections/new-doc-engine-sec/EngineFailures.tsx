@@ -20,11 +20,47 @@ type Props = {
   backgroundImage?: string;
 };
 
+const partsImagesPath = "/images/Parts%20Images";
+
+const failureImageRules = [
+  { pattern: /adblue|scr system|nox sensor/, image: "adblue-tank-assembly.webp" },
+  { pattern: /battery cooling/, image: "battery-cooling-pump.webp" },
+  { pattern: /battery|hybrid|starter generator|charging system|electric drive/, image: "12v-car-battery.webp" },
+  { pattern: /timing chain|balance shaft.*timing|timing sprocket/, image: "timing-chain-kit.webp" },
+  { pattern: /timing belt/, image: "timing-belt.webp" },
+  { pattern: /carbon|intake valve|intake manifold/, image: "intake-valve-inlet-manifold.webp" },
+  { pattern: /fuel pump|fuel delivery|fuel starvation|fuel injection|injector|common-rail/, image: "fuel-injection-pump.webp" },
+  { pattern: /water pump|coolant|cooling system|thermostat|expansion tank|radiator/, image: "water-pump.webp" },
+  { pattern: /head gasket|cylinder head/, image: "head-gasket.webp" },
+  { pattern: /turbo|wastegate|boost|intercooler|charge pipe/, image: "turbocharger.webp" },
+  { pattern: /camshaft|camshaft adjuster|cam phaser/, image: "camshaft.webp" },
+  { pattern: /coil pack|ignition|spark plug/, image: "ignition-coil.webp" },
+  { pattern: /egr/, image: "egr-valve.webp" },
+  { pattern: /dpf|particulate filter/, image: "diesel-particulate-filter.webp" },
+  { pattern: /oil|dipstick|pcv|breather|crankcase/, image: "engine-oil-dipstick.webp" },
+  { pattern: /bearing|connecting rod|crankshaft/, image: "connecting-rod-bearing.webp" },
+  { pattern: /catalytic converter/, image: "catalytic-converter.webp" },
+  { pattern: /gearbox|transmission|mechatronic/, image: "gearbox-mechatronic-unit.webp" },
+] as const;
+
 const fallbackImages = [
-  "/case-studies/assets/borescope-valves-pistons.png",
-  "/case-studies/assets/injector-carbon.png",
-  "/case-studies/assets/twin-turbo-debris.png",
+  `${partsImagesPath}/engine-mount.webp`,
+  `${partsImagesPath}/cylinder-head.webp`,
+  `${partsImagesPath}/oil-pump-assembly.webp`,
 ];
+
+function getFailureImage(item: FailureItem, index: number) {
+  if (item.image) return item.image;
+
+  const failureText = item.title.toLowerCase();
+  const matchedRule = failureImageRules.find(({ pattern }) =>
+    pattern.test(failureText),
+  );
+
+  return matchedRule
+    ? `${partsImagesPath}/${matchedRule.image}`
+    : fallbackImages[index % fallbackImages.length];
+}
 
 function ctaLabel(value: string) {
   return value
@@ -89,7 +125,7 @@ function FailureCardItem({
   item: FailureItem;
   index: number;
 }) {
-  const image = item.image ?? fallbackImages[index % fallbackImages.length];
+  const image = getFailureImage(item, index);
   const titleParts = item.title.split(" - ");
 
   // Independent state for "What happens"

@@ -366,10 +366,10 @@ export default function HomeFaqHubSection() {
     }
 
     return (
-        <Section className="bg-[#f8fafc] py-8 sm:py-10 lg:py-12">
-            <Container className="max-w-[1200px]">
+        <Section className="bg-[#f7f8fb] py-8 sm:py-10 lg:py-12">
+            <Container className="max-w-[1400px]">
                 <div className="mx-auto mb-6 max-w-[860px] text-center">
-                    <div className="section-pill mx-auto">
+                    <div className="section-pill mx-auto border border-[rgba(94,209,255,0.68)] !bg-gradient-to-br from-[#042f5a] to-[#075b94] !text-[#e9f8ff] shadow-[inset_0_0_0_1px_rgba(113,212,255,0.12),0_7px_17px_rgba(3,54,96,0.17)]">
                         <span>ENGINE REPLACEMENT FAQ HUB</span>
                     </div>
 

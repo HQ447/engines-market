@@ -9,6 +9,7 @@ import EngineFailures from "../sections/new-doc-engine-sec/EngineFailures";
 import EngineRelated from "../sections/new-doc-engine-sec/EngineRelated";
 import EngineTrustCta from "../sections/new-doc-engine-sec/EngineTrustCta";
 import EngineVariants from "../sections/new-doc-engine-sec/EngineVariants";
+import { getBrandEngineImage } from "@/lib/engineBrandImage";
 
 type Props = {
   data: EnginePageData;
@@ -67,9 +68,13 @@ function getHeroPrices(
 }
 
 export default function NewDocEnginePage({ data, trustBackgroundImage }: Props) {
-  const engineCutout = getEngineCutout(data.sections.hero);
+  const sharedEngineCutout = getEngineCutout(data.sections.hero);
   const heroPrices = getHeroPrices(data);
-  const engineVisual = engineCutout.src;
+  const engineVisual = getBrandEngineImage(data.brand.slug) ?? sharedEngineCutout.src;
+  const engineCutout = {
+    ...sharedEngineCutout,
+    src: engineVisual,
+  };
   const sectionBackground =
     trustBackgroundImage ?? data.sections.hero.backgroundImage?.src ?? engineVisual;
 

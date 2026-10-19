@@ -81,22 +81,6 @@
   place-items: end center;
   overflow: hidden;
   border-radius: 13px;
-  background: radial-gradient(
-    circle at 50% 70%,
-    rgba(53, 189, 255, 0.27),
-    transparent 63%
-  );
-}
-.engineVisual::after {
-  position: absolute;
-  right: 12%;
-  bottom: 12%;
-  left: 12%;
-  height: 17%;
-  border-radius: 50%;
-  background: rgba(31, 145, 216, 0.18);
-  filter: blur(20px);
-  content: "";
 }
 .engineVisual img {
   position: relative;
@@ -104,8 +88,7 @@
   width: min(108%, 440px);
   height: 178px;
   object-fit: contain;
-  filter: contrast(1.08) brightness(1.08)
-    drop-shadow(0 17px 15px rgba(14, 56, 84, 0.28));
+  filter: contrast(1.08) brightness(1.08);
 }
 .costCard {
   align-self: stretch;

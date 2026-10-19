@@ -262,20 +262,9 @@
   min-height: 405px;
   margin-left: -30px;
 }
-.visualGlow {
-  position: absolute;
-  right: 4%;
-  bottom: 34px;
-  width: 77%;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(27, 59, 91, 0.28);
-  filter: blur(15px);
-}
 .engine {
   object-fit: contain;
   object-position: center 57%;
-  filter: drop-shadow(0 30px 20px rgba(13, 38, 62, 0.27));
   transform: scale(1.07);
 }
 .mgMark {
@@ -3815,6 +3804,19 @@
 
 .relatedTitleExpandable {
   cursor: pointer;
+}
+
+.relatedTitleToggle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  vertical-align: -2px;
+  transition: transform 0.2s ease;
+}
+
+.relatedTitleToggleOpen {
+  transform: rotate(180deg);
 }
 
 .goodToKnowCopy,

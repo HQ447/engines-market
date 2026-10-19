@@ -14,6 +14,15 @@ const icons = [
   "/icons/engine-market/how-choose-deal.png",
 ];
 
+function stripStepIconLabel(text: string) {
+  return text
+    .replace(
+      /^\s*(?:🖼️\s*)?(?:\[(?:registration|compare|booking)\s+icon\]|(?:registration|compare|booking)\s+icon)\.?\s*/i,
+      "",
+    )
+    .trim();
+}
+
 export default function NewDocVariantHowItWorks({ steps }: Props) {
   const [flipped, setFlipped] = useState<string | null>(null);
 
@@ -37,6 +46,7 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
             const icon = icons[index] ?? "/icons/how-choose-deal.png";
             const isFlipped = flipped === step.number;
             const isFirst = index === 0;
+            const isComparison = index === 1;
 
             return (
               <button
@@ -51,7 +61,7 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                   <span className={`${styles.face} ${styles.front}`}>
                     <span className={styles.number}>{step.number}</span>
                     <span
-                      className={`${styles.icon} ${isFirst ? styles.iconFirst : ""}`}
+                      className={`${styles.icon} ${isFirst ? styles.iconFirst : isComparison ? styles.iconComparison : ""}`}
                       aria-hidden="true"
                     >
                       <Image
@@ -59,16 +69,23 @@ export default function NewDocVariantHowItWorks({ steps }: Props) {
                         alt=""
                         width={isFirst ? 120 : 92}
                         height={isFirst ? 120 : 92}
-                        className={isFirst ? styles.imageFirst : undefined}
                       />
                     </span>
-                    <span className={`${shared.cardTitle} ${styles.cardTitle}`}>
+                    <span
+                      className={`${shared.cardTitle} ${styles.cardTitle}`}
+                      style={{
+                        fontFamily:
+                          '"Bebas Neue", "Urbanist", ui-sans-serif, system-ui, sans-serif',
+                        fontWeight: 550,
+                        letterSpacing: "0.03em",
+                      }}
+                    >
                       {step.title}
                     </span>
                     <span
                       className={`${shared.cardDescription} ${styles.cardDescription}`}
                     >
-                      {step.description}
+                      {stripStepIconLabel(step.description)}
                     </span>
                     <span className={styles.action}>
                       Learn more <FiArrowRight />
