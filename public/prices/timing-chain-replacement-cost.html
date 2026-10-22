@@ -69,9 +69,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    
-    <link rel="stylesheet" href="/static-nav.css?v=2" data-em-static-nav>
 <style>
 /* ─── RESET & DESIGN TOKENS ─── */
         *, *::before, *::after {
@@ -1033,6 +1030,8 @@ a[class*="btn"] svg,
 .svg-icon-xl { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
 
 </style>
+
+    <link rel="stylesheet" href="/static-nav.css?v=3" data-em-static-nav>
 </head>
 <body>
 <style>
@@ -1063,22 +1062,13 @@ a[class*="btn"] svg,
 </style>
 
     <!-- ═══ NAV ═══ -->
-    <header class="site-nav" role="banner">
-        <div class="section-inner nav-wrap">
-            <a href="/" class="brand-logo" aria-label="Engines Market home">
-                <div class="logo-symbol">
-                    <svg viewBox="0 0 18 18"><path d="M9 2L16 14H2L9 2Z"/></svg>
-                </div>
-                <span class="logo-name">Engines Market</span>
-            </a>
-            <nav class="nav-breadcrumbs" aria-label="Breadcrumb">
+    
+<nav class="nav-breadcrumbs" aria-label="Breadcrumb">
                 <a href="/">Home</a><span>›</span>
                 <a href="/prices">Price guides</a><span>›</span>
                 <span>Timing chain replacement cost</span>
             </nav>
-            <a href="/get-a-quote" class="nav-cta-btn">Get free quotes<svg class="em-arrow em-arrow-right" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-        </div>
-    </header>
+
 
     <!-- ═══ HERO ═══ -->
     <section class="hero" aria-labelledby="hero-heading">
@@ -3116,18 +3106,7 @@ a[class*="btn"] svg,
     </main>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="site-footer">
-        <div class="section-inner footer-content">
-            <p>Engines Market is a price comparison platform. We do not supply or fit timing chains. All costs are [EM-VERIFIED], [EM-QUOTE] or [THIRD-PARTY] based on UK independent specialist data and industry research. Labour costs vary by region. Always verify quotes with your chosen supplier. Engines Market is a trading name of Engine Finders UK Ltd (Company No. 13157944).</p>
-            <nav class="footer-nav-links" aria-label="Footer">
-                <a href="/legal/terms-and-conditions">Terms &amp; Conditions</a>
-                <a href="/about/supplier-standards">Supplier standards</a>
-                <a href="/legal/privacy-policy">Privacy policy</a>
-                <a href="/legal/cookie-policy">Cookie policy</a>
-                <a href="/legal/complaints-procedure">Complaints procedure</a>
-            </nav>
-        </div>
-    </footer>
+    
 
     <script>
         /* ─── BAR ANIMATIONS ─── */
@@ -3177,7 +3156,6 @@ a[class*="btn"] svg,
             }
         });
     </script>
-    <script src="/static-nav.js?v=2" defer data-em-static-nav></script>
 <script>
 (function () {
   // ---- Embedded vehicle data (from data/brands_Models) ----
@@ -3855,5 +3833,7 @@ a[class*="btn"] svg,
   resetYearToDisabledResponsive();
 })();
 </script>
+
+    <script src="/static-nav.js?v=3" defer data-em-static-nav></script>
 </body>
 </html>

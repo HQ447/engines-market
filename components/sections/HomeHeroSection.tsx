@@ -1792,8 +1792,7 @@ function CTAPanel({
           style={
             searchMode === "registration"
               ? {
-                  background:
-                    "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                 background: "linear-gradient(180deg, #0e2a4f 0%, #061a33 60%, #030d1a 100%)",
                   boxShadow:
                     "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
                 }
@@ -1819,7 +1818,7 @@ function CTAPanel({
             searchMode === "manual"
               ? {
                   background:
-                    "linear-gradient(180deg, #2a50ab 0%, #1E3A8A 55%, #162e6f 100%)",
+                    "linear-gradient(180deg, #0e2a4f 0%, #061a33 60%, #030d1a 100%)",
                   boxShadow:
                     "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,30,90,0.35)",
                 }
@@ -2131,7 +2130,7 @@ function CTAPanel({
               className={`w-full rounded-[8px] bg-[#15803d] px-6 py-[13px] text-[15px] font-bold text-white transition hover:bg-[#166534] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none ${searchMode === "manual" ? "mt-2" : "mt-3"}`}
               style={{
                 background:
-                  "linear-gradient(180deg, #22a447 0%, #15803d 55%, #0f5f2d 100%)",
+                  "linear-gradient(180deg, #15803d 0%, #15803d 70%, #14532d 100%)",
                 boxShadow:
                   "inset 0 2px 0 rgba(255,255,255,0.30), inset 0 -3px 6px rgba(0,0,20,0.30), 0 4px 10px rgba(10,90,35,0.35)",
               }}
@@ -2367,7 +2366,15 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
           100% { transform: translateX(-50%); }
         }
         .mobile-carousel-track {
-          animation: slideLeftMobile 30s linear infinite;
+          display: flex;
+          flex-wrap: nowrap;
+          width: max-content;
+          min-width: 200%;
+          will-change: transform;
+          animation: slideLeftMobile 40s linear infinite;
+        }
+        .mobile-carousel-track:hover {
+          animation-play-state: paused;
         }
         .desktop-carousel-track {
           animation: slideLeftDesktop 40s linear infinite;
@@ -2520,38 +2527,37 @@ export default function HomeHeroSection({ data, engineLinks }: Props) {
       {/* ─── ENGINE CAROUSEL ─── */}
       {/* ─── ENGINE CAROUSEL ─── */}
       <section className="border-t border-[rgba(13,27,46,0.08)] bg-gray-50 py-5">
-        {/* MOBILE SLIDER - Placed OUTSIDE Container to guarantee 0 left/right padding */}
-        <div className="flex items-center gap-3 lg:hidden">
-          <div className="overflow-hidden flex-1">
-            <div className="mobile-carousel-track flex">
-              {[...engineCarouselItems, ...engineCarouselItems].map(
-                (item, index) => (
-                  <div
-                    key={`mobile-carousel-${item.code}-${index}`}
-                    className="flex items-center gap-2 p-0 min-w-[33.333%] flex-shrink-0"
-                  >
-                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px]">
-                      <img
-                        src={getEngineImagePath(item.code)}
-                        alt={`${item.brand} ${item.code} engine`}
-                        className="h-full w-full object-cover"
-                      />
+        {/* MOBILE SLIDER - full-width overflow-hidden so the max-content track scrolls correctly */}
+        <div className="w-full overflow-hidden lg:hidden">
+          <div className="mobile-carousel-track">
+            {[...engineCarouselItems, ...engineCarouselItems].map(
+              (item, index) => (
+                <div
+                  key={`mobile-carousel-${item.code}-${index}`}
+                  className="flex flex-shrink-0 items-center gap-2 px-3 py-1"
+                  style={{ flex: "0 0 150px", width: "150px" }}
+                >
+                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px]">
+                    <img
+                      src={getEngineImagePath(item.code)}
+                      alt={`${item.brand} ${item.code} engine`}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1 text-left">
+                    <div className="whitespace-nowrap text-[10px] font-bold leading-tight text-[#0d1b2e]">
+                      {item.brand}
                     </div>
-                    <div className="min-w-0 flex-1 text-left">
-                      <div className="text-[10px] font-bold leading-tight text-[#0d1b2e]">
-                        {item.brand}
-                      </div>
-                      <div className="text-[9px] text-[#6b7280]">
-                        {renderLinkedEngineCodes(item.code, engineLinks)}
-                      </div>
-                      <div className="text-[10px] font-bold text-[#15803d]">
-                        {item.price}
-                      </div>
+                    <div className="whitespace-nowrap text-[9px] text-[#6b7280]">
+                      {renderLinkedEngineCodes(item.code, engineLinks)}
+                    </div>
+                    <div className="whitespace-nowrap text-[10px] font-bold text-[#15803d]">
+                      {item.price}
                     </div>
                   </div>
-                ),
-              )}
-            </div>
+                </div>
+              ),
+            )}
           </div>
         </div>
 

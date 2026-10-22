@@ -1422,6 +1422,8 @@ a[class*="btn"] svg,
 .svg-icon-xl { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
 
 </style>
+
+    <link rel="stylesheet" href="/static-nav.css?v=3" data-em-static-nav>
 </head>
 <body>
 <style>
@@ -1452,16 +1454,8 @@ a[class*="btn"] svg,
 </style>
 
     <!-- ═══ HEADER / NAVIGATION ═══ -->
-    <header class="nav-bar">
-        <div class="section-inner nav-inner">
-            <a href="/" class="nav-brand" aria-label="Engines Market Homepage">
-                <div class="nav-brand-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 4l6.5 11h-13L12 6z"/></svg>
-                </div>
-                <span>Engines Market</span>
-            </a>
-
-            <nav class="nav-breadcrumb" aria-label="Breadcrumb Navigation">
+    
+<nav class="nav-breadcrumb" aria-label="Breadcrumb Navigation">
                 <a href="/">Home</a>
                 <span class="sep">›</span>
                 <a href="/services">Services</a>
@@ -1469,9 +1463,6 @@ a[class*="btn"] svg,
                 <span class="current">Used Engines</span>
             </nav>
 
-            <a href="/get-a-quote" class="nav-cta-btn">Get Free Quotes<svg class="em-arrow em-arrow-right" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-        </div>
-    </header>
 
     <!-- ═══ HERO SECTION ═══ -->
     <section class="hero" aria-labelledby="hero-heading">
@@ -3837,21 +3828,7 @@ a[class*="btn"] svg,
     </main>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="site-footer">
-        <div class="section-inner footer-content-wrap">
-            <p class="footer-legal-text">
-                This guide is based on Engines Market internal quote data [EM-VERIFIED], supplier quotes [EM-QUOTE], and third-party sources [THIRD-PARTY]. Prices are indicative - always get real quotes before making a decision. Engines Market is a trading name of Engine Finders UK Ltd (Company No. 13157944).
-            </p>
-            <nav class="footer-nav-row" aria-label="Footer Legal Links">
-                <a href="/legal/terms-and-conditions">Terms &amp; Conditions</a>
-                <a href="/legal/privacy-policy">Privacy Policy</a>
-                <a href="/methodology">Our Methodology</a>
-                <a href="/legal/cookie-policy">Cookie Policy</a>
-                <a href="/legal/complaints-procedure">Complaints Procedure</a>
-            </nav>
-            <p style="font-size:0.7rem; color:var(--slate-500);">Last updated: June 2026 · Next review: January 2027</p>
-        </div>
-    </footer>
+    
 
     <!-- ═══ JAVASCRIPT LOGIC ═══ -->
     <script>
@@ -4571,5 +4548,7 @@ a[class*="btn"] svg,
   resetYearToDisabledResponsive();
 })();
 </script>
+
+    <script src="/static-nav.js?v=3" defer data-em-static-nav></script>
 </body>
 </html>

@@ -1380,13 +1380,14 @@
 }
 .failureImage {
   position: relative;
-  height: 136px;
+  height: 145px;
   overflow: hidden;
   background: #071a2d;
 }
 .failureImage img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  padding: 4px;
   opacity: 0.8;
 }
 .failureImage::after {
