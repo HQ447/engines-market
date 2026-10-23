@@ -141,9 +141,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    
-    <link rel="stylesheet" href="/static-nav.css-v=2" data-em-static-nav>
 <style>
 /* ─── TOKENS & RESET ─── */
         :root {
@@ -1003,6 +1000,8 @@ a[class*="btn"] svg,
 .svg-icon-xl { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
 
 </style>
+
+    <link rel="stylesheet" href="/static-nav.css?v=3" data-em-static-nav>
 </head>
 <body>
 <style>
@@ -1033,24 +1032,15 @@ a[class*="btn"] svg,
 </style>
 
     <!-- Sticky Navigation Bar -->
-    <nav class="site-nav" aria-label="Main Navigation">
-        <div class="section-inner nav-content">
-            <a href="/" class="brand-logo">
-                <div class="brand-mark">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                </div>
-                <span>EnginesMarket</span>
-            </a>
-            <div class="nav-breadcrumbs" aria-label="Breadcrumb">
+    
+<div class="nav-breadcrumbs" aria-label="Breadcrumb">
                 <a href="/">Home</a>
                 <span class="sep">/</span>
                 <a href="/symptoms/">Symptoms</a>
                 <span class="sep">/</span>
                 <span class="current">Coolant Warning Light</span>
             </div>
-            <a href="/get-a-quote" class="nav-action-btn">Get Diagnostic Quote<svg class="em-arrow em-arrow-right" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-        </div>
-    </nav>
+
 
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-heading">
@@ -2929,10 +2919,6 @@ a[class*="btn"] svg,
 
         </div>
     </main>
-
-    <script src="/static-nav.js-v=2" defer data-em-static-nav></script>
-
-
 <script>
 (function () {
   // ---- Embedded vehicle data (from data/brands_Models) ----
@@ -3610,5 +3596,7 @@ a[class*="btn"] svg,
   resetYearToDisabledResponsive();
 })();
 </script>
+
+    <script src="/static-nav.js?v=3" defer data-em-static-nav></script>
 </body>
 </html>

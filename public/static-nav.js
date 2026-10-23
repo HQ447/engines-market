@@ -26,6 +26,7 @@
     desktopNav: null,
     desktopPanel: null,
     mobilePanel: null,
+    menuButton: null,
     footer: null,
   };
 
@@ -42,6 +43,28 @@
     anchor.textContent = label;
     if (className) anchor.className = className;
     return anchor;
+  }
+
+  function createPhoneIcon() {
+    const icon = createElement("span", "em-static-icon", "");
+    icon.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.79.63 2.64a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.44-1.29a2 2 0 0 1 2.11-.45c.85.3 1.74.51 2.64.63A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    return icon;
+  }
+
+  function createWhatsappIcon() {
+    const icon = createElement("span", "em-static-icon", "");
+    icon.innerHTML =
+      '<svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>';
+    return icon;
+  }
+
+  function createChevron(className, direction) {
+    const icon = createElement("span", className, "");
+    const path = direction === "right" ? "M7 5l5 5-5 5" : "M5 7l5 5 5-5";
+    icon.innerHTML =
+      '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="' + path + '"/></svg>';
+    return icon;
   }
 
   function createLogo() {
@@ -76,6 +99,8 @@
 
   function closeDesktopMenu() {
     state.openMenuId = null;
+    state.activeBrandHref = "";
+    state.brandsExpanded = false;
     renderDesktopPanel();
   }
 
@@ -83,7 +108,6 @@
     state.mobileOpen = false;
     state.mobileStack = [{ type: "root" }];
     renderMobilePanel();
-    if (refs.header) refs.header.removeAttribute("data-mobile-open");
   }
 
   function getMenu(menuId) {
@@ -112,7 +136,10 @@
 
   function buildBrandsPanel(menu) {
     const panel = createElement("div", "em-static-panel em-static-panel--brands");
-    const visibleBrands = menu.brands;
+    const visibleBrands =
+      state.brandsExpanded || menu.brands.length <= DESKTOP_PREVIEW_COUNT
+        ? menu.brands
+        : menu.brands.slice(0, DESKTOP_PREVIEW_COUNT);
 
     if (!state.activeBrandHref || !menu.brands.some((brand) => brand.href === state.activeBrandHref)) {
       state.activeBrandHref = visibleBrands[0] ? visibleBrands[0].href : "";
@@ -121,76 +148,89 @@
     const activeBrand = menu.brands.find((brand) => brand.href === state.activeBrandHref) || visibleBrands[0];
     const grid = createElement("div", "em-static-brand-grid");
 
-    visibleBrands.forEach((brand) => {
+    visibleBrands.forEach((brand, index) => {
       const item = createElement("div", "em-static-brand-item");
       if (activeBrand && activeBrand.href === brand.href) item.setAttribute("data-active", "true");
 
+      const row = createElement("div", "em-static-brand-row");
       item.addEventListener("mouseenter", () => {
+        if (state.activeBrandHref === brand.href) return;
+        state.activeBrandHref = brand.href;
+        renderDesktopPanel();
+      });
+      item.addEventListener("focusin", () => {
+        if (state.activeBrandHref === brand.href) return;
         state.activeBrandHref = brand.href;
         renderDesktopPanel();
       });
 
       const label = createLink(brand.label, brand.href, "em-static-brand-link");
-      label.addEventListener("focus", () => {
-        state.activeBrandHref = brand.href;
-        renderDesktopPanel();
-      });
       label.addEventListener("click", closeDesktopMenu);
 
-      const arrow = createElement("span", "em-static-brand-caret", ">");
+      const arrow = createChevron("em-static-brand-caret", "right");
       arrow.setAttribute("aria-hidden", "true");
 
-      item.appendChild(label);
-      item.appendChild(arrow);
+      row.appendChild(label);
+      row.appendChild(arrow);
+      item.appendChild(row);
+
+      if (activeBrand && activeBrand.href === brand.href) {
+        item.appendChild(buildBrandFlyout(activeBrand, index % 4 >= 2));
+      }
       grid.appendChild(item);
     });
 
-    const detail = createElement("div", "em-static-brand-detail");
-    if (activeBrand) {
-      const overview = createLink(activeBrand.label + " Overview", activeBrand.href, "em-static-panel-muted-link");
-      overview.addEventListener("click", closeDesktopMenu);
-      detail.appendChild(overview);
-
-      const columns = createElement(
-        "div",
-        activeBrand.models && activeBrand.models.length && activeBrand.variants && activeBrand.variants.length
-          ? "em-static-brand-columns em-static-brand-columns--two"
-          : "em-static-brand-columns",
-      );
-
-      if (activeBrand.models && activeBrand.models.length) {
-        columns.appendChild(
-          buildLinkListBlock("Models (" + activeBrand.models.length + ")", activeBrand.models, "desktop"),
-        );
-      }
-
-      if (activeBrand.variants && activeBrand.variants.length) {
-        columns.appendChild(
-          buildLinkListBlock("Variants (" + activeBrand.variants.length + ")", activeBrand.variants, "desktop"),
-        );
-      }
-
-      if ((!activeBrand.models || !activeBrand.models.length) && (!activeBrand.variants || !activeBrand.variants.length)) {
-        detail.appendChild(createElement("p", "em-static-panel-empty", "No model or variant pages listed yet."));
-      } else {
-        detail.appendChild(columns);
-      }
-    }
-
     panel.appendChild(grid);
-    panel.appendChild(detail);
+
+    if (menu.brands.length > DESKTOP_PREVIEW_COUNT) {
+      const viewAll = createElement(
+        "button",
+        "em-static-panel-muted-link em-static-panel-button em-static-brands-view-all",
+        state.brandsExpanded ? "Show less" : "View all (" + menu.brands.length + ")",
+      );
+      viewAll.type = "button";
+      viewAll.addEventListener("click", () => {
+        state.brandsExpanded = !state.brandsExpanded;
+        renderDesktopPanel();
+      });
+      panel.appendChild(viewAll);
+    }
 
     if (menu.footerLink) {
       const footer = createElement("div", "em-static-panel-footer");
-      if (menu.footerLink) {
-        const link = createLink(menu.footerLink.label, menu.footerLink.href, "em-static-panel-muted-link");
-        link.addEventListener("click", closeDesktopMenu);
-        footer.appendChild(link);
-      }
+      const link = createLink(menu.footerLink.label, menu.footerLink.href, "em-static-panel-muted-link");
+      link.addEventListener("click", closeDesktopMenu);
+      footer.appendChild(link);
       panel.appendChild(footer);
     }
 
     return panel;
+  }
+
+  function buildBrandFlyout(brand, openLeft) {
+    const flyout = createElement(
+      "div",
+      "em-static-brand-flyout" + (openLeft ? " em-static-brand-flyout--left" : ""),
+    );
+    const models = brand.models || [];
+    const variants = brand.variants || [];
+    const overview = createLink(brand.label + " Overview", brand.href, "em-static-panel-muted-link");
+    overview.addEventListener("click", closeDesktopMenu);
+    flyout.appendChild(overview);
+
+    if (!models.length && !variants.length) {
+      flyout.appendChild(createElement("p", "em-static-panel-empty", "No model or variant pages listed yet."));
+      return flyout;
+    }
+
+    const columns = createElement(
+      "div",
+      models.length && variants.length ? "em-static-brand-columns em-static-brand-columns--two" : "em-static-brand-columns",
+    );
+    if (models.length) columns.appendChild(buildLinkListBlock("Models (" + models.length + ")", models, "desktop"));
+    if (variants.length) columns.appendChild(buildLinkListBlock("Variants (" + variants.length + ")", variants, "desktop"));
+    flyout.appendChild(columns);
+    return flyout;
   }
 
   function buildLinkListBlock(title, links, scope, menuId) {
@@ -276,11 +316,20 @@
     const field = createElement("label", "em-static-panel-search");
     const input = createElement("input", "em-static-panel-search-input");
     input.type = "search";
-    input.placeholder = "Search engines...";
+    input.placeholder = "Search engines…";
     input.value = getQuery(scope, menu.id);
     input.addEventListener("input", (event) => {
-      setQuery(scope, menu.id, event.target.value);
+      const value = event.target.value;
+      const cursorPosition = event.target.selectionStart ?? value.length;
+      setQuery(scope, menu.id, value);
       scope === "desktop" ? renderDesktopPanel() : renderMobilePanel();
+
+      const panelRoot = scope === "desktop" ? refs.desktopPanel : refs.mobilePanel;
+      const nextInput = panelRoot && panelRoot.querySelector(".em-static-panel-search-input");
+      if (nextInput) {
+        nextInput.focus();
+        nextInput.setSelectionRange(cursorPosition, cursorPosition);
+      }
     });
     field.appendChild(input);
     panel.appendChild(field);
@@ -297,7 +346,9 @@
       : menu.groups;
 
     if (!filteredGroups.length) {
-      panel.appendChild(createElement("p", "em-static-panel-empty", "No engines match."));
+      const emptyText =
+        scope === "desktop" ? "No engines match “" + getQuery(scope, menu.id).trim() + "”." : "No engines match.";
+      panel.appendChild(createElement("p", "em-static-panel-empty", emptyText));
       return panel;
     }
 
@@ -353,7 +404,9 @@
       const button = createElement("button", "em-static-nav__trigger");
       button.type = "button";
       button.setAttribute("aria-expanded", state.openMenuId === menu.id ? "true" : "false");
-      button.innerHTML = '<span>' + menu.label + '</span><span class="em-static-nav__chevron" aria-hidden="true">v</span>';
+      button.setAttribute("aria-controls", "em-static-desktop-panel");
+      button.appendChild(createElement("span", "", menu.label));
+      button.appendChild(createChevron("em-static-nav__chevron", "down"));
       button.addEventListener("click", () => {
         state.openMenuId = state.openMenuId === menu.id ? null : menu.id;
         if (menu.id === "brands" && !state.activeBrandHref && menu.brands && menu.brands[0]) {
@@ -374,10 +427,12 @@
     const openMenu = state.navMenus.find((menu) => menu.id === state.openMenuId);
     if (!openMenu) {
       refs.desktopPanel.removeAttribute("data-open");
+      refs.desktopPanel.removeAttribute("data-menu-kind");
       return;
     }
 
     refs.desktopPanel.setAttribute("data-open", "true");
+    refs.desktopPanel.setAttribute("data-menu-kind", openMenu.kind);
 
     if (openMenu.kind === "brands") {
       refs.desktopPanel.appendChild(buildBrandsPanel(openMenu));
@@ -399,7 +454,8 @@
       const row = createElement("li", "em-static-mobile-card");
       const button = createElement("button", "em-static-mobile-nav-button");
       button.type = "button";
-      button.innerHTML = '<span>' + menu.label + '</span><span class="em-static-mobile-chevron" aria-hidden="true">></span>';
+      button.appendChild(createElement("span", "", menu.label));
+      button.appendChild(createChevron("em-static-mobile-chevron", "right"));
       button.addEventListener("click", () => {
         state.mobileStack.push({ type: "menu", menuId: menu.id });
         renderMobilePanel();
@@ -413,7 +469,7 @@
 
   function renderMobileBrands(container, menu) {
     const box = createElement("div", "em-static-mobile-box");
-    const back = createElement("button", "em-static-mobile-back", "< " + menu.label);
+    const back = createElement("button", "em-static-mobile-back", "← " + menu.label);
     back.type = "button";
     back.addEventListener("click", () => {
       state.mobileStack.pop();
@@ -427,9 +483,10 @@
       link.addEventListener("click", closeMobileMenu);
       row.appendChild(link);
 
-      const button = createElement("button", "em-static-mobile-brand-button", ">");
+      const button = createElement("button", "em-static-mobile-brand-button");
       button.type = "button";
       button.setAttribute("aria-label", "Open " + brand.label + " models and variants");
+      button.appendChild(createChevron("em-static-mobile-chevron", "right"));
       button.addEventListener("click", () => {
         state.mobileStack.push({ type: "brand", menuId: menu.id, brandHref: brand.href });
         renderMobilePanel();
@@ -452,7 +509,7 @@
     if (!brand) return;
 
     const box = createElement("div", "em-static-mobile-box");
-    const back = createElement("button", "em-static-mobile-back", "< " + brand.label);
+    const back = createElement("button", "em-static-mobile-back", "← " + brand.label);
     back.type = "button";
     back.addEventListener("click", () => {
       state.mobileStack.pop();
@@ -483,6 +540,16 @@
     if (!refs.mobilePanel || !refs.header) return;
     refs.mobilePanel.textContent = "";
     refs.header.setAttribute("data-mobile-open", state.mobileOpen ? "true" : "false");
+    if (refs.menuButton) {
+      refs.menuButton.setAttribute("aria-expanded", state.mobileOpen ? "true" : "false");
+      refs.menuButton.setAttribute(
+        "aria-label",
+        state.mobileOpen ? "Close navigation menu" : "Open navigation menu",
+      );
+      refs.menuButton.innerHTML = state.mobileOpen
+        ? '<span class="em-static-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>'
+        : '<span class="em-static-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>';
+    }
 
     if (!state.mobileOpen) return;
 
@@ -511,7 +578,7 @@
     }
 
     const box = createElement("div", "em-static-mobile-box");
-    const back = createElement("button", "em-static-mobile-back", "< " + menu.label);
+    const back = createElement("button", "em-static-mobile-back", "← " + menu.label);
     back.type = "button";
     back.addEventListener("click", () => {
       state.mobileStack.pop();
@@ -574,7 +641,7 @@
       const details = createElement("details", "em-static-footer__mobile-group");
       const summary = createElement("summary", "em-static-footer__mobile-summary");
       summary.appendChild(createElement("span", "", column.label || column.title));
-      summary.appendChild(createElement("span", "em-static-footer__mobile-chevron", "v"));
+      summary.appendChild(createChevron("em-static-footer__mobile-chevron", "down"));
       details.appendChild(summary);
 
       const mobilePanel = createElement("div", "em-static-footer__mobile-panel");
@@ -607,35 +674,58 @@
 
     inner.appendChild(createLogo());
 
+    const desktopNavWrap = createElement("div", "em-static-nav-wrap");
     refs.desktopNav = createElement("nav", "em-static-nav");
     refs.desktopNav.setAttribute("aria-label", "Primary navigation");
-    inner.appendChild(refs.desktopNav);
+    desktopNavWrap.appendChild(refs.desktopNav);
+    inner.appendChild(desktopNavWrap);
 
     const actions = createElement("div", "em-static-actions");
     actions.appendChild(createLink(CALL_NUMBER_DISPLAY, CALL_NUMBER_TEL));
-    const whatsapp = createLink("WhatsApp", WHATSAPP_URL, "em-static-whatsapp");
+    const whatsapp = createLink("", WHATSAPP_URL, "em-static-whatsapp");
     whatsapp.target = "_blank";
     whatsapp.rel = "noreferrer";
+    whatsapp.setAttribute("aria-label", "Chat on WhatsApp");
+    whatsapp.appendChild(createWhatsappIcon());
+    whatsapp.appendChild(createElement("span", "", "WhatsApp"));
     actions.appendChild(whatsapp);
-    actions.appendChild(createLink("Get Quote", "/get-a-quote", "em-static-quote"));
     inner.appendChild(actions);
+
+    const mobileActions = createElement("div", "em-static-mobile-actions");
+    const mobileCall = createLink("", CALL_NUMBER_TEL, "em-static-mobile-icon-button");
+    mobileCall.setAttribute("aria-label", "Call Engines Market");
+    mobileCall.appendChild(createPhoneIcon());
+    mobileActions.appendChild(mobileCall);
+
+    const mobileWhatsapp = createLink("", WHATSAPP_URL, "em-static-mobile-icon-button em-static-mobile-whatsapp");
+    mobileWhatsapp.setAttribute("aria-label", "Chat on WhatsApp");
+    mobileWhatsapp.target = "_blank";
+    mobileWhatsapp.rel = "noreferrer";
+    mobileWhatsapp.appendChild(createWhatsappIcon());
+    mobileActions.appendChild(mobileWhatsapp);
 
     const menuButton = createElement("button", "em-static-menu");
     menuButton.type = "button";
     menuButton.setAttribute("aria-label", "Open navigation menu");
-    menuButton.innerHTML = '<span class="em-static-menu__icon" aria-hidden="true">|||</span>';
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-controls", "em-static-mobile-nav");
+    menuButton.innerHTML = '<span class="em-static-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>';
     menuButton.addEventListener("click", () => {
       state.mobileOpen = !state.mobileOpen;
       if (!state.mobileOpen) state.mobileStack = [{ type: "root" }];
       renderMobilePanel();
     });
-    inner.appendChild(menuButton);
+    mobileActions.appendChild(menuButton);
+    inner.appendChild(mobileActions);
+    refs.menuButton = menuButton;
 
     refs.desktopPanel = createElement("div", "em-static-desktop-panel");
+    refs.desktopPanel.id = "em-static-desktop-panel";
     refs.mobilePanel = createElement("div", "em-static-mobile-panel");
+    refs.mobilePanel.id = "em-static-mobile-nav";
+    desktopNavWrap.appendChild(refs.desktopPanel);
 
     header.appendChild(inner);
-    header.appendChild(refs.desktopPanel);
     header.appendChild(refs.mobilePanel);
     refs.header = header;
     return header;

@@ -949,6 +949,8 @@ a[class*="btn"] svg,
 .svg-icon-xl { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
 
 </style>
+
+    <link rel="stylesheet" href="/static-nav.css?v=3" data-em-static-nav>
 </head>
 <body>
 <style>
@@ -979,16 +981,8 @@ a[class*="btn"] svg,
 </style>
 
   <!-- Sticky Header -->
-  <header class="site-header">
-    <div class="section-inner header-content">
-      <a href="/" class="logo">
-        <div class="logo-icon">
-          <i data-lucide="gauge"></i>
-        </div>
-        <span>Engines<span style="color: var(--accent);">Market</span></span>
-      </a>
-
-      <nav class="nav-breadcrumbs" aria-label="Breadcrumbs">
+  
+<nav class="nav-breadcrumbs" aria-label="Breadcrumbs">
         <a href="/">Home</a>
         <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
         <a href="/services">Services</a>
@@ -996,12 +990,6 @@ a[class*="btn"] svg,
         <span style="color: #fff;">Remanufactured Engines</span>
       </nav>
 
-      <a href="#vrm-quote" class="nav-cta-btn">
-        <span>Get Free Quotes</span>
-        <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-      </a>
-    </div>
-  </header>
 
   <!-- Hero Section -->
   <section class="hero" aria-labelledby="hero-heading">
@@ -3076,22 +3064,7 @@ a[class*="btn"] svg,
   </main>
 
   <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="section-inner footer-content">
-      <div>
-        <p>© 2026 Engines Market. All rights reserved.</p>
-        <p style="font-size: 0.775rem; color: var(--slate-500); margin-top: 4px;">
-          Engines Market is a price comparison platform. We do not supply or fit engines. All costs are [EM-QUOTE], [EM-INTERVIEW] or [THIRD-PARTY] based on UK independent specialist data and industry research. Labour costs vary by region. Always verify quotes with your chosen supplier. Engines Market is a trading name of Engine Finders UK Ltd (Company No. 13157944). Last updated: June 2026 · Next review: January 2027.
-        </p>
-      </div>
-      <div class="footer-links">
-        <a href="/terms">Terms &amp; Conditions</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/cookies">Cookie Policy</a>
-        <a href="/methodology">Our Methodology</a>
-      </div>
-    </div>
-  </footer>
+  
 
   <!-- Accordion Script & Lucide Init -->
   <script>
@@ -3782,5 +3755,7 @@ a[class*="btn"] svg,
   resetYearToDisabledResponsive();
 })();
 </script>
+
+    <script src="/static-nav.js?v=3" defer data-em-static-nav></script>
 </body>
 </html>
