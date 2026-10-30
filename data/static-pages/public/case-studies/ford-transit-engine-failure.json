@@ -1,0 +1,1231 @@
+{
+  "id": "public/case-studies/ford-transit-engine-failure",
+  "contentType": "case-studies",
+  "slug": "case-studies/ford-transit-engine-failure",
+  "route": "/case-studies/ford-transit-engine-failure",
+  "source": {
+    "originalFile": "public/case-studies/ford-transit-engine-failure.html",
+    "sourceRoot": "public",
+    "sourceHash": "sha256:a16f15a0c6780f3cd6af0fa0d005a270d6d7eb6f34126fac6d3df92a13b2c9c6",
+    "sourceBytes": 55286,
+    "migrationStatus": "clean-exported",
+    "sourceImmutable": true
+  },
+  "seo": {
+    "title": "Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine | Engines Market",
+    "description": "Premium visual case study showing how a £1,200 DPF repair wasted money on a Ford Transit 2.2 - and why a reconditioned engine with turbo saved downtime.",
+    "canonical": "",
+    "robots": "index, follow",
+    "openGraph": {
+      "title": "",
+      "description": "",
+      "url": "",
+      "image": "",
+      "type": ""
+    }
+  },
+  "hero": {
+    "eyebrow": "",
+    "heading": "Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine",
+    "lead": "Ford Transit V348",
+    "options": [],
+    "trust": [],
+    "image": null
+  },
+  "content": {
+    "text": "Ford Transit V348 2.2 Duratorq Puma Engine Failure Representative Case Study Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine A premium visual breakdown of black smoke, wasted DPF repairs, bore wash from failed injectors, and the decision to fit a reconditioned engine with turbo - prioritising uptime over repair cost. \"Black smoke pouring out the back. Failed the MOT on emissions. The driver said it was using a litre of oil every 500 miles. We'd already spent £1,200 on a new DPF and EGR valve. Three months later, the same problems came back. That's when the mechanic said, 'The injectors are wrecked. They've washed the bores. The rings are gone. You need an engine.'\" Compare Transit Engine Quotes See the Failure Timeline 105k First symptom £1,200 Wasted repairs £3,800 Engine fitted £4,600 Final total 18 mo Warranty Case summary A 2013 Transit with 110,000 miles - fleet vehicle for courier work. The fleet manager first noticed black smoke from one of the Transits under acceleration. The driver reported a gradual loss of power, particularly up hills. The van failed its MOT on emissions. An independent garage diagnosed a clogged DPF and failing EGR valve - £1,200 later, the problems returned within three months. Model Ford Transit V348 Year 2013 Engine 2.2 Duratorq (Puma) - 4-cylinder turbo diesel Mileage at first symptom 105,000 miles Mileage at failure 110,000 miles Usage Fleet vehicle - courier work, daily use Disclaimer: This is a representative scenario based on common failure patterns observed across Ford Duratorq diesel family quote requests on Engines Market in 2025 [ESTIMATED - using Ford DV6 1.6 TDCi enquiry data (n=780) and Ford Duratorq 2.2 TDCi (n=300) as proxy], combined with workshop consensus and KNOWN FAILURE PATTERNS data. Individual outcomes vary. The first clue Black smoke under acceleration - treated as a DPF issue, not injectors. The fleet manager first noticed black smoke from the Transit under acceleration. The driver reported a gradual loss of power, particularly up hills. The van failed its MOT on emissions. An independent garage diagnosed a clogged DPF and failing EGR valve. What they thought \"Standard DPF issues on a high-mileage Transit.\" Replace the parts, problem solved. What it actually was Failed injectors causing bore wash Worn injectors over-fuelling, washing oil from bores, destroying rings. The breaking point Oil consumption at 1 litre per 500 miles DPF warning back. £1,200 wasted. Engine replacement required. According to [KNOWN FAILURE PATTERNS] data for Ford Duratorq engines, injector failure is common between 80,000 and 150,000 miles, with symptoms including black smoke, loss of power, and failed emissions. Failure timeline £1,200 in wasted repairs - and the same problems came back within 3 months. The worn injectors were over-fuelling the engine. Unburnt diesel was washing the oil from the cylinder bores - a condition known as \"bore wash.\" This wore the piston rings, causing excessive oil consumption. The excess fuel was also rapidly clogging the new DPF. What the manager thought \"Replace the DPF and EGR. Standard high-mileage Transit issues.\" What it actually was Failed injectors over-fuelling for months. Killed the DPF and EGR. Wore the rings and bores. £1,200 wasted. Workshop diagnosis The specialist confirmed failed injectors, bore wash, and scored cylinders. The specialist performed a compression test, injector leak-off test, and borescope inspection. The findings were severe - the engine needed a full rebuild or replacement. Injectors (cylinders 2 & 3) Failed - excessive leak-off, poor spray pattern Piston rings Worn - bore wash damage, excessive oil consumption Cylinder bores Scoring visible on cylinder 2 DPF Rapidly clogging again - ash load high despite new unit EGR valve Carboned up Turbocharger Unknown condition - possible oil contamination from blow-by Specialist summary \"The injectors failed first. They've been over-fuelling for months. That killed the DPF and EGR, and it's worn the rings and bores. You can replace the injectors and rings, but the bores are scored. This engine needs a full rebuild or replacement. The £1,200 you spent on the DPF and EGR was wasted - the injectors killed them again.\" Repair options Three choices: rebuild, reconditioned exchange, or new dealer engine. The specialist presented three distinct paths. For a fleet vehicle, downtime was the hidden cost that made the exchange engine the clear winner. Engine Rebuild Reconditioned Exchange New Dealer Engine Long downtime Engine Rebuild (On-Site) £2,500-£4,000 Remove engine, rebore cylinders, fit oversized pistons and rings, new injectors, DPF, EGR. Lead time 10-14 days (engine out, machine shop) Warranty 6-12 months Key risk Downtime costs for a fleet vehicle can exceed repair costs Hidden cost 10-14 days lost revenue: £1,000-£2,000+ Recommended - chosen Reconditioned Engine (Exchange) £2,500-£5,000 Fully reconditioned long engine with new rings, bearings, gaskets; tested injectors. Exchange basis. Case cost £3,800 fitted (engine only) Lead time 2-3 days (exchange basis) Warranty 18 months / 18,000 miles What's included Fully reconditioned long engine; old engine returned for core surcharge Best for Fleet operators where downtime is critical Dealer route New Ford Engine £6,000-£9,000+ New Ford crate engine with full dealer warranty. Supply cost £4,000-£6,000+ [THIRD-PARTY - Ford dealer pricing] Warranty 24 months, Ford Lead time 7-14 days Key upside Zero-mile factory engine Best for Vehicles under warranty or insurance claims The uncertainty play Bore wash creates risk beyond the visible cylinder scoring. When the specialist removed the injectors and inspected the bores, they found scoring on cylinder 2 that could be felt with a fingernail. The excessive oil consumption from the worn rings meant the turbo had been running with reduced oil quality. Path A Exchange reconditioned engine only - take the risk on the existing turbo. £3,800 If turbo fails later: add £800-£1,200 + labour. Path B Replace the turbo preventatively at the same time as the engine. £4,600 £3,800 engine + £800 turbo. Eliminates the risk entirely. The fleet manager chose Path B - prioritising reliability and uptime over upfront cost. A turbo failure on a Transit would add £800-£1,200 to the bill - plus labour and downtime. Fork in the road Downtime was the real cost - an exchange engine got the van back in 2 days. The vehicle was worth approximately £6,000-£10,000 as a runner [THIRD-PARTY - Auto Trader, March 2025]. A rebuild at £2,500-£4,000 plus 10-14 days of lost revenue was less cost-effective than an exchange engine at £3,800 with 2-3 days of downtime. Engine rebuild (on-site) Path 1 £2,500-£4,000. 10-14 days off-road. Lost revenue: £1,000-£2,000+. Exchange reconditioned engine Path 2 - chosen £4,600 (engine + turbo). 2 days off-road. Back earning money quickly. The manager's calculation Why \"The rebuild is cheaper on paper. But 10 days off the road costs me £1,500 in lost revenue. The exchange engine is back on the road in 2 days. The extra £800 for the turbo is insurance against another failure. I can't afford to do this twice.\" £6,000-£10,000 Vehicle value £3,800 repair = ~38-60% of value - acceptable for a commercial vehicle. Daily courier use Fleet utilisation Downtime cost exceeded £100/day in lost revenue. £1,200 wasted Previous repairs DPF and EGR failed due to injectors. Manager accepted the loss and moved to full replacement. 18 months Warranty Peace of mind for fleet manager with reconditioned engine warranty. Low Risk tolerance Could not afford repeat downtime. Chose Path B (preventative turbo replacement). £4,600 Total spend Reconditioned engine + turbo. 18-month warranty. Van back in 2 days. Reconditioned engine + turbo - chosen for uptime Final verdict The exchange engine cost more upfront, but it fixed everything in one go. The van was back earning money in 2 days. The extra £800 for the turbo was insurance against another failure. Outcome What happened after the replacement- The fleet manager paid £4,600 for a reconditioned engine and turbo - supply and fit. The van was back in service in 2 days. The £1,200 spent on DPF and EGR was written off as a learning experience. Final engine + turbo £4,600 Wasted repairs £1,200 Total spend £5,800 Lead time 2 days Warranty 18 months / 18,000 miles Long-term result No further issues at 130,000 miles \"The £1,200 on the DPF and EGR was a mistake. We treated the symptoms, not the cause. The exchange engine cost more upfront, but it fixed everything in one go. The van was back earning money in 2 days. That's worth every penny.\" Lessons learned If your 2.2 Duratorq Transit has black smoke - test the injectors first. A £500 injector service could save a £3,800 engine. Treating symptoms with DPF and EGR replacement wastes money and time. For fleet operators, downtime is the real cost - an exchange reconditioned engine with a 2-day turnaround is almost always better value than a 10-day rebuild. Injector leak-off test at first symptom £50-£150 Identifies failing injectors before bore wash occurs. Injector replacement (caught early) £500-£1,000 Engine continues to run safely. DPF and EGR survive. DPF and EGR replacement (treating symptoms) £1,200+ Problems return within months - injectors are still failing. Reconditioned engine (after bore wash) £3,800+ (plus turbo) Van off the road 2-3 days. £1,200 wasted on previous repairs. A £500 injector replacement would have saved £1,200 in wasted DPF/EGR repairs and prevented bore wash entirely. Acting on the first symptom could have saved over £4,000. Click to expand - Ford Duratorq 2.2 (Puma) OEM part numbers Component Ford OEM Part Number Injector (remanufactured, each) BK2Q-9K546-AA Injector seal kit (per injector) BK2Q-9K546-AB Piston ring set (per cylinder) BK2Q-6148-AA Cylinder head gasket set BK2Q-6051-AA Crankshaft bearing set BK2Q-6333-AA Conrod bearing set BK2Q-6211-AA Oil pump assembly BK2Q-6600-AA Timing chain kit BK2Q-6K255-AA DPF (diesel particulate filter) BK2Q-5H270-AA EGR valve assembly BK2Q-9D475-AA Turbocharger (remanufactured) BK2Q-6K682-AA Oil filter BK2Q-6714-AA Sump gasket BK2Q-6710-AA Get a quote Need a real quote for your Ford Transit 2.2- Compare quotes from UK Ford specialists for injector failure, bore wash damage, reconditioned engines, turbos, and full replacement options for your Transit. Compare Transit Engine Prices Review Replacement Options Data sources used in the content: Engines Market 2025 internal quote data, workshop consensus, third-party vehicle market references, and known Ford Duratorq failure-pattern data. Quick quote check Replace this mock form with your live lead form or Elementor shortcode. Black smoke / loss of power Injector failure / bore wash Engine replacement quote Not sure yet Start Comparison",
+    "headings": [
+      {
+        "level": "h1",
+        "id": "",
+        "text": "Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine"
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "A 2013 Transit with 110,000 miles - fleet vehicle for courier work."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "Black smoke under acceleration - treated as a DPF issue, not injectors."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "£1,200 in wasted repairs - and the same problems came back within 3 months."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "The specialist confirmed failed injectors, bore wash, and scored cylinders."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "Three choices: rebuild, reconditioned exchange, or new dealer engine."
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "Engine Rebuild (On-Site)"
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "Reconditioned Engine (Exchange)"
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "New Ford Engine"
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "Bore wash creates risk beyond the visible cylinder scoring."
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "Path A"
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "Path B"
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "Downtime was the real cost - an exchange engine got the van back in 2 days."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "What happened after the replacement-"
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "If your 2.2 Duratorq Transit has black smoke - test the injectors first."
+      },
+      {
+        "level": "h2",
+        "id": "",
+        "text": "Need a real quote for your Ford Transit 2.2-"
+      },
+      {
+        "level": "h3",
+        "id": "",
+        "text": "Quick quote check"
+      }
+    ],
+    "leadBlocks": [
+      {
+        "type": "paragraph",
+        "text": "Ford Transit V348"
+      },
+      {
+        "type": "paragraph",
+        "text": "2.2 Duratorq Puma"
+      },
+      {
+        "type": "paragraph",
+        "text": "Engine Failure"
+      },
+      {
+        "type": "paragraph",
+        "text": "Representative Case Study"
+      },
+      {
+        "type": "heading",
+        "level": "h1",
+        "id": "",
+        "text": "Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine"
+      },
+      {
+        "type": "paragraph",
+        "text": "A premium visual breakdown of black smoke, wasted DPF repairs, bore wash from failed injectors, and the decision to fit a reconditioned engine with turbo - prioritising uptime over repair cost."
+      },
+      {
+        "type": "paragraph",
+        "text": "\"Black smoke pouring out the back. Failed the MOT on emissions. The driver said it was using a litre of oil every 500 miles. We'd already spent £1,200 on a new DPF and EGR valve. Three months later, the same problems came back. That's when the mechanic said, 'The injectors are wrecked. They've washed the bores. The rings are gone. You need an engine.'\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare Transit Engine Quotes"
+      },
+      {
+        "type": "paragraph",
+        "text": "See the Failure Timeline"
+      },
+      {
+        "type": "paragraph",
+        "text": "105k"
+      },
+      {
+        "type": "paragraph",
+        "text": "First symptom"
+      },
+      {
+        "type": "paragraph",
+        "text": "£1,200"
+      },
+      {
+        "type": "paragraph",
+        "text": "Wasted repairs"
+      },
+      {
+        "type": "paragraph",
+        "text": "£3,800"
+      },
+      {
+        "type": "paragraph",
+        "text": "Engine fitted"
+      },
+      {
+        "type": "paragraph",
+        "text": "£4,600"
+      },
+      {
+        "type": "paragraph",
+        "text": "Final total"
+      },
+      {
+        "type": "paragraph",
+        "text": "18 mo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Warranty"
+      },
+      {
+        "type": "paragraph",
+        "text": "Case summary"
+      }
+    ],
+    "sections": [
+      {
+        "id": "a-2013-transit-with-110-000-miles-fleet-vehicle-for-courier-work",
+        "heading": "A 2013 Transit with 110,000 miles - fleet vehicle for courier work.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The fleet manager first noticed black smoke from one of the Transits under acceleration. The driver reported a gradual loss of power, particularly up hills. The van failed its MOT on emissions. An independent garage diagnosed a clogged DPF and failing EGR valve - £1,200 later, the problems returned within three months."
+          },
+          {
+            "type": "cards",
+            "cards": [
+              {
+                "title": "Ford Transit V348",
+                "text": "Model Ford Transit V348",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Model Ford Transit V348"
+              },
+              {
+                "title": "2013",
+                "text": "Year 2013",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Year 2013"
+              },
+              {
+                "title": "2.2 Duratorq (Puma) - 4-cylinder turbo diesel",
+                "text": "Engine 2.2 Duratorq (Puma) - 4-cylinder turbo diesel",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Engine 2.2 Duratorq (Puma) - 4-cylinder turbo diesel"
+              },
+              {
+                "title": "105,000 miles",
+                "text": "Mileage at first symptom 105,000 miles",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Mileage at first symptom 105,000 miles"
+              },
+              {
+                "title": "110,000 miles",
+                "text": "Mileage at failure 110,000 miles",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Mileage at failure 110,000 miles"
+              },
+              {
+                "title": "Fleet vehicle - courier work, daily use",
+                "text": "Usage Fleet vehicle - courier work, daily use",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Usage Fleet vehicle - courier work, daily use"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Disclaimer: This is a representative scenario based on common failure patterns observed across Ford Duratorq diesel family quote requests on Engines Market in 2025 [ESTIMATED - using Ford DV6 1.6 TDCi enquiry data (n=780) and Ford Duratorq 2.2 TDCi (n=300) as proxy], combined with workshop consensus and KNOWN FAILURE PATTERNS data. Individual outcomes vary."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/2.1-ford-transit-22-isometric-v348.png",
+            "alt": "Isometric 3D render of 2013 Ford Transit V348 with 2.2 Duratorq diesel engine and vehicle specifications"
+          },
+          {
+            "type": "paragraph",
+            "text": "The first clue"
+          }
+        ]
+      },
+      {
+        "id": "black-smoke-under-acceleration-treated-as-a-dpf-issue-not-injectors",
+        "heading": "Black smoke under acceleration - treated as a DPF issue, not injectors.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The fleet manager first noticed black smoke from the Transit under acceleration. The driver reported a gradual loss of power, particularly up hills. The van failed its MOT on emissions. An independent garage diagnosed a clogged DPF and failing EGR valve."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/1.2-ford-transit-22-wasted-receipts.png",
+            "alt": "Ford Transit wasted repair invoices showing £1,200 spent on DPF and EGR that didn't fix the underlying problem"
+          },
+          {
+            "type": "paragraph",
+            "text": "What they thought"
+          },
+          {
+            "type": "paragraph",
+            "text": "\"Standard DPF issues on a high-mileage Transit.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Replace the parts, problem solved."
+          },
+          {
+            "type": "paragraph",
+            "text": "What it actually was"
+          },
+          {
+            "type": "paragraph",
+            "text": "Failed injectors causing bore wash"
+          },
+          {
+            "type": "paragraph",
+            "text": "Worn injectors over-fuelling, washing oil from bores, destroying rings."
+          },
+          {
+            "type": "paragraph",
+            "text": "The breaking point"
+          },
+          {
+            "type": "paragraph",
+            "text": "Oil consumption at 1 litre per 500 miles"
+          },
+          {
+            "type": "paragraph",
+            "text": "DPF warning back. £1,200 wasted. Engine replacement required."
+          },
+          {
+            "type": "paragraph",
+            "text": "According to [KNOWN FAILURE PATTERNS] data for Ford Duratorq engines, injector failure is common between 80,000 and 150,000 miles, with symptoms including black smoke, loss of power, and failed emissions."
+          },
+          {
+            "type": "paragraph",
+            "text": "Failure timeline"
+          }
+        ]
+      },
+      {
+        "id": "1-200-in-wasted-repairs-and-the-same-problems-came-back-within-3-months",
+        "heading": "£1,200 in wasted repairs - and the same problems came back within 3 months.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The worn injectors were over-fuelling the engine. Unburnt diesel was washing the oil from the cylinder bores - a condition known as \"bore wash.\" This wore the piston rings, causing excessive oil consumption. The excess fuel was also rapidly clogging the new DPF."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/2.2-ford-transit-22-timeline.png",
+            "alt": "Ford Transit 2.2 timeline showing wasted repairs and progression to engine replacement"
+          },
+          {
+            "type": "paragraph",
+            "text": "What the manager thought"
+          },
+          {
+            "type": "paragraph",
+            "text": "\"Replace the DPF and EGR. Standard high-mileage Transit issues.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "What it actually was"
+          },
+          {
+            "type": "paragraph",
+            "text": "Failed injectors over-fuelling for months. Killed the DPF and EGR. Wore the rings and bores. £1,200 wasted."
+          },
+          {
+            "type": "paragraph",
+            "text": "Workshop diagnosis"
+          }
+        ]
+      },
+      {
+        "id": "the-specialist-confirmed-failed-injectors-bore-wash-and-scored-cylinders",
+        "heading": "The specialist confirmed failed injectors, bore wash, and scored cylinders.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The specialist performed a compression test, injector leak-off test, and borescope inspection. The findings were severe - the engine needed a full rebuild or replacement."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/3.1-ford-transit-22-failed-injectors.png",
+            "alt": "Ford 2.2 Duratorq leak-off test showing failed injectors on cylinders 2 and 3"
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/3.2-ford-transit-22-bore-wash-scoring.png",
+            "alt": "Ford 2.2 Duratorq cylinder bore scoring from bore wash caused by failed injectors"
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/3.3-ford-transit-22-dpf-clogged.png",
+            "alt": "Ford Transit 2.2 DPF clogged after 3 months due to failed injectors over-fuelling"
+          },
+          {
+            "type": "paragraph",
+            "text": "Injectors (cylinders 2 & 3)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Failed - excessive leak-off, poor spray pattern"
+          },
+          {
+            "type": "paragraph",
+            "text": "Piston rings"
+          },
+          {
+            "type": "paragraph",
+            "text": "Worn - bore wash damage, excessive oil consumption"
+          },
+          {
+            "type": "paragraph",
+            "text": "Cylinder bores"
+          },
+          {
+            "type": "paragraph",
+            "text": "Scoring visible on cylinder 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "DPF"
+          },
+          {
+            "type": "paragraph",
+            "text": "Rapidly clogging again - ash load high despite new unit"
+          },
+          {
+            "type": "paragraph",
+            "text": "EGR valve"
+          },
+          {
+            "type": "paragraph",
+            "text": "Carboned up"
+          },
+          {
+            "type": "paragraph",
+            "text": "Turbocharger"
+          },
+          {
+            "type": "paragraph",
+            "text": "Unknown condition - possible oil contamination from blow-by"
+          },
+          {
+            "type": "paragraph",
+            "text": "Specialist summary"
+          },
+          {
+            "type": "paragraph",
+            "text": "\"The injectors failed first. They've been over-fuelling for months. That killed the DPF and EGR, and it's worn the rings and bores. You can replace the injectors and rings, but the bores are scored. This engine needs a full rebuild or replacement. The £1,200 you spent on the DPF and EGR was wasted - the injectors killed them again.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Repair options"
+          }
+        ]
+      },
+      {
+        "id": "three-choices-rebuild-reconditioned-exchange-or-new-dealer-engine",
+        "heading": "Three choices: rebuild, reconditioned exchange, or new dealer engine.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The specialist presented three distinct paths. For a fleet vehicle, downtime was the hidden cost that made the exchange engine the clear winner."
+          },
+          {
+            "type": "paragraph",
+            "text": "Engine Rebuild"
+          },
+          {
+            "type": "paragraph",
+            "text": "Reconditioned Exchange"
+          },
+          {
+            "type": "paragraph",
+            "text": "New Dealer Engine"
+          },
+          {
+            "type": "paragraph",
+            "text": "Long downtime"
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "Engine Rebuild (On-Site)"
+          },
+          {
+            "type": "paragraph",
+            "text": "£2,500-£4,000"
+          },
+          {
+            "type": "paragraph",
+            "text": "Remove engine, rebore cylinders, fit oversized pistons and rings, new injectors, DPF, EGR."
+          },
+          {
+            "type": "cards",
+            "cards": [
+              {
+                "title": "10-14 days (engine out, machine shop)",
+                "text": "Lead time 10-14 days (engine out, machine shop)",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Lead time 10-14 days (engine out, machine shop)"
+              },
+              {
+                "title": "6-12 months",
+                "text": "Warranty 6-12 months",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Warranty 6-12 months"
+              },
+              {
+                "title": "Downtime costs for a fleet vehicle can exceed repair costs",
+                "text": "Key risk Downtime costs for a fleet vehicle can exceed repair costs",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Key risk Downtime costs for a fleet vehicle can exceed repair costs"
+              },
+              {
+                "title": "10-14 days lost revenue: £1,000-£2,000+",
+                "text": "Hidden cost 10-14 days lost revenue: £1,000-£2,000+",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Hidden cost 10-14 days lost revenue: £1,000-£2,000+"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Recommended - chosen"
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "Reconditioned Engine (Exchange)"
+          },
+          {
+            "type": "paragraph",
+            "text": "£2,500-£5,000"
+          },
+          {
+            "type": "paragraph",
+            "text": "Fully reconditioned long engine with new rings, bearings, gaskets; tested injectors. Exchange basis."
+          },
+          {
+            "type": "cards",
+            "cards": [
+              {
+                "title": "£3,800 fitted (engine only)",
+                "text": "Case cost £3,800 fitted (engine only)",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Case cost £3,800 fitted (engine only)"
+              },
+              {
+                "title": "2-3 days (exchange basis)",
+                "text": "Lead time 2-3 days (exchange basis)",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Lead time 2-3 days (exchange basis)"
+              },
+              {
+                "title": "18 months / 18,000 miles",
+                "text": "Warranty 18 months / 18,000 miles",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Warranty 18 months / 18,000 miles"
+              },
+              {
+                "title": "Fully reconditioned long engine; old engine returned for core surcharge",
+                "text": "What's included Fully reconditioned long engine; old engine returned for core surcharge",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "What's included Fully reconditioned long engine; old engine returned for core surcharge"
+              },
+              {
+                "title": "Fleet operators where downtime is critical",
+                "text": "Best for Fleet operators where downtime is critical",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Best for Fleet operators where downtime is critical"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Dealer route"
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "New Ford Engine"
+          },
+          {
+            "type": "paragraph",
+            "text": "£6,000-£9,000+"
+          },
+          {
+            "type": "paragraph",
+            "text": "New Ford crate engine with full dealer warranty."
+          },
+          {
+            "type": "cards",
+            "cards": [
+              {
+                "title": "£4,000-£6,000+ [THIRD-PARTY - Ford dealer pricing]",
+                "text": "Supply cost £4,000-£6,000+ [THIRD-PARTY - Ford dealer pricing]",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Supply cost £4,000-£6,000+ [THIRD-PARTY - Ford dealer pricing]"
+              },
+              {
+                "title": "24 months, Ford",
+                "text": "Warranty 24 months, Ford",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Warranty 24 months, Ford"
+              },
+              {
+                "title": "7-14 days",
+                "text": "Lead time 7-14 days",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Lead time 7-14 days"
+              },
+              {
+                "title": "Zero-mile factory engine",
+                "text": "Key upside Zero-mile factory engine",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Key upside Zero-mile factory engine"
+              },
+              {
+                "title": "Vehicles under warranty or insurance claims",
+                "text": "Best for Vehicles under warranty or insurance claims",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Best for Vehicles under warranty or insurance claims"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The uncertainty play"
+          }
+        ]
+      },
+      {
+        "id": "bore-wash-creates-risk-beyond-the-visible-cylinder-scoring",
+        "heading": "Bore wash creates risk beyond the visible cylinder scoring.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "When the specialist removed the injectors and inspected the bores, they found scoring on cylinder 2 that could be felt with a fingernail. The excessive oil consumption from the worn rings meant the turbo had been running with reduced oil quality."
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "Path A"
+          },
+          {
+            "type": "paragraph",
+            "text": "Exchange reconditioned engine only - take the risk on the existing turbo."
+          },
+          {
+            "type": "paragraph",
+            "text": "£3,800"
+          },
+          {
+            "type": "paragraph",
+            "text": "If turbo fails later: add £800-£1,200 + labour."
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "Path B"
+          },
+          {
+            "type": "paragraph",
+            "text": "Replace the turbo preventatively at the same time as the engine."
+          },
+          {
+            "type": "paragraph",
+            "text": "£4,600"
+          },
+          {
+            "type": "paragraph",
+            "text": "£3,800 engine + £800 turbo. Eliminates the risk entirely."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/5.1-ford-transit-22-turbo-contamination.png",
+            "alt": "Ford 2.2 Duratorq turbo contamination diagram showing oil contamination risk from bore wash"
+          },
+          {
+            "type": "paragraph",
+            "text": "The fleet manager chose Path B - prioritising reliability and uptime over upfront cost. A turbo failure on a Transit would add £800-£1,200 to the bill - plus labour and downtime."
+          },
+          {
+            "type": "paragraph",
+            "text": "Fork in the road"
+          }
+        ]
+      },
+      {
+        "id": "downtime-was-the-real-cost-an-exchange-engine-got-the-van-back-in-2-days",
+        "heading": "Downtime was the real cost - an exchange engine got the van back in 2 days.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The vehicle was worth approximately £6,000-£10,000 as a runner [THIRD-PARTY - Auto Trader, March 2025]. A rebuild at £2,500-£4,000 plus 10-14 days of lost revenue was less cost-effective than an exchange engine at £3,800 with 2-3 days of downtime."
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/5.2-ford-transit-22-decision-paths.png",
+            "alt": "Ford Transit repair decision - engine only at £3,800 with turbo risk versus engine and turbo at £4,600 with peace of mind"
+          },
+          {
+            "type": "paragraph",
+            "text": "Engine rebuild (on-site)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Path 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "£2,500-£4,000. 10-14 days off-road. Lost revenue: £1,000-£2,000+."
+          },
+          {
+            "type": "paragraph",
+            "text": "Exchange reconditioned engine"
+          },
+          {
+            "type": "paragraph",
+            "text": "Path 2 - chosen"
+          },
+          {
+            "type": "paragraph",
+            "text": "£4,600 (engine + turbo). 2 days off-road. Back earning money quickly."
+          },
+          {
+            "type": "paragraph",
+            "text": "The manager's calculation"
+          },
+          {
+            "type": "paragraph",
+            "text": "Why"
+          },
+          {
+            "type": "paragraph",
+            "text": "\"The rebuild is cheaper on paper. But 10 days off the road costs me £1,500 in lost revenue. The exchange engine is back on the road in 2 days. The extra £800 for the turbo is insurance against another failure. I can't afford to do this twice.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "£6,000-£10,000"
+          },
+          {
+            "type": "paragraph",
+            "text": "Vehicle value"
+          },
+          {
+            "type": "paragraph",
+            "text": "£3,800 repair = ~38-60% of value - acceptable for a commercial vehicle."
+          },
+          {
+            "type": "paragraph",
+            "text": "Daily courier use"
+          },
+          {
+            "type": "paragraph",
+            "text": "Fleet utilisation"
+          },
+          {
+            "type": "paragraph",
+            "text": "Downtime cost exceeded £100/day in lost revenue."
+          },
+          {
+            "type": "paragraph",
+            "text": "£1,200 wasted"
+          },
+          {
+            "type": "paragraph",
+            "text": "Previous repairs"
+          },
+          {
+            "type": "paragraph",
+            "text": "DPF and EGR failed due to injectors. Manager accepted the loss and moved to full replacement."
+          },
+          {
+            "type": "paragraph",
+            "text": "18 months"
+          },
+          {
+            "type": "paragraph",
+            "text": "Warranty"
+          },
+          {
+            "type": "paragraph",
+            "text": "Peace of mind for fleet manager with reconditioned engine warranty."
+          },
+          {
+            "type": "paragraph",
+            "text": "Low"
+          },
+          {
+            "type": "paragraph",
+            "text": "Risk tolerance"
+          },
+          {
+            "type": "paragraph",
+            "text": "Could not afford repeat downtime. Chose Path B (preventative turbo replacement)."
+          },
+          {
+            "type": "paragraph",
+            "text": "£4,600"
+          },
+          {
+            "type": "paragraph",
+            "text": "Total spend"
+          },
+          {
+            "type": "paragraph",
+            "text": "Reconditioned engine + turbo. 18-month warranty. Van back in 2 days."
+          },
+          {
+            "type": "paragraph",
+            "text": "Reconditioned engine + turbo - chosen for uptime"
+          },
+          {
+            "type": "paragraph",
+            "text": "Final verdict"
+          },
+          {
+            "type": "paragraph",
+            "text": "The exchange engine cost more upfront, but it fixed everything in one go. The van was back earning money in 2 days. The extra £800 for the turbo was insurance against another failure."
+          },
+          {
+            "type": "paragraph",
+            "text": "Outcome"
+          }
+        ]
+      },
+      {
+        "id": "what-happened-after-the-replacement",
+        "heading": "What happened after the replacement-",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The fleet manager paid £4,600 for a reconditioned engine and turbo - supply and fit. The van was back in service in 2 days. The £1,200 spent on DPF and EGR was written off as a learning experience."
+          },
+          {
+            "type": "paragraph",
+            "text": "Final engine + turbo"
+          },
+          {
+            "type": "paragraph",
+            "text": "£4,600"
+          },
+          {
+            "type": "paragraph",
+            "text": "Wasted repairs"
+          },
+          {
+            "type": "paragraph",
+            "text": "£1,200"
+          },
+          {
+            "type": "paragraph",
+            "text": "Total spend"
+          },
+          {
+            "type": "paragraph",
+            "text": "£5,800"
+          },
+          {
+            "type": "paragraph",
+            "text": "Lead time"
+          },
+          {
+            "type": "paragraph",
+            "text": "2 days"
+          },
+          {
+            "type": "paragraph",
+            "text": "Warranty"
+          },
+          {
+            "type": "paragraph",
+            "text": "18 months / 18,000 miles"
+          },
+          {
+            "type": "paragraph",
+            "text": "Long-term result"
+          },
+          {
+            "type": "paragraph",
+            "text": "No further issues at 130,000 miles"
+          },
+          {
+            "type": "paragraph",
+            "text": "\"The £1,200 on the DPF and EGR was a mistake. We treated the symptoms, not the cause. The exchange engine cost more upfront, but it fixed everything in one go. The van was back earning money in 2 days. That's worth every penny.\""
+          },
+          {
+            "type": "image",
+            "src": "/case-studies/assets/7.2-ford-transit-22-workshop-blur.png",
+            "alt": "Blurred Ford workshop background with Transit on ramp for repair outcome quote card"
+          },
+          {
+            "type": "paragraph",
+            "text": "Lessons learned"
+          }
+        ]
+      },
+      {
+        "id": "if-your-2-2-duratorq-transit-has-black-smoke-test-the-injectors-first",
+        "heading": "If your 2.2 Duratorq Transit has black smoke - test the injectors first.",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "A £500 injector service could save a £3,800 engine. Treating symptoms with DPF and EGR replacement wastes money and time. For fleet operators, downtime is the real cost - an exchange reconditioned engine with a 2-day turnaround is almost always better value than a 10-day rebuild."
+          },
+          {
+            "type": "cards",
+            "cards": [
+              {
+                "title": "£50-£150",
+                "text": "Identifies failing injectors before bore wash occurs.",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Injector leak-off test at first symptom £50-£150 Identifies failing injectors before bore wash occurs."
+              },
+              {
+                "title": "£500-£1,000",
+                "text": "Engine continues to run safely. DPF and EGR survive.",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Injector replacement (caught early) £500-£1,000 Engine continues to run safely. DPF and EGR survive."
+              },
+              {
+                "title": "£1,200+",
+                "text": "Problems return within months - injectors are still failing.",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "DPF and EGR replacement (treating symptoms) £1,200+ Problems return within months - injectors are still failing."
+              },
+              {
+                "title": "£3,800+ (plus turbo)",
+                "text": "Van off the road 2-3 days. £1,200 wasted on previous repairs.",
+                "highlight": "",
+                "meta": "",
+                "icon": "",
+                "items": [],
+                "fullText": "Reconditioned engine (after bore wash) £3,800+ (plus turbo) Van off the road 2-3 days. £1,200 wasted on previous repairs."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "A £500 injector replacement would have saved £1,200 in wasted DPF/EGR repairs and prevented bore wash entirely. Acting on the first symptom could have saved over £4,000."
+          },
+          {
+            "type": "faq",
+            "question": "Click to expand - Ford Duratorq 2.2 (Puma) OEM part numbers",
+            "answer": "Component Ford OEM Part Number Injector (remanufactured, each) BK2Q-9K546-AA Injector seal kit (per injector) BK2Q-9K546-AB Piston ring set (per cylinder) BK2Q-6148-AA Cylinder head gasket set BK2Q-6051-AA Crankshaft bearing set BK2Q-6333-AA Conrod bearing set BK2Q-6211-AA Oil pump assembly BK2Q-6600-AA Timing chain kit BK2Q-6K255-AA DPF (diesel particulate filter) BK2Q-5H270-AA EGR valve assembly BK2Q-9D475-AA Turbocharger (remanufactured) BK2Q-6K682-AA Oil filter BK2Q-6714-AA Sump gasket BK2Q-6710-AA"
+          },
+          {
+            "type": "paragraph",
+            "text": "Get a quote"
+          }
+        ]
+      },
+      {
+        "id": "need-a-real-quote-for-your-ford-transit-2-2",
+        "heading": "Need a real quote for your Ford Transit 2.2-",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Compare quotes from UK Ford specialists for injector failure, bore wash damage, reconditioned engines, turbos, and full replacement options for your Transit."
+          },
+          {
+            "type": "paragraph",
+            "text": "Compare Transit Engine Prices"
+          },
+          {
+            "type": "paragraph",
+            "text": "Review Replacement Options"
+          },
+          {
+            "type": "paragraph",
+            "text": "Data sources used in the content: Engines Market 2025 internal quote data, workshop consensus, third-party vehicle market references, and known Ford Duratorq failure-pattern data."
+          },
+          {
+            "type": "heading",
+            "level": "h3",
+            "id": "",
+            "text": "Quick quote check"
+          },
+          {
+            "type": "paragraph",
+            "text": "Replace this mock form with your live lead form or Elementor shortcode."
+          },
+          {
+            "type": "paragraph",
+            "text": "Black smoke / loss of power"
+          },
+          {
+            "type": "paragraph",
+            "text": "Injector failure / bore wash"
+          },
+          {
+            "type": "paragraph",
+            "text": "Engine replacement quote"
+          },
+          {
+            "type": "paragraph",
+            "text": "Not sure yet"
+          },
+          {
+            "type": "paragraph",
+            "text": "Start Comparison"
+          }
+        ]
+      }
+    ]
+  },
+  "tables": [
+    {
+      "headers": [
+        "Component",
+        "Ford OEM Part Number"
+      ],
+      "rows": [
+        [
+          "Injector (remanufactured, each)",
+          "BK2Q-9K546-AA"
+        ],
+        [
+          "Injector seal kit (per injector)",
+          "BK2Q-9K546-AB"
+        ],
+        [
+          "Piston ring set (per cylinder)",
+          "BK2Q-6148-AA"
+        ],
+        [
+          "Cylinder head gasket set",
+          "BK2Q-6051-AA"
+        ],
+        [
+          "Crankshaft bearing set",
+          "BK2Q-6333-AA"
+        ],
+        [
+          "Conrod bearing set",
+          "BK2Q-6211-AA"
+        ],
+        [
+          "Oil pump assembly",
+          "BK2Q-6600-AA"
+        ],
+        [
+          "Timing chain kit",
+          "BK2Q-6K255-AA"
+        ],
+        [
+          "DPF (diesel particulate filter)",
+          "BK2Q-5H270-AA"
+        ],
+        [
+          "EGR valve assembly",
+          "BK2Q-9D475-AA"
+        ],
+        [
+          "Turbocharger (remanufactured)",
+          "BK2Q-6K682-AA"
+        ],
+        [
+          "Oil filter",
+          "BK2Q-6714-AA"
+        ],
+        [
+          "Sump gasket",
+          "BK2Q-6710-AA"
+        ]
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Click to expand - Ford Duratorq 2.2 (Puma) OEM part numbers",
+      "answer": "Component Ford OEM Part Number Injector (remanufactured, each) BK2Q-9K546-AA Injector seal kit (per injector) BK2Q-9K546-AB Piston ring set (per cylinder) BK2Q-6148-AA Cylinder head gasket set BK2Q-6051-AA Crankshaft bearing set BK2Q-6333-AA Conrod bearing set BK2Q-6211-AA Oil pump assembly BK2Q-6600-AA Timing chain kit BK2Q-6K255-AA DPF (diesel particulate filter) BK2Q-5H270-AA EGR valve assembly BK2Q-9D475-AA Turbocharger (remanufactured) BK2Q-6K682-AA Oil filter BK2Q-6714-AA Sump gasket BK2Q-6710-AA"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "href": "#quote",
+      "text": "Compare Transit Engine Quotes"
+    },
+    {
+      "href": "#timeline",
+      "text": "See the Failure Timeline"
+    },
+    {
+      "href": "#",
+      "text": "Compare Transit Engine Prices"
+    },
+    {
+      "href": "#options",
+      "text": "Review Replacement Options"
+    }
+  ],
+  "media": [
+    {
+      "src": "/case-studies/assets/2.1-ford-transit-22-isometric-v348.png",
+      "alt": "Isometric 3D render of 2013 Ford Transit V348 with 2.2 Duratorq diesel engine and vehicle specifications",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/1.2-ford-transit-22-wasted-receipts.png",
+      "alt": "Ford Transit wasted repair invoices showing £1,200 spent on DPF and EGR that didn't fix the underlying problem",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/2.2-ford-transit-22-timeline.png",
+      "alt": "Ford Transit 2.2 timeline showing wasted repairs and progression to engine replacement",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/3.1-ford-transit-22-failed-injectors.png",
+      "alt": "Ford 2.2 Duratorq leak-off test showing failed injectors on cylinders 2 and 3",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/3.2-ford-transit-22-bore-wash-scoring.png",
+      "alt": "Ford 2.2 Duratorq cylinder bore scoring from bore wash caused by failed injectors",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/3.3-ford-transit-22-dpf-clogged.png",
+      "alt": "Ford Transit 2.2 DPF clogged after 3 months due to failed injectors over-fuelling",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/5.1-ford-transit-22-turbo-contamination.png",
+      "alt": "Ford 2.2 Duratorq turbo contamination diagram showing oil contamination risk from bore wash",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/5.2-ford-transit-22-decision-paths.png",
+      "alt": "Ford Transit repair decision - engine only at £3,800 with turbo risk versus engine and turbo at £4,600 with peace of mind",
+      "width": "",
+      "height": ""
+    },
+    {
+      "src": "/case-studies/assets/7.2-ford-transit-22-workshop-blur.png",
+      "alt": "Blurred Ford workshop background with Transit on ramp for repair outcome quote card",
+      "width": "",
+      "height": ""
+    }
+  ],
+  "forms": [],
+  "structuredData": [],
+  "stats": {
+    "wordCount": 1706,
+    "headingCount": 17,
+    "tableCount": 1,
+    "faqCount": 1,
+    "formCount": 0,
+    "linkCount": 4,
+    "imageCount": 9
+  }
+}
