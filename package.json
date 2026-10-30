@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "qa:model-pages": "node scripts/model_page_qa.mjs",
+    "export:static-pages": "python scripts/export_static_page_data.py",
+    "audit:static-preview": "node scripts/audit_static_preview_parity.mjs",
     "generate:image-manifest": "node scripts/generate-image-manifest.mjs",
     "generate:sitemap": "node scripts/generate_sitemap.mjs"
   },
