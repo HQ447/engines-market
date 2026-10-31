@@ -468,15 +468,16 @@ const sourcePreviewOverrides = `
 function sourcePathFor(page: StaticPageRecord) {
   const relative = page.source.originalFile.replace(/[\\/]+/g, "/");
   if (!relative.startsWith("public/") && !relative.startsWith("content/")) return null;
-  const resolved = path.resolve(process.cwd(), relative);
-  const root = path.resolve(process.cwd());
+  // Source pages are build-time inputs for SSG and must not be copied into the runtime function.
+  const resolved = path.resolve(/* turbopackIgnore: true */ process.cwd(), relative);
+  const root = path.resolve(/* turbopackIgnore: true */ process.cwd());
   return resolved.startsWith(`${root}${path.sep}`) ? resolved : null;
 }
 
 function localAssetPath(href: string) {
   if (!href.startsWith("/") || href.startsWith("//")) return null;
-  const resolved = path.resolve(process.cwd(), "public", href.slice(1));
-  const root = path.resolve(process.cwd(), "public");
+  const resolved = path.resolve(/* turbopackIgnore: true */ process.cwd(), "public", href.slice(1));
+  const root = path.resolve(/* turbopackIgnore: true */ process.cwd(), "public");
   return resolved.startsWith(`${root}${path.sep}`) ? resolved : null;
 }
 
@@ -541,7 +542,9 @@ function extractSource(source: string) {
   for (const match of source.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*>/gi)) {
     const href = match[0].match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
     const assetPath = href ? localAssetPath(href) : null;
-    if (assetPath && fs.existsSync(assetPath)) styles.push(scopeSourceCss(fs.readFileSync(assetPath, "utf8")));
+    if (assetPath && fs.existsSync(/* turbopackIgnore: true */ assetPath)) {
+      styles.push(scopeSourceCss(fs.readFileSync(/* turbopackIgnore: true */ assetPath, "utf8")));
+    }
     else if (href && /^https?:\/\//i.test(href)) externalStyles.push(href);
   }
   return { body, styles, externalStyles, scripts };
@@ -549,8 +552,11 @@ function extractSource(source: string) {
 
 export default function SourceStaticPage({ page }: { page: StaticPageRecord }) {
   const sourcePath = sourcePathFor(page);
-  if (!sourcePath || !fs.existsSync(sourcePath)) return <StaticPagePreview page={page} />;
-  const { body, styles, externalStyles, scripts } = extractSource(fs.readFileSync(sourcePath, "utf8"));
+  if (!sourcePath || !fs.existsSync(/* turbopackIgnore: true */ sourcePath)) {
+    return <StaticPagePreview page={page} />;
+  }
+  const source = fs.readFileSync(/* turbopackIgnore: true */ sourcePath, "utf8");
+  const { body, styles, externalStyles, scripts } = extractSource(source);
   const heroMarkup = body.match(/<section\b[^>]*class=["'][^"']*\bhero\b[^"']*["'][^>]*>[\s\S]*?<\/section>/i)?.[0] ?? body.match(/<div\b[^>]*class=["'][^"']*\bhero\b[^"']*["'][^>]*>[\s\S]*?<\/div>/i)?.[0] ?? "";
   const hasRegistrationHero = Boolean(heroMarkup) && (/<(?:form|input|button)\b[^>]*(?:registration|reg(?:istration)?)/i.test(heroMarkup) || /(?:Search by Registration|reg-input|registration-form)/i.test(heroMarkup));
   const isSymptoms = /(?:^|[\\/])symptoms(?:[\\/]|$)/i.test(page.source.originalFile) || /(?:^|[\\/])symptoms(?:[\\/]|$)/i.test(page.route);
