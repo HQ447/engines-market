@@ -6,8 +6,8 @@
   "source": {
     "originalFile": "public/about/how-engines-market-works.html",
     "sourceRoot": "public",
-    "sourceHash": "sha256:2bd39ae230e29e0c51281d6206c66d8891aa5420ed9c56497328614123c748f8",
-    "sourceBytes": 53455,
+    "sourceHash": "sha256:b7df5535fcecc10a4c6f1f52f157694b2cf80098bd661ba050490593165bb371",
+    "sourceBytes": 62236,
     "migrationStatus": "clean-exported",
     "sourceImmutable": true
   },
@@ -24,467 +24,371 @@
       "type": ""
     }
   },
-  "hero": {
-    "eyebrow": "How Engines Market works",
-    "heading": "A simple, free, no-pressure way to compare engine replacement quotes",
-    "lead": "You tell us what you need. We connect you with vetted UK specialists. You compare quotes and choose the right fit for your budget and vehicle.",
-    "options": [],
-    "trust": [],
-    "image": null
-  },
-  "content": {
-    "text": "How Engines Market works A simple, free, no-pressure way to compare engine replacement quotes You tell us what you need. We connect you with vetted UK specialists. You compare quotes and choose the right fit for your budget and vehicle. No hidden fees. No obligation. No pushy sales calls. 100+ Vetted UK suppliers 24,650+ Quote requests in 2025 5.2 Days avg. from quote to fit 1 Enquiry → 2 Match → 3 Quotes → 4 Choose Engines Market Compare · Transparent · Free Here is exactly how it works The process in four steps We believe getting a replacement engine should be straightforward. Here is a step-by-step walkthrough of what happens when you use Engines Market. 1 Submit your enquiry Tell us about your vehicle and the problem. You will need: Vehicle registration number Current mileage Brief description of the issue The enquiry form takes about two minutes to complete. It is completely free and does not commit you to anything. 2 We match you with relevant suppliers Once you submit your enquiry, we share it - anonymously - with specialist suppliers in our network who are a good fit for your vehicle and location. Our network includes 100+ UK engine specialists that have been onboarded against our supplier standards. Generally, they must be UK registered, have a physical business address, a minimum one-year trading history, and a public review profile averaging approximately 4.0 stars or higher. Only suppliers who can genuinely help with your engine type will receive your enquiry. We do not send leads to everyone indiscriminately. 3 Receive and compare quotes Suppliers review your details and send you a quote directly - usually by email or phone. Typical number of quotes: 3 to 5 Typical time to receive quotes: Within a few hours You can compare prices, warranty terms, and included services side by side. All quotes come from real UK businesses, not middlemen. Based on 24,650 quote requests processed in 2025 [EM-VERIFIED], most users receive multiple competitive offers without needing to chase suppliers. 4 You choose the supplier - or walk away There is no pressure. You decide: Which supplier to contact for more details Whether to accept a quote Whether to walk away and do nothing Engines Market does not choose a supplier for you. We do not take a cut of the transaction. Your relationship - including payment, warranty, and fitting - is directly with the supplier you select. Important legal disclaimer - our role Please read this carefully It protects you and us. Our role Engines Market is a price comparison and introduction platform . We are not a garage, engine supplier, or fitting centre. We do not sell engines. We do not hold stock. We do not fit engines. We do not provide warranties. We do not process customer payments. We do not act as a contracting party between you and any supplier. All agreements, contracts, warranties, and payments are strictly between you and the supplier you choose. Engines Market does not mediate disputes or guarantee the performance of any supplier. You are responsible for reviewing any supplier's quotation, warranty terms, and credentials before proceeding. For full terms, please read our Terms & Conditions . Why we do it this way What we are - and what we are not What we are A free, transparent comparison platform A way to see 3-5 real quotes without ringing around An introducer to vetted UK specialists A source of independent marketplace data What we are NOT A garage or workshop An engine supplier with stock A warranty provider A dispute resolution service We exist to save you time, stress, and money by making engine replacement pricing transparent. Nothing more. Frequently asked questions Quick answers about the process Is the service really free- + Yes. You pay nothing to use Engines Market. Our income comes from suppliers who pay for qualified leads. How do you vet suppliers- + Suppliers generally need a UK registered business, a physical address, at least one year of trading history, and a public review profile averaging around 4.0 stars or higher. See our full supplier standards page for details. How long does the whole process take- + Most users receive quotes within a few hours. From enquiry to completed engine replacement, the average timeline (based on our 2025 data) is 5.2 days - but this varies by supplier and vehicle. What if I do not like any of the quotes- + You are free to walk away. There is no obligation to accept any quote or to use our service again. Do you guarantee the lowest price- + No. We provide multiple quotes from real suppliers so you can compare. The best choice depends on price, warranty, location, and your own priorities. Explore related pages More resources to help you decide ↗ Supplier standards How we select and maintain our network. ↗ Engine warranty guide Understand warranty types and what to ask suppliers. ↗ Contact us Get in touch with our team. ↗ Price disclaimer About the cost ranges shown on this site. Ready to get your quotes- No phone calls. No sales pressure. Just real prices from real UK specialists. Free · No obligation · 100+ UK specialists · 24,650+ quotes in 2025 Start your free quote now → Compare side by side · No obligation",
-    "headings": [
-      {
-        "level": "h1",
-        "id": "hero-heading",
-        "text": "A simple, free, no-pressure way to compare engine replacement quotes"
-      },
-      {
-        "level": "h2",
-        "id": "",
-        "text": "The process in four steps"
-      },
-      {
-        "level": "h2",
-        "id": "",
-        "text": "Please read this carefully"
-      },
-      {
-        "level": "h2",
-        "id": "",
-        "text": "What we are - and what we are not"
-      },
-      {
-        "level": "h2",
-        "id": "",
-        "text": "Quick answers about the process"
-      },
-      {
-        "level": "h2",
-        "id": "",
-        "text": "More resources to help you decide"
-      }
-    ],
-    "leadBlocks": [
-      {
-        "type": "paragraph",
-        "text": "How Engines Market works"
-      },
-      {
-        "type": "heading",
-        "level": "h1",
-        "id": "hero-heading",
-        "text": "A simple, free, no-pressure way to compare engine replacement quotes"
-      },
-      {
-        "type": "paragraph",
-        "text": "You tell us what you need. We connect you with vetted UK specialists. You compare quotes and choose the right fit for your budget and vehicle."
-      },
-      {
-        "type": "paragraph",
-        "text": "No hidden fees. No obligation. No pushy sales calls."
-      },
-      {
-        "type": "paragraph",
-        "text": "100+"
-      },
-      {
-        "type": "paragraph",
-        "text": "Vetted UK suppliers"
-      },
-      {
-        "type": "paragraph",
-        "text": "24,650+"
-      },
-      {
-        "type": "paragraph",
-        "text": "Quote requests in 2025"
-      },
-      {
-        "type": "paragraph",
-        "text": "5.2"
-      },
-      {
-        "type": "paragraph",
-        "text": "Days avg. from quote to fit"
-      },
-      {
-        "type": "cards",
-        "cards": [
-          {
-            "title": "Enquiry",
-            "text": "1 Enquiry",
-            "highlight": "1",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "1 Enquiry"
-          },
-          {
-            "title": "Match",
-            "text": "2 Match",
-            "highlight": "2",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "2 Match"
-          },
-          {
-            "title": "Quotes",
-            "text": "3 Quotes",
-            "highlight": "3",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "3 Quotes"
-          },
-          {
-            "title": "Choose",
-            "text": "4 Choose",
-            "highlight": "4",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "4 Choose"
-          },
-          {
-            "title": "",
-            "text": "→",
-            "highlight": "",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "→"
-          },
-          {
-            "title": "",
-            "text": "→",
-            "highlight": "",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "→"
-          },
-          {
-            "title": "",
-            "text": "→",
-            "highlight": "",
-            "meta": "",
-            "icon": "",
-            "items": [],
-            "fullText": "→"
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "text": "Engines Market"
-      },
-      {
-        "type": "paragraph",
-        "text": "Compare · Transparent · Free"
-      },
-      {
-        "type": "label",
-        "text": "Here is exactly how it works"
-      }
-    ],
-    "sections": [
-      {
-        "id": "the-process-in-four-steps",
-        "heading": "The process in four steps",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "We believe getting a replacement engine should be straightforward. Here is a step-by-step walkthrough of what happens when you use Engines Market."
-          },
-          {
-            "type": "cards",
-            "cards": [
-              {
-                "title": "Submit your enquiry",
-                "text": "Tell us about your vehicle and the problem. You will need:",
-                "highlight": "1",
-                "meta": "",
-                "icon": "",
-                "items": [
-                  "Vehicle registration number",
-                  "Current mileage",
-                  "Brief description of the issue"
-                ],
-                "fullText": "1 Submit your enquiry Tell us about your vehicle and the problem. You will need: Vehicle registration number Current mileage Brief description of the issue The enquiry form takes about two minutes to complete. It is completely free and does not commit you to anything."
-              },
-              {
-                "title": "We match you with relevant suppliers",
-                "text": "Once you submit your enquiry, we share it - anonymously - with specialist suppliers in our network who are a good fit for your vehicle and location.",
-                "highlight": "2",
-                "meta": "",
-                "icon": "",
-                "items": [],
-                "fullText": "2 We match you with relevant suppliers Once you submit your enquiry, we share it - anonymously - with specialist suppliers in our network who are a good fit for your vehicle and location. Our network includes 100+ UK engine specialists that have been onboarded against our supplier standards. Generally, they must be UK registered, have a physical business address, a minimum one-year trading history, and a public review profile averaging approximately 4.0 stars or higher. Only suppliers who can genuinely help with your engine type will receive your enquiry. We do not send leads to everyone indiscriminately."
-              },
-              {
-                "title": "Receive and compare quotes",
-                "text": "Suppliers review your details and send you a quote directly - usually by email or phone.",
-                "highlight": "3",
-                "meta": "",
-                "icon": "",
-                "items": [
-                  "Typical number of quotes: 3 to 5",
-                  "Typical time to receive quotes: Within a few hours"
-                ],
-                "fullText": "3 Receive and compare quotes Suppliers review your details and send you a quote directly - usually by email or phone. Typical number of quotes: 3 to 5 Typical time to receive quotes: Within a few hours You can compare prices, warranty terms, and included services side by side. All quotes come from real UK businesses, not middlemen. Based on 24,650 quote requests processed in 2025 [EM-VERIFIED], most users receive multiple competitive offers without needing to chase suppliers."
-              },
-              {
-                "title": "You choose the supplier - or walk away",
-                "text": "There is no pressure. You decide:",
-                "highlight": "4",
-                "meta": "",
-                "icon": "",
-                "items": [
-                  "Which supplier to contact for more details",
-                  "Whether to accept a quote",
-                  "Whether to walk away and do nothing"
-                ],
-                "fullText": "4 You choose the supplier - or walk away There is no pressure. You decide: Which supplier to contact for more details Whether to accept a quote Whether to walk away and do nothing Engines Market does not choose a supplier for you. We do not take a cut of the transaction. Your relationship - including payment, warranty, and fitting - is directly with the supplier you select."
-              }
-            ]
-          },
-          {
-            "type": "label",
-            "text": "Important legal disclaimer - our role"
-          }
-        ]
-      },
-      {
-        "id": "please-read-this-carefully",
-        "heading": "Please read this carefully",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "It protects you and us."
-          },
-          {
-            "type": "paragraph",
-            "text": "Our role"
-          },
-          {
-            "type": "paragraph",
-            "text": "Engines Market is a price comparison and introduction platform . We are not a garage, engine supplier, or fitting centre."
-          },
-          {
-            "type": "paragraph",
-            "text": "We do not sell engines. We do not hold stock. We do not fit engines. We do not provide warranties. We do not process customer payments. We do not act as a contracting party between you and any supplier."
-          },
-          {
-            "type": "paragraph",
-            "text": "All agreements, contracts, warranties, and payments are strictly between you and the supplier you choose. Engines Market does not mediate disputes or guarantee the performance of any supplier."
-          },
-          {
-            "type": "paragraph",
-            "text": "You are responsible for reviewing any supplier's quotation, warranty terms, and credentials before proceeding."
-          },
-          {
-            "type": "paragraph",
-            "text": "For full terms, please read our Terms & Conditions ."
-          },
-          {
-            "type": "label",
-            "text": "Why we do it this way"
-          }
-        ]
-      },
-      {
-        "id": "what-we-are-and-what-we-are-not",
-        "heading": "What we are - and what we are not",
-        "blocks": [
-          {
-            "type": "cards",
-            "cards": [
-              {
-                "title": "",
-                "text": "A free, transparent comparison platform A way to see 3-5 real quotes without ringing around An introducer to vetted UK specialists A source of independent marketplace data",
-                "highlight": "",
-                "meta": "",
-                "icon": "",
-                "items": [
-                  "A free, transparent comparison platform",
-                  "A way to see 3-5 real quotes without ringing around",
-                  "An introducer to vetted UK specialists",
-                  "A source of independent marketplace data"
-                ],
-                "fullText": "What we are A free, transparent comparison platform A way to see 3-5 real quotes without ringing around An introducer to vetted UK specialists A source of independent marketplace data"
-              },
-              {
-                "title": "",
-                "text": "A garage or workshop An engine supplier with stock A warranty provider A dispute resolution service",
-                "highlight": "",
-                "meta": "",
-                "icon": "",
-                "items": [
-                  "A garage or workshop",
-                  "An engine supplier with stock",
-                  "A warranty provider",
-                  "A dispute resolution service"
-                ],
-                "fullText": "What we are NOT A garage or workshop An engine supplier with stock A warranty provider A dispute resolution service"
-              }
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "We exist to save you time, stress, and money by making engine replacement pricing transparent. Nothing more."
-          },
-          {
-            "type": "label",
-            "text": "Frequently asked questions"
-          }
-        ]
-      },
-      {
-        "id": "quick-answers-about-the-process",
-        "heading": "Quick answers about the process",
-        "blocks": [
-          {
-            "type": "faq",
-            "question": "Is the service really free- +",
-            "answer": "Yes. You pay nothing to use Engines Market. Our income comes from suppliers who pay for qualified leads."
-          },
-          {
-            "type": "faq",
-            "question": "How do you vet suppliers- +",
-            "answer": "Suppliers generally need a UK registered business, a physical address, at least one year of trading history, and a public review profile averaging around 4.0 stars or higher. See our full supplier standards page for details."
-          },
-          {
-            "type": "faq",
-            "question": "How long does the whole process take- +",
-            "answer": "Most users receive quotes within a few hours. From enquiry to completed engine replacement, the average timeline (based on our 2025 data) is 5.2 days - but this varies by supplier and vehicle."
-          },
-          {
-            "type": "faq",
-            "question": "What if I do not like any of the quotes- +",
-            "answer": "You are free to walk away. There is no obligation to accept any quote or to use our service again."
-          },
-          {
-            "type": "faq",
-            "question": "Do you guarantee the lowest price- +",
-            "answer": "No. We provide multiple quotes from real suppliers so you can compare. The best choice depends on price, warranty, location, and your own priorities."
-          },
-          {
-            "type": "label",
-            "text": "Explore related pages"
-          }
-        ]
-      },
-      {
-        "id": "more-resources-to-help-you-decide",
-        "heading": "More resources to help you decide",
-        "blocks": [
-          {
-            "type": "links",
-            "links": [
-              {
-                "href": "#",
-                "text": "↗ Supplier standards How we select and maintain our network."
-              },
-              {
-                "href": "#",
-                "text": "↗ Engine warranty guide Understand warranty types and what to ask suppliers."
-              },
-              {
-                "href": "#",
-                "text": "↗ Contact us Get in touch with our team."
-              },
-              {
-                "href": "#",
-                "text": "↗ Price disclaimer About the cost ranges shown on this site."
-              }
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "Ready to get your quotes-"
-          },
-          {
-            "type": "paragraph",
-            "text": "No phone calls. No sales pressure."
-          },
-          {
-            "type": "paragraph",
-            "text": "Just real prices from real UK specialists."
-          },
-          {
-            "type": "paragraph",
-            "text": "Free · No obligation · 100+ UK specialists · 24,650+ quotes in 2025"
-          },
-          {
-            "type": "paragraph",
-            "text": "Start your free quote now →"
-          },
-          {
-            "type": "paragraph",
-            "text": "Compare side by side · No obligation"
-          }
-        ]
-      }
-    ]
-  },
-  "tables": [],
-  "faqs": [
-    {
-      "question": "Is the service really free- +",
-      "answer": "Yes. You pay nothing to use Engines Market. Our income comes from suppliers who pay for qualified leads."
+  "sections": {
+    "hero": {
+      "eyebrow": "How Engines Market works",
+      "title": "A simple, free, no-pressure way to compare engine replacement quotes",
+      "description": "You tell us what you need. We connect you with vetted UK specialists. You compare quotes and choose the right fit for your budget and vehicle.",
+      "options": [],
+      "trust": [],
+      "image": null,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "How Engines Market works"
+        },
+        {
+          "type": "paragraph",
+          "text": "No hidden fees. No obligation. No pushy sales calls."
+        },
+        {
+          "type": "paragraph",
+          "text": "100+"
+        },
+        {
+          "type": "paragraph",
+          "text": "Vetted UK suppliers"
+        },
+        {
+          "type": "paragraph",
+          "text": "24,650+"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quote requests in 2025"
+        },
+        {
+          "type": "paragraph",
+          "text": "5.2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Days avg. from quote to fit"
+        },
+        {
+          "type": "cards",
+          "cards": [
+            {
+              "title": "Enquiry",
+              "text": "1 Enquiry",
+              "highlight": "1",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "1 Enquiry"
+            },
+            {
+              "title": "Match",
+              "text": "2 Match",
+              "highlight": "2",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "2 Match"
+            },
+            {
+              "title": "Quotes",
+              "text": "3 Quotes",
+              "highlight": "3",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "3 Quotes"
+            },
+            {
+              "title": "Choose",
+              "text": "4 Choose",
+              "highlight": "4",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "4 Choose"
+            },
+            {
+              "title": "",
+              "text": "→",
+              "highlight": "",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "→"
+            },
+            {
+              "title": "",
+              "text": "→",
+              "highlight": "",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "→"
+            },
+            {
+              "title": "",
+              "text": "→",
+              "highlight": "",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "→"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Engines Market"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare · Transparent · Free"
+        },
+        {
+          "type": "label",
+          "text": "Here is exactly how it works"
+        }
+      ],
+      "links": [
+        {
+          "href": "/get-a-quote",
+          "text": "Start your free quote now →"
+        }
+      ]
     },
-    {
-      "question": "How do you vet suppliers- +",
-      "answer": "Suppliers generally need a UK registered business, a physical address, at least one year of trading history, and a public review profile averaging around 4.0 stars or higher. See our full supplier standards page for details."
+    "the-process-in-four-steps": {
+      "title": "The process in four steps",
+      "description": "We believe getting a replacement engine should be straightforward. Here is a step-by-step walkthrough of what happens when you use Engines Market.",
+      "content": [
+        {
+          "type": "cards",
+          "cards": [
+            {
+              "title": "Submit your enquiry",
+              "text": "Tell us about your vehicle and the problem. You will need:",
+              "highlight": "1",
+              "meta": "",
+              "icon": "",
+              "items": [
+                "Vehicle registration number",
+                "Current mileage",
+                "Brief description of the issue"
+              ],
+              "fullText": "1 Submit your enquiry Tell us about your vehicle and the problem. You will need: Vehicle registration number Current mileage Brief description of the issue The enquiry form takes about two minutes to complete. It is completely free and does not commit you to anything."
+            },
+            {
+              "title": "Receive and compare quotes",
+              "text": "Suppliers review your details and send you a quote directly - usually by email or phone.",
+              "highlight": "3",
+              "meta": "",
+              "icon": "",
+              "items": [
+                "Typical number of quotes: 3 to 5",
+                "Typical time to receive quotes: Within a few hours"
+              ],
+              "fullText": "3 Receive and compare quotes Suppliers review your details and send you a quote directly - usually by email or phone. Typical number of quotes: 3 to 5 Typical time to receive quotes: Within a few hours You can compare prices, warranty terms, and included services side by side. All quotes come from real UK businesses, not middlemen. Based on 24,650 quote requests processed in 2025 [EM-VERIFIED], most users receive multiple competitive offers without needing to chase suppliers."
+            },
+            {
+              "title": "We match you with relevant suppliers",
+              "text": "Once you submit your enquiry, we share it - anonymously - with specialist suppliers in our network who are a good fit for your vehicle and location.",
+              "highlight": "2",
+              "meta": "",
+              "icon": "",
+              "items": [],
+              "fullText": "2 We match you with relevant suppliers Once you submit your enquiry, we share it - anonymously - with specialist suppliers in our network who are a good fit for your vehicle and location. Our network includes 100+ UK engine specialists that have been onboarded against our supplier standards. Generally, they must be UK registered, have a physical business address, a minimum one-year trading history, and a public review profile averaging approximately 4.0 stars or higher. Only suppliers who can genuinely help with your engine type will receive your enquiry. We do not send leads to everyone indiscriminately."
+            },
+            {
+              "title": "You choose the supplier - or walk away",
+              "text": "There is no pressure. You decide:",
+              "highlight": "4",
+              "meta": "",
+              "icon": "",
+              "items": [
+                "Which supplier to contact for more details",
+                "Whether to accept a quote",
+                "Whether to walk away and do nothing"
+              ],
+              "fullText": "4 You choose the supplier - or walk away There is no pressure. You decide: Which supplier to contact for more details Whether to accept a quote Whether to walk away and do nothing Engines Market does not choose a supplier for you. We do not take a cut of the transaction. Your relationship - including payment, warranty, and fitting - is directly with the supplier you select."
+            }
+          ]
+        },
+        {
+          "type": "label",
+          "text": "Important legal disclaimer - our role"
+        }
+      ]
     },
-    {
-      "question": "How long does the whole process take- +",
-      "answer": "Most users receive quotes within a few hours. From enquiry to completed engine replacement, the average timeline (based on our 2025 data) is 5.2 days - but this varies by supplier and vehicle."
+    "please-read-this-carefully": {
+      "title": "Please read this carefully",
+      "description": "It protects you and us.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Our role"
+        },
+        {
+          "type": "paragraph",
+          "text": "Engines Market is a price comparison and introduction platform . We are not a garage, engine supplier, or fitting centre."
+        },
+        {
+          "type": "paragraph",
+          "text": "We do not sell engines. We do not hold stock. We do not fit engines. We do not provide warranties. We do not process customer payments. We do not act as a contracting party between you and any supplier."
+        },
+        {
+          "type": "paragraph",
+          "text": "All agreements, contracts, warranties, and payments are strictly between you and the supplier you choose. Engines Market does not mediate disputes or guarantee the performance of any supplier."
+        },
+        {
+          "type": "paragraph",
+          "text": "You are responsible for reviewing any supplier's quotation, warranty terms, and credentials before proceeding."
+        },
+        {
+          "type": "paragraph",
+          "text": "For full terms, please read our Terms & Conditions ."
+        },
+        {
+          "type": "label",
+          "text": "Why we do it this way"
+        }
+      ],
+      "links": [
+        {
+          "href": "#",
+          "text": "Terms & Conditions"
+        }
+      ]
     },
-    {
-      "question": "What if I do not like any of the quotes- +",
-      "answer": "You are free to walk away. There is no obligation to accept any quote or to use our service again."
+    "what-we-are-and-what-we-are-not": {
+      "title": "What we are - and what we are not",
+      "content": [
+        {
+          "type": "cards",
+          "cards": [
+            {
+              "title": "",
+              "text": "A free, transparent comparison platform A way to see 3-5 real quotes without ringing around An introducer to vetted UK specialists A source of independent marketplace data",
+              "highlight": "",
+              "meta": "",
+              "icon": "",
+              "items": [
+                "A free, transparent comparison platform",
+                "A way to see 3-5 real quotes without ringing around",
+                "An introducer to vetted UK specialists",
+                "A source of independent marketplace data"
+              ],
+              "fullText": "What we are A free, transparent comparison platform A way to see 3-5 real quotes without ringing around An introducer to vetted UK specialists A source of independent marketplace data"
+            },
+            {
+              "title": "",
+              "text": "A garage or workshop An engine supplier with stock A warranty provider A dispute resolution service",
+              "highlight": "",
+              "meta": "",
+              "icon": "",
+              "items": [
+                "A garage or workshop",
+                "An engine supplier with stock",
+                "A warranty provider",
+                "A dispute resolution service"
+              ],
+              "fullText": "What we are NOT A garage or workshop An engine supplier with stock A warranty provider A dispute resolution service"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "We exist to save you time, stress, and money by making engine replacement pricing transparent. Nothing more."
+        },
+        {
+          "type": "label",
+          "text": "Frequently asked questions"
+        }
+      ]
     },
-    {
-      "question": "Do you guarantee the lowest price- +",
-      "answer": "No. We provide multiple quotes from real suppliers so you can compare. The best choice depends on price, warranty, location, and your own priorities."
+    "quick-answers-about-the-process": {
+      "title": "Quick answers about the process",
+      "content": [
+        {
+          "type": "faq",
+          "question": "Is the service really free- +",
+          "answer": "Yes. You pay nothing to use Engines Market. Our income comes from suppliers who pay for qualified leads."
+        },
+        {
+          "type": "faq",
+          "question": "How do you vet suppliers- +",
+          "answer": "Suppliers generally need a UK registered business, a physical address, at least one year of trading history, and a public review profile averaging around 4.0 stars or higher. See our full supplier standards page for details."
+        },
+        {
+          "type": "faq",
+          "question": "How long does the whole process take- +",
+          "answer": "Most users receive quotes within a few hours. From enquiry to completed engine replacement, the average timeline (based on our 2025 data) is 5.2 days - but this varies by supplier and vehicle."
+        },
+        {
+          "type": "faq",
+          "question": "What if I do not like any of the quotes- +",
+          "answer": "You are free to walk away. There is no obligation to accept any quote or to use our service again."
+        },
+        {
+          "type": "faq",
+          "question": "Do you guarantee the lowest price- +",
+          "answer": "No. We provide multiple quotes from real suppliers so you can compare. The best choice depends on price, warranty, location, and your own priorities."
+        },
+        {
+          "type": "label",
+          "text": "Explore related pages"
+        }
+      ],
+      "links": [
+        {
+          "href": "#",
+          "text": "supplier standards page"
+        }
+      ]
+    },
+    "more-resources-to-help-you-decide": {
+      "title": "More resources to help you decide",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Ready to get your quotes-"
+        },
+        {
+          "type": "paragraph",
+          "text": "No phone calls. No sales pressure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Just real prices from real UK specialists."
+        },
+        {
+          "type": "paragraph",
+          "text": "Free · No obligation · 100+ UK specialists · 24,650+ quotes in 2025"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start your free quote now →"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare side by side · No obligation"
+        }
+      ],
+      "links": [
+        {
+          "href": "#",
+          "text": "↗ Supplier standards How we select and maintain our network."
+        },
+        {
+          "href": "#",
+          "text": "↗ Engine warranty guide Understand warranty types and what to ask suppliers."
+        },
+        {
+          "href": "#",
+          "text": "↗ Contact us Get in touch with our team."
+        },
+        {
+          "href": "#",
+          "text": "↗ Price disclaimer About the cost ranges shown on this site."
+        }
+      ]
     }
-  ],
-  "relatedLinks": [
-    {
-      "href": "#",
-      "text": "Terms & Conditions"
-    },
-    {
-      "href": "#",
-      "text": "supplier standards page"
-    },
-    {
-      "href": "#",
-      "text": "↗ Supplier standards How we select and maintain our network."
-    },
-    {
-      "href": "#",
-      "text": "↗ Engine warranty guide Understand warranty types and what to ask suppliers."
-    },
-    {
-      "href": "#",
-      "text": "↗ Contact us Get in touch with our team."
-    },
-    {
-      "href": "#",
-      "text": "↗ Price disclaimer About the cost ranges shown on this site."
-    },
-    {
-      "href": "/get-a-quote",
-      "text": "Start your free quote now →"
-    }
-  ],
-  "media": [],
-  "forms": [],
+  },
   "structuredData": [
     {
       "@context": "https://schema.org",

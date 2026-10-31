@@ -60,6 +60,10 @@ const nextConfig: NextConfig = {
           destination: "/about/:slug.html",
         },
         {
+          source: "/legal/data-handling-policy",
+          destination: "/legal/data-handlng-policy.html",
+        },
+        {
           source: "/legal/:slug",
           destination: "/legal/:slug.html",
         },

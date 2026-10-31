@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { getNormalizedPreviewContent } from "@/lib/staticPagePreview";
 import type { StaticBlock, StaticFaq, StaticForm, StaticPageRecord, StaticTable } from "@/lib/staticPagePreview";
 
 export type PreviewVariant =
@@ -294,50 +295,53 @@ function FaqList({ faqs }: { faqs: StaticFaq[] }) {
 
 export default function StaticPagePreview({ page, variant = "generic" }: { page: StaticPageRecord; variant?: PreviewVariant }) {
   const styles = previewStyles[variant];
-  const leadBlocks = page.content.leadBlocks.filter((block) => {
+  const isContactPage = page.route === "/about/contact";
+  const { hero, leadBlocks: rawLeadBlocks, sections, forms, tables, faqs } = getNormalizedPreviewContent(page);
+  const leadBlocks = rawLeadBlocks.filter((block) => {
     if (block.type === "form" || block.type === "image") return false;
     if (block.type === "heading" && block.level === "h1") return false;
-    if (block.type === "paragraph" && block.text === page.hero.lead) return false;
+    if (block.type === "paragraph" && block.text === hero.description) return false;
     return true;
   });
-  const sectionsContainFaqs = page.content.sections.some((section) => section.blocks.some((block) => block.type === "faq"));
+  const sectionsContainFaqs = sections.some((section) => section.blocks.some((block) => block.type === "faq"));
   const renderedTableCount = [
     ...leadBlocks,
-    ...page.content.sections.flatMap((section) => section.blocks),
+    ...sections.flatMap((section) => section.blocks),
   ].filter((block) => block.type === "table").length;
-  const additionalTables = page.tables.slice(renderedTableCount);
+  const additionalTables = tables.slice(renderedTableCount);
 
   return (
-    <div data-preview-family={variant} className={`min-h-screen px-4 py-8 sm:px-6 lg:px-8 ${styles.page}`}>
+    <div data-preview-family={variant} className={`min-h-screen px-4 py-8 sm:px-6 lg:px-8 ${isContactPage ? "bg-[#f4f6fb]" : styles.page}`}>
       <div className="mx-auto max-w-5xl">
-        <div className={`mb-5 rounded-lg border px-4 py-3 text-sm ${styles.notice}`}>
+        {!isContactPage ? <div className={`mb-5 rounded-lg border px-4 py-3 text-sm ${styles.notice}`}>
           <strong>Preview only:</strong> this page is not linked, is marked noindex, and does not replace the existing static page.
-        </div>
+        </div> : null}
 
-        <article className={`rounded-2xl border p-6 shadow-sm sm:p-10 ${styles.shell}`}>
-          <section className={`rounded-xl border p-6 ${styles.hero}`} aria-labelledby="preview-hero-title">
-            {page.hero.eyebrow ? <p className="text-xs font-black uppercase tracking-[0.14em] text-emerald-700">{page.hero.eyebrow}</p> : null}
-            <h1 className={`mt-3 text-3xl font-black leading-tight sm:text-5xl ${styles.heading}`} id="preview-hero-title">{page.hero.heading || page.seo.title}</h1>
-            {page.hero.lead ? <p className={`mt-5 max-w-3xl text-lg leading-8 ${styles.lead}`}>{page.hero.lead}</p> : null}
-            {page.hero.options.length ? <div className="mt-6 grid gap-3 md:grid-cols-3">{page.hero.options.map((option) => <div className={`rounded-lg border p-4 ${styles.option}`} key={`${option.label}-${option.amount}`}><p className={`text-sm font-bold ${styles.heading}`}>{option.label}</p><p className="mt-2 text-xl font-black text-emerald-700">{option.amount}</p><p className="mt-1 text-xs text-slate-600">{option.detail}</p></div>)}</div> : null}
-            {page.hero.image ? <Image className="mt-6 max-h-80 w-full rounded-lg object-contain" src={previewImageSrc(page.hero.image.src)} alt={page.hero.image.alt} width={1200} height={630} /> : null}
-            {page.hero.trust.length ? <div className="mt-5 flex flex-wrap gap-2">{page.hero.trust.map((item) => <span className={`rounded-full px-3 py-1 text-xs font-semibold ${styles.trust}`} key={item}>{item}</span>)}</div> : null}
+        <article className={`rounded-2xl border p-6 shadow-sm sm:p-10 ${isContactPage ? "border-transparent bg-transparent p-0 shadow-none" : styles.shell}`}>
+          <section className={`rounded-xl border p-6 ${isContactPage ? "border-[#0a2952] bg-[#0a2952] sm:p-10" : styles.hero}`} aria-labelledby="preview-hero-title">
+            {hero.eyebrow ? <p className="text-xs font-black uppercase tracking-[0.14em] text-emerald-700">{hero.eyebrow}</p> : null}
+            <h1 className={`mt-3 text-3xl font-black leading-tight sm:text-5xl ${isContactPage ? "text-white" : styles.heading}`} id="preview-hero-title">{hero.title || page.seo.title}</h1>
+            {hero.description ? <p className={`mt-5 max-w-3xl text-lg leading-8 ${isContactPage ? "text-white/75" : styles.lead}`}>{hero.description}</p> : null}
+            {hero.options.length ? <div className="mt-6 grid gap-3 md:grid-cols-3">{hero.options.map((option) => <div className={`rounded-lg border p-4 ${styles.option}`} key={`${option.label}-${option.amount}`}><p className={`text-sm font-bold ${styles.heading}`}>{option.label}</p><p className="mt-2 text-xl font-black text-emerald-700">{option.amount}</p><p className="mt-1 text-xs text-slate-600">{option.detail}</p></div>)}</div> : null}
+            {hero.image ? <Image className="mt-6 max-h-80 w-full rounded-lg object-contain" src={previewImageSrc(hero.image.src)} alt={hero.image.alt} width={1200} height={630} /> : null}
+            {hero.trust.length ? <div className="mt-5 flex flex-wrap gap-2">{hero.trust.map((item) => <span className={`rounded-full px-3 py-1 text-xs font-semibold ${styles.trust}`} key={item}>{item}</span>)}</div> : null}
+            {hero.links.length ? <div className="mt-7 flex flex-wrap gap-2">{hero.links.map((link) => <PreviewLink href={link.href} key={`${link.href}-${link.text}`}><span className={`inline-flex rounded-md px-3 py-2 text-sm font-semibold underline underline-offset-4 ${isContactPage ? "bg-white/10 text-white decoration-emerald-300" : "bg-emerald-50 text-emerald-800 decoration-emerald-500"}`}>{link.text}</span></PreviewLink>)}</div> : null}
           </section>
 
-          {page.forms.map((form, index) => <FormBlock form={form} key={`${form.action}-${index}`} />)}
+          {forms.map((form, index) => <FormBlock form={form} key={`${form.action}-${index}`} />)}
 
           <div className="mt-8">{leadBlocks.map((block, index) => renderBlock(block, index))}</div>
 
-          {page.content.sections.map((section) => (
+          {sections.map((section) => (
             <section className={`mt-10 border-t pt-8 ${styles.section}`} id={section.id} key={section.id}>
-              <h2 className={`text-2xl font-black ${styles.sectionHeading}`}>{section.heading}</h2>
+              <h2 className={`text-xl font-bold leading-tight sm:text-2xl ${styles.sectionHeading}`}>{section.heading}</h2>
               <div>{section.blocks.filter((block) => block.type !== "form").map((block, index) => renderBlock(block, index))}</div>
             </section>
           ))}
 
           {additionalTables.length ? <div className="mt-10">{additionalTables.map((table, index) => <TableBlock key={`additional-table-${index}`} table={table} />)}</div> : null}
 
-          {!sectionsContainFaqs ? <FaqList faqs={page.faqs} /> : null}
+          {!sectionsContainFaqs ? <FaqList faqs={faqs} /> : null}
         </article>
 
         <details className="mt-5 rounded-lg border border-slate-200 bg-white p-4 text-xs text-slate-600">

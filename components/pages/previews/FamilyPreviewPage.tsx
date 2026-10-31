@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { StaticPageRecord } from "@/lib/staticPagePreview";
+import type { StaticPageShellRecord } from "@/lib/staticPagePreview";
 
 export type FamilyPreviewMode = "comparison" | "risk" | "price" | "service" | "diagnostic" | "story" | "data" | "brand" | "document" | "hub" | "action" | "generic";
 export type FamilyPreviewTheme = "generic" | "case-studies" | "compare" | "failures" | "prices" | "services" | "symptoms" | "insights" | "about" | "legal" | "hub" | "root";
@@ -19,24 +19,28 @@ const pageThemes: Record<FamilyPreviewTheme, { page: string; notice: string; she
   root: { page: "bg-blue-50/50", notice: "border-blue-200 bg-blue-50 text-[#0a2952]", shell: "border-blue-200 bg-white" },
 };
 
-export default function FamilyPreviewPage({ page, themeName, mode, hero, body }: { page: StaticPageRecord; themeName: FamilyPreviewTheme; mode: FamilyPreviewMode; hero: ReactNode; body: ReactNode }) {
+export default function FamilyPreviewPage({ page, themeName, mode, hero, body }: { page: StaticPageShellRecord; themeName: FamilyPreviewTheme; mode: FamilyPreviewMode; hero: ReactNode; body: ReactNode }) {
   const theme = pageThemes[themeName];
-  return <div data-preview-family={themeName} data-preview-mode={mode} className={`min-h-screen px-4 py-8 sm:px-6 lg:px-8 ${theme.page}`}>
-    <div className="mx-auto max-w-6xl">
-      <div className={`mb-5 rounded-xl border px-4 py-3 text-sm shadow-sm ${theme.notice}`}><strong>Preview only:</strong> this family-specific UI is isolated, marked noindex, and does not replace the existing static page.</div>
+  const polishedFamily = themeName === "about" || themeName === "legal";
+
+  if (polishedFamily) {
+    return (
+      <div data-preview-family={themeName} data-preview-mode={mode} className={`min-h-screen ${themeName === "about" ? "bg-[#f4f6fb]" : "bg-[linear-gradient(180deg,#eef4f9_0%,#f5f9fc_45%,#edf4f9_100%)]"}`}>
+        {hero}
+        <div className={`mx-auto px-4 sm:px-6 ${themeName === "about" ? "max-w-[1120px] lg:px-6" : "max-w-[1040px] lg:px-0"}`}>
+          {body}
+        </div>
+      </div>
+    );
+  }
+
+  return <div data-preview-family={themeName} data-preview-mode={mode} className={`min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 ${theme.page}`}>
+    <div className="mx-auto max-w-[1280px]">
       {page.structuredData.length ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(page.structuredData) }} /> : null}
-      <article className={`rounded-3xl border p-5 shadow-xl sm:p-8 lg:p-10 ${theme.shell}`}>
+      <article>
         {hero}
         {body}
       </article>
-      <details className="mt-5 rounded-xl border border-slate-200 bg-white p-4 text-xs text-slate-600 shadow-sm">
-        <summary className="cursor-pointer font-bold text-[#0a2952]">Preview source details</summary>
-        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
-          <div><dt className="font-bold">Source</dt><dd>{page.source.originalFile}</dd></div>
-          <div><dt className="font-bold">Route target</dt><dd>{page.route}</dd></div>
-          <div className="sm:col-span-2"><dt className="font-bold">Source hash</dt><dd className="break-all">{page.source.sourceHash}</dd></div>
-        </dl>
-      </details>
     </div>
   </div>;
 }

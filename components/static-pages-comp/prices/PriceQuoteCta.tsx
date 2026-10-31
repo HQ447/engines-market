@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useMemo, useState, type FormEvent } from "react";
+import { carSeries } from "@/data/brands_Models";
 
 type SearchMode = "registration" | "manual";
+type VehicleRegistrationData = Record<string, string> & { registrationNumber: string };
+
+const makeOptions = Object.keys(carSeries).sort();
+const yearOptions = Array.from({ length: 37 }, (_, index) => String(2026 - index));
 
 const statItems = [
   { src: "/Home/enginelogo.webp", alt: "Engine Codes", value: "8,000+", label: "Engine Codes" },
@@ -52,7 +58,57 @@ function UkFlag() {
 }
 
 export default function PriceQuoteCta() {
+  const router = useRouter();
   const [mode, setMode] = useState<SearchMode>("registration");
+  const [registration, setRegistration] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState("");
+  const [engineCode, setEngineCode] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const modelOptions = useMemo(() => make ? ((carSeries as Record<string, string[]>)[make] ?? []) : [], [make]);
+
+  function goToForm(params: URLSearchParams) {
+    params.set("sourceLabel", "static-page-quote-search");
+    params.set("sourcePage", window.location.href);
+    router.push(`/form?${params.toString()}`);
+  }
+
+  async function submitRegistration(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const value = registration.trim().toUpperCase();
+    if (!value) {
+      setError("Please enter your registration number.");
+      return;
+    }
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch(`/api/vehicle-registration?registrationNumber=${encodeURIComponent(value)}`);
+      const payload = (await response.json()) as { vehicle?: VehicleRegistrationData; error?: string };
+      if (!response.ok || !payload.vehicle) throw new Error(payload.error || "We could not find vehicle details for that registration.");
+      const params = new URLSearchParams({ searchMode: "registration" });
+      Object.entries(payload.vehicle).forEach(([key, field]) => { if (field) params.set(key, field); });
+      goToForm(params);
+    } catch (lookupError) {
+      setError(lookupError instanceof Error ? lookupError.message : "Vehicle lookup failed.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function submitManual(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!make || !model || !year) {
+      setError("Select a make, model and year to continue.");
+      return;
+    }
+    setError("");
+    const params = new URLSearchParams({ searchMode: "manual", make, model, year });
+    if (engineCode.trim()) params.set("engineCode", engineCode.trim().toUpperCase());
+    goToForm(params);
+  }
 
   return (
     <aside className="rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_18px_50px_rgba(10,41,82,0.14)] lg:sticky lg:top-24" aria-label="Get your free engine quotes">
@@ -84,17 +140,18 @@ export default function PriceQuoteCta() {
           <h2 className="text-lg font-extrabold tracking-tight text-[#0a2952]">Get Your Free Engine Quotes</h2>
           <p className="mt-1 text-sm text-[#0a2952]">Instant comparison from UK-vetted engine specialists</p>
 
-          <div className="mt-5" role="group" aria-label="Search by registration">
+          <form className="mt-5" onSubmit={submitRegistration} aria-label="Search by registration">
             <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 focus-within:border-[#15803d] focus-within:ring-2 focus-within:ring-emerald-100">
               <span className="flex shrink-0 items-center gap-1.5 text-xs font-extrabold text-[#0d1b2e]"><UkFlag /> UK</span>
               <span aria-hidden="true" className="h-4 w-px bg-slate-200" />
-              <input aria-label="UK vehicle registration" autoCapitalize="characters" autoComplete="off" className="min-w-0 flex-1 bg-transparent text-sm font-bold tracking-[0.06em] text-[#0d1b2e] outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-slate-400" maxLength={8} name="registrationNumber" placeholder="Enter your reg - e.g. AB12 CDE" spellCheck={false} type="text" />
+              <input aria-label="UK vehicle registration" autoCapitalize="characters" autoComplete="off" className="min-w-0 flex-1 bg-transparent text-sm font-bold tracking-[0.06em] text-[#0d1b2e] outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-slate-400" maxLength={8} name="registrationNumber" onChange={(event) => setRegistration(event.currentTarget.value.toUpperCase())} placeholder="Enter your reg - e.g. AB12 CDE" spellCheck={false} type="text" value={registration} />
             </div>
-            <button className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#078d4a] px-5 text-sm font-bold text-white shadow-[0_6px_18px_rgba(7,141,74,0.28)] transition hover:-translate-y-0.5 hover:bg-[#05703d]" type="button">
-              <span>Get Free Engine Quotes</span>
+            <button className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#078d4a] px-5 text-sm font-bold text-white shadow-[0_6px_18px_rgba(7,141,74,0.28)] transition hover:-translate-y-0.5 hover:bg-[#05703d] disabled:cursor-wait disabled:opacity-60" disabled={loading} type="submit">
+              <span>{loading ? "Checking Registration..." : "Get Free Engine Quotes"}</span>
               <ArrowIcon />
             </button>
-          </div>
+          </form>
+          {error ? <p className="mt-3 text-sm font-semibold text-red-600" role="alert">{error}</p> : null}
 
           <p className="mt-4 flex items-center justify-center gap-2 text-xs leading-5 text-[#0a2952] sm:text-sm">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
@@ -115,32 +172,36 @@ export default function PriceQuoteCta() {
         </div>
       ) : (
         <div className="px-3 pb-3 pt-5 sm:px-6 sm:pb-5" id="price-cta-manual">
-          <div className="space-y-3" role="group" aria-label="Search manually">
+          <form className="space-y-3" onSubmit={submitManual} aria-label="Search manually">
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="grid gap-1.5 text-left text-xs font-bold text-[#0d1b2e]" htmlFor="price-cta-make">Make
-                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" defaultValue="" id="price-cta-make" name="make">
+                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" id="price-cta-make" name="make" onChange={(event) => { setMake(event.currentTarget.value); setModel(""); }} value={make}>
                   <option value="">Select Make</option>
+                  {makeOptions.map((option) => <option value={option} key={option}>{option}</option>)}
                 </select>
               </label>
               <label className="grid gap-1.5 text-left text-xs font-bold text-[#0d1b2e]" htmlFor="price-cta-model">Model
-                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" defaultValue="" id="price-cta-model" name="model">
+                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" id="price-cta-model" name="model" onChange={(event) => setModel(event.currentTarget.value)} value={model}>
                   <option value="">Select a model</option>
+                  {modelOptions.map((option) => <option value={option} key={option}>{option}</option>)}
                 </select>
               </label>
               <label className="grid gap-1.5 text-left text-xs font-bold text-[#0d1b2e]" htmlFor="price-cta-year">Year
-                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" defaultValue="" id="price-cta-year" name="year">
+                <select className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal text-[#0d1b2e] outline-none focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" id="price-cta-year" name="year" onChange={(event) => setYear(event.currentTarget.value)} value={year}>
                   <option value="">Select Model First</option>
+                  {yearOptions.map((option) => <option value={option} key={option}>{option}</option>)}
                 </select>
               </label>
               <label className="grid gap-1.5 text-left text-xs font-bold text-[#0d1b2e]" htmlFor="price-cta-engine-code">Engine Code
-                <input className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal uppercase text-[#0d1b2e] outline-none placeholder:normal-case placeholder:text-slate-400 focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" id="price-cta-engine-code" name="engineCode" placeholder="Enter engine code" spellCheck={false} type="text" />
+                <input className="h-11 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-normal uppercase text-[#0d1b2e] outline-none placeholder:normal-case placeholder:text-slate-400 focus:border-[#15803d] focus:ring-2 focus:ring-emerald-100" id="price-cta-engine-code" name="engineCode" onChange={(event) => setEngineCode(event.currentTarget.value.toUpperCase())} placeholder="Enter engine code" spellCheck={false} type="text" value={engineCode} />
               </label>
             </div>
-            <button className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#078d4a] px-5 text-sm font-bold text-white shadow-[0_6px_18px_rgba(7,141,74,0.28)] transition hover:-translate-y-0.5 hover:bg-[#05703d]" type="button">
+            <button className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#078d4a] px-5 text-sm font-bold text-white shadow-[0_6px_18px_rgba(7,141,74,0.28)] transition hover:-translate-y-0.5 hover:bg-[#05703d]" type="submit">
               <span>Get Free Engine Quotes</span>
               <ArrowIcon />
             </button>
-          </div>
+          </form>
+          {error ? <p className="mt-3 text-sm font-semibold text-red-600" role="alert">{error}</p> : null}
         </div>
       )}
     </aside>

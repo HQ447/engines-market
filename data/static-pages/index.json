@@ -103,7 +103,7 @@
       "slug": "legal",
       "route": "/legal",
       "originalFile": "content/hub-pages/legal.html",
-      "sourceHash": "sha256:8f4d1cf82b36330601166c2878e3238eb591dd6c1a3213aca31bee0a376edc96",
+      "sourceHash": "sha256:54b8485e6e5318b03f902a1a2b265abc940ca06fbfb2ceecd3adf76870dd5299",
       "title": "Engines Market | Trust, Legal & Platform Information",
       "description": "Learn about Engines Market — our mission, how we work, supplier standards, warranties, and legal policies. Transparent engine replacement marketplace since 2025.",
       "stats": {
@@ -198,7 +198,7 @@
       "slug": "about/about-us",
       "route": "/about",
       "originalFile": "public/about/about-us.html",
-      "sourceHash": "sha256:6dcb36787905a64c1783623d9ed0fd59c5fed9408f2bd586d36c73e0dd6c6530",
+      "sourceHash": "sha256:f65e16f54429e5bfca516463b7fab7f2e93b3a6b6d46e04f1935a61f0497ccea",
       "title": "About Engines Market - Compare Engine Replacement Quotes UK | Free & Transparent",
       "description": "Compare real quotes from 100+ vetted UK engine specialists. Save money on engine replacement with transparent pricing, no hidden fees & no obligation. Get a free quote.",
       "stats": {
@@ -236,7 +236,7 @@
       "slug": "about/engine-warranty-guide",
       "route": "/about/engine-warranty-guide",
       "originalFile": "public/about/engine-warranty-guide.html",
-      "sourceHash": "sha256:00c036dd79eabd81cbeab9e4cf72ca10a1b692a72f3465d80cfb87fe61a55526",
+      "sourceHash": "sha256:6c250610d7f644d964c049eeb259ff9b635e1f73f4011e433ac6233b6258aacf",
       "title": "Engine Warranty Guide UK | Parts, Labour & Exclusions",
       "description": "Read our engine warranty guide to understand parts-only vs parts & labour, common exclusions, and key questions to ask your UK engine supplier.",
       "stats": {
@@ -255,7 +255,7 @@
       "slug": "about/how-engines-market-works",
       "route": "/about/how-engines-market-works",
       "originalFile": "public/about/how-engines-market-works.html",
-      "sourceHash": "sha256:2bd39ae230e29e0c51281d6206c66d8891aa5420ed9c56497328614123c748f8",
+      "sourceHash": "sha256:b7df5535fcecc10a4c6f1f52f157694b2cf80098bd661ba050490593165bb371",
       "title": "How Engine Replacement Quotes Work | Free 4-Step Process",
       "description": "Get free engine replacement quotes in 4 easy steps. Submit your reg, compare prices from 100+ UK specialists, and choose the best deal. No hidden fees.",
       "stats": {
@@ -274,7 +274,7 @@
       "slug": "about/supplier-standards",
       "route": "/about/supplier-standards",
       "originalFile": "public/about/supplier-standards.html",
-      "sourceHash": "sha256:1cdc016dc2f4f9995b2e4202602422e27cb425244a38474158ab743355efa537",
+      "sourceHash": "sha256:b2e01ac727129e7e4088f2dc9708fabf619e5896fa29987deb7fb90db0ffda51",
       "title": "Engine Supplier Vetting Process | UK 4-Point Check - Engines Market",
       "description": "Discover our 4-point supplier vetting process. We only connect you with UK engine specialists who meet strict standards: UK registered, established, physical & 4.0+ rated.",
       "stats": {
@@ -293,7 +293,7 @@
       "slug": "about/warranty-claims-guide",
       "route": "/about/warranty-claims-guide",
       "originalFile": "public/about/warranty-claims-guide.html",
-      "sourceHash": "sha256:6f2606e5eeac5a50e3b6c2e83b80c1325a78f3fa2f12e3e6a7df56afafd65abd",
+      "sourceHash": "sha256:34d7231effae149df3a5907473d8468332a0e6149ba15af1e22c9a6b08a5ef55",
       "title": "Engine Warranty Claim Guide | Step-by-Step UK Process",
       "description": "Follow our step-by-step guide to make an engine warranty claim. Learn what documents you need, your legal rights, and what to do if a supplier refuses a valid claim.",
       "stats": {
@@ -312,7 +312,7 @@
       "slug": "case-studies/audi-a4-timing-chain-failure",
       "route": "/case-studies/audi-a4-timing-chain-failure",
       "originalFile": "public/case-studies/audi-a4-timing-chain-failure.html",
-      "sourceHash": "sha256:bc32635b9921a277a9c42105483a1b346c757ea68bf0976d0ac30eb1cbda991a",
+      "sourceHash": "sha256:7a99ba7dc6fb5925fd220b05630aa239025aebdcdcb4d5b7e1271436c09f894e",
       "title": "Audi A4 B8 Timing Chain Tensioner Failure Case Study | Engines Market",
       "description": "Premium visual case study showing how a £1,800 preventative timing chain replacement saved a £5,000 Audi A4 B8 2.0 TFSI engine.",
       "stats": {
@@ -331,7 +331,7 @@
       "slug": "case-studies/audi-a6-oil-consumption",
       "route": "/case-studies/audi-a6-oil-consumption",
       "originalFile": "public/case-studies/audi-a6-oil-consumption.html",
-      "sourceHash": "sha256:e5733a2b1dfa9046a0e893bda207da81db9223101323fe3bcdd16784263828c6",
+      "sourceHash": "sha256:c5a2e498666b1196dd339ad647352ee8f4313851cd9bd724d7a6ba2b2f246122",
       "title": "Audi A6 2.0 TFSI Oil Consumption Case Study | Engines Market",
       "description": "Premium visual case study: Audi A6 C7 2.0 TFSI EA888 oil consumption, blue smoke, MOT failure, piston ring replacement, and specialist rebuild decision.",
       "stats": {
@@ -350,7 +350,7 @@
       "slug": "case-studies/bmw-320d-engine-replacement",
       "route": "/case-studies/bmw-320d-engine-replacement",
       "originalFile": "public/case-studies/bmw-320d-engine-replacement.html",
-      "sourceHash": "sha256:9dc228f1ba0c65b4d5859ee10d91bd1c539d864ff86831934ec8ac3070b022bc",
+      "sourceHash": "sha256:da794b8b1b6f6f22ae44da299f51abbe02ef7e854cfaed4fee7a02ec6b67decb",
       "title": "BMW N47 Timing Chain Failure Case Study | Engines Market",
       "description": "Premium visual case study: BMW 320d N47 timing chain failure, £7,000 dealer quote, snapped chain, bent valves, and specialist top-end rebuild decision.",
       "stats": {
@@ -369,7 +369,7 @@
       "slug": "case-studies/bmw-n47-timing-chain-failure",
       "route": "/case-studies/bmw-n47-timing-chain-failure",
       "originalFile": "public/case-studies/bmw-n47-timing-chain-failure.html",
-      "sourceHash": "sha256:f26cf629f2fdd292af332a7d5a56613c62e50d3fd96c95d0a71378f0bb5d3b9b",
+      "sourceHash": "sha256:a1dc8951216fe84150935c16c7f0597a23162e716a71979c83f7332d5c5d3d88",
       "title": "BMW N47 Timing Chain Failure Case Study | Engines Market",
       "description": "Premium visual case study showing how a BMW N47 timing chain rattle became a catastrophic engine failure and a £5,050 repair decision.",
       "stats": {
@@ -388,7 +388,7 @@
       "slug": "case-studies/bmw-n57-engine-replacement",
       "route": "/case-studies/bmw-n57-engine-replacement",
       "originalFile": "public/case-studies/bmw-n57-engine-replacement.html",
-      "sourceHash": "sha256:3bdd8f42536ba1265c87c1da3f1a820609a04a5e51483c93af630ca31b626fa2",
+      "sourceHash": "sha256:f545c92607c4ed2b5781911faf007222b41ad652ce1136c0b5e70cf463c94772",
       "title": "BMW N57 Crankshaft Bearing Failure Case Study | Engines Market",
       "description": "Premium visual case study showing how a BMW N57 bottom-end knock became crankshaft bearing failure and an �8,500 repair decision.",
       "stats": {
@@ -407,7 +407,7 @@
       "slug": "case-studies/ford-ranger-engine-replacement",
       "route": "/case-studies/ford-ranger-engine-replacement",
       "originalFile": "public/case-studies/ford-ranger-engine-replacement.html",
-      "sourceHash": "sha256:2e1484e8f2852d4e4073cc84edaeed0320aa17362a41c4bee289673449b1bc1f",
+      "sourceHash": "sha256:e4942a2ea87f0de126713527e298448478df59a215795419fb2c3d274ff62a8e",
       "title": "Ford Ranger 3.2 Oil Pump Failure Case Study | Engines Market",
       "description": "Premium visual case study: Ford Ranger T6 3.2 Duratorq oil pump failure, ticking noise, oil pressure warning, seized engine, repair options and lessons learned.",
       "stats": {
@@ -426,7 +426,7 @@
       "slug": "case-studies/ford-transit-engine-failure",
       "route": "/case-studies/ford-transit-engine-failure",
       "originalFile": "public/case-studies/ford-transit-engine-failure.html",
-      "sourceHash": "sha256:a16f15a0c6780f3cd6af0fa0d005a270d6d7eb6f34126fac6d3df92a13b2c9c6",
+      "sourceHash": "sha256:d4d02d2f2e3cb13d0ab32a4967a0c89d4d3d93ce5c5e0be85cd3ce23aee3926b",
       "title": "Ford Transit 2.2 Engine Failure - Why Downtime Cost More Than the Engine | Engines Market",
       "description": "Premium visual case study showing how a £1,200 DPF repair wasted money on a Ford Transit 2.2 - and why a reconditioned engine with turbo saved downtime.",
       "stats": {
@@ -445,7 +445,7 @@
       "slug": "case-studies/jaguar-ingenium-timing-chain",
       "route": "/case-studies/jaguar-ingenium-timing-chain",
       "originalFile": "public/case-studies/jaguar-ingenium-timing-chain.html",
-      "sourceHash": "sha256:909ca2dcfe0381b09a39c784d68063fc1d0400e8014aa71f463fac38388a1cba",
+      "sourceHash": "sha256:1f436de8c18340e68d7beb66f7386e00c6dc82fc48d792aa4e0379dc0e413241",
       "title": "Jaguar Ingenium Timing Chain Failure Case Study | Engines Market",
       "description": "Premium visual case study: Jaguar XE Ingenium 2.0 timing chain failure, P0011/P0016 codes, specialist repair options, oil pump risk and final outcome.",
       "stats": {
@@ -464,7 +464,7 @@
       "slug": "case-studies/jaguar-xf-engine-replacement",
       "route": "/case-studies/jaguar-xf-engine-replacement",
       "originalFile": "public/case-studies/jaguar-xf-engine-replacement.html",
-      "sourceHash": "sha256:452d138612899abbd445929f6032aa9f4bf32bd4580772c8d88b5afd1817abbf",
+      "sourceHash": "sha256:fb59242f34a12370f7cf70b3f94517dc8099dd2db8cbd744868ab5a134b71e46",
       "title": "Jaguar XF AJD-V6 Replacement Case Study | Engines Market",
       "description": "Premium visual case study showing why chasing individual Jaguar XF AJD-V6 faults cost more than choosing a reconditioned engine from the start.",
       "stats": {
@@ -483,7 +483,7 @@
       "slug": "case-studies/land-rover-discovery-crank-failure",
       "route": "/case-studies/land-rover-discovery-crank-failure",
       "originalFile": "public/case-studies/land-rover-discovery-crank-failure.html",
-      "sourceHash": "sha256:f6019a75ea2cc1c067a77a1265e3d1637f83763d4a24a3022e2dcffe48510c4e",
+      "sourceHash": "sha256:d16cbcd17bac2e9f91e6b765a7ee81252ce480cd21bb8883c6bf4ccf3b291214",
       "title": "Land Rover Discovery 3 TDV6 Crankshaft Failure Case Study | Engines Market",
       "description": "Premium visual case study: Land Rover Discovery 3 2.7 TDV6 crankshaft failure, rumble under load, snapped crank, and engine replacement decision.",
       "stats": {
@@ -502,7 +502,7 @@
       "slug": "case-studies/mercedes-om651-timing-chain",
       "route": "/case-studies/mercedes-om651-timing-chain",
       "originalFile": "public/case-studies/mercedes-om651-timing-chain.html",
-      "sourceHash": "sha256:3b656dc4aa2770826c3c1513eb9534e102a2404f6cbc65f79eb32527da5894d0",
+      "sourceHash": "sha256:621293a341eedd9a20d21ec6482444e8720a3cb41eb0fbac09cf3e3c4cf9ea67",
       "title": "Mercedes OM651 Timing Chain Failure Case Study | Engines Market",
       "description": "Premium visual case study: Mercedes Sprinter OM651 timing chain failure, cold-start rattle, snapped chain, bent valves, and engine replacement decision.",
       "stats": {
@@ -521,7 +521,7 @@
       "slug": "case-studies/mercedes-sprinter-engine-replacement",
       "route": "/case-studies/mercedes-sprinter-engine-replacement",
       "originalFile": "public/case-studies/mercedes-sprinter-engine-replacement.html",
-      "sourceHash": "sha256:3d835a6987ea794e85dbba52d89d1904708f82bac1658316ab994648ffc79879",
+      "sourceHash": "sha256:1b50b6a54170653742dcc585ad8666395afb1479cedefbb962780e15c38ff854",
       "title": "Mercedes Sprinter OM651 Injector Failure Case Study | Engines Market",
       "description": "Premium visual case study: Mercedes Sprinter OM651 injector tip failure, white smoke, £60 part destroying a £4,000+ engine, and reconditioned engine replacement.",
       "stats": {
@@ -540,7 +540,7 @@
       "slug": "case-studies/nissan-navara-d40-case-study",
       "route": "/case-studies/nissan-navara-engine-failure",
       "originalFile": "public/case-studies/nissan-navara-d40-case-study.html",
-      "sourceHash": "sha256:d846c20eaf3c7ec4976e94e6018dc90380963dba7196b8f3ccbb6bf3ca040eb2",
+      "sourceHash": "sha256:fe631afa9eab3c1a390bca8b9f35d6dc890eb01363f0c40fc9b11f8465c2bdb2",
       "title": "Nissan Navara D40 Engine Failure Case Study | Engines Market",
       "description": "Premium visual case study: Nissan Navara D40 YD25 timing chain failure, £10,000 dealer quote, reconditioned engine replacement decision.",
       "stats": {
@@ -559,7 +559,7 @@
       "slug": "case-studies/peugeot-boxer-engine-replacement",
       "route": "/case-studies/peugeot-boxer-engine-replacement",
       "originalFile": "public/case-studies/peugeot-boxer-engine-replacement.html",
-      "sourceHash": "sha256:7d69860fd37e6048dead44e8d5fd66c14e16178807b273ec74eebba81d14fe34",
+      "sourceHash": "sha256:2d12ae05f6c199d0a4409fc19cfa01ed74e6ab8adf43e29549d04171a975ebd7",
       "title": "Peugeot Boxer 2.2 HDi Motorhome Failure Case Study | Engines Market",
       "description": "Premium visual case study: Peugeot Boxer P22DTE AdBlue failure, carbon contamination, repeated limp mode, and reconditioned engine replacement decision.",
       "stats": {
@@ -578,7 +578,7 @@
       "slug": "case-studies/range-rover-evoque-timing-chain",
       "route": "/case-studies/range-rover-evoque-timing-chain",
       "originalFile": "public/case-studies/range-rover-evoque-timing-chain.html",
-      "sourceHash": "sha256:30d3cd0687c1d3c8fd760914ead6208e3a1ffa552f77bb8d7a566300ad713e24",
+      "sourceHash": "sha256:0d81dd7a88809b1a1d1a90ef4bff9a36517ad9a99d61903b18a2a1440891b285",
       "title": "Range Rover Evoque Timing Chain Failure Case Study | Engines Market",
       "description": "Premium visual case study: Range Rover Evoque L538 2.0 TD4 Ingenium timing chain failure, MOT advisory, repair options, oil pump risk and final outcome.",
       "stats": {
@@ -597,7 +597,7 @@
       "slug": "case-studies/range-rover-sdv6-crankshaft-failure",
       "route": "/case-studies/range-rover-sdv6-crankshaft-failure",
       "originalFile": "public/case-studies/range-rover-sdv6-crankshaft-failure.html",
-      "sourceHash": "sha256:8601a659e4b59579789494f2ef01352d1b608e5dfd83a73ae98e2b03088ec750",
+      "sourceHash": "sha256:61309dd3f0a33e785c0e317b66339cb13018c1a0c1e56ef8902fcfe598c043fe",
       "title": "Range Rover SDV6 Crankshaft Failure Case Study | Engines Market",
       "description": "Premium visual case study showing how a Range Rover Sport L494 SDV6 suffered sudden crankshaft failure and needed a £10,750 engine and turbo replacement decision.",
       "stats": {
@@ -616,7 +616,7 @@
       "slug": "case-studies/toyota-hilux-engine-replacement",
       "route": "/case-studies/toyota-hilux-engine-replacement",
       "originalFile": "public/case-studies/toyota-hilux-engine-replacement.html",
-      "sourceHash": "sha256:b69bf5ecb3b20ab4c0d1e2ce4bd3f76364b0565c5afd7f5f586ec806fd20ef36",
+      "sourceHash": "sha256:37171aaa3ff499e3c2a64883b111b93f06c22977707a639759f583657b347105",
       "title": "Toyota Hilux 1KD-FTV Engine Rebuild Case Study | Engines Market",
       "description": "Premium visual case study: Toyota Hilux 1KD-FTV injector failure, scored bore, white smoke, and full engine rebuild decision.",
       "stats": {
@@ -635,7 +635,7 @@
       "slug": "case-studies/vauxhall-vivaro-engine-failure",
       "route": "/case-studies/vauxhall-vivaro-engine-failure",
       "originalFile": "public/case-studies/vauxhall-vivaro-engine-failure.html",
-      "sourceHash": "sha256:59f7874303964b2bb381c427a51863792bcc1bf01f9ce8c6dc3eff4a06e6d4e4",
+      "sourceHash": "sha256:a67b817e60acfe6edf0bbfe43f0030caafbe775b7f650ebc650f827920adac0f",
       "title": "Vauxhall Vivaro M9R Engine Failure Case Study | Engines Market",
       "description": "Premium visual case study: Vauxhall Vivaro M9R DPF failure, oil leak, seized engine, and reconditioned engine replacement decision.",
       "stats": {
@@ -654,7 +654,7 @@
       "slug": "case-studies/vw-amarok-engine-replacement",
       "route": "/case-studies/vw-amarok-engine-replacement",
       "originalFile": "public/case-studies/vw-amarok-engine-replacement.html",
-      "sourceHash": "sha256:d0adbb1c8804fa6db617c96846836422b53ea41301f8b22af8430dd39384e7aa",
+      "sourceHash": "sha256:ed36e057731c7950ba6baf97f7f5bcde2b156d4566dab6e906248933285de3e4",
       "title": "VW Amarok Engine Replacement - Dealer £12k vs Specialist £5.5k | Engines Market",
       "description": "Premium visual case study showing why a £12,000 VW dealer quote became a £5,500 reconditioned engine for a 2014 Amarok 2.0 BiTDI CFCA.",
       "stats": {
@@ -673,7 +673,7 @@
       "slug": "case-studies/vw-transporter-engine-rebuild",
       "route": "/case-studies/vw-transporter-engine-rebuild",
       "originalFile": "public/case-studies/vw-transporter-engine-rebuild.html",
-      "sourceHash": "sha256:bdc238c1df6a1f69e6502cd84e2c418c5732b9af9d7b444b8f26ee99d8b450f1",
+      "sourceHash": "sha256:8d5ac68e78748090652223be31f33401d3f2175cd7a7cedbbd5096f7f938cd50",
       "title": "VW Transporter T5.1/T6 Engine Rebuild - Cracked Cylinder Head | Engines Market",
       "description": "Premium visual case study showing why a cracked cylinder head on a VW Transporter CFCA 2.0 TDI cost £3,500 - and why acting on white smoke could have saved £2,000.",
       "stats": {
@@ -1433,7 +1433,7 @@
       "slug": "insights/average-engine-replacement-times",
       "route": "/insights/average-engine-replacement-times",
       "originalFile": "public/insights/average-engine-replacement-times.html",
-      "sourceHash": "sha256:0b5866d07022dcc0877685aee7534252221ddc5a16e21dafb47fa56fc0d06081",
+      "sourceHash": "sha256:d3fb592987f18576c3a695bb183da1999c3e827f07ad4ffaf24b10cc1f30df1a",
       "title": "Average Engine Replacement Times UK 2026 - 5.2 Days Average | Engines Market",
       "description": "Average engine replacement times UK 2026: 5.2 days average, 3-7 days reconditioned, 2-4 weeks rebuild. Labour hours by vehicle type: FWD 8-12, RWD 10-15, 4WD 12-20. Timeline breakdown included.",
       "stats": {
@@ -1452,7 +1452,7 @@
       "slug": "insights/engine-warranty-statistics-uk",
       "route": "/insights/engine-warranty-statistics-uk",
       "originalFile": "public/insights/engine-warranty-statistics-uk.html",
-      "sourceHash": "sha256:cdcbbe1a916943cd931aa780c95aadfafd7e400d15d8bccfc13ff41cd6a13a43",
+      "sourceHash": "sha256:a8b0d8eedd83c6b9a56ad61b0cecc0844bd9cbfbaac58602992d5473bd6b9fa0",
       "title": "Engine Warranty Statistics UK 2026 - Claim Rates & Costs | Engines Market",
       "description": "Engine warranty statistics UK 2026: Lexus 5.79% claim rate, Toyota 8.78%, Suzuki 10.80%. Average engine claim £2,755. F-Pace £23,000, BMW £26,233, Audi £22,954 claims.",
       "stats": {
@@ -1471,7 +1471,7 @@
       "slug": "insights/most-common-engine-failures-uk",
       "route": "/insights/most-common-engine-failures-uk",
       "originalFile": "public/insights/most-common-engine-failures-uk.html",
-      "sourceHash": "sha256:b00338b5515439e5b31d335281da06348225b0f64fe5d09d8b67695d200f64b2",
+      "sourceHash": "sha256:4bfb75b7e575d76aea33a1989a9638bf64dde242a697ae4e68a7930b95aee90e",
       "title": "Most Common Engine Failures UK 2026 - Real Data From 24,650 Quotes | Engines Market",
       "description": "Most common engine failures UK 2026: timing chain (18%), DPF (15%), turbo (14%), crankshaft (10%). BMW N47, Land Rover SDV6, Mercedes OM651 featured. Prevention data included.",
       "stats": {
@@ -1490,7 +1490,7 @@
       "slug": "insights/most-expensive-engine-repairs-uk",
       "route": "/insights/most-expensive-engine-repairs-uk",
       "originalFile": "public/insights/most-expensive-engine-repairs-uk.html",
-      "sourceHash": "sha256:b580439c3803ab332a4933a7c8039c958e412bda9f0ffb2778b3879599e45a36",
+      "sourceHash": "sha256:f2253bcd766be8c8a7545cdd3ddba1aaf5682145b0989a9c77e0d76946dfafb7",
       "title": "Most Expensive Engine Repairs UK 2026 - £23,000+ Claims | Engines Market",
       "description": "Most expensive engine repairs UK 2026: Jaguar F-Pace SVR £23,000, BMW £26,233, Audi £22,954. Premium brand cost penalty, repair vs replace threshold, and prevention costs.",
       "stats": {
@@ -1509,7 +1509,7 @@
       "slug": "insights/most-reliable-diesel-engines",
       "route": "/insights/most-reliable-diesel-engines",
       "originalFile": "public/insights/most-reliable-diesel-engines.html",
-      "sourceHash": "sha256:7fe082cf0058f4d5e36be59b3d4eef7af8d2335d36ec259bccb408a7ca32e2e9",
+      "sourceHash": "sha256:c27b275e158ecda9434b96a699f574be02ab38aebb30b75e325722dba5081390",
       "title": "Most Reliable Diesel Engines UK 2026 - Rankings & Data | Engines Market",
       "description": "Most reliable diesel engines UK 2026: BMW M57 (250k+ miles), VW 1.9 TDI (250k+), BMW B47 (ULEZ), Toyota 1KD-FTV. Reliability rankings, known failures, and buying advice.",
       "stats": {
@@ -1528,7 +1528,7 @@
       "slug": "insights/most-reliable-petrol-engines",
       "route": "/insights/most-reliable-petrol-engines",
       "originalFile": "public/insights/most-reliable-petrol-engines.html",
-      "sourceHash": "sha256:e0ff05ad157ef26bae6f778db593aaf08e66ca652602438eb9ee70f4dbc87aa6",
+      "sourceHash": "sha256:38a2ae11db83ca91fc6af7eece8860d52400455915073752ad5c57525a5b0aa4",
       "title": "Most Reliable Petrol Engines UK 2026 - Rankings & Data | Engines Market",
       "description": "Most reliable petrol engines UK 2026: BMW B58 (150k-200k miles), BMW B48, VW EA888 Gen 3, Toyota 1NZ-FE. Reliability rankings, known failures, and used car buying advice.",
       "stats": {
@@ -1547,7 +1547,7 @@
       "slug": "insights/most-replaced-engines-uk",
       "route": "/insights/most-replaced-engines-uk",
       "originalFile": "public/insights/most-replaced-engines-uk.html",
-      "sourceHash": "sha256:7070e478b7d8974ae3a0fe9b08eb7a5d9e1203e11739a8e985e9901c440d3030",
+      "sourceHash": "sha256:ec9af0a3aeab01f3d7938fea371de5f1e86a70089393fd03e9e681e8b95e327b",
       "title": "Most Replaced Engines UK 2026 - Top 15 Ranking | Engines Market",
       "description": "Most replaced engines UK 2026: BMW N47D20C (1,450), Mercedes OM651 (1,250), Land Rover 204DTD (1,150). Replacement costs, failure modes, and used car buying guidance.",
       "stats": {
@@ -1566,7 +1566,7 @@
       "slug": "insights/uk-engine-market-report-2026",
       "route": "/insights/uk-engine-market-report-2026",
       "originalFile": "public/insights/uk-engine-market-report-2026.html",
-      "sourceHash": "sha256:ad15f584f85bd85839ebe648d6f2b6bcb92aa75ddefdd72a45f7a8046e66e177",
+      "sourceHash": "sha256:f7ed42c29182288d273e9abf049b7613728fd7c837ab0105c0f872366a950faf",
       "title": "UK Engine Market Report 2026 - 24,650 Quote Dataset | Engines Market",
       "description": "UK Engine Market Report 2026: 24,650 quote requests, 70.45% reconditioned, £34bn aftermarket, £26,233 top claim. Comprehensive market intelligence for industry professionals.",
       "stats": {
@@ -1585,7 +1585,7 @@
       "slug": "insights/uk-engine-price-index",
       "route": "/insights/uk-engine-price-index",
       "originalFile": "public/insights/uk-engine-price-index.html",
-      "sourceHash": "sha256:6b9a25950b4538f36b88a4f72ae16613c38cb456cd03b01857f66ec4b6407bf1",
+      "sourceHash": "sha256:44f74ff7a28f156c1bcb3f28f4680ed2e42dc758917571b215e585bca7ba8d3b",
       "title": "UK Engine Price Index 2026 - 24,650 Quote Dataset | Engines Market",
       "description": "UK Engine Price Index 2026: reconditioned £2,100-£3,500, used £1,500-£2,800. Based on 24,650 real quotes. Condition-stratified, region-normalised pricing intelligence.",
       "stats": {
@@ -1604,7 +1604,7 @@
       "slug": "insights/uk-engine-replacement-statistics",
       "route": "/insights/uk-engine-replacement-statistics",
       "originalFile": "public/insights/uk-engine-replacement-statistics.html",
-      "sourceHash": "sha256:4d98f94089ee929e9baff0ef512db22a3f80032c93707fba9abe2ddc53da0047",
+      "sourceHash": "sha256:bae329758449989334b48ecdb93e1841283bc3cabe23bf691ccc3c09b6a7aa88",
       "title": "UK Engine Replacement Statistics 2026 - 24,650 Quote Dataset | Engines Market",
       "description": "UK Engine Replacement Statistics 2026: 24,650 quote requests, 70.45% reconditioned, top engines BMW N47D20C (1,450), Mercedes OM651 (1,250), Land Rover 204DTD (1,150). Industry data included.",
       "stats": {
@@ -1623,7 +1623,7 @@
       "slug": "legal/complaints-procedure",
       "route": "/complaints-procedure",
       "originalFile": "public/legal/complaints-procedure.html",
-      "sourceHash": "sha256:baa1d2b4d5c907d08023d4dbfb6ebeba47acc786b1a70cb78da96dc5bc325a5d",
+      "sourceHash": "sha256:9296b2da447abcb543723d9d18fd4cae3b36f6c42c749c3d894f3dfdc9ecc1b8",
       "title": "Complaints Procedure - Engines Market | Submit a Complaint",
       "description": "Learn how to submit a complaint about Engines Market. We acknowledge within 48 hours and respond within 14 working days. Your feedback helps us improve.",
       "stats": {
@@ -1642,7 +1642,7 @@
       "slug": "legal/cookie-policy",
       "route": "/legal/cookie-policy",
       "originalFile": "public/legal/cookie-policy.html",
-      "sourceHash": "sha256:61f0162e069327e02c82533a3365ce310ef5e170a64d18b683e7ced1b13b38c5",
+      "sourceHash": "sha256:86942d735c8c8c240013ea402f52f47ad435d6e6fd01d6112514a1bd7fa5fb71",
       "title": "Cookie Policy | Engines Market",
       "description": "Learn how Engines Market uses cookies, your privacy rights, and how you can manage your cookie preferences. Compliant with UK GDPR and PECR.",
       "stats": {
@@ -1661,7 +1661,7 @@
       "slug": "legal/data-handlng-policy",
       "route": "/legal/data-handling-policy",
       "originalFile": "public/legal/data-handlng-policy.html",
-      "sourceHash": "sha256:49fd4471c12a3aa9ff7a8318d09fb74b593dcd7e59d96e96a15c975559f4ad33",
+      "sourceHash": "sha256:6086bc8d59f14fea289e628fba3d24df096da461ce5444d891b47e3312d03057",
       "title": "Data Handling Policy - Engines Market | UK GDPR",
       "description": "Read our Data Handling Policy to understand how Engines Market collects, stores, shares, and deletes your personal data. UK GDPR compliant. Maximum 10 suppliers.",
       "stats": {
@@ -1680,7 +1680,7 @@
       "slug": "legal/privacy-policy",
       "route": "/legal/privacy-policy",
       "originalFile": "public/legal/privacy-policy.html",
-      "sourceHash": "sha256:1aee53829564d15bbc9421a7eb8206b2b49d28ed5fe05426da580edb669499c9",
+      "sourceHash": "sha256:a0bc9b262f9af0f52802164c1f9a50d8d65db7266c607eb4f0e3b3063713bfc2",
       "title": "Privacy Policy - Engines Market | UK GDPR",
       "description": "Read our Privacy Policy to understand how Engines Market collects, uses, and protects your data. Learn about your UK GDPR rights and how to contact our DPO.",
       "stats": {
@@ -1699,7 +1699,7 @@
       "slug": "legal/terms-and-conditions",
       "route": "/legal/terms-and-conditions",
       "originalFile": "public/legal/terms-and-conditions.html",
-      "sourceHash": "sha256:8da46538df5583e287d59541a4bad6ec4bd69fa4cd5470a5f6e4133fd0dce005",
+      "sourceHash": "sha256:f1bc2ace563f0b05eba116267f1bdbc25776dd86834de2aae81742b880bb07b0",
       "title": "Terms & Conditions - Engines Market",
       "description": "Read the Terms & Conditions for Engines Market. Learn about our role as a price comparison platform, liability disclaimers, and your obligations when using our service.",
       "stats": {
@@ -1718,7 +1718,7 @@
       "slug": "prices/crankshaft-repair-cost",
       "route": "/prices/crankshaft-repair-cost",
       "originalFile": "public/prices/crankshaft-repair-cost.html",
-      "sourceHash": "sha256:5b029e5929309427a4d6217057da90198428bf03eea684e7e795c02fafebe468",
+      "sourceHash": "sha256:caad085a095e62d379ee422f6199c9f45710afb3b52d748782dd95fb17734061",
       "title": "Crankshaft Repair Cost UK 2026 - Replacement vs Engine Swap | Engines Market",
       "description": "Crankshaft repair cost UK 2026: bearing replacement £800-£1,500, crank machining £1,200-£2,000, engine replacement £2,700-£10,000+. Compare real quotes from UK specialists. Free diagnosis estimates.",
       "stats": {
@@ -1737,7 +1737,7 @@
       "slug": "prices/dpf-replacement-cost",
       "route": "/prices/dpf-replacement-cost",
       "originalFile": "public/prices/dpf-replacement-cost.html",
-      "sourceHash": "sha256:837e4a8c04628bd3368d11449c6f38a1f813c756dec1bffc44a4140b76b6ffaa",
+      "sourceHash": "sha256:02d47f31e60aa27f85c9df18122cc8810ead059a5893a21a8637e5f409f5c3d2",
       "title": "DPF Replacement Cost UK 2026 - Cleaning vs Replacement | Engines Market",
       "description": "DPF replacement cost UK 2026: £800-£3,500+ - but cleaning (£150-£400) resolves most issues. Compare real quotes from 100+ UK DPF specialists. Free estimates.",
       "stats": {
@@ -1756,7 +1756,7 @@
       "slug": "prices/engine-fitting-cost",
       "route": "/prices/engine-fitting-cost",
       "originalFile": "public/prices/engine-fitting-cost.html",
-      "sourceHash": "sha256:a0628e86225c7ce3d75d227fdc330df65c982137b6d99b8bda3100b7118ca64f",
+      "sourceHash": "sha256:a49347f3ba6b6c1ef0b8987f978467e56c746704e7bc4cdba4097c9c566e3fd8",
       "title": "Engine Fitting Cost UK (2026) | Labour-Only Guide & Rates",
       "description": "Complete 2026 UK guide to engine fitting costs. Standard FWD £800-£1,500, 4WD/SUVs £1,500-£2,500. Compare regional labour rates and specialist fitting fees.",
       "stats": {
@@ -1775,7 +1775,7 @@
       "slug": "prices/engine-replacement-cost",
       "route": "/prices/engine-replacement-cost",
       "originalFile": "public/prices/engine-replacement-cost.html",
-      "sourceHash": "sha256:8a4f26ef41d59bc95a6c630be4d6dfe2c784b044619045cc5c0b9bd04e0510e8",
+      "sourceHash": "sha256:73370e7d5482105c416075a3918b3efe6cbf8e1c90ff42cf3319cd8bec14e195",
       "title": "Engine Replacement Cost UK 2026 | Real Prices from 24,650 Quotes",
       "description": "Engine replacement cost UK 2026: used £1,500-£2,800, reconditioned £2,100-£3,500, rebuilt £3,000-£5,000, new £4,500-£8,000+. Based on 24,650 real quotes. Compare prices from 100+ UK suppliers.",
       "stats": {
@@ -1794,7 +1794,7 @@
       "slug": "prices/garage-labour-rates",
       "route": "/prices/labour-cost-guide",
       "originalFile": "public/prices/garage-labour-rates.html",
-      "sourceHash": "sha256:6a0f1070edb24ecef9d5bab7421b709e55b92d5b6af473d2711de8ab425adc16",
+      "sourceHash": "sha256:6aa2ec31c7974bed78f83bb08bb80c3860dc0f9d1cff281c952931391cb776dd",
       "title": "Garage Labour Rates UK 2026 | Hourly Costs by Region",
       "description": "Garage labour rates UK 2026: average £68.51/hr, range £50-£220. Independent £55-£120, main dealer £90-£220, specialist £80-£160. Compare real quotes from UK garages.",
       "stats": {
@@ -1813,7 +1813,7 @@
       "slug": "prices/gearbox-replacement-cost",
       "route": "/prices/gearbox-replacement-cost",
       "originalFile": "public/prices/gearbox-replacement-cost.html",
-      "sourceHash": "sha256:57ef4b1a2be054c7318214326dbd0e077468378b81e76c4b6833bee7965502cb",
+      "sourceHash": "sha256:877ae34828d84704046ed27fc93c0ff862722d5f0c2111e0903a6bd1d1b75ec8",
       "title": "Gearbox Replacement Cost UK (2026) | Manual, Auto, DSG & CVT Guide",
       "description": "Comprehensive UK gearbox replacement cost guide for 2026. Compare manual (£500-£3,000), automatic (£1,000-£5,000), DSG/DCT (£2,000-£6,500+), and CVT repair & fitting prices.",
       "stats": {
@@ -1832,7 +1832,7 @@
       "slug": "prices/head-gasket-repair-cost",
       "route": "/prices/head-gasket-repair-cost",
       "originalFile": "public/prices/head-gasket-repair-cost.html",
-      "sourceHash": "sha256:76281a10c8221d477a8f193ae6a4581e2bcd4df76dda0ce2931bae5e73438072",
+      "sourceHash": "sha256:8f59ffeed1234164b7acae165f5ce891200e0d418b20515dd4a6f85a3834a2aa",
       "title": "Head Gasket Repair Cost UK 2026 | Prices by Vehicle Type & Engine",
       "description": "UK head gasket repair cost guide for 2026: £550-£2,000+ with most paying £700-£1,200. Compare small car, family car, SUV, and luxury cylinder head skimming & repair prices.",
       "stats": {
@@ -1851,7 +1851,7 @@
       "slug": "prices/injector-replacement-cost",
       "route": "/prices/injector-replacement-cost",
       "originalFile": "public/prices/injector-replacement-cost.html",
-      "sourceHash": "sha256:b6a2bf2604d32b78fa2e9424a68600b791b905c2b47e57a06f65ee2aece9d02a",
+      "sourceHash": "sha256:79f7d6b17ee7e6839f27467ed7d5c7f51759f4c539c9a9bcd1d6ec0064cf6942",
       "title": "Injector Replacement Cost UK 2026 | Petrol & Diesel Prices Guide",
       "description": "UK fuel injector replacement cost guide for 2026. Compare petrol (£120-£500), diesel (£300-£900+), reconditioned (£90-£190), and full set fitting prices.",
       "stats": {
@@ -1870,7 +1870,7 @@
       "slug": "prices/rebuilt-engine-cost",
       "route": "/prices/rebuilt-engine-cost",
       "originalFile": "public/prices/rebuilt-engine-cost.html",
-      "sourceHash": "sha256:b83737dff254af902fa241fedd6eb6864cba730da78490033a31ffbe254277c0",
+      "sourceHash": "sha256:56c3d97aa226fd988b1ee227698ee7fff75062ed4ea2197347987e645045d89f",
       "title": "Rebuilt Engine Cost UK 2026 | Premium Restoration & Machining Prices",
       "description": "Rebuilt engine cost UK 2026: standard rebuild £2,500-£5,000, performance £4,000-£8,000, prestige £8,000-£15,000+. Compare real quotes from specialist UK engine rebuilders.",
       "stats": {
@@ -1889,7 +1889,7 @@
       "slug": "prices/reconditioned-engine-cost",
       "route": "/prices/reconditioned-engine-cost",
       "originalFile": "public/prices/reconditioned-engine-cost.html",
-      "sourceHash": "sha256:69826db071d6944ea02eea62ed3dbd955648e78c912a1238494c7f8e70bbb041",
+      "sourceHash": "sha256:b25da30b1c2f372dc68bef9fc9199f912ec343c9b793d4166aa2848a54df5d96",
       "title": "Reconditioned Engine Cost UK 2026 - £2,100-£3,500 Supply | Engines Market",
       "description": "Reconditioned engine cost UK 2026: supply-only £2,100-£3,500, fitted £3,500-£5,500. 70.45% of UK owners choose reconditioned. 92% satisfaction. 12-month warranty included.",
       "stats": {
@@ -1908,7 +1908,7 @@
       "slug": "prices/remanfactured-engine-cost",
       "route": "/prices/remanufactured-engine-cost",
       "originalFile": "public/prices/remanfactured-engine-cost.html",
-      "sourceHash": "sha256:0a5e3ed29164272fd1202f3fd928f5489baaa37ff3e0bf6cb5d87cbcbc6663b4",
+      "sourceHash": "sha256:4378c1159bdda351699e26665590efeb08869165c3bfd890af987ab95afb5dcd",
       "title": "Remanufactured Engine Cost UK 2026 - BS AU257:2002 Prices | Engines Market",
       "description": "Remanufactured engine cost UK 2026: £3,000-£7,000+ - 40% less than new OE. BS AU257:2002 standard, 12-month unlimited warranty. Compare real quotes from certified remanufacturers.",
       "stats": {
@@ -1927,7 +1927,7 @@
       "slug": "prices/timing-chain-replacement-cost",
       "route": "/prices/timing-chain-replacement-cost",
       "originalFile": "public/prices/timing-chain-replacement-cost.html",
-      "sourceHash": "sha256:3b67cc2c14dc34c68a1edeceb022899095149c142f86ff004c253f09b2716af5",
+      "sourceHash": "sha256:57fc6f884c85e569b1e3e2ffa5c750ac50a56810ce85ab464cc9e5996baa9aac",
       "title": "Timing Chain Replacement Cost UK 2026 - BMW, Land Rover, Mercedes Prices | Engines Market",
       "description": "Timing chain replacement cost UK 2026: £750-£2,700+ by vehicle. BMW N47 £1,200-£2,500, Land Rover Ingenium £1,500-£2,700. Compare real quotes from UK specialists. Free estimates.",
       "stats": {
@@ -1946,7 +1946,7 @@
       "slug": "prices/turbo-replacement-cost",
       "route": "/prices/turbo-replacement-cost",
       "originalFile": "public/prices/turbo-replacement-cost.html",
-      "sourceHash": "sha256:abcfa3d47ae6a7bd421135b1607dcc4dade26b5c0c3c3b565e51f6e2324886a9",
+      "sourceHash": "sha256:332aaab4672611a1dfcb1792c8822088375f566f9fc1512b48e0c37c82028f6b",
       "title": "Turbo Replacement Cost UK 2026 - Repair vs Exchange vs New | Engines Market",
       "description": "Turbo replacement cost UK 2026: £450-£3,000+ by vehicle. Repair from £195, exchange from £495, new from £1,000+. Compare real quotes from UK turbo specialists. Free estimates.",
       "stats": {
@@ -1965,7 +1965,7 @@
       "slug": "prices/used-engine-cost",
       "route": "/prices/used-engine-cost",
       "originalFile": "public/prices/used-engine-cost.html",
-      "sourceHash": "sha256:37680d7a5e46f3fc9a741f0da3ff3ecd15fba59351ebc7ddcb03e6216cad3cd4",
+      "sourceHash": "sha256:41df44dfdef8a904912733f16444efb14ddb2d2fa8d09ee65d0ff72356c3451e",
       "title": "Used Engine Cost UK 2026 - Prices from £500 Supply | Engines Market",
       "description": "Used engine cost UK 2026: supply-only £500-£3,200, fitted £1,000-£4,500. Based on 7,284 real quotes. Know the risks, warranty, and when used makes sense.",
       "stats": {
@@ -1984,7 +1984,7 @@
       "slug": "prices/vehicle-recovery-cost",
       "route": "/prices/vehicle-recovery-cost",
       "originalFile": "public/prices/vehicle-recovery-cost.html",
-      "sourceHash": "sha256:b135819b868df22a867d33891e584f485c504d5addb88ccec4d6ce3709ce7ae9",
+      "sourceHash": "sha256:0b4e9422d591bc6dfa09dd9bacad50fea9be240fc22fc24ce8aa04508f5cdbc5",
       "title": "Vehicle Recovery Cost UK 2026 - Local & National Prices | Engines Market",
       "description": "Vehicle recovery cost UK 2026: local £90-£165, national £150-£300+. Call-out fee £50-£150 + £1.50-£2.00/mile. Compare real quotes from UK recovery specialists. Free estimates.",
       "stats": {
@@ -2022,7 +2022,7 @@
       "slug": "services/engine-diagnostic",
       "route": "/services/engine-diagnostics",
       "originalFile": "public/services/engine-diagnostic.html",
-      "sourceHash": "sha256:ead2dd92eaffe9d6c5021d33d949d9c8fb4d4825ab984096cf1157e17e6842fc",
+      "sourceHash": "sha256:61c10d29cf034ddb533c83d88af888dda962daf63e1b979e478fd8ff67dd9025",
       "title": "Engine Diagnostics UK 2026 - Find Out What's Wrong | Compare Diagnostic Quotes",
       "description": "Engine diagnostics UK 2026: OBD2 scan £50-£100, full system diagnostic £100-£200, advanced inspection £200-£400. Free quotes from vetted UK specialists. Written reports with repair or replacement recommendations.",
       "stats": {
@@ -2041,7 +2041,7 @@
       "slug": "services/engine-fitting",
       "route": "/services/engine-fitting",
       "originalFile": "public/services/engine-fitting.html",
-      "sourceHash": "sha256:20c8b44c7f5fbdea4f8d5bbe4f026a98b3a6e563fab37585ee35db3d22a2d0ee",
+      "sourceHash": "sha256:a55ee05fc9c9587fb4af34ac2e4b93d080b1ae1d294c2a53203ce3bdeeeb34d5",
       "title": "Engine Fitting UK 2026 - Labour Costs & Professional Installation | Compare Quotes",
       "description": "Engine fitting cost UK 2026: £800-£3,000. Labour-only service - you supply the engine, we connect you with vetted fitters. Free quotes from 100+ UK specialists. Labour warranty included.",
       "stats": {
@@ -2060,7 +2060,7 @@
       "slug": "services/engine-inspection-service",
       "route": "/services/engine-inspection-service",
       "originalFile": "public/services/engine-inspection-service.html",
-      "sourceHash": "sha256:674494d03c45868d3fb1ed6a7f3e59b65833b19b8f50a9d8bc1061bae396df5f",
+      "sourceHash": "sha256:8ee4f1d42aec180b4b0145635055d264f204c2c0c847f333a631231c2117c5f5",
       "title": "Standalone Engine Inspection Service UK | Used Engine Health Check | Engines Market",
       "description": "Standalone engine inspection service in the UK. Professional health check for used, reconditioned, or replacement engines on a stand before buying or fitting. Compare quotes from £100-£350.",
       "stats": {
@@ -2079,7 +2079,7 @@
       "slug": "services/engine-inspection",
       "route": "/services/engine-inspection",
       "originalFile": "public/services/engine-inspection.html",
-      "sourceHash": "sha256:6f243011903c69caa2f8ccb1d501dc0b6f5e754f0ae8e778a17260ecb47a83a9",
+      "sourceHash": "sha256:a9244e5f2e41f2a1cdfe3d1d7c2bd163834e0c851d75d3fa043fc3b7d58c745d",
       "title": "Engine Inspection UK 2026 - Pre-Purchase & Failure Assessment | Compare Quotes",
       "description": "Engine inspection UK 2026: £100-£300. Pre-purchase inspections for used cars, failure assessments for unexplained engine issues. Free quotes from vetted UK specialists. Written reports with pass/fail status.",
       "stats": {
@@ -2098,7 +2098,7 @@
       "slug": "services/engine-repair",
       "route": "/services/engine-repair",
       "originalFile": "public/services/engine-repair.html",
-      "sourceHash": "sha256:b1293638b05ff7046448ef234b9dd2cafae54ee37f23ccb054d2a66f03fb4086",
+      "sourceHash": "sha256:75ca514a8242b0128c64b78147182d09d4c0494d446010b9706aadd4aeb9dd2b",
       "title": "Engine Repair UK 2026 - Repair vs Replacement Decision Guide | Compare Quotes",
       "description": "Engine repair UK 2026 - repair vs replacement decision framework. Timing chain £650-£1,800, head gasket £800-£2,000, turbo £700-£2,500. Free quotes from vetted UK specialists.",
       "stats": {
@@ -2112,31 +2112,12 @@
       }
     },
     {
-      "id": "public/services/gearbox-replacement",
-      "contentType": "services",
-      "slug": "services/gearbox-replacement",
-      "route": "/services/gearbox-replacement",
-      "originalFile": "public/services/gearbox-replacement.html",
-      "sourceHash": "sha256:860fd675cc133d55e1d1e5d661ea71275f74b7297088e4a911931d4b441176a2",
-      "title": "Gearbox Replacement UK 2026 - Compare Costs from £500-£5,000 | Engines Market",
-      "description": "Gearbox replacement UK 2026: manual £500-£3,000, automatic £1,000-£4,000, CVT £1,200-£5,000, DSG £1,500-£7,000. Free quotes from vetted UK specialists. Used, reconditioned & new options.",
-      "stats": {
-        "wordCount": 2126,
-        "headingCount": 21,
-        "tableCount": 5,
-        "faqCount": 8,
-        "formCount": 4,
-        "linkCount": 8,
-        "imageCount": 3
-      }
-    },
-    {
       "id": "public/services/gearbox-replacement/automatic",
       "contentType": "services",
       "slug": "services/gearbox-replacement/automatic",
       "route": "/services/gearbox-replacement/automatic",
       "originalFile": "public/services/gearbox-replacement/automatic.html",
-      "sourceHash": "sha256:f854c846e13e63af9bcd17f2794f1cea96cb7d5559635f4960c753103083dcb6",
+      "sourceHash": "sha256:42fae7be5aa5dd2f168119318f859196e53dfc26fb0ae0d0d46cdaad3bb2fe8b",
       "title": "Automatic Gearbox Replacement UK 2026 - Compare Costs from £1,000 | Engines Market",
       "description": "Automatic gearbox replacement UK 2026: torque converter £1,000-£4,000, CVT £1,200-£5,000, DSG £1,500-£7,000. Free quotes from vetted UK specialists. Valve body repair options.",
       "stats": {
@@ -2155,7 +2136,7 @@
       "slug": "services/gearbox-replacement/manual",
       "route": "/services/gearbox-replacement/manual",
       "originalFile": "public/services/gearbox-replacement/manual.html",
-      "sourceHash": "sha256:66f0c16cbf8311f9ea54250029b6ed217a7f20bf8fc085c757732085d376cc14",
+      "sourceHash": "sha256:d5d20ba2ee401378666f5062d595eadeddd027def7ef63fb47104860f9274ed5",
       "title": "Manual Gearbox Replacement UK 2026 - Costs from £500 | Compare Quotes | Engines Market",
       "description": "Manual gearbox replacement UK 2026: 5-speed £500-£1,500, 6-speed £800-£2,500, heavy-duty £1,200-£4,000. Free quotes from vetted UK specialists. Clutch replacement advice included.",
       "stats": {
@@ -2169,12 +2150,31 @@
       }
     },
     {
+      "id": "public/services/gearbox-replacement",
+      "contentType": "services",
+      "slug": "services/gearbox-replacement",
+      "route": "/services/gearbox-replacement",
+      "originalFile": "public/services/gearbox-replacement.html",
+      "sourceHash": "sha256:6d5f7b0da08d0026c1598936421ebf89cb9f8b67cadecee01615d193f43b1382",
+      "title": "Gearbox Replacement UK 2026 - Compare Costs from £500-£5,000 | Engines Market",
+      "description": "Gearbox replacement UK 2026: manual £500-£3,000, automatic £1,000-£4,000, CVT £1,200-£5,000, DSG £1,500-£7,000. Free quotes from vetted UK specialists. Used, reconditioned & new options.",
+      "stats": {
+        "wordCount": 2126,
+        "headingCount": 21,
+        "tableCount": 5,
+        "faqCount": 8,
+        "formCount": 4,
+        "linkCount": 8,
+        "imageCount": 3
+      }
+    },
+    {
       "id": "public/services/rebuilt-engines",
       "contentType": "services",
       "slug": "services/rebuilt-engines",
       "route": "/services/rebuilt-engines",
       "originalFile": "public/services/rebuilt-engines.html",
-      "sourceHash": "sha256:989ff103a04bf7cc279b255febafc94acc3e5483ad6d217ed32c91ec02a474ee",
+      "sourceHash": "sha256:358c58f5599f81292214df18dc9e4179435f073cdbc46b644680e40ad3b110ab",
       "title": "Rebuilt Engines UK 2026 - Compare Prices & Premium Rebuilds | Engines Market",
       "description": "Rebuilt engine cost UK 2026: £3,000-£5,000 supply only, £4,500-£7,500 fitted. The premium choice for high-value vehicles. Free comparison from specialist rebuilders.",
       "stats": {
@@ -2193,7 +2193,7 @@
       "slug": "services/reconditioned-engines",
       "route": "/services/reconditioned-engines",
       "originalFile": "public/services/reconditioned-engines.html",
-      "sourceHash": "sha256:73b557a88e3925c137c76cd63707f1f9b3eaf7c7b818ed4bbdae496b2fa5125b",
+      "sourceHash": "sha256:3f0936d5c7b83e545a90be4bdd2c56bc53781be58b0c306425d7f56110b715fb",
       "title": "Reconditioned Engines UK 2026: Costs, Process & Value Comparison | Engines Market",
       "description": "Reconditioned engines cost £2,100–£3,500 fitted in the UK. Discover the full reconditioning process, 6–12 month warranty terms, cost tables by engine type, and how recon compares to used and rebuilt.",
       "stats": {
@@ -2212,7 +2212,7 @@
       "slug": "services/remanufactured-engines",
       "route": "/services/remanufactured-engines",
       "originalFile": "public/services/remanufactured-engines.html",
-      "sourceHash": "sha256:09dfa1da279653c82ccb4fa00755a57a16faac684c8c04ff76786c6e735c7486",
+      "sourceHash": "sha256:f7ddb13af4f82f6d50dda4263d773cb4b58ae04cdfb895cdaff1b68f60b53f7e",
       "title": "Remanufactured Engines UK 2026 - BS AU257 Certified | Compare Prices",
       "description": "Remanufactured engine cost UK 2026: £3,500-£6,500 supply only, £5,500-£9,000 fitted. BS AU257:2002 certified. Like-new performance at 40% less than new. Compare quotes from specialist remanufacturers.",
       "stats": {
@@ -2231,7 +2231,7 @@
       "slug": "services/replacement-engines",
       "route": "/services/replacement-engines",
       "originalFile": "public/services/replacement-engines.html",
-      "sourceHash": "sha256:526863ec3e7add6bdd477cf787a8d70254eabef86a438c080ff7efdd0fdec441",
+      "sourceHash": "sha256:a25f7ae155d1867b802e4af27a89f022666738a5bef5d03bd24a9948d6ffd730",
       "title": "Replacement Engines UK 2026 - Compare Prices from 24,650 Quotes | Engines Market",
       "description": "Replacement engine cost UK 2026: used £1,500-£2,800, reconditioned £2,100-£3,500, rebuilt £3,000-£5,000, new £4,500-£8,000+. Based on 24,650 real quotes. Free comparison from 100+ UK specialists.",
       "stats": {
@@ -2250,7 +2250,7 @@
       "slug": "services/supply-and-fit",
       "route": "/services/supply-and-fit",
       "originalFile": "public/services/supply-and-fit.html",
-      "sourceHash": "sha256:3a53e35cbd0046035b10148e9fa4c35fa8f06aee89d2d5d38d0f6754169d4e9d",
+      "sourceHash": "sha256:5bc72a5bfaeda7b0b7193346f064e73d684957b2cd68a62b192d2a2396aca071",
       "title": "Engine Supply and Fit UK 2026 - Complete Turnkey Replacement | Compare Quotes",
       "description": "Engine supply and fit UK 2026: complete turnkey replacement from £2,500-£11,000+. Supply, fitting, testing, and warranty. Free quotes from vetted UK specialists. 5.2-day average timeline.",
       "stats": {
@@ -2269,7 +2269,7 @@
       "slug": "services/used-engines",
       "route": "/services/used-engines",
       "originalFile": "public/services/used-engines.html",
-      "sourceHash": "sha256:2bb524e2f90d192710507505034d6b870489c505d65d94cf365f5da2acc64702",
+      "sourceHash": "sha256:a6c676f68f285745e8dbeaa98b0d9ed0c45dc0f7da3c74eb50b661acf75ced61",
       "title": "Used Engines UK 2026 | Costs, Risks & When to Buy | Engines Market",
       "description": "Used engines cost £1,500-£2,800 supply only or £2,500-£4,500 fitted in the UK. Discover risks, donor checks, warranty realities, and 2026 market data from 7,284 quotes.",
       "stats": {
@@ -2288,7 +2288,7 @@
       "slug": "services/vehicle-recovery",
       "route": "/services/vehicle-recovery",
       "originalFile": "public/services/vehicle-recovery.html",
-      "sourceHash": "sha256:993b1457f2f4651801ee3b912f451d410c3d2ed8a4f9384dfdf9fdf5d7edef43",
+      "sourceHash": "sha256:476a9547d73d122bbcf38be8adfda30c0be3fa6cd6a558b3d15dc2ac5b9adfaf",
       "title": "Vehicle Recovery UK 2026 | Compare Flatbed Transport Costs £50-£600 | Engines Market",
       "description": "UK vehicle recovery guide 2026: local £50-£150, regional £100-£300, national £200-£600. Flatbed recovery for engine & gearbox replacement with verified UK specialists.",
       "stats": {
@@ -2307,7 +2307,7 @@
       "slug": "symptoms/black-smoke",
       "route": "/symptoms/black-smoke",
       "originalFile": "public/symptoms/black-smoke.html",
-      "sourceHash": "sha256:2dce47b9ca08715776a4dbb4148ef6c8a3dd9b44ac2a653a184219fdc5db73a6",
+      "sourceHash": "sha256:7fa9b55bf5fd944e971b665537c9758b84e698ffea9a77439d7e3ccc7f74078c",
       "title": "Black Smoke from Exhaust - Diagnosis & Repair Cost UK (2026) | Engines Market",
       "description": "Black smoke diagnosis £50-£150. MAF sensor £100. Injector replacement £120-£900. Based on 24,650 UK quotes.",
       "stats": {
@@ -2573,7 +2573,7 @@
       "slug": "symptoms/limp-mode",
       "route": "/symptoms/limp-mode",
       "originalFile": "public/symptoms/limp-mode.html",
-      "sourceHash": "sha256:b6909fd40ecb474969b41f711bc48d6e6fef8f7dbe5be069b59f998b40ae60fe",
+      "sourceHash": "sha256:ed2660ce638eafaf4ac96e6b271e3fd05190c2eef18d077bab981a165de9928b",
       "title": "Limp Mode - Diagnosis & Repair Cost UK (2026) | Engines Market",
       "description": "Limp mode diagnosis £50-£150. Reset £45. Sensors £100-£300. Turbo/DPF £450-£3,500+. Based on 24,650 UK quotes.",
       "stats": {
